@@ -4,7 +4,7 @@
     "file_format_type": "edi"
   },
   "file_declaration": {
-    "segment_delimiter": "\r",
+    "segment_delimiter": "\n",
     "element_delimiter": "|",
     "component_delimiter": "^",
     "segment_declarations": [
@@ -145,7 +145,7 @@
                         {"name": "ROL","min": 0}
                     ]
                 }
-                    
+
             ]
         }
 	  ]
@@ -295,7 +295,7 @@
                         "array": [
                             {"xpath": "PID/first_name"},
                             {"xpath": "PID/middle_name"}
-                        ] 
+                        ]
                     }
                   }
                 }
@@ -372,7 +372,7 @@
           }
         }
       }
-    },  
+    },
     "encounter_resource": {
       "object": {
         "fullUrl": {"const": "urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7"},
@@ -494,7 +494,7 @@
                 "reference": {"xpath": "//PID", "template": "transform_patient_identifier"}
               }
             },
-            "coverage": { 
+            "coverage": {
                 "array": [
                     {"xpath": "//IN1",
                         "object": {
@@ -593,7 +593,7 @@
                         "array": [
                             {"xpath": "first_name"},
                             {"xpath": "middle_name"}
-                        ] 
+                        ]
                     }
                 }
                 }
@@ -678,7 +678,7 @@
                         "array": [
                             {"xpath": "IN1/insured_first_name"},
                             {"xpath": "IN1/insured_middle_name"}
-                        ] 
+                        ]
                     }
                   }
                 }
@@ -780,7 +780,7 @@
             "policyHolder": {
               "object": {
                 "type": {"const": "Organization"},
-                "identifier": { 
+                "identifier": {
                     "object": {
                         "type": {
                             "object": {
@@ -867,7 +867,7 @@
             "fullUrl": {"const": "urn:uuid:11ebe121-cdef-5613-9bf2-983a382cdef7"},
             "resource": {
               "object": {
-                "resourceType": {"const": "Practitioner"},  
+                "resourceType": {"const": "Practitioner"},
                 "name": {
                   "array": [
                     {
@@ -876,7 +876,7 @@
                         "given": {
                             "array": [
                                 {"xpath": "attending_physician_first_name"}
-                            ] 
+                            ]
                         }
                       }
                     }
@@ -904,14 +904,14 @@
                   }
               }
             }
-        }      
+        }
     },
     "practitioner_referring_resource": {
         "object": {
             "fullUrl": {"const": "urn:uuid:11ebe121-cdef-5613-9bf2-983a382cdef7"},
             "resource": {
               "object": {
-                "resourceType": {"const": "Practitioner"},  
+                "resourceType": {"const": "Practitioner"},
                 "name": {
                   "array": [
                     {
@@ -920,7 +920,7 @@
                         "given": {
                             "array": [
                                 {"xpath": "referring_physician_first_name"}
-                            ] 
+                            ]
                         }
                       }
                     }
@@ -948,7 +948,7 @@
                 }
               }
             }
-        }      
+        }
     },
     "transform_marital_code": {
         "custom_func": {
