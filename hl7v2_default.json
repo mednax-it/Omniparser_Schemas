@@ -161,7 +161,8 @@
         "entry": {
           "array": [
             {"template": "message_header_resource"},
-            {"template": "organization_facility_resource"}
+            {"template": "organization_facility_resource"},
+            {"template": "patient_resource"}
           ]
         }
       }
@@ -237,6 +238,149 @@
             "method": {"const": "POST"},
             "url": {"const": "Organization"},
             "ifNoneExist": {"const": "identifier=https://pediatrix.com/fhir/NamingSystem/facilityId-id|{{FacilityId}}"}
+          }
+        }
+      }
+    },
+    "patient_resource": {
+      "object": {
+        "fullUrl": {"const": "urn:uuid:61ebe121-abcd-4613-8bf2-983a382abcd7"},
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Patient"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/mrn-id"},
+                    "value": {"xpath": "PID/mrn"},
+                    "assigner": {
+                      "object": {
+                        "reference": {"const": "urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7"}
+                      }
+                    },
+                    "type": {
+                      "object": {
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "code": {"const": "MR"},
+                                "display": {"const": "Medical Record Number"}
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "object": {
+                    "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
+                    "value": {"xpath": "PID/ssn"},
+                    "type": {
+                      "object": {
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "code": {"const": "SS"},
+                                "display": {"const": "Social Security Number"}
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "name": {
+              "array": [
+                {
+                  "object": {
+                    "family": {"xpath": "PID/last_name"},
+                    "given": {
+                        "array": [
+                            {"xpath": "PID/first_name"},
+                            {"xpath": "PID/middle_name"}
+                        ]
+                    }
+                  }
+                }
+              ]
+            },
+            "telecom": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "phone"},
+                    "value": {"xpath": "PID/home_phone"},
+                    "use": {"xpath": "PID/home_phone_type", "template": "transform_phone_type"}
+                  }
+                },
+                {
+                    "object": {
+                      "system": {"const": "phone"},
+                      "value": {"xpath": "PID/work_phone"},
+                      "use": {"const": "work"}
+                    }
+                  }
+              ]
+            },
+            "gender": {"xpath": "PID/gender", "template": "transform_gender_code"},
+            "birthDate": {"xpath": "PID/dob", "template": "transform_date"},
+            "address": {
+              "array": [
+                {
+                  "object": {
+                    "use": {"xpath": "PID/address_type", "template": "transform_address_use"},
+                    "type": {"const": "physical"},
+                    "line": {
+                        "array": [
+                            {"xpath": "PID/address_1"},
+                            {"xpath": "PID/address_2"}
+                        ]
+                    },
+                    "city": {"xpath": "PID/city"},
+                    "state": {"xpath": "PID/state"},
+                    "postalCode": {"xpath": "PID/zip"},
+                    "country": {"xpath": "PID/country"}
+                  }
+                }
+              ]
+            },
+            "maritalStatus": {
+              "object": {
+                "coding": {
+                  "array": [
+                    {   "xpath": "PID/marital_status",
+                        "object": {
+                            "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"},
+                            "code": {"template": "transform_marital_code"},
+                            "display": {"template": "transform_marital_display"}
+                        }
+                    }
+                  ]
+                }
+              }
+            },
+            "multipleBirth[x]": {
+              "array":[
+                  {"xpath": "PID/multiple_birth"},
+                  {"xpath": "PID/birth_order"}
+              ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"template": "patient_conditional_put"}
           }
         }
       }
@@ -418,6 +562,16 @@
                 { "xpath": "MSH/datetime_of_message" }
             ]
         }
+    },
+    "patient_conditional_put": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
+              { "xpath": "PID/mrn" },
+              { "const": "&mrn-assigner=urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7" }
+          ]
+      }
     }
   }
 }
