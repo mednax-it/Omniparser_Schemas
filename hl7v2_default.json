@@ -16,8 +16,10 @@
                 {
                     "name": "MSH",
                     "elements": [
-                        {"name": "sending_facility", "index": 3},
-                        {"name": "message_trigger", "index": 8}
+                      {"name": "sending_facility", "index": 3},
+                      {"name": "datetime_of_message", "index": 6},
+                      {"name": "message_trigger", "index": 8},
+                      {"name": "message_control_id", "index": 9}
                     ]
                 },
                 {
@@ -186,7 +188,7 @@
                 {
                   "object": {
                     "url": {"const": "https://smilecdr.com/fhir/ns/StructureDefinition/messageheader-source-message-id"},
-                    "valueString": {"const": "3333333333"}
+                    "valueString": {"template": "transform_message_header_control_id"}
                   }
                 }
               ]
@@ -209,7 +211,6 @@
             },
             "focus": {
               "array": [
-                {"object": {"reference": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"}}},
                 {"object": {"reference": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"}}}
               ]
             },
@@ -224,7 +225,7 @@
         "request": {
           "object": {
             "method": {"const": "PUT"},
-            "url": {"const": "MessageHeader?control-id=3333333333"}
+            "url": {"template": "transform_message_header_identifier"}
           }
         }
       }
@@ -1106,6 +1107,25 @@
                 {"const": "insured_lname !== null && insured_fname !== null ? insured_fname + ' ' + insured_lname : ''"},
                 {"const": "insured_lname"}, {"xpath": "IN1/insured_last_name"},
                 {"const": "insured_fname"}, {"xpath": "IN1/insured_first_name"}
+            ]
+        }
+    },
+    "transform_message_header_identifier": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "MessageHeader?control-id=" },
+              { "template": "transform_message_header_control_id" }
+          ]
+      }
+    },
+    "transform_message_header_control_id": {
+        "custom_func": {
+            "name": "concat",
+            "args": [
+                { "xpath": "MSH/message_control_id" },
+                { "xpath": "PID/mrn" },
+                { "xpath": "MSH/datetime_of_message" }
             ]
         }
     }
