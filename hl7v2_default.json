@@ -162,7 +162,8 @@
           "array": [
             {"template": "message_header_resource"},
             {"template": "organization_facility_resource"},
-            {"template": "patient_resource"}
+            {"template": "patient_resource"},
+            {"xpath": "PV1[not(//PV1/referring_physician_id[text()=''])]", "template": "practitioner_referring_resource"}
           ]
         }
       }
@@ -385,6 +386,57 @@
         }
       }
     },
+    "practitioner_referring_resource": {
+      "object": {
+          "fullUrl": {"const": "urn:uuid:d53a0468-4126-43e5-9cad-77da7d265576"},
+          "resource": {
+            "object": {
+              "resourceType": {"const": "Practitioner"},
+              "name": {
+                "array": [
+                  {
+                    "object": {
+                      "family": {"xpath": "referring_physician_last_name"},
+                      "given": {
+                          "array": [
+                              {"xpath": "referring_physician_first_name"}
+                          ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "identifier": {
+                 "array": [
+                      {
+                          "object": {
+                              "type": {
+                              "object": {
+                                  "coding": {
+                                  "object": {
+                                      "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
+                                      "code": {"const": "PRN"}
+                                  }
+                                  }
+                              }
+                              },
+                              "system": {"const": "http://hl7.org/fhir/sid/us-npi"},
+                              "value": {"xpath": "referring_physician_id"}
+                          }
+                      }
+                 ]
+              }
+          }
+      },
+      "request": {
+        "object": {
+          "method": {"const": "PUT"},
+          "url": {"const": "Practitioner"},
+          "ifNoneExist": {"const": "identifier=http://hl7.org/fhir/sid/us-npi|9999999999"}
+        }
+      }
+    }
+  },
     "transform_marital_code": {
         "custom_func": {
             "name": "javascript",
