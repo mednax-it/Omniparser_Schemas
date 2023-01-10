@@ -200,6 +200,11 @@
                 }
               }
             },
+            "focus": {
+              "array": [
+                {"object": {"reference": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"}}}
+              ]
+            },
             "source": {
               "object": {
                 "name": {"const": "SourceApp"},
