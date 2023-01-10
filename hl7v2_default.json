@@ -26,36 +26,36 @@
                     "name": "EVN",
                     "min": 0,
                     "elements": [
-                        {"name": "message_typecode", "index": 1}
+                      {"name": "message_typecode", "index": 1}
                     ]
                 },
                 {
                     "name": "PID",
                     "min": 0,
                     "elements": [
-                        {"name": "mrn", "index": 3, "component_index": 1, "default": ""},
-                        {"name": "last_name", "index": 5, "component_index": 1, "default": ""},
-                        {"name": "first_name", "index": 5, "component_index": 2, "default": ""},
-                        {"name": "middle_name", "index": 5, "component_index": 3, "default": ""},
-                        {"name": "dob", "index": 7, "default": ""},
-                        {"name": "gender", "index": 8, "default": "Unknown"},
-                        {"name": "address_1", "index": 11, "component_index": 1, "default": ""},
-                        {"name": "address_2", "index": 11, "component_index": 2, "default": ""},
-                        {"name": "city", "index": 11, "component_index": 3, "default": ""},
-                        {"name": "state", "index": 11, "component_index": 4, "default": ""},
-                        {"name": "zip", "index": 11, "component_index": 5, "default": ""},
-                        {"name": "country", "index": 11, "component_index": 6, "default": ""},
-                        {"name": "address_type", "index": 11, "component_index": 7, "default": "H"},
-                        {"name": "home_phone", "index": 13, "component_index": 1, "default": ""},
-                        {"name": "home_phone_type", "index": 13, "component_index": 3, "default": ""},
-                        {"name": "work_phone", "index": 14, "component_index": 1, "default": ""},
-                        {"name": "work_phone_type", "index": 14, "component_index": 3, "default": ""},
-                        {"name": "marital_status", "index": 16, "default": "Unknown"},
-                        {"name": "ssn", "index": 19, "default": ""},
-                        {"name": "multiple_birth", "index": 24, "default": ""},
-                        {"name": "birth_order", "index": 25, "default": ""},
-                        {"name": "admit_date", "index": 44, "default": ""},
-                        {"name": "discharge_date", "index": 45, "default": ""}
+                      {"name": "mrn", "index": 3, "component_index": 1, "default": ""},
+                      {"name": "last_name", "index": 5, "component_index": 1, "default": ""},
+                      {"name": "first_name", "index": 5, "component_index": 2, "default": ""},
+                      {"name": "middle_name", "index": 5, "component_index": 3, "default": ""},
+                      {"name": "dob", "index": 7, "default": ""},
+                      {"name": "gender", "index": 8, "default": "Unknown"},
+                      {"name": "address_1", "index": 11, "component_index": 1, "default": ""},
+                      {"name": "address_2", "index": 11, "component_index": 2, "default": ""},
+                      {"name": "city", "index": 11, "component_index": 3, "default": ""},
+                      {"name": "state", "index": 11, "component_index": 4, "default": ""},
+                      {"name": "zip", "index": 11, "component_index": 5, "default": ""},
+                      {"name": "country", "index": 11, "component_index": 6, "default": ""},
+                      {"name": "address_type", "index": 11, "component_index": 7, "default": "H"},
+                      {"name": "home_phone", "index": 13, "component_index": 1, "default": ""},
+                      {"name": "home_phone_type", "index": 13, "component_index": 3, "default": ""},
+                      {"name": "work_phone", "index": 14, "component_index": 1, "default": ""},
+                      {"name": "work_phone_type", "index": 14, "component_index": 3, "default": ""},
+                      {"name": "marital_status", "index": 16, "default": "Unknown"},
+                      {"name": "ssn", "index": 19, "default": ""},
+                      {"name": "multiple_birth", "index": 24, "default": ""},
+                      {"name": "birth_order", "index": 25, "default": ""},
+                      {"name": "admit_date", "index": 44, "default": ""},
+                      {"name": "discharge_date", "index": 45, "default": ""}
                     ]
                 },
                 {"name": "NK1","min": 0},
@@ -77,24 +77,25 @@
                 {"name": "DG1","min": 0},
                 {"name": "GT1","min": 0,
                     "elements": [
-                        {"name": "last_name", "index": 3, "component_index": 1, "default": ""},
-                            {"name": "first_name", "index": 3, "component_index": 2, "default": ""},
-                            {"name": "middle_name", "index": 3, "component_index": 3, "default": ""},
-                            {"name": "address_1", "index": 5, "component_index": 1, "default": ""},
-                            {"name": "address_2", "index": 5, "component_index": 2, "default": ""},
-                            {"name": "city", "index": 5, "component_index": 3, "default": ""},
-                            {"name": "state", "index": 5, "component_index": 4, "default": ""},
-                            {"name": "zip", "index": 5, "component_index": 5, "default": ""},
-                            {"name": "country", "index": 5, "component_index": 6, "default": ""},
-                            {"name": "address_type", "index": 5, "component_index": 7, "default": "H"},
-                            {"name": "home_phone", "index": 6, "component_index": 1, "default": ""},
-                            {"name": "home_phone_type", "index": 6, "component_index": 3, "default": ""},
-                            {"name": "work_phone", "index": 7, "component_index": 1, "default": ""},
-                            {"name": "work_phone_type", "index": 7, "component_index": 3, "default": ""},
-                            {"name": "dob", "index": 8, "default": ""},
-                            {"name": "gender", "index": 9, "default": "Unknown"},
-                            {"name": "marital_status", "index": 30, "default": "Unknown"},
-                            {"name": "ssn", "index": 12, "default": ""}
+                      {"name": "guarantor_number", "index": 2, "default": "00000"},
+                      {"name": "last_name", "index": 3, "component_index": 1, "default": ""},
+                      {"name": "first_name", "index": 3, "component_index": 2, "default": ""},
+                      {"name": "middle_name", "index": 3, "component_index": 3, "default": ""},
+                      {"name": "address_1", "index": 5, "component_index": 1, "default": ""},
+                      {"name": "address_2", "index": 5, "component_index": 2, "default": ""},
+                      {"name": "city", "index": 5, "component_index": 3, "default": ""},
+                      {"name": "state", "index": 5, "component_index": 4, "default": ""},
+                      {"name": "zip", "index": 5, "component_index": 5, "default": ""},
+                      {"name": "country", "index": 5, "component_index": 6, "default": ""},
+                      {"name": "address_type", "index": 5, "component_index": 7, "default": "H"},
+                      {"name": "home_phone", "index": 6, "component_index": 1, "default": ""},
+                      {"name": "home_phone_type", "index": 6, "component_index": 3, "default": ""},
+                      {"name": "work_phone", "index": 7, "component_index": 1, "default": ""},
+                      {"name": "work_phone_type", "index": 7, "component_index": 3, "default": ""},
+                      {"name": "dob", "index": 8, "default": ""},
+                      {"name": "gender", "index": 9, "default": "Unknown"},
+                      {"name": "marital_status", "index": 30, "default": "Unknown"},
+                      {"name": "ssn", "index": 12, "default": ""}
                     ]
                 },
                 {"name": "insurance", "type":"segment_group","min": 0, "max": -1,
@@ -102,45 +103,45 @@
                         {
                             "name": "IN1",
                             "elements": [
-                                {"name": "set_id", "index": 1, "default": "1"},
-                                {"name": "plan_id", "index": 2, "component_index": 1, "default": "00000"},
-                                {"name": "plan_name", "index": 2, "component_index": 2, "default": "00000"},
-                                {"name": "company_id", "index": 3, "component_index": 1, "default": "00000"},
-                                {"name": "company_name", "index": 4, "component_index": 1, "default": ""},
-                                {"name": "address_1", "index": 5, "component_index": 1, "default": ""},
-                                {"name": "address_2", "index": 5, "component_index": 2, "default": ""},
-                                {"name": "city", "index": 5, "component_index": 3, "default": ""},
-                                {"name": "state", "index": 5, "component_index": 4, "default": ""},
-                                {"name": "zip", "index": 5, "component_index": 5, "default": ""},
-                                {"name": "country", "index": 5, "component_index": 6, "default": ""},
-                                {"name": "address_type", "index": 5, "component_index": 7, "default": ""},
-                                {"name": "insurance_phone", "index": 7, "component_index": 1, "default": ""},
-                                {"name": "insurance_phone_type", "index": 7, "component_index": 3, "default": ""},
-                                {"name": "group_number", "index": 8, "default": ""},
-                                {"name": "group_employer_id", "index": 10,  "component_index": 1, "default": ""},
-                                {"name": "group_employer_name", "index": 11,  "component_index": 1, "default": ""},
-                                {"name": "plan_effective_date", "index": 12, "default": ""},
-                                {"name": "plan_expiration_date", "index": 13, "default": ""},
-                                {"name": "auth_number", "index": 14,  "component_index": 1, "default": ""},
-                                {"name": "auth_date", "index": 14,  "component_index": 2, "default": ""},
-                                {"name": "plan_type", "index": 15, "default": ""},
-                                {"name": "insured_first_name", "index": 16, "component_index": 1, "default": ""},
-                                {"name": "insured_last_name", "index": 16, "component_index": 2, "default": ""},
-                                {"name": "insured_patient_relationship", "index": 17, "default": ""},
-                                {"name": "insured_address_1", "index": 19, "component_index": 1, "default": ""},
-                                {"name": "insured_address_2", "index": 19, "component_index": 2, "default": ""},
-                                {"name": "insured_city", "index": 19, "component_index": 3, "default": ""},
-                                {"name": "insured_state", "index": 19, "component_index": 4, "default": ""},
-                                {"name": "insured_zip", "index": 19, "component_index": 5, "default": ""},
-                                {"name": "insured_country", "index": 19, "component_index": 6, "default": ""},
-                                {"name": "insured_address_type", "index": 19, "component_index": 7, "default": "H"},
-                                {"name": "policy_number", "index": 36, "default": ""}
+                              {"name": "set_id", "index": 1, "default": "1"},
+                              {"name": "plan_id", "index": 2, "component_index": 1, "default": "00000"},
+                              {"name": "plan_name", "index": 2, "component_index": 2, "default": "00000"},
+                              {"name": "company_id", "index": 3, "component_index": 1, "default": "00000"},
+                              {"name": "company_name", "index": 4, "component_index": 1, "default": ""},
+                              {"name": "address_1", "index": 5, "component_index": 1, "default": ""},
+                              {"name": "address_2", "index": 5, "component_index": 2, "default": ""},
+                              {"name": "city", "index": 5, "component_index": 3, "default": ""},
+                              {"name": "state", "index": 5, "component_index": 4, "default": ""},
+                              {"name": "zip", "index": 5, "component_index": 5, "default": ""},
+                              {"name": "country", "index": 5, "component_index": 6, "default": ""},
+                              {"name": "address_type", "index": 5, "component_index": 7, "default": ""},
+                              {"name": "insurance_phone", "index": 7, "component_index": 1, "default": ""},
+                              {"name": "insurance_phone_type", "index": 7, "component_index": 3, "default": ""},
+                              {"name": "group_number", "index": 8, "default": ""},
+                              {"name": "group_employer_id", "index": 10,  "component_index": 1, "default": ""},
+                              {"name": "group_employer_name", "index": 11,  "component_index": 1, "default": ""},
+                              {"name": "plan_effective_date", "index": 12, "default": ""},
+                              {"name": "plan_expiration_date", "index": 13, "default": ""},
+                              {"name": "auth_number", "index": 14,  "component_index": 1, "default": ""},
+                              {"name": "auth_date", "index": 14,  "component_index": 2, "default": ""},
+                              {"name": "plan_type", "index": 15, "default": ""},
+                              {"name": "insured_first_name", "index": 16, "component_index": 1, "default": ""},
+                              {"name": "insured_last_name", "index": 16, "component_index": 2, "default": ""},
+                              {"name": "insured_patient_relationship", "index": 17, "default": ""},
+                              {"name": "insured_address_1", "index": 19, "component_index": 1, "default": ""},
+                              {"name": "insured_address_2", "index": 19, "component_index": 2, "default": ""},
+                              {"name": "insured_city", "index": 19, "component_index": 3, "default": ""},
+                              {"name": "insured_state", "index": 19, "component_index": 4, "default": ""},
+                              {"name": "insured_zip", "index": 19, "component_index": 5, "default": ""},
+                              {"name": "insured_country", "index": 19, "component_index": 6, "default": ""},
+                              {"name": "insured_address_type", "index": 19, "component_index": 7, "default": "H"},
+                              {"name": "policy_number", "index": 36, "default": ""}
                             ]
                         },
                         {
                             "name": "IN2", "min": 0,
                             "elements": [
-                                {"name": "insured_ssn", "index": 2, "default": ""}
+                              {"name": "insured_ssn", "index": 2, "default": ""}
                             ]
                         },
                         {"name": "IN3","min": 0},
@@ -163,7 +164,8 @@
             {"template": "message_header_resource"},
             {"template": "organization_facility_resource"},
             {"template": "patient_resource"},
-            {"template": "encounter_resource"}
+            {"template": "encounter_resource"},
+            {"xpath": ".[//PV1/financial_class[text()='COMM']]", "template": "relatedperson_guarantor_resource", "_comment": "financial class and IN1 set 1 used to determine if guarantor relatedperson resource can be generated"}
           ]
         }
       }
@@ -449,6 +451,96 @@
         }
       }
     },
+    "relatedperson_guarantor_resource": {
+      "object": {
+        "fullUrl": {"const": "urn:uuid:11ebe121-cdef-4613-9cf2-983a382cdef7"},
+        "resource": {
+          "object": {
+            "resourceType": {"const": "RelatedPerson"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"},
+                    "value": {"template": "transform_relatedperson_guarantor_identifier"}
+                  }
+                },
+                {
+                  "object": {
+                    "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
+                    "value": {"xpath": "ssn"},
+                    "type": {
+                      "object": {
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "code": {"const": "SS"},
+                                "display": {"const": "Social Security Number"}
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "name": {
+            "array": [
+                {
+                "object": {
+                    "family": {"xpath": "last_name"},
+                    "given": {
+                        "array": [
+                            {"xpath": "first_name"},
+                            {"xpath": "middle_name"}
+                        ]
+                    }
+                }
+                }
+            ]
+            },
+            "patient": {
+              "object": {
+                "type": {"const": "Patient"},
+                "reference": {"const": "urn:uuid:61ebe121-abcd-4613-8bf2-983a382abcd7"}
+              }
+            },
+            "gender": {"xpath": "gender", "template": "transform_gender_code"},
+            "birthDate": {"xpath": "dob", "template": "transform_date"},
+            "address": {
+                "array": [
+                  {
+                    "object": {
+                      "use": {"xpath": "address_type", "template": "transform_address_use"},
+                      "type": {"const": "physical"},
+                      "line": {
+                          "array": [
+                              {"xpath": "address_1"},
+                              {"xpath": "address_2"}
+                          ]
+                      },
+                      "city": {"xpath": "city"},
+                      "state": {"xpath": "state"},
+                      "postalCode": {"xpath": "zip"},
+                      "country": {"xpath": "country"}
+                    }
+                  }
+                ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"template": "relatedperson_guarantor_conditional_put"}
+          }
+        }
+      }
+    },
     "transform_marital_code": {
         "custom_func": {
             "name": "javascript",
@@ -627,6 +719,16 @@
             ]
         }
     },
+    "transform_relatedperson_guarantor_identifier": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+              {"const": "guarantor_number !== null ? guarantor_number : mrn_facility"},
+              {"const": "guarantor_number"}, {"xpath": "//GT1/guarantor_number"},
+              {"const": "mrn_facility"}, { "template": "concat_mrn_facility" }
+          ]
+      }
+    },
     "concat_mrn_facility": {
       "custom_func": {
           "name": "concat",
@@ -652,6 +754,15 @@
               { "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
               { "xpath": "PID/mrn" },
               { "const": "&mrn-assigner=urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7" }
+          ]
+      }
+    },
+    "relatedperson_guarantor_conditional_put": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|" },
+              { "template": "transform_relatedperson_guarantor_identifier" }
           ]
       }
     }
