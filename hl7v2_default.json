@@ -162,7 +162,8 @@
           "array": [
             {"template": "message_header_resource"},
             {"template": "organization_facility_resource"},
-            {"template": "patient_resource"}
+            {"template": "patient_resource"},
+            {"template": "encounter_resource"}
           ]
         }
       }
@@ -198,6 +199,11 @@
                   }
                 }
               }
+            },
+            "focus": {
+              "array": [
+                {"object": {"reference": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"}}}
+              ]
             },
             "source": {
               "object": {
@@ -385,6 +391,64 @@
         }
       }
     },
+    "encounter_resource": {
+      "object": {
+        "fullUrl": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"},
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Encounter"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id"},
+                    "value": {"template": "concat_mrn_facility"}
+                  }
+                },
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/pac-id"},
+                    "value": {"const": "pacid123"}
+                  }
+                }
+              ]
+            },
+            "status": {"const": "planned"},
+            "class": {
+              "object": {
+                "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-ActCode"},
+                "code": {"const": "IMP"},
+                "display": {"const": "inpatient encounter"}
+              }
+            },
+            "subject": {
+              "object": {
+                "type": {"const": "Patient"},
+                "reference": {"const":"urn:uuid:61ebe121-abcd-4613-8bf2-983a382abcd7"}
+              }
+            },
+            "period": {
+              "object": {
+                "start": {"xpath": "PV1/admit_datetime", "template": "transform_datetime"},
+                "end": {"xpath": "PV1/discharge_datetime", "template": "transform_datetime"}
+              }
+            },
+            "serviceProvider": {
+              "object": {
+                "reference": {"const": "urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7"}
+              }
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "POST"},
+            "url": {"const": "Encounter"},
+            "ifNoneExist": {"template": "encounter_conditional_post"}
+          }
+        }
+      }
+    },
     "transform_marital_code": {
         "custom_func": {
             "name": "javascript",
@@ -562,6 +626,24 @@
                 { "xpath": "MSH/datetime_of_message" }
             ]
         }
+    },
+    "concat_mrn_facility": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "xpath": "PID/mrn" },
+              { "const": "-{{FacilityId}}" }
+          ]
+      }
+    },
+    "encounter_conditional_post": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id|" },
+              { "template": "concat_mrn_facility" }
+          ]
+      }
     },
     "patient_conditional_put": {
       "custom_func": {
