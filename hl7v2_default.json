@@ -161,17 +161,16 @@
         "type": {"const": "transaction"},
         "entry": {
           "array": [
-            {"template": "messageheader_resource"},
+            {"template": "message_header_resource"},
             {"template": "organization_facility_resource"},
             {"template": "patient_resource"},
             {"template": "encounter_resource"},
-            {"template": "organization_primary_payor_resource"},
             {"xpath": ".[//PV1/financial_class[text()='COMM']]", "template": "relatedperson_guarantor_resource", "_comment": "financial class and IN1 set 1 used to determine if guarantor relatedperson resource can be generated"}
           ]
         }
       }
     },
-    "messageheader_resource": {
+    "message_header_resource": {
       "object": {
         "fullUrl": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382c0001"},
         "resource": {
@@ -542,65 +541,6 @@
         }
       }
     },
-    "organization_primary_payor_resource": {
-      "object": {
-        "fullUrl": {"const": "urn:uuid:11ebe121-cdef-4613-9bf2-945a362cbaf4"},
-        "resource": {
-          "object": {
-            "resourceType": {"const": "Organization"},
-            "identifier": {
-              "array": [
-                { 
-                  "object": {
-                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/payor-id"},
-                    "value": {"template": "transform_insurance_identifier"}
-                  }
-                }
-              ]
-            },
-            "name": {"xpath": "IN1/company_name"},
-            "telecom": {
-              "array": [
-                {"xpath": "//IN1",
-                  "object": {
-                    "system": {"const": "phone"},
-                    "value": {"xpath": "insurance_phone"},
-                    "use": {"const": "work"}
-                  }
-                }
-              ]
-            },
-            "address": {
-              "array": [
-                {"xpath": "//IN1",
-                  "object": {
-                    "use": {"xpath": "address_type", "template": "transform_address_use"},
-                    "type": {"const": "physical"},
-                    "line": {
-                        "array": [
-                            {"xpath": "address_1"},
-                            {"xpath": "address_2"}
-                        ]
-                    },
-                    "city": {"xpath": "city"},
-                    "state": {"xpath": "state"},
-                    "postalCode": {"xpath": "zip"},
-                    "country": {"xpath": "country"}
-                  }
-                }
-              ]
-            }
-          }
-        },
-        "request": {
-          "object": {
-            "method": {"const": "POST"},
-            "url": {"const": "Organization"},
-            "ifNoneExist": {"template": "primary_payor_conditional_post"}
-          }
-        }
-      }
-    },
     "transform_marital_code": {
         "custom_func": {
             "name": "javascript",
@@ -677,8 +617,8 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "planid == '' ? '' : planid"},
-                {"const": "planid"}, {"xpath": "//IN1/plan_id"}
+                {"const": "planid == '' ? '' : 'Insurance/' + planid"},
+                {"const": "planid"}, {"xpath": "plan_id"}
             ]
         }
     },
@@ -823,15 +763,6 @@
           "args": [
               { "const": "RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|" },
               { "template": "transform_relatedperson_guarantor_identifier" }
-          ]
-      }
-    },
-    "primary_payor_conditional_post": {
-      "custom_func": {
-          "name": "concat",
-          "args": [
-              { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/payor-id|" },
-              { "template": "transform_insurance_identifier" }
           ]
       }
     }
