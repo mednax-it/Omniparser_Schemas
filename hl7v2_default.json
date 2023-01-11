@@ -504,7 +504,7 @@
                     "individual": {
                       "object": {
                         "type": {"const": "Practitioner"},
-                        "reference": {"const": "urn:uuid:11ebe121-cdef-5612-9bf2-983a381cdef6"}
+                        "reference": {"const": "urn:uuid:11ebe121-cdef-5613-9bf2-983a382cdef7"}
                       }
                     }
                   }
@@ -938,7 +938,7 @@
                 {
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/patientAccount-id"},
-                    "value": {"template": "concat_mrn_facility_no_hyphen"}
+                    "value": {"template": "concat_mrn_facility"}
                   }
                 }
               ]
@@ -1289,9 +1289,9 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-              {"const": "guarantor_number !== null ? mrn_facility+guarantor_number : mrn_facility+GT1+set_id"},
+              {"const": "guarantor_number !== null ? mrn_facility+'-'+guarantor_number : mrn_facility+GT1+set_id"},
               {"const": "guarantor_number"}, {"xpath": "//GT1/guarantor_number"},
-              {"const": "mrn_facility"}, { "template": "concat_mrn_facility_no_hyphen" },
+              {"const": "mrn_facility"}, { "template": "concat_mrn_facility" },
               {"const": "set_id"}, {"xpath": "//GT1/set_id"}
           ]
       }
@@ -1300,9 +1300,9 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-              {"const": "plan_id !== null ? mrn_facility+plan_id : mrn_facility+IN1+set_id"},
+              {"const": "plan_id !== null ? mrn_facility+'-'+plan_id : mrn_facility+IN1+set_id"},
               {"const": "plan_id"}, {"xpath": "//IN1/plan_id"},
-              {"const": "mrn_facility"}, { "template": "concat_mrn_facility_no_hyphen" },
+              {"const": "mrn_facility"}, { "template": "concat_mrn_facility" },
               {"const": "set_id"}, {"xpath": "//IN1/set_id"}
           ]
       }
@@ -1313,15 +1313,6 @@
           "args": [
               { "xpath": "PID/mrn" },
               { "const": "-{{FacilityId}}" }
-          ]
-      }
-    },
-    "concat_mrn_facility_no_hyphen": {
-      "custom_func": {
-          "name": "concat",
-          "args": [
-              { "xpath": "PID/mrn" },
-              { "const": "{{FacilityId}}" }
           ]
       }
     },
@@ -1394,7 +1385,7 @@
           "name": "concat",
           "args": [
               { "const": "Account?identifier=https://pediatrix.com/fhir/NamingSystem/patientAccount-id|" },
-              { "template": "concat_mrn_facility_no_hyphen" }
+              { "template": "concat_mrn_facility" }
           ]
       }
     },
