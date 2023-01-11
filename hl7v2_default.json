@@ -168,6 +168,7 @@
             {"template": "encounter_resource"},
             {"template": "organization_primary_payor_resource"},
             {"xpath": "PV1[not(//PV1/attending_physician_id[text()=''])]", "template": "practitioner_attending_resource"},
+            {"xpath": "PV1[not(//PV1/referring_physician_id[text()=''])]", "template": "practitioner_referring_resource"},
             {"xpath": ".[//PV1/financial_class[text()='COMM']]", "template": "account_resource", "_comment": "financial class used to determine if account resource can be generated using guarantor"},
             {"xpath": ".[//PV1/financial_class[text()='COMM']]", "template": "relatedperson_guarantor_resource", "_comment": "financial class and IN1 set 1 used to determine if guarantor relatedperson resource can be generated"},
             {"xpath": ".[//PV1/financial_class[text()='COMM']]", "template": "coverage_resource", "_comment": "financial class and IN1 set 1 used to determine if coverage resource can be generated"}
@@ -587,7 +588,7 @@
             "resourceType": {"const": "Organization"},
             "identifier": {
               "array": [
-                { 
+                {
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/payor-id"},
                     "value": {"template": "transform_insurance_identifier"}
@@ -932,11 +933,67 @@
           },
           "request": {
             "object": {
-              "method": {"const": "PUT"},
-              "url": {"template": "practitioner_attending_put_request"}
+              "method": {"const": "POST"},
+              "url": {"const": "Practitioner"},
+              "ifNoneExist": {"template": "practitioner_attending_post_request"}
             }
           }
       }
+    },
+    "practitioner_referring_resource": {
+      "object": {
+          "fullUrl": {"const": "urn:uuid:11ebe121-cdef-5613-9bf2-983a382cdef7"},
+          "resource": {
+            "object": {
+              "resourceType": {"const": "Practitioner"},
+              "name": {
+                "array": [
+                  {
+                    "object": {
+                      "family": {"xpath": "referring_physician_last_name"},
+                      "given": {
+                          "array": [
+                              {"xpath": "referring_physician_first_name"}
+                          ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "identifier": {
+                 "array": [
+                      {
+                          "object": {
+                              "type": {
+                              "object": {
+                                  "coding": {
+                                    "array": [
+                                      {
+                                        "object": {
+                                          "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
+                                          "code": {"const": "PRN"}
+                                        }
+                                      }
+                                    ]
+                                  }
+                              }
+                              },
+                              "system": {"const": "https://pediatrix.com/fhir/NamingSystem/us-npi-id"},
+                              "value": {"xpath": "//PV1/referring_physician_id"}
+                          }
+                      }
+                 ]
+              }
+            }
+          },
+          "request": {
+            "object": {
+              "method": {"const": "POST"},
+              "url": {"const": "Practitioner"},
+              "ifNoneExist": {"template": "practitioner_referring_post_request"}
+            }
+          }
+        }
   },
     "transform_marital_code": {
         "custom_func": {
@@ -1199,12 +1256,21 @@
           ]
       }
     },
-    "practitioner_attending_put_request":{
+    "practitioner_attending_post_request":{
       "custom_func": {
           "name": "concat",
           "args": [
-              { "const": "Practitioner?identifier=https://pediatrix.com/fhir/NamingSystem/us-npi-id|" },
+              { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/us-npi-id|" },
               { "xpath": "//PV1/attending_physician_id" }
+          ]
+      }
+    },
+    "practitioner_referring_post_request":{
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/us-npi-id|" },
+              { "xpath": "//PV1/referring_physician_id" }
           ]
       }
     }
