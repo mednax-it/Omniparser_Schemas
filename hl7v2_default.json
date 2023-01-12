@@ -720,7 +720,7 @@
                 }
               ]
             },
-            "name": {"xpath": "IN1/company_name"},
+            "name": {"xpath": "//IN1/company_name"},
             "telecom": {
               "array": [
                 {"xpath": "//IN1",
@@ -816,6 +816,12 @@
               "object": {
                 "type": {"const": "Patient"},
                 "display": {"const": "Patient (Ins Policy Beneficiary)"}
+              }
+            },
+            "period": {
+              "object": {
+                "start": {"xpath": "//IN1/plan_effective_date", "template": "transform_datetime"},
+                "end": {"xpath": "//IN1/plan_expiration_date", "template": "transform_datetime"}
               }
             },
             "payor": {
