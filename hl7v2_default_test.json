@@ -1,82 +1,100 @@
 {
-    "parser_settings": {
-      "version": "omni.2.1",
-      "file_format_type": "edi"
-    },
-    "file_declaration": {
-      "segment_delimiter": "\n",
-      "element_delimiter": "|",
-      "component_delimiter": "^",
-      "segment_declarations": [
-          {
-              "name": "patient",
-              "type": "segment_group",
-              "is_target": true,
-              "child_segments": [
-                  {
-                      "name": "MSH",
-                      "elements": [
-                        {"name": "sending_facility", "index": 3},
-                        {"name": "datetime_of_message", "index": 6},
-                        {"name": "message_trigger", "index": 8},
-                        {"name": "message_control_id", "index": 9}
-                      ]
-                  },
-                  {
-                      "name": "EVN",
-                      "min": 0,
-                      "elements": [
-                        {"name": "message_typecode", "index": 1}
-                      ]
-                  },
-                  {
-                      "name": "PID",
-                      "min": 0,
-                      "elements": [
-                        {"name": "mrn", "index": 3, "component_index": 1, "default": ""},
-                        {"name": "last_name", "index": 5, "component_index": 1, "default": ""},
-                        {"name": "first_name", "index": 5, "component_index": 2, "default": ""},
-                        {"name": "middle_name", "index": 5, "component_index": 3, "default": ""},
-                        {"name": "dob", "index": 7, "default": ""},
-                        {"name": "gender", "index": 8, "default": "Unknown"},
-                        {"name": "address_1", "index": 11, "component_index": 1, "default": ""},
-                        {"name": "address_2", "index": 11, "component_index": 2, "default": ""},
-                        {"name": "city", "index": 11, "component_index": 3, "default": ""},
-                        {"name": "state", "index": 11, "component_index": 4, "default": ""},
-                        {"name": "zip", "index": 11, "component_index": 5, "default": ""},
-                        {"name": "country", "index": 11, "component_index": 6, "default": ""},
-                        {"name": "address_type", "index": 11, "component_index": 7, "default": "H"},
-                        {"name": "home_phone", "index": 13, "component_index": 1, "default": ""},
-                        {"name": "home_phone_type", "index": 13, "component_index": 3, "default": ""},
-                        {"name": "work_phone", "index": 14, "component_index": 1, "default": ""},
-                        {"name": "work_phone_type", "index": 14, "component_index": 3, "default": ""},
-                        {"name": "marital_status", "index": 16, "default": "Unknown"},
-                        {"name": "ssn", "index": 19, "default": ""},
-                        {"name": "multiple_birth", "index": 24, "default": ""},
-                        {"name": "birth_order", "index": 25, "default": ""},
-                        {"name": "admit_date", "index": 44, "default": ""},
-                        {"name": "discharge_date", "index": 45, "default": ""}
-                      ]
-                  },
-                  {"name": "NK1","min": 0},
-                  {"name": "PV1","min": 0,
-                      "elements": [
-                          {"name": "attending_physician_id", "index": 7, "component_index": 1, "default": ""},
-                          {"name": "attending_physician_first_name", "index": 7, "component_index": 2, "default": ""},
-                          {"name": "attending_physician_last_name", "index": 7, "component_index": 3, "default": ""},
-                          {"name": "attending_physician_type_code", "index": 7, "component_index": 13, "default": ""},
-                          {"name": "referring_physician_id", "index": 8, "component_index": 1, "default": ""},
-                          {"name": "referring_physician_first_name", "index": 8, "component_index": 2, "default": ""},
-                          {"name": "referring_physician_last_name", "index": 8, "component_index": 3, "default": ""},
-                          {"name": "referring_physician_type_code", "index": 8, "component_index": 13, "default": ""},
-                          {"name": "financial_class", "index": 20, "default": ""},
-                          {"name": "admit_datetime", "index": 44, "default": ""},
-                          {"name": "discharge_datetime", "index": 45, "default": ""}
-                      ]
-                  },
-                  {"name": "DG1","min": 0},
-                  {"name": "GT1","min": 0,
-                      "elements": [
+  "parser_settings": {
+    "version": "omni.2.1",
+    "file_format_type": "edi"
+  },
+  "file_declaration": {
+    "segment_delimiter": "\n",
+    "element_delimiter": "|",
+    "component_delimiter": "^",
+    "segment_declarations": [
+      {
+        "name": "patient",
+        "type": "segment_group",
+        "is_target": true,
+        "child_segments": [
+        {"name": "MSH",
+            "elements": [
+                {"name": "sending_facility", "index": 3},
+                {"name": "datetime_of_message", "index": 6},
+                {"name": "message_trigger", "index": 8},
+                {"name": "message_control_id", "index": 9}
+            ]
+        },
+        {"name": "SFT", "min": 0, "max": -1},
+        {"name": "EVN",
+            "min": 0,
+            "elements": [
+                {"name": "message_typecode", "index": 1}
+            ]
+        },
+        {"name": "PID",
+            "min": 0,
+            "elements": [
+                {"name": "set_id", "index": 1, "component_index": 1, "default": "1"},
+                {"name": "mrn", "index": 3, "component_index": 1, "default": ""},
+                {"name": "last_name", "index": 5, "component_index": 1, "default": ""},
+                {"name": "first_name", "index": 5, "component_index": 2, "default": ""},
+                {"name": "middle_name", "index": 5, "component_index": 3, "default": ""},
+                {"name": "dob", "index": 7, "default": ""},
+                {"name": "gender", "index": 8, "default": "Unknown"},
+                {"name": "address_1", "index": 11, "component_index": 1, "default": ""},
+                {"name": "address_2", "index": 11, "component_index": 2, "default": ""},
+                {"name": "city", "index": 11, "component_index": 3, "default": ""},
+                {"name": "state", "index": 11, "component_index": 4, "default": ""},
+                {"name": "zip", "index": 11, "component_index": 5, "default": ""},
+                {"name": "country", "index": 11, "component_index": 6, "default": ""},
+                {"name": "address_type", "index": 11, "component_index": 7, "default": "H"},
+                {"name": "home_phone", "index": 13, "component_index": 1, "default": ""},
+                {"name": "home_phone_type", "index": 13, "component_index": 3, "default": ""},
+                {"name": "work_phone", "index": 14, "component_index": 1, "default": ""},
+                {"name": "work_phone_type", "index": 14, "component_index": 3, "default": ""},
+                {"name": "marital_status", "index": 16, "default": "Unknown"},
+                {"name": "ssn", "index": 19, "default": ""},
+                {"name": "multiple_birth", "index": 24, "default": ""},
+                {"name": "birth_order", "index": 25, "default": ""},
+                {"name": "admit_date", "index": 44, "default": ""},
+                {"name": "discharge_date", "index": 45, "default": ""}
+            ]
+        },
+        {"name": "PD1","min": 0},
+        {"name": "ROL","min": 0, "max": -1},
+        {"name": "NK1","min": 0, "max": -1},
+        {"name": "PV1","min": 0,
+            "elements": [
+                {"name": "set_id", "index": 1, "component_index": 1, "default": "1"},
+                {"name": "attending_physician_id", "index": 7, "component_index": 1, "default": ""},
+                {"name": "attending_physician_first_name", "index": 7, "component_index": 2, "default": ""},
+                {"name": "attending_physician_last_name", "index": 7, "component_index": 3, "default": ""},
+                {"name": "attending_physician_type_code", "index": 7, "component_index": 13, "default": ""},
+                {"name": "referring_physician_id", "index": 8, "component_index": 1, "default": ""},
+                {"name": "referring_physician_first_name", "index": 8, "component_index": 2, "default": ""},
+                {"name": "referring_physician_last_name", "index": 8, "component_index": 3, "default": ""},
+                {"name": "referring_physician_type_code", "index": 8, "component_index": 13, "default": ""},
+                {"name": "financial_class", "index": 20, "default": ""},
+                {"name": "admit_datetime", "index": 44, "default": ""},
+                {"name": "discharge_datetime", "index": 45, "default": ""}
+            ]
+        },
+        {"name": "PV2","min": 0},
+        {"name": "ROL","min": 0, "max": -1},
+        {"name": "DB1","min": 0, "max": -1},
+        {"name": "OBX","min": 0, "max": -1},
+        {"name": "AL1","min": 0, "max": -1},
+        {"name": "DG1","min": 0, "max": -1},
+        {"name": "DRG","min": 0},
+        {"name": "procedure", "type": "segment_group","min": 0, "max": -1,
+            "child_segments": [
+                {"name": "PR1","min": 0, "max": -1},
+                {"name": "ROL","min": 0}
+            ]
+        },
+        {"name": "guarantor", "type":"segment_group","min": 0, "max": -1,
+            "child_segments": [
+                {
+                    "name": "GT1","min": 0,
+                    "elements": [
+                        {"name": "set_id", "index": 1, "default": "1"},
                         {"name": "guarantor_number", "index": 2, "default": "00000"},
                         {"name": "last_name", "index": 3, "component_index": 1, "default": ""},
                         {"name": "first_name", "index": 3, "component_index": 2, "default": ""},
@@ -94,485 +112,629 @@
                         {"name": "work_phone_type", "index": 7, "component_index": 3, "default": ""},
                         {"name": "dob", "index": 8, "default": ""},
                         {"name": "gender", "index": 9, "default": "Unknown"},
-                        {"name": "marital_status", "index": 30, "default": "Unknown"},
-                        {"name": "ssn", "index": 12, "default": ""}
-                      ]
-                  },
-                  {"name": "insurance", "type":"segment_group","min": 0, "max": -1,
-                      "child_segments": [
-                          {
-                              "name": "IN1",
-                              "elements": [
-                                {"name": "set_id", "index": 1, "default": "1"},
-                                {"name": "plan_id", "index": 2, "component_index": 1, "default": "00000"},
-                                {"name": "plan_name", "index": 2, "component_index": 2, "default": "00000"},
-                                {"name": "company_id", "index": 3, "component_index": 1, "default": "00000"},
-                                {"name": "company_name", "index": 4, "component_index": 1, "default": ""},
-                                {"name": "address_1", "index": 5, "component_index": 1, "default": ""},
-                                {"name": "address_2", "index": 5, "component_index": 2, "default": ""},
-                                {"name": "city", "index": 5, "component_index": 3, "default": ""},
-                                {"name": "state", "index": 5, "component_index": 4, "default": ""},
-                                {"name": "zip", "index": 5, "component_index": 5, "default": ""},
-                                {"name": "country", "index": 5, "component_index": 6, "default": ""},
-                                {"name": "address_type", "index": 5, "component_index": 7, "default": ""},
-                                {"name": "insurance_phone", "index": 7, "component_index": 1, "default": ""},
-                                {"name": "insurance_phone_type", "index": 7, "component_index": 3, "default": ""},
-                                {"name": "group_number", "index": 8, "default": ""},
-                                {"name": "group_employer_id", "index": 10,  "component_index": 1, "default": ""},
-                                {"name": "group_employer_name", "index": 11,  "component_index": 1, "default": ""},
-                                {"name": "plan_effective_date", "index": 12, "default": ""},
-                                {"name": "plan_expiration_date", "index": 13, "default": ""},
-                                {"name": "auth_number", "index": 14,  "component_index": 1, "default": ""},
-                                {"name": "auth_date", "index": 14,  "component_index": 2, "default": ""},
-                                {"name": "plan_type", "index": 15, "default": ""},
-                                {"name": "insured_first_name", "index": 16, "component_index": 1, "default": ""},
-                                {"name": "insured_last_name", "index": 16, "component_index": 2, "default": ""},
-                                {"name": "insured_patient_relationship", "index": 17, "default": ""},
-                                {"name": "insured_address_1", "index": 19, "component_index": 1, "default": ""},
-                                {"name": "insured_address_2", "index": 19, "component_index": 2, "default": ""},
-                                {"name": "insured_city", "index": 19, "component_index": 3, "default": ""},
-                                {"name": "insured_state", "index": 19, "component_index": 4, "default": ""},
-                                {"name": "insured_zip", "index": 19, "component_index": 5, "default": ""},
-                                {"name": "insured_country", "index": 19, "component_index": 6, "default": ""},
-                                {"name": "insured_address_type", "index": 19, "component_index": 7, "default": "H"},
-                                {"name": "policy_number", "index": 36, "default": ""}
-                              ]
-                          },
-                          {
-                              "name": "IN2", "min": 0,
-                              "elements": [
-                                {"name": "insured_ssn", "index": 2, "default": ""}
-                              ]
-                          },
-                          {"name": "IN3","min": 0},
-                          {"name": "ROL","min": 0}
-                      ]
-                  }
-  
-              ]
-          }
-        ]
-    },
-    "transform_declarations": {
-      "FINAL_OUTPUT": {
-        "object": {
-          "resourceType": {"const": "Bundle"},
-          "id": {"const": "aa948bbf-a76a-48e2-845c-cccccb93ca4d"},
-          "type": {"const": "transaction"},
-          "entry": {
-            "array": [
-              {"template": "messageheader_resource"},
-              {"template": "organization_facility_resource"},
-              {"template": "patient_resource"},
-              {"template": "encounter_resource"},
-              {"template": "organization_primary_payor_resource"},
-              {"xpath": ".[//PV1/financial_class[text()='COMM']]", "template": "relatedperson_guarantor_resource", "_comment": "financial class and IN1 set 1 used to determine if guarantor relatedperson resource can be generated"}
-            ]
-          }
-        }
-      },
-      "messageheader_resource": {
-        "object": {
-          "fullUrl": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382c0001"},
-          "resource": {
-            "object": {
-              "resourceType": {"const": "MessageHeader"},
-              "extension": {
-                "array": [
-                  {
-                    "object": {
-                      "url": {"const": "https://smilecdr.com/fhir/ns/StructureDefinition/messageheader-source-message-id"},
-                      "valueString": {"template": "transform_message_header_control_id"}
-                    }
-                  }
-                ]
-              },
-              "eventCoding": {
-                "object": {
-                  "system": {"const": "http://terminology.hl7.org/CodeSystem/v2"},
-                  "code": {"xpath": "EVN/message_typecode"}
-                }
-              },
-              "sender": {
-                "object": {
-                  "identifier": {
-                    "object": {
-                      "system": {"const": "http://abc.com2"},
-                      "value": {"const": "sender"}
-                    }
-                  }
-                }
-              },
-              "focus": {
-                "array": [
-                  {"object": {"reference": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"}}}
-                ]
-              },
-              "source": {
-                "object": {
-                  "name": {"const": "SourceApp"},
-                  "endpoint": {"const": "SourceApp"}
-                }
-              }
-            }
-          },
-          "request": {
-            "object": {
-              "method": {"const": "PUT"},
-              "url": {"template": "transform_message_header_identifier"}
-            }
-          }
-        }
-      },
-      "organization_facility_resource": {
-        "object": {
-          "fullUrl": {"const": "urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7"},
-          "resource": {
-            "object": {
-              "resourceType": {"const": "Organization"},
-              "identifier": {
-                "array": [
-                  {
-                    "object": {
-                      "system": {"const": "https://pediatrix.com/fhir/NamingSystem/facilityId-id"},
-                      "value": {"const": "{{FacilityId}}"}
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          "request": {
-            "object": {
-              "method": {"const": "POST"},
-              "url": {"const": "Organization"},
-              "ifNoneExist": {"const": "identifier=https://pediatrix.com/fhir/NamingSystem/facilityId-id|{{FacilityId}}"}
-            }
-          }
-        }
-      },
-      "patient_resource": {
-        "object": {
-          "fullUrl": {"const": "urn:uuid:61ebe121-abcd-4613-8bf2-983a382abcd7"},
-          "resource": {
-            "object": {
-              "resourceType": {"const": "Patient"},
-              "identifier": {
-                "array": [
-                  {
-                    "object": {
-                      "system": {"const": "https://pediatrix.com/fhir/NamingSystem/mrn-id"},
-                      "value": {"xpath": "PID/mrn"},
-                      "assigner": {
-                        "object": {
-                          "reference": {"const": "urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7"}
-                        }
-                      },
-                      "type": {
-                        "object": {
-                          "coding": {
-                            "array": [
-                              {
-                                "object": {
-                                  "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
-                                  "code": {"const": "MR"},
-                                  "display": {"const": "Medical Record Number"}
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "object": {
-                      "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
-                      "value": {"xpath": "PID/ssn"},
-                      "type": {
-                        "object": {
-                          "coding": {
-                            "array": [
-                              {
-                                "object": {
-                                  "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
-                                  "code": {"const": "SS"},
-                                  "display": {"const": "Social Security Number"}
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  }
-                ]
-              },
-              "name": {
-                "array": [
-                  {
-                    "object": {
-                      "family": {"xpath": "PID/last_name"},
-                      "given": {
-                          "array": [
-                              {"xpath": "PID/first_name"},
-                              {"xpath": "PID/middle_name"}
-                          ]
-                      }
-                    }
-                  }
-                ]
-              },
-              "telecom": {
-                "array": [
-                  {
-                    "object": {
-                      "system": {"const": "phone"},
-                      "value": {"xpath": "PID/home_phone"},
-                      "use": {"xpath": "PID/home_phone_type", "template": "transform_phone_type"}
-                    }
-                  },
-                  {
-                      "object": {
-                        "system": {"const": "phone"},
-                        "value": {"xpath": "PID/work_phone"},
-                        "use": {"const": "work"}
-                      }
-                    }
-                ]
-              },
-              "gender": {"xpath": "PID/gender", "template": "transform_gender_code"},
-              "birthDate": {"xpath": "PID/dob", "template": "transform_date"},
-              "address": {
-                "array": [
-                  {
-                    "object": {
-                      "use": {"xpath": "PID/address_type", "template": "transform_address_use"},
-                      "type": {"const": "physical"},
-                      "line": {
-                          "array": [
-                              {"xpath": "PID/address_1"},
-                              {"xpath": "PID/address_2"}
-                          ]
-                      },
-                      "city": {"xpath": "PID/city"},
-                      "state": {"xpath": "PID/state"},
-                      "postalCode": {"xpath": "PID/zip"},
-                      "country": {"xpath": "PID/country"}
-                    }
-                  }
-                ]
-              },
-              "maritalStatus": {
-                "object": {
-                  "coding": {
-                    "array": [
-                      {   "xpath": "PID/marital_status",
-                          "object": {
-                              "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"},
-                              "code": {"template": "transform_marital_code"},
-                              "display": {"template": "transform_marital_display"}
-                          }
-                      }
+                        {"name": "ssn", "index": 12, "default": ""},
+                        {"name": "marital_status", "index": 30, "default": "Unknown"}
                     ]
+                }
+            ]
+        },
+        {"name": "insurance", "type":"segment_group","min": 0, "max": -1,
+            "child_segments": [
+                {
+                    "name": "IN1",
+                    "elements": [
+                        {"name": "set_id", "index": 1, "default": "1"},     
+                        {"name": "plan_id", "index": 2, "component_index": 1, "default": "00000"},
+                        {"name": "plan_name", "index": 2, "component_index": 2, "default": "00000"},
+                        {"name": "company_id", "index": 3, "component_index": 1, "default": "00000"},
+                        {"name": "company_name", "index": 4, "component_index": 1, "default": ""},
+                        {"name": "address_1", "index": 5, "component_index": 1, "default": ""},
+                        {"name": "address_2", "index": 5, "component_index": 2, "default": ""},
+                        {"name": "city", "index": 5, "component_index": 3, "default": ""},
+                        {"name": "state", "index": 5, "component_index": 4, "default": ""},
+                        {"name": "zip", "index": 5, "component_index": 5, "default": ""},
+                        {"name": "country", "index": 5, "component_index": 6, "default": ""},
+                        {"name": "address_type", "index": 5, "component_index": 7, "default": ""},
+                        {"name": "insurance_phone", "index": 7, "component_index": 1, "default": ""},
+                        {"name": "insurance_phone_type", "index": 7, "component_index": 3, "default": ""},
+                        {"name": "group_number", "index": 8, "default": "00000"},
+                        {"name": "group_name", "index": 9, "default": "00000"},
+                        {"name": "group_employer_id", "index": 10,  "component_index": 1, "default": ""},
+                        {"name": "group_employer_name", "index": 11,  "component_index": 1, "default": ""},
+                        {"name": "plan_effective_date", "index": 12, "default": ""},
+                        {"name": "plan_expiration_date", "index": 13, "default": ""},
+                        {"name": "auth_number", "index": 14,  "component_index": 1, "default": ""},
+                        {"name": "auth_date", "index": 14,  "component_index": 2, "default": ""},
+                        {"name": "plan_type", "index": 15, "default": ""},
+                        {"name": "insured_last_name", "index": 16, "component_index": 1, "default": ""},
+                        {"name": "insured_first_name", "index": 16, "component_index": 2, "default": ""},
+                        {"name": "insured_middle_name", "index": 16, "component_index": 3, "default": ""},
+                        {"name": "insured_patient_relationship", "index": 17, "default": ""},
+                        {"name": "insured_dob", "index": 18, "default": ""},
+                        {"name": "insured_address_1", "index": 19, "component_index": 1, "default": ""},
+                        {"name": "insured_address_2", "index": 19, "component_index": 2, "default": ""},
+                        {"name": "insured_city", "index": 19, "component_index": 3, "default": ""},
+                        {"name": "insured_state", "index": 19, "component_index": 4, "default": ""},
+                        {"name": "insured_zip", "index": 19, "component_index": 5, "default": ""},
+                        {"name": "insured_country", "index": 19, "component_index": 6, "default": ""},
+                        {"name": "insured_address_type", "index": 19, "component_index": 7, "default": "H"},
+                        {"name": "policy_number", "index": 36, "default": ""},
+                        {"name": "insured_gender", "index": 43, "default": ""}
+                    ]
+                },
+                {
+                    "name": "IN2", "min": 0,
+                    "elements": [
+                        {"name": "insured_ssn", "index": 2, "default": ""}
+                    ]
+                },
+                {"name": "IN3","min": 0},
+                {"name": "ROL","min": 0}
+            ]
+        },
+        {"name": "ACC","min": 0},
+        {"name": "UB1","min": 0},
+        {"name": "UB2","min": 0},
+        {"name": "PDA","min": 0}
+        ]
+      }
+    ]
+  },
+  "transform_declarations": {
+    "FINAL_OUTPUT": {
+      "object": {
+        "resourceType": {"const": "Bundle"},
+        "id": {"const": "aa948bbf-a76a-48e2-845c-cccccb93ca4d"},
+        "type": {"const": "transaction"},
+        "entry": {
+          "array": [
+            {"template": "messageheader_resource"},
+            {"template": "organization_facility_resource"},
+            {"template": "patient_resource"},
+            {"template": "encounter_resource"},
+            {"template": "account_resource"},
+            {"xpath": ".[not(//PV1/attending_physician_id[text()=''])]", "template": "practitioner_attending_resource"},
+            {"xpath": ".[not(//PV1/referring_physician_id[text()=''])]", "template": "practitioner_referring_resource"},
+            {"xpath": "guarantor[position()=1]", "template": "relatedperson_guarantor_resource"},
+            {"xpath": "guarantor[position()=2]", "template": "relatedperson_guarantor_resource"},
+            {"xpath": "insurance[position()=1]", "template": "organization_payor_resource", "_comment": "resource for Organization of primary Payer, if found"},
+            {"xpath": "insurance[position()=1]", "template": "coverage_resource", "_comment": "resource for Primary Coverage 1st insurance instance found"},
+            {"xpath": "insurance[position()=1][//insurance[position()=1]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=2]", "template": "organization_payor_resource", "_comment": "resource for Organization of secondary Payer, if found"},
+            {"xpath": "insurance[position()=2]", "template": "coverage_resource", "_comment": "resource for Secondary Coverage 2nd insurance instance found"},
+            {"xpath": "insurance[position()=2][//insurance[position()=2]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=3]", "template": "organization_payor_resource", "_comment": "resource for Organization of tertiary Payer, if found"},
+            {"xpath": "insurance[position()=3]", "template": "coverage_resource", "_comment": "resource for Tertiary Coverage 3rd insurance instance found"},
+            {"xpath": "insurance[position()=3][//insurance[position()=3]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"}
+          ]
+        }
+      }
+    },
+    "messageheader_resource": {
+      "object": {
+        "fullUrl": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382c0001"},
+        "resource": {
+          "object": {
+            "resourceType": {"const": "MessageHeader"},
+            "extension": {
+              "array": [
+                {
+                  "object": {
+                    "url": {"const": "https://smilecdr.com/fhir/ns/StructureDefinition/messageheader-source-message-id"},
+                    "valueString": {"template": "transform_message_header_control_id"}
                   }
                 }
-              },
-              "multipleBirth[x]": {
-                "array":[
-                    {"xpath": "PID/multiple_birth"},
-                    {"xpath": "PID/birth_order"}
-                ]
+              ]
+            },
+            "eventCoding": {
+              "object": {
+                "system": {"const": "http://terminology.hl7.org/CodeSystem/v2"},
+                "code": {"xpath": "EVN/message_typecode"}
               }
-            }
-          },
-          "request": {
-            "object": {
-              "method": {"const": "PUT"},
-              "url": {"template": "patient_conditional_put"}
-            }
-          }
-        }
-      },
-      "encounter_resource": {
-        "object": {
-          "fullUrl": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"},
-          "resource": {
-            "object": {
-              "resourceType": {"const": "Encounter"},
-              "identifier": {
-                "array": [
-                  {
-                    "object": {
-                      "system": {"const": "https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id"},
-                      "value": {"template": "concat_mrn_facility"}
-                    }
-                  },
-                  {
-                    "object": {
-                      "system": {"const": "https://pediatrix.com/fhir/NamingSystem/pac-id"},
-                      "value": {"const": "pacid123"}
-                    }
+            },
+            "sender": {
+              "object": {
+                "identifier": {
+                  "object": {
+                    "system": {"const": "http://abc.com2"},
+                    "value": {"const": "sender"}
                   }
-                ]
-              },
-              "status": {"const": "planned"},
-              "class": {
-                "object": {
-                  "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-ActCode"},
-                  "code": {"const": "IMP"},
-                  "display": {"const": "inpatient encounter"}
-                }
-              },
-              "subject": {
-                "object": {
-                  "type": {"const": "Patient"},
-                  "reference": {"const":"urn:uuid:61ebe121-abcd-4613-8bf2-983a382abcd7"}
-                }
-              },
-              "period": {
-                "object": {
-                  "start": {"xpath": "PV1/admit_datetime", "template": "transform_datetime"},
-                  "end": {"xpath": "PV1/discharge_datetime", "template": "transform_datetime"}
-                }
-              },
-              "serviceProvider": {
-                "object": {
-                  "reference": {"const": "urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7"}
                 }
               }
-            }
-          },
-          "request": {
-            "object": {
-              "method": {"const": "POST"},
-              "url": {"const": "Encounter"},
-              "ifNoneExist": {"template": "encounter_conditional_post"}
+            },
+            "focus": {
+              "array": [
+                {"object": {"reference": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"}}}
+              ]
+            },
+            "source": {
+              "object": {
+                "name": {"const": "SourceApp"},
+                "endpoint": {"const": "SourceApp"}
+              }
             }
           }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"template": "transform_message_header_identifier"}
+          }
         }
-      },
-      "relatedperson_guarantor_resource": {
-        "object": {
-          "fullUrl": {"const": "urn:uuid:11ebe121-cdef-4613-9cf2-983a382cdef7"},
-          "resource": {
-            "object": {
-              "resourceType": {"const": "RelatedPerson"},
-              "identifier": {
-                "array": [
-                  {
-                    "object": {
-                      "system": {"const": "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"},
-                      "value": {"template": "transform_relatedperson_guarantor_identifier"}
-                    }
-                  },
-                  {
-                    "object": {
-                      "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
-                      "value": {"xpath": "ssn"},
-                      "type": {
-                        "object": {
-                          "coding": {
-                            "array": [
-                              {
-                                "object": {
-                                  "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
-                                  "code": {"const": "SS"},
-                                  "display": {"const": "Social Security Number"}
-                                }
+      }
+    },
+    "organization_facility_resource": {
+      "object": {
+        "fullUrl": {"const": "urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"},
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Organization"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/facilityId-id"},
+                    "value": {"const": "{{FacilityId}}"}
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "POST"},
+            "url": {"const": "Organization"},
+            "ifNoneExist": {"template": "organization_facility_conditional_post_request"}
+          }
+        }
+      }
+    },
+    "patient_resource": {
+      "object": {
+        "fullUrl": {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"},
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Patient"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/mrn-id"},
+                    "value": {"xpath": "PID/mrn"},
+                    "assigner": {
+                      "object": {
+                        "reference": {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
+                      }
+                    },
+                    "type": {
+                      "object": {
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "code": {"const": "MR"},
+                                "display": {"const": "Medical Record Number"}
                               }
-                            ]
-                          }
+                            }
+                          ]
                         }
                       }
                     }
                   }
-                ]
-              },
-              "name": {
-              "array": [
-                  {
+                },
+                {
                   "object": {
-                      "family": {"xpath": "last_name"},
-                      "given": {
-                          "array": [
-                              {"xpath": "first_name"},
-                              {"xpath": "middle_name"}
-                          ]
-                      }
-                  }
-                  }
-              ]
-              },
-              "patient": {
-                "object": {
-                  "type": {"const": "Patient"},
-                  "reference": {"const": "urn:uuid:61ebe121-abcd-4613-8bf2-983a382abcd7"}
-                }
-              },
-              "gender": {"xpath": "gender", "template": "transform_gender_code"},
-              "birthDate": {"xpath": "dob", "template": "transform_date"},
-              "address": {
-                  "array": [
-                    {
+                    "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
+                    "value": {"xpath": "PID/ssn"},
+                    "type": {
                       "object": {
-                        "use": {"xpath": "address_type", "template": "transform_address_use"},
-                        "type": {"const": "physical"},
-                        "line": {
-                            "array": [
-                                {"xpath": "address_1"},
-                                {"xpath": "address_2"}
-                            ]
-                        },
-                        "city": {"xpath": "city"},
-                        "state": {"xpath": "state"},
-                        "postalCode": {"xpath": "zip"},
-                        "country": {"xpath": "country"}
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "code": {"const": "SS"},
+                                "display": {"const": "Social Security Number"}
+                              }
+                            }
+                          ]
+                        }
                       }
                     }
-                  ]
-              }
-            }
-          },
-          "request": {
-            "object": {
-              "method": {"const": "PUT"},
-              "url": {"template": "relatedperson_guarantor_conditional_put"}
-            }
-          }
-        }
-      },
-      "organization_primary_payor_resource": {
-        "object": {
-          "fullUrl": {"const": "urn:uuid:11ebe121-cdef-4613-9bf2-945a362cbaf4"},
-          "resource": {
-            "object": {
-              "resourceType": {"const": "Organization"},
-              "identifier": {
-                "array": [
-                  { 
-                    "object": {
-                      "system": {"const": "https://pediatrix.com/fhir/NamingSystem/payor-id"},
-                      "value": {"template": "transform_insurance_identifier"}
+                  }
+                }
+              ]
+            },
+            "name": {
+              "array": [
+                {
+                  "object": {
+                    "family": {"xpath": "PID/last_name"},
+                    "given": {
+                        "array": [
+                            {"xpath": "PID/first_name"},
+                            {"xpath": "PID/middle_name"}
+                        ]
                     }
                   }
-                ]
-              },
-              "name": {"xpath": "IN1/company_name"},
-              "telecom": {
-                "array": [
-                  {"xpath": "//IN1",
+                }
+              ]
+            },
+            "telecom": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "phone"},
+                    "value": {"xpath": "PID/home_phone"},
+                    "use": {"xpath": "PID/home_phone_type", "template": "transform_phone_type"}
+                  }
+                },
+                {
                     "object": {
                       "system": {"const": "phone"},
-                      "value": {"xpath": "insurance_phone"},
+                      "value": {"xpath": "PID/work_phone"},
                       "use": {"const": "work"}
                     }
                   }
-                ]
-              },
-              "address": {
+              ]
+            },
+            "gender": {"xpath": "PID/gender", "template": "transform_gender_code"},
+            "birthDate": {"xpath": "PID/dob", "template": "transform_date"},
+            "address": {
+              "array": [
+                {
+                  "object": {
+                    "use": {"xpath": "PID/address_type", "template": "transform_address_use"},
+                    "type": {"const": "physical"},
+                    "line": {
+                        "array": [
+                            {"xpath": "PID/address_1"},
+                            {"xpath": "PID/address_2"}
+                        ]
+                    },
+                    "city": {"xpath": "PID/city"},
+                    "state": {"xpath": "PID/state"},
+                    "postalCode": {"xpath": "PID/zip"},
+                    "country": {"xpath": "PID/country"}
+                  }
+                }
+              ]
+            },
+            "maritalStatus": {
+              "object": {
+                "coding": {
+                  "array": [
+                    {   "xpath": "PID/marital_status",
+                        "object": {
+                            "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"},
+                            "code": {"template": "transform_marital_code"},
+                            "display": {"template": "transform_marital_display"}
+                        }
+                    }
+                  ]
+                }
+              }
+            },
+            "multipleBirth[x]": {
+              "array":[
+                  {"xpath": "PID/multiple_birth"},
+                  {"xpath": "PID/birth_order"}
+              ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"template": "patient_put_request"}
+          }
+        }
+      }
+    },
+    "encounter_resource": {
+      "object": {
+        "fullUrl": {"const": "urn:uuid:61ebe121-aa03-0001-0001-983a382abcd7"},
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Encounter"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/encounter-id"},
+                    "value": {"xpath": "PV1", "template": "transform_encounter_identifier"}
+                  }
+                },
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/pac-id"},
+                    "value": {"const": "pacid123"}
+                  }
+                }
+              ]
+            },
+            "status": {"const": "planned"},
+            "class": {
+              "object": {
+                "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-ActCode"},
+                "code": {"const": "IMP"},
+                "display": {"const": "inpatient encounter"}
+              }
+            },
+            "subject": {
+              "object": {
+                "type": {"const": "Patient"},
+                "reference": {"const":"urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
+              }
+            },
+            "period": {
+              "object": {
+                "start": {"xpath": "PV1/admit_datetime", "template": "transform_datetime"},
+                "end": {"xpath": "PV1/discharge_datetime", "template": "transform_datetime"}
+              }
+            },
+            "serviceProvider": {
+              "object": {
+                "reference": {"const": "urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"}
+              }
+            },
+            "participant": {
+              "array": [
+                {
+                  "object": {
+                    "type": {
+                      "array":[
+                        {
+                          "object": {
+                            "coding": {
+                              "array": [
+                                {
+                                  "object": {
+                                    "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"},
+                                    "code": {"const": "ATND"},
+                                    "display": {"const": "Attending"}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "individual": {
+                      "object": {
+                        "type": {"const": "Practitioner"},
+                        "reference": {"const": "urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7"}
+                      }
+                    }
+                  }
+                },
+                {
+                  "object": {
+                    "type": {
+                      "array":[
+                        {
+                          "object": {
+                            "coding": {
+                              "array": [
+                                {
+                                  "object": {
+                                    "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType"},
+                                    "code": {"const": "REF"},
+                                    "display": {"const": "Referring"}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "individual": {
+                      "object": {
+                        "type": {"const": "Practitioner"},
+                        "reference": {"const": "urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7"}
+                      }
+                    }
+                  }
+                }
+              ]
+            }, 
+            "account": {
                 "array": [
-                  {"xpath": "//IN1",
+                    {
+                        "object": {
+                            "type": {"const": "Account"},
+                            "reference": {"const": "urn:uuid:61ebe121-aa04-0001-0001-983a382abcd7"}
+                        }
+                    }
+                ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "POST"},
+            "url": {"const": "Encounter"},
+            "ifNoneExist": {"template": "encounter_conditional_post_request"}
+          }
+        }
+      }
+    },
+    "account_resource": {
+      "object": {
+        "fullUrl": {"const": "urn:uuid:61ebe121-aa04-0001-0001-983a382abcd7"},
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Account"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/patientAccount-id"},
+                    "value": {"template": "concat_mrn_facility"}
+                  }
+                }
+              ]
+            },
+            "status": {"const": "active"},
+            "type": {
+              "object": {
+                "coding": {
+                  "array": [
+                    {
+                      "object": {
+                        "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-ActCode"},
+                        "code": {"const": "PBILLACCT"},
+                        "display": {"const": "Patient Billing Account"}
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "subject": {
+              "array": [
+                {
+                  "object": {
+                    "type": {"const": "Patient"},
+                    "reference": {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
+                  }
+                }
+              ]
+            },
+            "coverage": {
+                "array": [
+                    {"xpath": "insurance[position()=1]",
+                        "object": {
+                            "coverage": {
+                                "object": {
+                                    "reference": {"const": "urn:uuid:61ebe121-aa06-0001-0001-983a382abcd7"}
+                                }
+                            },
+                            "priority": {"xpath": "IN1/set_id", "type": "int"}
+                        }
+                    },
+                    {"xpath": "insurance[position()=2]",
+                        "object": {
+                            "coverage": {
+                                "object": {
+                                    "reference": {"const": "urn:uuid:61ebe121-aa06-0001-0002-983a382abcd7"}
+                                }
+                            },
+                            "priority": {"xpath": "IN1/set_id", "type": "int"}
+                        }
+                    },
+                    {"xpath": "insurance[position()=3]",
+                        "object": {
+                            "coverage": {
+                                "object": {
+                                    "reference": {"const": "urn:uuid:61ebe121-aa06-0001-0003-983a382abcd7"}
+                                }
+                            },
+                            "priority": {"xpath": "IN1/set_id", "type": "int"}
+                        }
+                    }
+                ]
+            },
+            "guarantor": {
+              "array": [
+                {"xpath": "guarantor[position()=1]",
+                  "object": {
+                    "party": {
+                      "object": {
+                        "type": {"const": "RelatedPerson"},
+                        "reference": {"const": "urn:uuid:61ebe121-aa05-0001-0001-983a382abcd7"}
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"template": "account_put_request"}
+          }
+        }
+      }
+    },
+    "relatedperson_guarantor_resource": {
+      "object": {
+        "fullUrl": {
+            "custom_func":{
+                "name": "concat",
+                "args": [
+                    {"const": "urn:uuid:61ebe121-aa05-0001-000"},
+                    {"xpath": "GT1/set_id"},
+                    {"const": "-983a382abcd7"}
+                ]  
+            }
+        },
+        "resource": {
+          "object": {
+            "resourceType": {"const": "RelatedPerson"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"},
+                    "value": {"xpath": "GT1", "template": "transform_relatedperson_guarantor_identifier"}
+                  }
+                },
+                {"xpath": "GT1",
+                  "object": {
+                    "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
+                    "value": {"xpath": "ssn"},
+                    "type": {
+                      "object": {
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "code": {"const": "SS"},
+                                "display": {"const": "Social Security Number"}
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "name": {
+            "array": [
+                {"xpath": "GT1",
+                "object": {
+                    "family": {"xpath": "last_name"},
+                    "given": {
+                        "array": [
+                            {"xpath": "first_name"},
+                            {"xpath": "middle_name"}
+                        ]
+                    }
+                }
+                }
+            ]
+            },
+            "patient": {
+              "object": {
+                "type": {"const": "Patient"},
+                "reference": {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
+              }
+            },
+            "gender": {"xpath": "GT1/gender", "template": "transform_gender_code"},
+            "birthDate": {"xpath": "GT1/dob", "template": "transform_date"},
+            "address": {
+                "array": [
+                  {"xpath": "GT1",
                     "object": {
                       "use": {"xpath": "address_type", "template": "transform_address_use"},
                       "type": {"const": "physical"},
@@ -589,252 +751,732 @@
                     }
                   }
                 ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"xpath": "GT1", "template": "relatedperson_guarantor_put_request"}
+          }
+        }
+      }
+    },
+    "relatedperson_subscriber_resource": {
+      "object": {
+        "fullUrl": {
+            "custom_func":{
+                "name": "concat",
+                "args": [
+                    {"const": "urn:uuid:61ebe121-aa05-0002-000"},
+                    {"xpath": "IN1/set_id"},
+                    {"const": "-983a382abcd7"}
+                ]  
+            }
+        },
+        "resource": {
+          "object": {
+            "resourceType": {"const": "RelatedPerson"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"},
+                    "value": {"xpath": "IN1", "template": "transform_insurance_identifier", "_comment": "insurance identifer value is also used as subscriber identifier value"}
+                  }
+                },
+                {"xpath": "IN2",
+                  "object": {
+                    "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
+                    "value": {"xpath": "ssn"},
+                    "type": {
+                      "object": {
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "code": {"const": "SS"},
+                                "display": {"const": "Social Security Number"}
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "name": {
+            "array": [
+                {"xpath":"IN1",
+                  "object": {
+                      "family": {"xpath": "insured_last_name"},
+                      "given": {
+                          "array": [
+                              {"xpath": "insured_first_name"},
+                              {"xpath": "insured_middle_name"}
+                          ]
+                      }
+                  }
+                }
+            ]
+            },
+            "patient": {
+              "object": {
+                "type": {"const": "Patient"},
+                "reference": {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
+              }
+            },
+            "gender": {"xpath": "IN1/insured_gender", "template": "transform_gender_code"},
+            "birthDate": {"xpath": "IN1/insured_dob", "template": "transform_date"},
+            "address": {
+                "array": [
+                  {"xpath":"IN1",
+                    "object": {
+                      "use": {"xpath": "address_type", "template": "transform_address_use"},
+                      "type": {"const": "physical"},
+                      "line": {
+                          "array": [
+                              {"xpath": "insured_address_1"},
+                              {"xpath": "insured_address_2"}
+                          ]
+                      },
+                      "city": {"xpath": "insured_city"},
+                      "state": {"xpath": "insured_state"},
+                      "postalCode": {"xpath": "insured_zip"},
+                      "country": {"xpath": "insured_country"}
+                    }
+                  }
+                ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"xpath": "IN1", "template": "relatedperson_subscriber_put_request"}
+          }
+        }
+      }
+    },
+    "organization_payor_resource": {
+      "object": {
+        "fullUrl": {
+            "custom_func":{
+                "name": "concat",
+                "args": [
+                    {"const": "urn:uuid:61ebe121-aa02-0002-000"},
+                    {"xpath": "IN1/set_id"},
+                    {"const": "-983a382abcd7"}
+                ]  
+            }
+        },
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Organization"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/payor-id"},
+                    "value": {"xpath": "IN1", "template": "transform_insurance_identifier"}
+                  }
+                }
+              ]
+            },
+            "name": {"xpath": "IN1/company_name"},
+            "telecom": {
+              "array": [
+                {"xpath": "IN1",
+                  "object": {
+                    "system": {"const": "phone"},
+                    "value": {"xpath": "insurance_phone"},
+                    "use": {"const": "work"}
+                  }
+                }
+              ]
+            },
+            "address": {
+              "array": [
+                {"xpath": "IN1",
+                  "object": {
+                    "use": {"xpath": "address_type", "template": "transform_address_use"},
+                    "type": {"const": "physical"},
+                    "line": {
+                        "array": [
+                            {"xpath": "address_1"},
+                            {"xpath": "address_2"}
+                        ]
+                    },
+                    "city": {"xpath": "city"},
+                    "state": {"xpath": "state"},
+                    "postalCode": {"xpath": "zip"},
+                    "country": {"xpath": "country"}
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "POST"},
+            "url": {"const": "Organization"},
+            "ifNoneExist": {"xpath": "IN1", "template": "organization_payor_conditional_post_request"}
+          }
+        }
+      }
+    },
+    "coverage_resource": {
+      "object": {
+        "fullUrl": {
+            "custom_func":{
+                "name": "concat",
+                "args": [
+                    {"const": "urn:uuid:61ebe121-aa06-0001-000"},
+                    {"xpath": "IN1/set_id"},
+                    {"const": "-983a382abcd7"}
+                ]  
+            }
+        },
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Coverage"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/coverage-id"},
+                    "value": {"xpath": "IN1/policy_number"},
+                    "type": {
+                      "object": {
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "code": {"const": "MB"},
+                                "display": {"const": "Member Number"}
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "status": {"const": "active"},
+            "policyHolder": {
+                  "object": {
+                    "reference": {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
+                }
+            },
+            "subscriber": {
+              "object": {
+                "type": {"xpath": "IN1", "template": "transform_coverage_subscriber_type"},
+                "identifier": {
+                    "object": {
+                        "system": {"xpath": "IN1", "template": "transform_coverage_subscriber_system"},
+                        "value": {"xpath": "IN1", "template": "transform_coverage_subscriber_identifier"}
+                    }
+                },
+                "display": {"xpath": "IN1", "template": "transform_coverage_subscriber_display"},
+                "reference": {
+                    "custom_func":{
+                        "name": "concat",
+                        "args": [
+                            {"const": "urn:uuid:61ebe121-aa05-0002-000"},
+                            {"xpath": "IN1/set_id"},
+                            {"const": "-983a382abcd7"}
+                        ]  
+                    }
+                }
+              }
+            },
+            "beneficiary": {
+              "object": {
+                "type": {"const": "Patient"},
+                "display": {"const": "Patient (Ins Policy Beneficiary)"}
+              }
+            },
+            "period": {
+              "object": {
+                "start": {"xpath": "IN1/plan_effective_date", "template": "transform_datetime"},
+                "end": {"xpath": "IN1/plan_expiration_date", "template": "transform_datetime"}
+              }
+            },
+            "payor": {
+              "array":[
+                {
+                  "object": {
+                    "reference": {
+                        "custom_func":{
+                            "name": "concat",
+                            "args": [
+                                {"const": "urn:uuid:61ebe121-aa02-0002-000"},
+                                {"xpath": "IN1/set_id"},
+                                {"const": "-983a382abcd7"}
+                            ]  
+                        }
+                    }
+                  }
+                }
+              ]
+            },
+            "class": {"xpath": "IN1/group_number", "template": "transform_coverage_codeable"},
+            "order": {"xpath": "IN1/set_id", "type": "int"},
+            "network": {"xpath": "IN1/plan_type"}
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"template": "coverage_put_request"}
+          }
+        }
+      }
+    },
+    "practitioner_attending_resource": {
+      "object": {
+          "fullUrl": {"const": "urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7"},
+          "resource": {
+            "object": {
+              "resourceType": {"const": "Practitioner"},
+              "name": {
+                "array": [
+                  { "xpath": "PV1",
+                    "object": {
+                      "family": {"xpath": "attending_physician_last_name"},
+                      "given": {
+                          "array": [
+                              {"xpath": "attending_physician_first_name"}
+                          ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "identifier": {
+                  "array": [
+                    {
+                      "object": {
+                        "type": {
+                          "object": {
+                            "coding": {
+                              "array": [
+                                {
+                                  "object": {
+                                    "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
+                                    "code": {"const": "PRN"}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "system": {"const": "https://pediatrix.com/fhir/NamingSystem/us-npi-id"},
+                        "value": {"xpath": "PV1", "template": "transform_attending_physician_identifier"}
+                      }
+                    }
+                  ]
+                }
+            }
+          },
+          "request": {
+            "object": {
+              "method": {"const": "POST"},
+              "url": {"const": "Practitioner"},
+              "ifNoneExist": {"xpath": "PV1", "template": "practitioner_attending_post_request"}
+            }
+          }
+      }
+    },
+    "practitioner_referring_resource": {
+      "object": {
+          "fullUrl": {"const": "urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7"},
+          "resource": {
+            "object": {
+              "resourceType": {"const": "Practitioner"},
+              "name": {
+                "array": [
+                  { "xpath": "PV1",
+                    "object": {
+                      "family": {"xpath": "referring_physician_last_name"},
+                      "given": {
+                          "array": [
+                              {"xpath": "referring_physician_first_name"}
+                          ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "identifier": {
+                 "array": [
+                      {
+                          "object": {
+                              "type": {
+                              "object": {
+                                  "coding": {
+                                    "array": [
+                                      {
+                                        "object": {
+                                          "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
+                                          "code": {"const": "PRN"}
+                                        }
+                                      }
+                                    ]
+                                  }
+                              }
+                              },
+                              "system": {"const": "https://pediatrix.com/fhir/NamingSystem/us-npi-id"},
+                              "value": {"xpath": "PV1", "template": "transform_referring_physician_identifier"}
+                          }
+                      }
+                 ]
               }
             }
           },
           "request": {
             "object": {
               "method": {"const": "POST"},
-              "url": {"const": "Organization"},
-              "ifNoneExist": {"template": "primary_payor_conditional_post"}
+              "url": {"const": "Practitioner"},
+              "ifNoneExist": {"xpath": "PV1", "template": "practitioner_referring_post_request"}
             }
           }
         }
-      },
-      "transform_marital_code": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': 'M'; break; case 'S': 'U'; break; case 'D': 'D'; break; default: ''};} else {''}"},
-                  {"const": "val"}, {"xpath": "."}
-              ]
-          }
-      },
-      "transform_marital_display": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': 'Married'; break; case 'S': 'Unmarried'; break; case 'D': 'Divorced'; break; default: ''};} else {''}"},
-                  {"const": "val"}, {"xpath": "."}
-              ]
-          }
-      },
-      "transform_gender_code": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': 'male'; break; case 'F': 'female'; break; default: 'unknown'};} else {'unknown'}"},
-                  {"const": "val"}, {"xpath": "."}
-              ]
-          }
-      },
-      "transform_date": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "dt===null ? '' : dt.substring(0,10);"},
-                  {"const": "dt"},{
-                      "custom_func": {
-                          "name": "dateTimeToRFC3339",
-                          "args": [
-                              { "xpath": "." },
-                              { "const": "", "_comment": "fromTZ" },
-                              { "const": "", "_comment": "toTZ" }
-                          ]
-                      }
-                  }
-              ]
-          }
-      },
-      "transform_datetime": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "dt===null ? '' : dt.substring(0,10);"},
-                  {"const": "dt"},{
-                      "custom_func": {
-                          "name": "dateTimeToRFC3339",
-                          "args": [
-                              { "xpath": "." },
-                              { "const": "", "_comment": "fromTZ" },
-                              { "const": "", "_comment": "toTZ" }
-                          ]
-                      }
-                  }
-              ]
-          }
-      },
-      "transform_patient_identifier": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "mrn == '' ? '' : 'Patient/' + mrn"},
-                  {"const": "mrn"}, {"xpath": "mrn"}
-              ]
-          }
-      },
-      "transform_insurance_identifier": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "planid == '' ? '' : planid"},
-                  {"const": "planid"}, {"xpath": "//IN1/plan_id"}
-              ]
-          }
-      },
-      "transform_guarantor_identifier": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "guarantor_number == '' ? '' : 'RelatedPerson/' + guarantor_number"},
-                  {"const": "guarantor_number"}, {"xpath": "guarantor_number"}
-              ]
-          }
-      },
-      "transform_attending_physician_identifier": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "npi == '' ? '' : 'Provider/' + npi"},
-                  {"const": "npi"}, {"xpath": "attending_physician_id"},
-                  {"const": "lname"}, {"xpath": "attending_physician_last_name"},
-                  {"const": "fname"}, {"xpath": "attending_physician_first_name"}
-              ]
-          }
-      },
-      "transform_referring_physician_identifier": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "npi == '' ? '' : 'Provider/' + npi"},
-                  {"const": "npi"}, {"xpath": "referring_physician_id"},
-                  {"const": "lname"}, {"xpath": "referring_physician_last_name"},
-                  {"const": "fname"}, {"xpath": "referring_physician_first_name"}
-              ]
-          }
-      },
-      "transform_address_use": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "if (val) {switch(val.toUpperCase()) {case 'P': 'home'; break; case 'H': 'home'; break; case 'M': 'billing'; break; case 'O': 'work'; break; default: ''};} else {'';}"},
-                  {"const": "val"}, {"xpath": "."}
-              ]
-          }
-      },
-      "transform_phone_type": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "if (val) {switch(val.toUpperCase()) {case 'CP': 'mobile'; default: 'home'};} else {'home'}"},
-                  {"const": "val"}, {"xpath": "."}
-              ]
-          }
-      },
-      "transform_insurance_kind": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "if (val) {switch(val.toUpperCase()) {case 'SELF': 'self-pay'; break; case '': 'other'; break; default: 'insurance'};} else {'insurance'}"},
-                  {"const": "val"}, {"xpath": "."}
-              ]
-          }
-      },
-      "transform_employer_organization_identifier": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "emp_name !== null && emp_id !== null ? emp_id + '-' + emp_name : ''"},
-                  {"const": "emp_name"}, {"xpath": "IN1/group_employer_name"},
-                  {"const": "emp_id"}, {"xpath": "IN1/group_employer_id"}
-              ]
-          }
-      },
-      "transform_relatedperson_subscriber_identifier": {
-          "custom_func": {
-              "name": "javascript",
-              "args": [
-                  {"const": "insured_lname !== null && insured_fname !== null ? insured_fname + ' ' + insured_lname : ''"},
-                  {"const": "insured_lname"}, {"xpath": "IN1/insured_last_name"},
-                  {"const": "insured_fname"}, {"xpath": "IN1/insured_first_name"}
-              ]
-          }
-      },
-      "transform_message_header_identifier": {
-        "custom_func": {
-            "name": "concat",
-            "args": [
-                { "const": "MessageHeader?control-id=" },
-                { "template": "transform_message_header_control_id" }
-            ]
-        }
-      },
-      "transform_message_header_control_id": {
-          "custom_func": {
-              "name": "concat",
-              "args": [
-                  { "xpath": "MSH/message_control_id" },
-                  { "xpath": "PID/mrn" },
-                  { "xpath": "MSH/datetime_of_message" }
-              ]
-          }
-      },
-      "transform_relatedperson_guarantor_identifier": {
+    },
+    "transform_marital_code": {
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "guarantor_number !== null ? guarantor_number : mrn_facility"},
-                {"const": "guarantor_number"}, {"xpath": "//GT1/guarantor_number"},
-                {"const": "mrn_facility"}, { "template": "concat_mrn_facility" }
+                {"const": "if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': 'M'; break; case 'S': 'U'; break; case 'D': 'D'; break; default: ''};} else {''}"},
+                {"const": "val"}, {"xpath": "."}
             ]
         }
-      },
-      "concat_mrn_facility": {
+    },
+    "transform_marital_display": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': 'Married'; break; case 'S': 'Unmarried'; break; case 'D': 'Divorced'; break; default: ''};} else {''}"},
+                {"const": "val"}, {"xpath": "."}
+            ]
+        }
+    },
+    "transform_coverage_subscriber_system": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "if (val) {switch(val.toUpperCase()) {case 'SELF': 'https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id'; break; case '01': 'https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id'; break; default: 'https://pediatrix.com/fhir/NamingSystem/relatedPerson-id'};} else {'https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id'}"},
+                {"const": "val"}, {"xpath": "insured_patient_relationship"}
+            ]
+        }
+    },
+    "transform_coverage_subscriber_display": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "'Subscriber (' + val + ')'"},
+                {"const": "val"}, {"xpath": ".", "template": "transform_coverage_subscriber_type"}
+            ]
+        }
+    },
+    "transform_coverage_subscriber_type": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "if (val) {switch(val.toUpperCase()) {case 'SELF': 'Patient'; break; case '01': 'Patient'; break; default: 'RelatedPerson'};} else {'Patient'}"},
+                {"const": "val"}, {"xpath": "insured_patient_relationship"}
+            ]
+        }
+    },
+    "transform_coverage_subscriber_identifier": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "if (val) {switch(val.toUpperCase()) {case 'SELF': mrnfacility; break; case '01': mrnfacility; break; default: subscriberid};} else {mrnfacility}"},
+                {"const": "val"}, {"xpath": "insured_patient_relationship"},
+                {"const": "subscriberid"}, {"xpath": ".", "template": "transform_insurance_identifier"},
+                {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
+            ]
+        }
+    },
+    "transform_coverage_codeable": {
+        "array": [
+            {
+              "object": {
+                "system": {"const": "https://pediatrix.com/fhir/NamingSystem/coverage-id"},
+                "value": {"const": "//IN1/policy_number"},
+                "type": {
+                  "object": {
+                    "coding": {
+                      "array": [
+                        {
+                          "object": {
+                            "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                            "code": {"const": "MB"},
+                            "display": {"const": "Member Number"}
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+    },
+    "transform_gender_code": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': 'male'; break; case 'F': 'female'; break; default: 'unknown'};} else {'unknown'}"},
+                {"const": "val"}, {"xpath": "."}
+            ]
+        }
+    },
+    "transform_date": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "dt===null ? '' : dt.substring(0,10);"},
+                {"const": "dt"},{
+                    "custom_func": {
+                        "name": "dateTimeToRFC3339",
+                        "args": [
+                            { "xpath": "." },
+                            { "const": "", "_comment": "fromTZ" },
+                            { "const": "", "_comment": "toTZ" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "transform_datetime": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "dt===null ? '' : dt.substring(0,10);"},
+                {"const": "dt"},{
+                    "custom_func": {
+                        "name": "dateTimeToRFC3339",
+                        "args": [
+                            { "xpath": "." },
+                            { "const": "", "_comment": "fromTZ" },
+                            { "const": "", "_comment": "toTZ" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "transform_encounter_identifier": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "!admitdate ? mrnfacility : mrnfacility + '-' + admitdate.replace(/-/g,'')"},
+                {"const": "admitdate"}, {"xpath": "admit_datetime", "template": "transform_datetime"},
+                {"const": "mrnfacility"}, {"xpath": "..", "template": "concat_mrn_facility"}
+            ]
+        }
+    },
+    "transform_insurance_identifier": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : planid"},
+                {"const": "planid"}, {"xpath": "plan_id"},
+                {"const": "setid"}, {"xpath": "set_id"},
+                {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
+            ]
+        }
+    },
+    "transform_attending_physician_identifier": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "!npi || npi == '' ? mrnfacility + '-PV1-' + idtype : npi"},
+                {"const": "npi"}, {"xpath": "attending_physician_id"},
+                {"const": "idtype"}, {"const": "ATND"},
+                {"const": "mrnfacility"}, {"xpath": "..", "template": "concat_mrn_facility"}
+            ]
+        }
+    },
+    "transform_referring_physician_identifier": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "!npi || npi == '' ? mrnfacility + '-PV1-' + idtype : npi"},
+                {"const": "npi"}, {"xpath": "referring_physician_id"},
+                {"const": "idtype"}, {"const": "REF"},
+                {"const": "mrnfacility"}, {"xpath": "..", "template": "concat_mrn_facility"}
+            ]
+        }
+    },
+    "transform_address_use": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "if (val) {switch(val.toUpperCase()) {case 'P': 'home'; break; case 'H': 'home'; break; case 'M': 'billing'; break; case 'O': 'work'; break; default: ''};} else {'';}"},
+                {"const": "val"}, {"xpath": "."}
+            ]
+        }
+    },
+    "transform_phone_type": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "if (val) {switch(val.toUpperCase()) {case 'CP': 'mobile'; default: 'home'};} else {'home'}"},
+                {"const": "val"}, {"xpath": "."}
+            ]
+        }
+    },
+    "transform_message_header_identifier": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "MessageHeader?control-id=" },
+              { "template": "transform_message_header_control_id" }
+          ]
+      }
+    },
+    "transform_message_header_control_id": {
         "custom_func": {
             "name": "concat",
             "args": [
+                { "xpath": "MSH/message_control_id" },
                 { "xpath": "PID/mrn" },
-                { "const": "-{{FacilityId}}" }
+                { "xpath": "MSH/datetime_of_message" }
             ]
         }
-      },
-      "encounter_conditional_post": {
-        "custom_func": {
-            "name": "concat",
-            "args": [
-                { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id|" },
-                { "template": "concat_mrn_facility" }
-            ]
-        }
-      },
-      "patient_conditional_put": {
-        "custom_func": {
-            "name": "concat",
-            "args": [
-                { "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
-                { "xpath": "PID/mrn" },
-                { "const": "&mrn-assigner=urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7" }
-            ]
-        }
-      },
-      "relatedperson_guarantor_conditional_put": {
-        "custom_func": {
-            "name": "concat",
-            "args": [
-                { "const": "RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|" },
-                { "template": "transform_relatedperson_guarantor_identifier" }
-            ]
-        }
-      },
-      "primary_payor_conditional_post": {
-        "custom_func": {
-            "name": "concat",
-            "args": [
-                { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/payor-id|" },
-                { "template": "transform_insurance_identifier" }
-            ]
-        }
+    },
+    "transform_relatedperson_guarantor_identifier": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+            {"const": "!guarantornumber || guarantornumber == '' ? mrnfacility + '-GT1-' + setid : guarantornumber"},
+            {"const": "guarantornumber"}, {"xpath": "guarantor_number"},
+            {"const": "setid"}, {"xpath": "set_id"},
+            {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
+          ]
+      }
+    },
+    "transform_relatedperson_subscriber_identifier": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+            {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : planid"},
+            {"const": "planid"}, {"xpath": "plan_id"},
+            {"const": "setid"}, {"xpath": "set_id"},
+            {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
+          ]
+      }
+    },
+    "encounter_conditional_post_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id|" },
+              { "template": "concat_mrn_facility" }
+          ]
+      }
+    },
+    "patient_put_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
+              { "xpath": "PID/mrn" },
+              { "const": "&mrn-assigner=urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7" }
+          ]
+      }
+    },
+    "relatedperson_guarantor_put_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|" },
+              { "xpath": ".", "template": "transform_relatedperson_guarantor_identifier" }
+          ]
+      }
+    },
+    "relatedperson_subscriber_put_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|" },
+              { "template": "transform_relatedperson_subscriber_identifier" }
+          ]
+      }
+    },
+    "organization_facility_conditional_post_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/facilityId-id|" },
+              { "const": "{{FacilityId}}" }
+          ]
+      }
+    },
+    "organization_payor_conditional_post_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              {"const": "identifier=https://pediatrix.com/fhir/NamingSystem/payor-id|" },
+              {"xpath": ".", "template": "transform_insurance_identifier" }
+          ]
+      }
+    },
+    "coverage_put_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "Coverage?identifier=https://pediatrix.com/fhir/NamingSystem/coverage-id|" },
+              { "xpath": "//IN1/policy_number" }
+          ]
+      }
+    },
+    "account_put_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "Account?identifier=https://pediatrix.com/fhir/NamingSystem/patientAccount-id|" },
+              { "template": "concat_mrn_facility" }
+          ]
+      }
+    },
+    "practitioner_attending_post_request":{
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/us-npi-id|" },
+              { "xpath": ".", "template": "transform_attending_physician_identifier" }
+          ]
+      }
+    },
+    "practitioner_referring_post_request":{
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/us-npi-id|" },
+              { "xpath": ".", "template": "transform_referring_physician_identifier" }
+          ]
+      }
+    },
+    "concat_mrn_facility": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "xpath": "PID/mrn" },
+              { "const": "-{{FacilityId}}" }
+          ]
       }
     }
+  }
 }
-  
