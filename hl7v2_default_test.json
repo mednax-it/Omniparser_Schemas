@@ -991,7 +991,7 @@
                       "args": [
                         {"const": "ref_type == 'Patient' ? pat_urn : rel_urn "},
                         {"const": "ref_type"}, {"xpath": "IN1", "template": "transform_coverage_subscriber_type"},
-                        {"const": "pat_urn"}, {"const": "61ebe121-aa01-0001-0001-983a382abcd7"},
+                        {"const": "pat_urn"}, {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"},
                         {"const": "rel_urn"}, {
                           "custom_func":{
                             "name": "concat",
