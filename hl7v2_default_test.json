@@ -1220,7 +1220,7 @@
         "array": [
             {
               "object": {
-                "value": {"xpath": "."},
+                "value": {"xpath": "/IN1/group_number"},
                 "type": {
                   "object": {
                     "coding": {
