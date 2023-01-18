@@ -244,7 +244,7 @@
             },
             "focus": {
               "array": [
-                {"object": {"reference": {"const": "urn:uuid:11ebe121-cfdc-4613-9bf2-983a382cfdc7"}}}
+                {"object": {"reference": {"const": "urn:uuid:61ebe121-aa03-0001-0001-983a382abcd7"}}}
               ]
             },
             "source": {
@@ -304,7 +304,7 @@
                     "value": {"xpath": "PID/mrn"},
                     "assigner": {
                       "object": {
-                        "reference": {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
+                        "reference": {"const": "urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"}
                       }
                     },
                     "type": {
@@ -443,7 +443,7 @@
               "array": [
                 {
                   "object": {
-                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/encounter-id"},
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id"},
                     "value": {"xpath": "PV1", "template": "transform_encounter_identifier"}
                   }
                 },
@@ -482,7 +482,7 @@
             },
             "participant": {
               "array": [
-                {
+                {"xpath": ".[not(//PV1/attending_physician_id[text()=''])]",
                   "object": {
                     "type": {
                       "array":[
@@ -511,7 +511,7 @@
                     }
                   }
                 },
-                {
+                {"xpath": ".[not(//PV1/referring_physician_id[text()=''])]",
                   "object": {
                     "type": {
                       "array":[
@@ -558,7 +558,7 @@
           "object": {
             "method": {"const": "POST"},
             "url": {"const": "Encounter"},
-            "ifNoneExist": {"template": "encounter_conditional_post_request"}
+            "ifNoneExist": {"xpath": ".", "template": "encounter_conditional_post_request"}
           }
         }
       }
@@ -986,13 +986,23 @@
                 },
                 "display": {"xpath": "IN1", "template": "transform_coverage_subscriber_display"},
                 "reference": {
-                    "custom_func":{
-                        "name": "concat",
-                        "args": [
-                            {"const": "urn:uuid:61ebe121-aa05-0002-000"},
-                            {"xpath": "IN1/set_id"},
-                            {"const": "-983a382abcd7"}
-                        ]  
+                    "custom_func": {
+                      "name": "javascript",
+                      "args": [
+                        {"const": "ref_type == 'Patient' ? pat_urn : rel_urn "},
+                        {"const": "ref_type"}, {"xpath": "IN1", "template": "transform_coverage_subscriber_type"},
+                        {"const": "pat_urn"}, {"const": "61ebe121-aa01-0001-0001-983a382abcd7"},
+                        {"const": "rel_urn"}, {
+                          "custom_func":{
+                            "name": "concat",
+                            "args": [
+                                {"const": "urn:uuid:61ebe121-aa05-0002-000"},
+                                {"xpath": "IN1/set_id"},
+                                {"const": "-983a382abcd7"}
+                            ]  
+                          }
+                        }
+                      ]
                     }
                 }
               }
@@ -1172,7 +1182,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "if (val) {switch(val.toUpperCase()) {case 'SELF': 'https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id'; break; case '01': 'https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id'; break; default: 'https://pediatrix.com/fhir/NamingSystem/relatedPerson-id'};} else {'https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id'}"},
+                {"const": "if (val) {switch(val.toUpperCase()) {case 'SELF': case '01': 'https://pediatrix.com/fhir/NamingSystem/mrn-id'; break; default: 'https://pediatrix.com/fhir/NamingSystem/relatedPerson-id'};} else {'https://pediatrix.com/fhir/NamingSystem/mrn-id'}"},
                 {"const": "val"}, {"xpath": "insured_patient_relationship"}
             ]
         }
@@ -1210,17 +1220,16 @@
         "array": [
             {
               "object": {
-                "system": {"const": "https://pediatrix.com/fhir/NamingSystem/coverage-id"},
-                "value": {"const": "//IN1/policy_number"},
+                "value": {"xpath": "."},
                 "type": {
                   "object": {
                     "coding": {
                       "array": [
                         {
                           "object": {
-                            "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
-                            "code": {"const": "MB"},
-                            "display": {"const": "Member Number"}
+                            "system": {"const": "http://terminology.hl7.org/CodeSystem/coverage-class"},
+                            "code": {"const": "group"},
+                            "display": {"const": "Group"}
                           }
                         }
                       ]
@@ -1383,7 +1392,7 @@
           "name": "concat",
           "args": [
               { "const": "identifier=https://pediatrix.com/fhir/NamingSystem/patient-demographics-update-id|" },
-              { "template": "concat_mrn_facility" }
+              {"xpath": "PV1", "template": "transform_encounter_identifier" }
           ]
       }
     },
@@ -1393,7 +1402,7 @@
           "args": [
               { "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
               { "xpath": "PID/mrn" },
-              { "const": "&mrn-assigner=urn:uuid:11ebe121-cdef-4613-9bf2-983a382cdef7" }
+              { "const": "&mrn-assigner=urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7" }
           ]
       }
     },
