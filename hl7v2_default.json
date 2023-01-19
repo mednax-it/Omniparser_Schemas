@@ -1037,7 +1037,7 @@
                 }
               ]
             },
-            "class": {"xpath": "IN1/group_number", "template": "transform_coverage_codeable"},
+            "class": {"xpath": ".", "template": "coverage_class_conditional_display"},
             "order": {"xpath": "IN1/set_id", "type": "int"},
             "network": {"xpath": "IN1/plan_type"}
           }
@@ -1484,6 +1484,16 @@
           "args": [
               { "xpath": "PID/mrn" },
               { "const": "-{{FacilityId}}" }
+          ]
+      }
+    },
+    "coverage_class_conditional_display": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+              {"const": "group_number !== null ? transform_coverage_codeable : ''"},
+              {"const": "transform_coverage_codeable"}, {"template": "transform_coverage_codeable"},
+              {"const": "group_number"}, {"xpath": "IN1/group_number"}
           ]
       }
     }
