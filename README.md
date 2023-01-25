@@ -26,6 +26,7 @@ This identifier will be referred to as "MRN Facility" (`mrn_facility`).
 If guarantor number does not exist, identifier will default to concatenation of `mrn_facility`, the guarantor segment code (GT1) and the guarantor segment Set ID (e.g. 1, 2)
 
     {mrn}-{facility_id}-GT1-{guarantor set id}. 
+
 **Subscriber Identifier**
 
 *RelatedPerson* resource will be used to retain the subscriber information. The identifier will be concatenation of `mrn_facility` and the insurance plan id (IN1.2)
@@ -38,16 +39,17 @@ If plan number does not exist, identifier will default to concatenation of `mrn_
 
 **Payor Identifier**
 
-*Organization* resource will be used to retain the Insurance Company information __if the patient has insurance.__ the identifier will be concatenation of `mrn_facility` and the insurance plan id (IN1.2)
+*Organization* resource will be used to retain the Insurance Company information __if the patient has insurance.__ The identifier will be concatenation of `mrn_facility` and the insurance plan id (IN1.2)
 
     {mrn}-{facility_id}-{plan_id}. 
     
 If plan number does not exist, identifier will default to concatenation of `mrn_facility`, the Insurance segment code (IN1) and the Insurance segment Set ID (e.g. 1, 2)
 
     {mrn}-{facility_id}-IN1-{insurance set id}
+
 **Attending Physician Identifier**
 
-*Pratictioner* resource will be used to retain the Attending Physician information. the identifier will be concatenation of `mrn_facility` and the attending physician id (PV1.7.1)
+*Pratictioner* resource will be used to retain the Attending Physician information. The identifier will be concatenation of `mrn_facility` and the attending physician id (PV1.7.1)
 
     {mrn}-{facility_id}-{attending_physician_id}
     
@@ -57,10 +59,20 @@ If attending physician id does not exist, identifier will default to concatenati
 
 **Referring Physician Identifier**
 
-*Pratictioner* resource will be used to retain the Referring Physician information. the identifier will be concatenation of `mrn_facility` and the referring physician id (PV1.8.1)
+*Pratictioner* resource will be used to retain the Referring Physician information. The identifier will be concatenation of `mrn_facility` and the referring physician id (PV1.8.1)
 
     {mrn}-{facility_id}-{referring_physician_id}
     
 If referring physician id does not exist, identifier will default to concatenation of `mrn_facility`, the patient visit segment code "PV1" and the FHIR ParticipationType Code System value "REF"
 
     {mrn}-{facility_id}-PV1-REF
+
+**Coverage Identifier**
+
+*Coverage* resource will be used to retain the patient's insurance information. The identifier will be the concatenation of `mrn_facility` and the Insurance Policy Number (IN1.36)
+
+    {mrn}-{facility_id}-{policy_number}
+
+If policy_number does not exist, identifier will default to concatenation of `mrn_facility`, the Insurance segment code (IN1) and the Insurance segment Set ID (e.g. 1, 2)
+
+    {mrn}-{facility_id}-IN1-{insurance set id}
