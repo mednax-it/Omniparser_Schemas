@@ -614,7 +614,7 @@
                                     "reference": {"const": "urn:uuid:61ebe121-aa06-0001-0001-983a382abcd7"}
                                 }
                             },
-                            "priority": {"xpath": "IN1/set_id", "type": "int"}
+                            "priority": {"const": "1", "type": "int"}
                         }
                     },
                     {"xpath": "insurance[position()=2]",
@@ -624,7 +624,7 @@
                                     "reference": {"const": "urn:uuid:61ebe121-aa06-0001-0002-983a382abcd7"}
                                 }
                             },
-                            "priority": {"xpath": "IN1/set_id", "type": "int"}
+                            "priority": {"const": "2", "type": "int"}
                         }
                     },
                     {"xpath": "insurance[position()=3]",
@@ -634,7 +634,7 @@
                                     "reference": {"const": "urn:uuid:61ebe121-aa06-0001-0003-983a382abcd7"}
                                 }
                             },
-                            "priority": {"xpath": "IN1/set_id", "type": "int"}
+                            "priority": {"const": "3", "type": "int"}
                         }
                     }
                 ]
@@ -766,11 +766,12 @@
       "object": {
         "fullUrl": {
             "custom_func":{
-                "name": "concat",
+                "name": "javascript",
                 "args": [
-                    {"const": "urn:uuid:61ebe121-aa05-0002-000"},
-                    {"xpath": "IN1/set_id"},
-                    {"const": "-983a382abcd7"}
+                    {"const": "prefix + index.toString() + suffix"},
+                    {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa05-0002-000"},
+                    {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+                    {"const": "suffix"}, {"const": "-983a382abcd7"}
                 ]  
             }
         },
@@ -865,11 +866,12 @@
       "object": {
         "fullUrl": {
             "custom_func":{
-                "name": "concat",
+                "name": "javascript",
                 "args": [
-                    {"const": "urn:uuid:61ebe121-aa02-0002-000"},
-                    {"xpath": "IN1/set_id"},
-                    {"const": "-983a382abcd7"}
+                    {"const": "prefix + index.toString() + suffix"},
+                    {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa02-0002-000"},
+                    {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+                    {"const": "suffix"}, {"const": "-983a382abcd7"}
                 ]  
             }
         },
@@ -932,14 +934,15 @@
     "coverage_resource": {
       "object": {
         "fullUrl": {
-            "custom_func":{
-                "name": "concat",
-                "args": [
-                    {"const": "urn:uuid:61ebe121-aa06-0001-000"},
-                    {"xpath": "IN1/set_id"},
-                    {"const": "-983a382abcd7"}
-                ]  
-            }
+          "custom_func":{
+            "name": "javascript",
+            "args": [
+              {"const": "prefix + index.toString() + suffix"},
+              {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa06-0001-000"},
+              {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+              {"const": "suffix"}, {"const": "-983a382abcd7"}
+            ]  
+          }
         },
         "resource": {
           "object": {
@@ -949,7 +952,7 @@
                 {
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/coverage-id"},
-                    "value": {"xpath": "IN1/policy_number"},
+                    "value": {"xpath": "IN1", "template": "transform_coverage_identifier"},
                     "type": {
                       "object": {
                         "coding": {
@@ -994,12 +997,13 @@
                         {"const": "pat_urn"}, {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"},
                         {"const": "rel_urn"}, {
                           "custom_func":{
-                            "name": "concat",
-                            "args": [
-                                {"const": "urn:uuid:61ebe121-aa05-0002-000"},
-                                {"xpath": "IN1/set_id"},
-                                {"const": "-983a382abcd7"}
-                            ]  
+                              "name": "javascript",
+                              "args": [
+                                  {"const": "prefix + index.toString() + suffix"},
+                                  {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa05-0002-000"},
+                                  {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+                                  {"const": "suffix"}, {"const": "-983a382abcd7"}
+                              ]  
                           }
                         }
                       ]
@@ -1025,11 +1029,12 @@
                   "object": {
                     "reference": {
                         "custom_func":{
-                            "name": "concat",
+                            "name": "javascript",
                             "args": [
-                                {"const": "urn:uuid:61ebe121-aa02-0002-000"},
-                                {"xpath": "IN1/set_id"},
-                                {"const": "-983a382abcd7"}
+                                {"const": "prefix + index.toString() + suffix"},
+                                {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa02-0002-000"},
+                                {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+                                {"const": "suffix"}, {"const": "-983a382abcd7"}
                             ]  
                         }
                     }
@@ -1038,14 +1043,14 @@
               ]
             },
             "class": {"xpath": ".", "template": "coverage_class_conditional_display"},
-            "order": {"xpath": "IN1/set_id", "type": "int"},
+            "order": {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
             "network": {"xpath": "IN1/plan_type"}
           }
         },
         "request": {
           "object": {
             "method": {"const": "PUT"},
-            "url": {"template": "coverage_put_request"}
+            "url": {"xpath": "IN1", "template": "coverage_put_request"}
           }
         }
       }
@@ -1285,6 +1290,17 @@
             ]
         }
     },
+    "transform_insurance_set_id": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+              {"const": "setid ? parseInt(setid) : tertiary ? 3 : secondary ? 2 : 1"},
+              {"const": "secondary"}, {"xpath": "../../IN1[count(..//insurance/preceding-sibling::insurance)=1]"},
+              {"const": "tertiary"}, {"xpath": "../../IN1[count(..//insurance/preceding-sibling::insurance)=2]"},
+              {"const": "setid"}, {"xpath": "."}
+          ]
+      }
+    },
     "transform_encounter_identifier": {
         "custom_func": {
             "name": "javascript",
@@ -1299,9 +1315,20 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : planid"},
+                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : mrnfacility + '-' + planid"},
                 {"const": "planid"}, {"xpath": "plan_id"},
-                {"const": "setid"}, {"xpath": "set_id"},
+                {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
+                {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
+            ]
+        }
+    },
+    "transform_coverage_identifier": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "!policy_number || policy_number == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + policy_number"},
+                {"const": "policy_number"}, {"xpath": "policy_number"},
+                {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
                 {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
             ]
         }
@@ -1310,7 +1337,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!npi || npi == '' ? mrnfacility + '-PV1-' + idtype : npi"},
+                {"const": "!npi || npi == '' ? mrnfacility + '-PV1-' + idtype : mrnfacility + '-' + npi"},
                 {"const": "npi"}, {"xpath": "attending_physician_id"},
                 {"const": "idtype"}, {"const": "ATND"},
                 {"const": "mrnfacility"}, {"xpath": "..", "template": "concat_mrn_facility"}
@@ -1321,7 +1348,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!npi || npi == '' ? mrnfacility + '-PV1-' + idtype : npi"},
+                {"const": "!npi || npi == '' ? mrnfacility + '-PV1-' + idtype : mrnfacility + '-' + npi"},
                 {"const": "npi"}, {"xpath": "referring_physician_id"},
                 {"const": "idtype"}, {"const": "REF"},
                 {"const": "mrnfacility"}, {"xpath": "..", "template": "concat_mrn_facility"}
@@ -1369,7 +1396,7 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-            {"const": "!guarantornumber || guarantornumber == '' ? mrnfacility + '-GT1-' + setid : guarantornumber"},
+            {"const": "!guarantornumber || guarantornumber == '' ? mrnfacility + '-GT1-' + setid : mrnfacility + '-' + guarantornumber"},
             {"const": "guarantornumber"}, {"xpath": "guarantor_number"},
             {"const": "setid"}, {"xpath": "set_id"},
             {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
@@ -1380,7 +1407,7 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-            {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : planid"},
+            {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : mrnfacility + '-' + planid"},
             {"const": "planid"}, {"xpath": "plan_id"},
             {"const": "setid"}, {"xpath": "set_id"},
             {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
@@ -1420,7 +1447,7 @@
           "name": "concat",
           "args": [
               { "const": "RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|" },
-              { "template": "transform_relatedperson_subscriber_identifier" }
+              { "xpath": ".", "template": "transform_relatedperson_subscriber_identifier" }
           ]
       }
     },
@@ -1447,7 +1474,7 @@
           "name": "concat",
           "args": [
               { "const": "Coverage?identifier=https://pediatrix.com/fhir/NamingSystem/coverage-id|" },
-              { "xpath": "//IN1/policy_number" }
+              { "xpath": ".", "template": "transform_coverage_identifier" }
           ]
       }
     },
