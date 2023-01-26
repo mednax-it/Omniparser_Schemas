@@ -1239,7 +1239,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "val ? parseInt(val) : 1"},
+                {"const": "val ? parseInt(val) : ''"},
                 {"const": "val"}, {"xpath": "."}
             ]
         }
@@ -1248,7 +1248,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "val.replace(/-/g,'')"},
+                {"const": "val ? val.replace(/-/g,'') : ''"},
                 {"const": "val"}, {"xpath": "."}
             ]
         }
