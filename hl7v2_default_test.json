@@ -57,9 +57,16 @@
                 {"name": "discharge_date", "index": 45, "default": ""}
             ]
         },
-        {"name": "PD1","min": 0},
+        {"name": "NTE","min": 0, "max": -1},
+        {"name": "ZPD","min": 0, "max": -1},
+        {"name": "PD1","min": 0, "max": -1},
+        {"name": "ZPI","min": 0, "max": -1},
+        {"name": "ZEI","min": 0, "max": -1},
+        {"name": "MRG","min": 0, "max": -1},
         {"name": "ROL","min": 0, "max": -1},
+        {"name": "CON","min": 0, "max": -1},
         {"name": "NK1","min": 0, "max": -1},
+        {"name": "ZKI","min": 0, "max": -1},
         {"name": "PV1","min": 0,
             "elements": [
                 {"name": "set_id", "index": 1, "component_index": 1, "default": "1"},
@@ -76,11 +83,17 @@
                 {"name": "discharge_datetime", "index": 45, "default": ""}
             ]
         },
-        {"name": "PV2","min": 0},
+        {"name": "PV2","min": 0, "max": -1},
+        {"name": "ZPV","min": 0, "max": -1},
+        {"name": "ZVI","min": 0, "max": -1},
+        {"name": "ZIF","min": 0, "max": -1},
+        {"name": "ZBE","min": 0, "max": -1},
         {"name": "ROL","min": 0, "max": -1},
         {"name": "DB1","min": 0, "max": -1},
         {"name": "OBX","min": 0, "max": -1},
         {"name": "AL1","min": 0, "max": -1},
+        {"name": "ZAL","min": 0, "max": -1},
+        {"name": "ACC","min": 0, "max": -1},
         {"name": "DG1","min": 0, "max": -1},
         {"name": "DRG","min": 0},
         {"name": "procedure", "type": "segment_group","min": 0, "max": -1,
@@ -115,7 +128,9 @@
                         {"name": "ssn", "index": 12, "default": ""},
                         {"name": "marital_status", "index": 30, "default": "Unknown"}
                     ]
-                }
+                },
+                {"name": "ZG1","min": 0, "max": -1},
+                {"name": "ZGI","min": 0, "max": -1}
             ]
         },
         {"name": "insurance", "type":"segment_group","min": 0, "max": -1,
@@ -168,14 +183,29 @@
                         {"name": "insured_ssn", "index": 2, "default": ""}
                     ]
                 },
-                {"name": "IN3","min": 0},
-                {"name": "ROL","min": 0}
+                {"name": "ZNI","min": 0,"max": -1},
+                {"name": "IN3","min": 0,"max": -1},
+                {"name": "ROL","min": 0,"max": -1},
+                {"name": "ZIN","min": 0,"max": -1},
+                {"name": "ZN3","min": 0,"max": -1}
             ]
         },
-        {"name": "ACC","min": 0},
-        {"name": "UB1","min": 0},
-        {"name": "UB2","min": 0},
-        {"name": "PDA","min": 0}
+        {"name": "DG1","min": 0, "max": -1},
+        {"name": "AL1","min": 0, "max": -1},
+        {"name": "PR1","min": 0, "max": -1},
+        {"name": "ACC","min": 0, "max": -1},
+        {"name": "UB1","min": 0, "max": -1},
+        {"name": "UB2","min": 0, "max": -1},
+        {"name": "ACC","min": 0, "max": -1},
+        {"name": "PDA","min": 0, "max": -1},
+        {"name": "ZMR","min": 0, "max": -1},
+        {"name": "ZCD","min": 0, "max": -1},
+        {"name": "ZIN","min": 0, "max": -1},
+        {"name": "ZCN","min": 0, "max": -1},
+        {"name": "ZCS","min": 0, "max": -1},
+        {"name": "ZM1","min": 0, "max": -1},
+        {"name": "ZPV","min": 0, "max": -1},
+        {"name": "ZEX","min": 0, "max": -1}
         ]
       }
     ]
@@ -313,7 +343,7 @@
                           "array": [
                             {
                               "object": {
-                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
                                 "code": {"const": "MR"},
                                 "display": {"const": "Medical Record Number"}
                               }
@@ -324,17 +354,17 @@
                     }
                   }
                 },
-                {
+                {"xpath": "PID/ssn",
                   "object": {
                     "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
-                    "value": {"xpath": "PID/ssn"},
+                    "value": {"xpath": ".", "template": "transform_patient_ssn"},
                     "type": {
                       "object": {
                         "coding": {
                           "array": [
                             {
                               "object": {
-                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
                                 "code": {"const": "SS"},
                                 "display": {"const": "Social Security Number"}
                               }
@@ -417,12 +447,7 @@
                 }
               }
             },
-            "multipleBirth[x]": {
-              "array":[
-                  {"xpath": "PID/multiple_birth"},
-                  {"xpath": "PID/birth_order"}
-              ]
-            }
+            "multipleBirthInteger": {"xpath": "PID/birth_order", "template": "transform_patient_birthorder"}
           }
         },
         "request": {
@@ -1207,6 +1232,24 @@
             "args": [
                 {"const": "if (val) {switch(val.toUpperCase()) {case 'SELF': 'Patient'; break; case '01': 'Patient'; break; default: 'RelatedPerson'};} else {'Patient'}"},
                 {"const": "val"}, {"xpath": "insured_patient_relationship"}
+            ]
+        }
+    },
+    "transform_patient_birthorder": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "val ? parseInt(val) : 1"},
+                {"const": "val"}, {"xpath": "."}
+            ]
+        }
+    },
+    "transform_patient_ssn": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "val.replace(/-/g,'')"},
+                {"const": "val"}, {"xpath": "."}
             ]
         }
     },
