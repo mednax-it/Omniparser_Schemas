@@ -1039,7 +1039,8 @@
             "beneficiary": {
               "object": {
                 "type": {"const": "Patient"},
-                "display": {"const": "Patient (Ins Policy Beneficiary)"}
+                "display": {"const": "Patient (Ins Policy Beneficiary)"},
+                "reference": {"const": "urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
               }
             },
             "period": {
