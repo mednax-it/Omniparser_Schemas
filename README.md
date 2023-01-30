@@ -5,7 +5,7 @@ Placeholder for Omniparser Schemas used by universal-etl-parser API.
 
 ```mermaid
 graph LR;
-    nonprod-->Main;
+    nonprod[branch]-->main[branch];
 ```
 
 
