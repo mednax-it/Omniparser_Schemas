@@ -5,10 +5,12 @@ Placeholder for Omniparser Schemas used by universal-etl-parser API.
 
 ```mermaid
 graph LR;
-    branch1[nonprod] -- Pull Request ---> branch2[main]
+    nonprod[nonprod] -- pr[Pull Request] ---> main[main]
+
+    click nonprod href "https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod" ""Link to nonprod branch""
+    click pr href "https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod" "Link to open a pull request"
+    click main href "https://github.com/mednax-it/Omniparser_Schemas" "Link to main branch"
 ```
-
-
 
 ## HL7 Omniparser Schema
 Omniparser Schema used to convert HL7 messages to a JSON format consistent with a FHIR v4.3.0 bundle
