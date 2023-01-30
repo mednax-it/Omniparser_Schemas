@@ -1,22 +1,26 @@
 # Omniparser_Schemas
+
 Placeholder for Omniparser Schemas used by universal-etl-parser API.
 
 ## Branch flow for schema changes
 
 ```mermaid
-securityLevel='loose'
 graph LR;
     nonprod[nonprod] --> pr{{Pull Request}} --> main[main]
-
-    click nonprod href "https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod" _blank
-    click pr href "https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod" _blank
-    click main href "https://github.com/mednax-it/Omniparser_Schemas" _blank
 ```
 
+Helpful links:
+
+* [nonprod](https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod)
+* [pr](https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod)
+* [main](https://github.com/mednax-it/Omniparser_Schemas)
+
 ## HL7 Omniparser Schema
+
 Omniparser Schema used to convert HL7 messages to a JSON format consistent with a FHIR v4.3.0 bundle
 
 ### Design Decisions
+
 **Patient Identifier**
 
 *Patient* resource will be used to retain patient information. The identifier will be concatenation of the medical record number (MRN) of the patient, and facility ID at which the service was rendered.
