@@ -4,6 +4,7 @@ Placeholder for Omniparser Schemas used by universal-etl-parser API.
 ## Branch flow for schema changes
 
 ```mermaid
+securityLevel='loose'
 graph LR;
     nonprod[nonprod] --> pr{{Pull Request}} --> main[main]
 
