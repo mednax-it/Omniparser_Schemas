@@ -7,9 +7,9 @@ Placeholder for Omniparser Schemas used by universal-etl-parser API.
 graph LR;
     nonprod[nonprod] --> pr{{Pull Request}} --> main[main]
 
-    click nonprod href "https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod" "Link to nonprod branch"
-    click pr href "https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod" "Link to open a pull request"
-    click main href "https://github.com/mednax-it/Omniparser_Schemas" "Link to main branch"
+    click nonprod href "https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod" "Link to nonprod branch" _blank
+    click pr href "https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod" "Link to open a pull request" _blank
+    click main href "https://github.com/mednax-it/Omniparser_Schemas" "Link to main branch" _blank
 ```
 
 ## HL7 Omniparser Schema
