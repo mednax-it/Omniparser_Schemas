@@ -5,9 +5,9 @@ Placeholder for Omniparser Schemas used by universal-etl-parser API.
 
 ```mermaid
 graph LR;
-    nonprod[nonprod] -- pr[Pull Request] ---> main[main]
+    nonprod[nonprod] --> pr{{Pull Request}} --> main[main]
 
-    click nonprod href "https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod" ""Link to nonprod branch""
+    click nonprod href "https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod" "Link to nonprod branch"
     click pr href "https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod" "Link to open a pull request"
     click main href "https://github.com/mednax-it/Omniparser_Schemas" "Link to main branch"
 ```
