@@ -11,9 +11,9 @@ graph LR;
 
 Helpful links:
 
-* [nonprod](https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod)
-* [pr](https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod)
-* [main](https://github.com/mednax-it/Omniparser_Schemas)
+* [nonprod branch](https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod)
+* [Open a pull request](https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod)
+* [main branch](https://github.com/mednax-it/Omniparser_Schemas)
 
 ## HL7 Omniparser Schema
 
