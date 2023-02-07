@@ -207,7 +207,8 @@
         {"name": "ZCS","min": 0, "max": -1},
         {"name": "ZM1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
-        {"name": "ZEX","min": 0, "max": -1}
+        {"name": "ZEX","min": 0, "max": -1},
+        {"name": "ZRE","min": 0, "max": -1}
         ]
       }
     ]
