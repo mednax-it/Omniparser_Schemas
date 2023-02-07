@@ -1054,7 +1054,7 @@
             "period": {
               "object": {
                 "start": {"xpath": "IN1/plan_effective_date", "template": "transform_datetime"},
-                "end": {"xpath": "IN1/plan_expiration_date", "template": "transform_datetime"}
+                "end": {"xpath": "IN1", "template": "transform_coverage_expiration"}
               }
             },
             "payor": {
@@ -1341,6 +1341,16 @@
                 }
             ]
         }
+    },
+    "transform_coverage_expiration": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+              {"const": "enddate ? (!startdate && !enddate) || enddate < startdate ? '' : enddate : ''"},
+              {"const": "enddate"}, {"xpath": "plan_expiration_date", "template": "transform_datetime"},
+              {"const": "startdate"}, {"xpath": "plan_effective_date", "template": "transform_datetime"}
+          ]
+      }
     },
     "transform_insurance_set_id": {
       "custom_func": {
