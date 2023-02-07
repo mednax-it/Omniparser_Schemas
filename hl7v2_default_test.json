@@ -1353,6 +1353,17 @@
           ]
       }
     },
+    "transform_guarantor_set_id": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+              {"const": "setid ? parseInt(setid) : tertiary ? 3 : secondary ? 2 : 1"},
+              {"const": "secondary"}, {"xpath": "../../GT1[count(..//guarantor/preceding-sibling::guarantor)=1]"},
+              {"const": "tertiary"}, {"xpath": "../../GT1[count(..//guarantor/preceding-sibling::guarantor)=2]"},
+              {"const": "setid"}, {"xpath": "."}
+          ]
+      }
+    },
     "transform_encounter_identifier": {
         "custom_func": {
             "name": "javascript",
@@ -1367,7 +1378,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : mrnfacility + '-' + planid"},
+                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + planid"},
                 {"const": "planid"}, {"xpath": "plan_id"},
                 {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
                 {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
@@ -1448,9 +1459,9 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-            {"const": "!guarantornumber || guarantornumber == '' ? mrnfacility + '-GT1-' + setid : mrnfacility + '-' + guarantornumber"},
+            {"const": "!guarantornumber || guarantornumber == '' ? mrnfacility + '-GT1-' + setid.toString() : mrnfacility + '-' + guarantornumber"},
             {"const": "guarantornumber"}, {"xpath": "guarantor_number"},
-            {"const": "setid"}, {"xpath": "set_id"},
+            {"const": "setid"}, {"xpath": "set_id", "template": "transform_guarantor_set_id"},
             {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
           ]
       }
@@ -1459,9 +1470,9 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-            {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : mrnfacility + '-' + planid"},
+            {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + planid"},
             {"const": "planid"}, {"xpath": "plan_id"},
-            {"const": "setid"}, {"xpath": "set_id"},
+            {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
             {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
           ]
       }
