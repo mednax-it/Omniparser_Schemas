@@ -88,11 +88,16 @@
         {"name": "ZVI","min": 0, "max": -1},
         {"name": "ZIF","min": 0, "max": -1},
         {"name": "ZBE","min": 0, "max": -1},
+        {"name": "NTE","min": 0, "max": -1},
         {"name": "ROL","min": 0, "max": -1},
         {"name": "DB1","min": 0, "max": -1},
         {"name": "OBX","min": 0, "max": -1},
-        {"name": "AL1","min": 0, "max": -1},
-        {"name": "ZAL","min": 0, "max": -1},
+        {"name": "allergy", "type":"segment_group","min": 0, "max": -1,
+            "child_segments": [
+                {"name": "AL1","min": 0,"max": -1},
+                {"name": "ZAL","min": 0,"max": -1}
+            ]
+        },
         {"name": "ACC","min": 0, "max": -1},
         {"name": "DG1","min": 0, "max": -1},
         {"name": "DRG","min": 0},
@@ -201,11 +206,14 @@
         {"name": "ZMR","min": 0, "max": -1},
         {"name": "ZCD","min": 0, "max": -1},
         {"name": "ZIN","min": 0, "max": -1},
+        {"name": "ZIM","min": 0, "max": -1},
         {"name": "ZCN","min": 0, "max": -1},
         {"name": "ZCS","min": 0, "max": -1},
         {"name": "ZM1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
-        {"name": "ZEX","min": 0, "max": -1}
+        {"name": "ZEX","min": 0, "max": -1},
+        {"name": "ZRE","min": 0, "max": -1},
+        {"name": "ZQA","min": 0, "max": -1}
         ]
       }
     ]
@@ -1345,6 +1353,17 @@
           ]
       }
     },
+    "transform_guarantor_set_id": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+              {"const": "setid ? parseInt(setid) : tertiary ? 3 : secondary ? 2 : 1"},
+              {"const": "secondary"}, {"xpath": "../../GT1[count(..//guarantor/preceding-sibling::guarantor)=1]"},
+              {"const": "tertiary"}, {"xpath": "../../GT1[count(..//guarantor/preceding-sibling::guarantor)=2]"},
+              {"const": "setid"}, {"xpath": "."}
+          ]
+      }
+    },
     "transform_encounter_identifier": {
         "custom_func": {
             "name": "javascript",
@@ -1359,7 +1378,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : mrnfacility + '-' + planid"},
+                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + planid"},
                 {"const": "planid"}, {"xpath": "plan_id"},
                 {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
                 {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
@@ -1440,9 +1459,9 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-            {"const": "!guarantornumber || guarantornumber == '' ? mrnfacility + '-GT1-' + setid : mrnfacility + '-' + guarantornumber"},
+            {"const": "!guarantornumber || guarantornumber == '' ? mrnfacility + '-GT1-' + setid.toString() : mrnfacility + '-' + guarantornumber"},
             {"const": "guarantornumber"}, {"xpath": "guarantor_number"},
-            {"const": "setid"}, {"xpath": "set_id"},
+            {"const": "setid"}, {"xpath": "set_id", "template": "transform_guarantor_set_id"},
             {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
           ]
       }
@@ -1451,9 +1470,9 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-            {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid : mrnfacility + '-' + planid"},
+            {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + planid"},
             {"const": "planid"}, {"xpath": "plan_id"},
-            {"const": "setid"}, {"xpath": "set_id"},
+            {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
             {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
           ]
       }
