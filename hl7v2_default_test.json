@@ -1388,7 +1388,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(planid)"},
+                {"const": "!planid || planid == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(planid).replace(/\\%[A-F0-9]{2}/g,'')"},
                 {"const": "planid"}, {"xpath": "plan_id"},
                 {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
                 {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
