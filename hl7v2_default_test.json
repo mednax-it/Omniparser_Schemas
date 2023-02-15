@@ -985,14 +985,20 @@
                 {
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/coverage-id"},
-                    "value": {"xpath": "IN1", "template": "transform_coverage_identifier"},
+                    "value": {"xpath": "IN1", "template": "transform_coverage_identifier"}
+                  }
+                },
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/insurance-policy-id"},
+                    "value": {"xpath": "IN1/policy_number"},
                     "type": {
                       "object": {
                         "coding": {
                           "array": [
                             {
                               "object": {
-                                "system": {"const": "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203"},
+                                "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
                                 "code": {"const": "MB"},
                                 "display": {"const": "Member Number"}
                               }
