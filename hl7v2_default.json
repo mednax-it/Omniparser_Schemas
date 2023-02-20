@@ -4,7 +4,7 @@
     "file_format_type": "edi"
   },
   "file_declaration": {
-    "segment_delimiter": "\r",
+    "segment_delimiter": "\\r",
     "element_delimiter": "|",
     "component_delimiter": "^",
     "segment_declarations": [
@@ -229,21 +229,21 @@
             {"template": "messageheader_resource"},
             {"template": "organization_facility_resource"},
             {"template": "patient_resource"},
-            {"template": "encounter_resource"},
-            {"template": "account_resource"},
-            {"xpath": ".[not(//PV1/attending_physician_id[text()=''])]", "template": "practitioner_attending_resource"},
-            {"xpath": ".[not(//PV1/referring_physician_id[text()=''])]", "template": "practitioner_referring_resource"},
-            {"xpath": "guarantor[position()=1]", "template": "relatedperson_guarantor_resource"},
-            {"xpath": "guarantor[position()=2]", "template": "relatedperson_guarantor_resource"},
-            {"xpath": "insurance[position()=1]", "template": "organization_payor_resource", "_comment": "resource for Organization of primary Payer, if found"},
-            {"xpath": "insurance[position()=1]", "template": "coverage_resource", "_comment": "resource for Primary Coverage 1st insurance instance found"},
-            {"xpath": "insurance[position()=1][//insurance[position()=1]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
-            {"xpath": "insurance[position()=2]", "template": "organization_payor_resource", "_comment": "resource for Organization of secondary Payer, if found"},
-            {"xpath": "insurance[position()=2]", "template": "coverage_resource", "_comment": "resource for Secondary Coverage 2nd insurance instance found"},
-            {"xpath": "insurance[position()=2][//insurance[position()=2]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
-            {"xpath": "insurance[position()=3]", "template": "organization_payor_resource", "_comment": "resource for Organization of tertiary Payer, if found"},
-            {"xpath": "insurance[position()=3]", "template": "coverage_resource", "_comment": "resource for Tertiary Coverage 3rd insurance instance found"},
-            {"xpath": "insurance[position()=3][//insurance[position()=3]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"}
+            {"xpath": ".[not(//EVN/message_typecode[text()='A31'])]","template": "encounter_resource"},
+            {"xpath": ".[not(//EVN/message_typecode[text()='A31'])]","template": "account_resource"},
+            {"xpath": ".[not(//EVN/message_typecode[text()='A31']) and not(//PV1/attending_physician_id[text()=''])]", "template": "practitioner_attending_resource"},
+            {"xpath": ".[not(//EVN/message_typecode[text()='A31']) and not(//PV1/referring_physician_id[text()=''])]", "template": "practitioner_referring_resource"},
+            {"xpath": "guarantor[position()=1][not(//EVN/message_typecode[text()='A31'])]", "template": "relatedperson_guarantor_resource"},
+            {"xpath": "guarantor[position()=2][not(//EVN/message_typecode[text()='A31'])]", "template": "relatedperson_guarantor_resource"},
+            {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of primary Payer, if found"},
+            {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Primary Coverage 1st insurance instance found"},
+            {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A31']) and //insurance[position()=1]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of secondary Payer, if found"},
+            {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Secondary Coverage 2nd insurance instance found"},
+            {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A31']) and //insurance[position()=2]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of tertiary Payer, if found"},
+            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Tertiary Coverage 3rd insurance instance found"},
+            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A31']) and //insurance[position()=3]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"}
           ]
         }
       }
