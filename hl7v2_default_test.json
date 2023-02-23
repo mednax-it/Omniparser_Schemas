@@ -229,7 +229,7 @@
             {"template": "messageheader_resource"},
             {"template": "organization_facility_resource"},
             {"template": "patient_resource"},
-            {"xpath": ".[not(//EVN/message_typecode[text()='A31'])]","template": "encounter_resource"},
+            {"template": "encounter_resource"},
             {"xpath": ".[not(//EVN/message_typecode[text()='A31'])]","template": "account_resource"},
             {"xpath": ".[not(//EVN/message_typecode[text()='A31']) and not(//PV1/attending_physician_id[text()=''])]", "template": "practitioner_attending_resource"},
             {"xpath": ".[not(//EVN/message_typecode[text()='A31']) and not(//PV1/referring_physician_id[text()=''])]", "template": "practitioner_referring_resource"},
