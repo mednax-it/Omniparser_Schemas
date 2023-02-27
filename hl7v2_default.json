@@ -1136,6 +1136,27 @@
                         "system": {"const": "https://pediatrix.com/fhir/NamingSystem/us-npi-id"},
                         "value": {"xpath": "PV1", "template": "transform_attending_physician_identifier"}
                       }
+                    },
+                    {
+                      "object": {
+                        "system": {"const": "https://pediatrix.com/fhir/NamingSystem/npi-id"},
+                        "value": {"xpath": "PV1/attending_physician_id"},
+                        "type": {
+                          "object": {
+                            "coding": {
+                              "array": [
+                                {
+                                  "object": {
+                                    "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
+                                    "code": {"const": "NPI"},
+                                    "display": {"const": "National Provider Identifier"}
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
                     }
                   ]
                 }
@@ -1191,6 +1212,27 @@
                               "system": {"const": "https://pediatrix.com/fhir/NamingSystem/us-npi-id"},
                               "value": {"xpath": "PV1", "template": "transform_referring_physician_identifier"}
                           }
+                      },
+                      {
+                        "object": {
+                          "system": {"const": "https://pediatrix.com/fhir/NamingSystem/npi-id"},
+                          "value": {"xpath": "PV1/referring_physician_id"},
+                          "type": {
+                            "object": {
+                              "coding": {
+                                "array": [
+                                  {
+                                    "object": {
+                                      "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
+                                      "code": {"const": "NPI"},
+                                      "display": {"const": "National Provider Identifier"}
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        }
                       }
                  ]
               }
