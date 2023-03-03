@@ -84,6 +84,7 @@
             ]
         },
         {"name": "PV2","min": 0, "max": -1},
+        {"name": "PD1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
         {"name": "ZVI","min": 0, "max": -1},
         {"name": "ZIF","min": 0, "max": -1},
@@ -92,6 +93,7 @@
         {"name": "ROL","min": 0, "max": -1},
         {"name": "DB1","min": 0, "max": -1},
         {"name": "OBX","min": 0, "max": -1},
+        {"name": "NTE","min": 0, "max": -1},
         {"name": "allergy", "type":"segment_group","min": 0, "max": -1,
             "child_segments": [
                 {"name": "AL1","min": 0,"max": -1},
