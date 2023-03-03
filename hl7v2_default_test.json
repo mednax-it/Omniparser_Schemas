@@ -84,6 +84,7 @@
             ]
         },
         {"name": "PV2","min": 0, "max": -1},
+        {"name": "PD1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
         {"name": "ZVI","min": 0, "max": -1},
         {"name": "ZIF","min": 0, "max": -1},
