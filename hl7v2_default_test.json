@@ -60,6 +60,7 @@
         {"name": "NTE","min": 0, "max": -1},
         {"name": "ZPD","min": 0, "max": -1},
         {"name": "PD1","min": 0, "max": -1},
+        {"name": "NTE","min": 0, "max": -1},
         {"name": "ZPI","min": 0, "max": -1},
         {"name": "ZEI","min": 0, "max": -1},
         {"name": "MRG","min": 0, "max": -1},
