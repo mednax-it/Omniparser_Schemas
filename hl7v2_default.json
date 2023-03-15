@@ -4,7 +4,7 @@
     "file_format_type": "edi"
   },
   "file_declaration": {
-    "segment_delimiter": "\\r",
+    "segment_delimiter": "\r",
     "element_delimiter": "|",
     "component_delimiter": "^",
     "segment_declarations": [
