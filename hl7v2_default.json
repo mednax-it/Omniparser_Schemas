@@ -251,12 +251,15 @@
             {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of primary Payer, if found"},
             {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Primary Coverage 1st insurance instance found"},
             {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and //insurance[position()=1]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and not(//insurance[position()=1]/IN1/auth_number[text()=''])]", "template": "claim_resource", "_comment": "resource for preauth if found for primary insurance"},
             {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of secondary Payer, if found"},
             {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Secondary Coverage 2nd insurance instance found"},
             {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and //insurance[position()=2]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and not(//insurance[position()=2]/IN1/auth_number[text()=''])]", "template": "claim_resource", "_comment": "resource for preauth if found for secondary insurance"},
             {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of tertiary Payer, if found"},
             {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Tertiary Coverage 3rd insurance instance found"},
-            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and //insurance[position()=3]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"}
+            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and //insurance[position()=3]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and not(//insurance[position()=3]/IN1/auth_number[text()=''])]", "template": "claim_resource", "_comment": "resource for preauth if found for tertiary insurance"}
           ]
         }
       }
@@ -1186,6 +1189,93 @@
         }
       }
     },
+    "claim_resource": {
+      "object": {
+        "fullUrl": {
+          "custom_func":{
+            "name": "javascript",
+            "args": [
+              {"const": "prefix + index.toString() + suffix"},
+              {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa09-0001-000"},
+              {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+              {"const": "suffix"}, {"const": "-983a382abcd7"}
+            ]  
+          }
+        },
+        "resource": {
+          "object": {
+            "resourceType": {"const": "Claim"},
+            "identifier": {
+              "array": [
+                {
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/claim-id"},
+                    "value": {"xpath": "IN1", "template": "transform_claim_identifier"}
+                  }
+                }
+              ]
+            },
+            "use": {"const": "preauthorization"},
+            "created": {"template": "transform_current_datetime"},
+            "patient": {
+              "object": {
+                "type": {"const": "Patient"},
+                "reference": {"const":"urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7"}
+              }
+            },
+            "provider": {
+              "object": {
+                "type": {"const": "Organization"},
+                "reference": {"const":"urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"}
+              }
+            },
+            "priority": {
+              "object": {
+                "coding": {
+                  "array": [
+                    {
+                      "object": {
+                        "system": {"const": "http://terminology.hl7.org/CodeSystem/processpriority"},
+                        "code": {"const": "normal"}
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "insurance": {
+              "object": {
+                "coverage": {
+                  "object": {
+                    "type": {"const": "Coverage"},
+                    "reference": {          
+                        "custom_func":{
+                        "name": "javascript",
+                        "args": [
+                          {"const": "prefix + index.toString() + suffix"},
+                          {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa06-0001-000"},
+                          {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+                          {"const": "suffix"}, {"const": "-983a382abcd7"}
+                        ]  
+                      }
+                    }
+                  }
+                },
+                "focal": {"const": "true", "type": "boolean"},
+                "sequence": {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+                "preAuthRef": {"xpath": "IN1/auth_number"}
+              }
+            }
+          }
+        },
+        "request": {
+          "object": {
+            "method": {"const": "PUT"},
+            "url": {"xpath": "IN1", "template": "claim_put_request"}
+          }
+        }
+      }
+    },
     "practitioner_attending_resource": {
       "object": {
           "fullUrl": {"const": "urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7"},
@@ -1463,6 +1553,14 @@
             ]
         }
     },
+    "transform_current_datetime": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "new Date()"}
+            ]
+        }
+    },
     "transform_datetime": {
         "custom_func": {
             "name": "javascript",
@@ -1541,6 +1639,18 @@
                 {"const": "!policy_number || policy_number == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(policy_number).replace(/\\%[A-F0-9]{2}/g,'')"},
                 {"const": "policy_number"}, {"xpath": "policy_number"},
                 {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
+                {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
+            ]
+        }
+    },
+    "transform_claim_identifier": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "!policy_number || policy_number == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(policy_number).replace(/\\%[A-F0-9]{2}/g,'') + '-' + encodeURIComponent(authnumber).replace(/\\%[A-F0-9]{2}/g,'')"},
+                {"const": "policy_number"}, {"xpath": "policy_number"},
+                {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
+                {"const": "authnumber"}, {"xpath": "auth_number"},
                 {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
             ]
         }
@@ -1696,6 +1806,15 @@
           "args": [
               { "const": "Coverage?identifier=https://pediatrix.com/fhir/NamingSystem/coverage-id|" },
               { "xpath": ".", "template": "transform_coverage_identifier" }
+          ]
+      }
+    },
+    "claim_put_request": {
+      "custom_func": {
+          "name": "concat",
+          "args": [
+              { "const": "Claim?identifier=https://pediatrix.com/fhir/NamingSystem/claim-id|" },
+              { "xpath": ".", "template": "transform_claim_identifier" }
           ]
       }
     },
