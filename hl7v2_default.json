@@ -1264,7 +1264,11 @@
                   },
                   "focal": {"const": "true", "type": "boolean"},
                   "sequence": {"const": "1", "type": "int"},
-                  "preAuthRef": {"xpath": "IN1/auth_number"}
+                  "preAuthRef": {
+                    "array": [
+                      {"xpath": "IN1/auth_number"}
+                    ]
+                  }
                 }
               }]
             }
