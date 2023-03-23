@@ -1215,7 +1215,23 @@
                 }
               ]
             },
+            "status": {"const": "active"},
             "use": {"const": "preauthorization"},
+            "type": {
+              "object": {
+                "coding": {
+                  "array": [
+                    {
+                      "object": {
+                        "system": {"const": "http://hl7.org/fhir/ValueSet/claim-type"},
+                        "code": {"const": "institutional"},
+                        "display": {"const": "Institutional"}
+                      }
+                    }
+                  ]
+                }
+              }
+            },
             "created": {"template": "transform_current_datetime"},
             "patient": {
               "object": {
