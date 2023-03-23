@@ -1244,27 +1244,29 @@
               }
             },
             "insurance": {
-              "object": {
-                "coverage": {
-                  "object": {
-                    "type": {"const": "Coverage"},
-                    "reference": {          
-                        "custom_func":{
-                        "name": "javascript",
-                        "args": [
-                          {"const": "prefix + index.toString() + suffix"},
-                          {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa06-0001-000"},
-                          {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
-                          {"const": "suffix"}, {"const": "-983a382abcd7"}
-                        ]  
+              "array": [{
+                "object": {
+                  "coverage": {
+                    "object": {
+                      "type": {"const": "Coverage"},
+                      "reference": {          
+                          "custom_func":{
+                          "name": "javascript",
+                          "args": [
+                            {"const": "prefix + index.toString() + suffix"},
+                            {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa06-0001-000"},
+                            {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
+                            {"const": "suffix"}, {"const": "-983a382abcd7"}
+                          ]  
+                        }
                       }
                     }
-                  }
-                },
-                "focal": {"const": "true", "type": "boolean"},
-                "sequence": {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
-                "preAuthRef": {"xpath": "IN1/auth_number"}
-              }
+                  },
+                  "focal": {"const": "true", "type": "boolean"},
+                  "sequence": {"const": "1", "type": "int"},
+                  "preAuthRef": {"xpath": "IN1/auth_number"}
+                }
+              }]
             }
           }
         },
