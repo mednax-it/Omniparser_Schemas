@@ -1223,7 +1223,7 @@
                   "array": [
                     {
                       "object": {
-                        "system": {"const": "http://hl7.org/fhir/ValueSet/claim-type"},
+                        "system": {"const": "http://terminology.hl7.org/CodeSystem/claim-type"},
                         "code": {"const": "institutional"},
                         "display": {"const": "Institutional"}
                       }
