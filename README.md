@@ -19,7 +19,70 @@ Helpful links:
 
 Omniparser Schema used to convert HL7 messages to a JSON format consistent with a FHIR v4.3.0 bundle
 
-### Design Decisions
+### Resource Identifier Design
+
+**Resource UUID Definition**
+
+Each resource utilizes a UUID to uniquely identify and reference the resource in a Transaction Bundle. The following format is used to provide a additional mechanism to quickly identify the resource type:
+
+__Bundle Resource fullUrl UUID Format__
+
+    {a}-{b}-{c}-{d}-{e}
+
+Where:
+a - "61ebe121" (random and persisted)
+b - 4 digit 1-index custom resource id
+c - 4 digit 1-index custom resource type id
+d - 4 digit 1-index occurrence count
+e - "983a382abcd7" (random and persisted)
+
+__Custom Resource IDs__
+1. Patient					aa01
+    1. inpatient			0001
+2. Organization			    aa02
+	1. facility			    0001
+	2. payor				0002
+3. Encounter				aa03
+	1. encounter			0001
+4. Account					aa04
+	1. account				0001
+5. RelatedPerson			aa05
+	1. Guarantor			0001
+	2. Subscriber			0002
+	3. Next of Kin			0003
+6. Coverage				    aa06
+	1. insurance			0001
+7. Practitioner			    aa07
+	1. admitting			0001
+	2. referring			0002
+8. Claim                    aa09
+    1. Claim                0001
+
+Instance Counter		0001, 0002, 0003
+
+Examples:
+Resource UUID for Patient
+
+    61ebe121-aa01-0001-0001-983a382abcd7
+
+Resource UUID for Referring physician practitioner resource
+
+    61ebe121-aa07-0002-0001-983a382abcd7
+
+Resource UUID for secondary insurance Coverage resource
+
+    61ebe121-aa06-0001-0002-983a382abcd7
+
+Resource UUID for subscriber resource of the primary insurance
+
+    61ebe121-aa05-0002-0001-983a382abcd7
+
+Resource UUID for secondary insurance Coverage resource
+
+    61ebe121-aa06-0001-0002-983a382abcd7
+
+
+### Resource Identifier Design
 
 **Patient Identifier**
 
