@@ -884,7 +884,7 @@
                 {"xpath": "IN2",
                   "object": {
                     "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
-                    "value": {"xpath": "ssn"},
+                    "value": {"xpath": "insured_ssn"},
                     "type": {
                       "object": {
                         "coding": {
