@@ -55,7 +55,7 @@ __Custom Resource IDs__
 7. Practitioner			    aa07
 	1. admitting			0001
 	2. referring			0002
-8. Claim                    aa09
+8. Claim                    aa08
     1. Claim                0001
 
 Instance Counter		0001, 0002, 0003
