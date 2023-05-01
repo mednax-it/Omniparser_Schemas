@@ -245,8 +245,8 @@
             {"xpath": ".[count(PID)=1]", "template": "patient_resource"},
             {"xpath": ".[count(PV1)=1]", "template": "encounter_resource"},
             {"xpath": ".[EVN/message_typecode!='A40']","template": "account_resource"},
-            {"xpath": ".[//PV1/attending_physician_id!='']", "template": "practitioner_attending_resource"},
-            {"xpath": ".[//PV1/referring_physician_id!='']", "template": "practitioner_referring_resource"},
+            {"xpath": ".[PV1/attending_physician_id!='']", "template": "practitioner_attending_resource"},
+            {"xpath": ".[PV1/referring_physician_id!='']", "template": "practitioner_referring_resource"},
             {"xpath": "guarantor[position()=1]", "template": "relatedperson_guarantor_resource"},
             {"xpath": "guarantor[position()=2]", "template": "relatedperson_guarantor_resource"},
             {"xpath": "insurance[position()=1]", "template": "organization_payor_resource", "_comment": "resource for Organization of primary Payer, if found"},
@@ -301,7 +301,7 @@
               "array": [
                 {
                   "object": {
-                    "reference": {"xpath":".[count(PV1)=1]", "template": "transform_message_header_focus"}
+                    "reference": {"xpath":".", "template": "transform_message_header_focus"}
                   }
                 }
               ]
@@ -576,7 +576,7 @@
             },
             "participant": {
               "array": [
-                {"xpath": ".[//PV1/attending_physician_id!='']]",
+                {"xpath": ".[PV1/attending_physician_id!='']",
                   "object": {
                     "type": {
                       "array":[
@@ -605,7 +605,7 @@
                     }
                   }
                 },
-                {"xpath": ".[//PV1/referring_physician_id!='']",
+                {"xpath": ".[PV1/referring_physician_id!='']",
                   "object": {
                     "type": {
                       "array":[
@@ -863,7 +863,7 @@
                   {
                     "object": {
                       "use": {"xpath": "GT1/address_type", "template": "transform_address_use"},
-                      "type": {"const": "GT1/physical"},
+                      "type": {"const": "physical"},
                       "line": {
                           "array": [
                               {"xpath": "GT1/address_1"},
@@ -1762,7 +1762,7 @@
           "name": "javascript",
           "args": [
               {"const": "if (val) {'urn:uuid:61ebe121-aa03-0001-0001-983a382abcd7';} else {'urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7';}"},
-              {"const": "val"}, {"xpath": "."}
+              {"const": "val"}, {"xpath": ".[count(PV1)=1]"}
           ]
       }
     },
