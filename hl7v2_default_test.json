@@ -1049,10 +1049,10 @@
             "name": {"xpath": "IN1/company_name"},
             "telecom": {
               "array": [
-                {"xpath": ".[IN1/work!='']",
+                {"xpath": ".[IN1/insurance_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
-                    "value": {"xpath": "insurance_phone"},
+                    "value": {"xpath": "IN1/insurance_phone"},
                     "use": {"const": "work"}
                   }
                 }
