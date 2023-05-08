@@ -52,6 +52,7 @@
                 {"name": "work_phone_type", "index": 14, "component_index": 3, "default": ""},
                 {"name": "work_email", "index": 14, "component_index": 4, "default": ""},
                 {"name": "marital_status", "index": 16, "default": "Unknown"},
+                {"name": "hospital_patient_number", "index": 18, "component_index": 1, "default": ""},
                 {"name": "ssn", "index": 19, "default": ""},
                 {"name": "multiple_birth", "index": 24, "default": ""},
                 {"name": "birth_order", "index": 25, "default": ""},
@@ -241,25 +242,25 @@
           "array": [
             {"template": "messageheader_resource"},
             {"template": "organization_facility_resource"},
-            {"template": "patient_resource"},
-            {"xpath": ".[not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]","template": "encounter_resource"},
-            {"xpath": ".[not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]","template": "account_resource"},
-            {"xpath": ".[not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and not(//PV1/attending_physician_id[text()=''])]", "template": "practitioner_attending_resource"},
-            {"xpath": ".[not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and not(//PV1/referring_physician_id[text()=''])]", "template": "practitioner_referring_resource"},
-            {"xpath": "guarantor[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "relatedperson_guarantor_resource"},
-            {"xpath": "guarantor[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "relatedperson_guarantor_resource"},
-            {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of primary Payer, if found"},
-            {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Primary Coverage 1st insurance instance found"},
-            {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and //insurance[position()=1]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
-            {"xpath": "insurance[position()=1][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and not(//insurance[position()=1]/IN1/auth_number[text()=''])]", "template": "claim_resource", "_comment": "resource for preauth if found for primary insurance"},
-            {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of secondary Payer, if found"},
-            {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Secondary Coverage 2nd insurance instance found"},
-            {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and //insurance[position()=2]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
-            {"xpath": "insurance[position()=2][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and not(//insurance[position()=2]/IN1/auth_number[text()=''])]", "template": "claim_resource", "_comment": "resource for preauth if found for secondary insurance"},
-            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "organization_payor_resource", "_comment": "resource for Organization of tertiary Payer, if found"},
-            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31'])]", "template": "coverage_resource", "_comment": "resource for Tertiary Coverage 3rd insurance instance found"},
-            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and //insurance[position()=3]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
-            {"xpath": "insurance[position()=3][not(//EVN/message_typecode[text()='A40']) and not(//EVN/message_typecode[text()='A31']) and not(//insurance[position()=3]/IN1/auth_number[text()=''])]", "template": "claim_resource", "_comment": "resource for preauth if found for tertiary insurance"}
+            {"xpath": ".[count(PID)=1]", "template": "patient_resource"},
+            {"xpath": ".[count(PV1)=1]", "template": "encounter_resource"},
+            {"xpath": ".[EVN/message_typecode!='A40']","template": "account_resource"},
+            {"xpath": ".[PV1/attending_physician_id!='']", "template": "practitioner_attending_resource"},
+            {"xpath": ".[PV1/referring_physician_id!='']", "template": "practitioner_referring_resource"},
+            {"xpath": "guarantor[position()=1]", "template": "relatedperson_guarantor_resource"},
+            {"xpath": "guarantor[position()=2]", "template": "relatedperson_guarantor_resource"},
+            {"xpath": "insurance[position()=1]", "template": "organization_payor_resource", "_comment": "resource for Organization of primary Payer, if found"},
+            {"xpath": "insurance[position()=1]", "template": "coverage_resource", "_comment": "resource for Primary Coverage 1st insurance instance found"},
+            {"xpath": "insurance[position()=1][//insurance[position()=1]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=1][//insurance[position()=1]/IN1/auth_number!='']", "template": "claim_resource", "_comment": "resource for preauth if found for primary insurance"},
+            {"xpath": "insurance[position()=2]", "template": "organization_payor_resource", "_comment": "resource for Organization of secondary Payer, if found"},
+            {"xpath": "insurance[position()=2]", "template": "coverage_resource", "_comment": "resource for Secondary Coverage 2nd insurance instance found"},
+            {"xpath": "insurance[position()=2][//insurance[position()=2]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=2][//insurance[position()=2]/IN1/auth_number!='']", "template": "claim_resource", "_comment": "resource for preauth if found for secondary insurance"},
+            {"xpath": "insurance[position()=3]", "template": "organization_payor_resource", "_comment": "resource for Organization of tertiary Payer, if found"},
+            {"xpath": "insurance[position()=3]", "template": "coverage_resource", "_comment": "resource for Tertiary Coverage 3rd insurance instance found"},
+            {"xpath": "insurance[position()=3][//insurance[position()=3]/IN1/insured_patient_relationship[not(translate(text(), 'self','SELF')='SELF') and not(text()='01')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
+            {"xpath": "insurance[position()=3][//insurance[position()=3]/IN1/auth_number!='']", "template": "claim_resource", "_comment": "resource for preauth if found for tertiary insurance"}
           ]
         }
       }
@@ -300,7 +301,7 @@
               "array": [
                 {
                   "object": {
-                    "reference": {"xpath":"EVN/message_typecode", "template": "transform_message_header_focus"}
+                    "reference": {"xpath":".", "template": "transform_message_header_focus"}
                   }
                 }
               ]
@@ -356,7 +357,7 @@
             "resourceType": {"const": "Patient"},
             "identifier": {
               "array": [
-                {
+                {"xpath": ".[PID/mrn!='']",
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/mrn-id"},
                     "value": {"xpath": "PID/mrn"},
@@ -382,10 +383,10 @@
                     }
                   }
                 },
-                {"xpath": "PID/ssn",
+                {"xpath": ".[PID/ssn!='']",
                   "object": {
                     "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
-                    "value": {"xpath": ".", "template": "transform_patient_ssn"},
+                    "value": {"xpath": "PID/ssn", "template": "transform_patient_ssn"},
                     "type": {
                       "object": {
                         "coding": {
@@ -395,6 +396,32 @@
                                 "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
                                 "code": {"const": "SS"},
                                 "display": {"const": "Social Security Number"}
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                {"xpath": ".[PID/hospital_patient_number!='']",
+                  "object": {
+                    "system": {"const": "https://pediatrix.com/fhir/NamingSystem/hospital-patient-id"},
+                    "value": {"xpath": "PID/hospital_patient_number"},
+                    "assigner": {
+                      "object": {
+                        "reference": {"const": "urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"}
+                      }
+                    },
+                    "type": {
+                      "object": {
+                        "coding": {
+                          "array": [
+                            {
+                              "object": {
+                                "system": {"const": "http://terminology.hl7.org/CodeSystem/v2-0203"},
+                                "code": {"const": "PI"},
+                                "display": {"const": "Patient Internal Identifier"}
                               }
                             }
                           ]
@@ -422,28 +449,28 @@
             },
             "telecom": {
               "array": [
-                {
+                {"xpath": ".[PID/home_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
                     "value": {"xpath": "PID/home_phone"},
                     "use": {"xpath": "PID/home_phone_type", "template": "transform_phone_type"}
                   }
                 },
-                {
+                {"xpath": ".[PID/work_phone!='']",
                     "object": {
                       "system": {"const": "phone"},
                       "value": {"xpath": "PID/work_phone"},
                       "use": {"const": "work"}
                     }
                 },
-                {
+                {"xpath": ".[PID/home_email!='']",
                   "object": {
                     "system": {"const": "email"},
                     "value": {"xpath": "PID/home_email", "template": "transform_email_type"},
                     "use": {"const": "home"}
                   }
                 },
-                {
+                {"xpath": ".[PID/work_email!='']",
                   "object": {
                     "system": {"const": "email"},
                     "value": {"xpath": "PID/work_email", "template": "transform_email_type"},
@@ -474,7 +501,7 @@
                 }
               ]
             },
-            "maritalStatus": {
+            "maritalStatus": {"xpath": ".[PID/marital_status!='']",
               "object": {
                 "coding": {
                   "array": [
@@ -549,7 +576,7 @@
             },
             "participant": {
               "array": [
-                {"xpath": ".[not(//PV1/attending_physician_id[text()=''])]",
+                {"xpath": ".[PV1/attending_physician_id!='']",
                   "object": {
                     "type": {
                       "array":[
@@ -578,7 +605,7 @@
                     }
                   }
                 },
-                {"xpath": ".[not(//PV1/referring_physician_id[text()=''])]",
+                {"xpath": ".[PV1/referring_physician_id!='']",
                   "object": {
                     "type": {
                       "array":[
@@ -753,10 +780,10 @@
                     "value": {"xpath": "GT1", "template": "transform_relatedperson_guarantor_identifier"}
                   }
                 },
-                {"xpath": "GT1",
+                {"xpath": ".[GT1/ssn!='']",
                   "object": {
                     "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
-                    "value": {"xpath": "ssn"},
+                    "value": {"xpath": "GT1/ssn"},
                     "type": {
                       "object": {
                         "coding": {
@@ -778,13 +805,13 @@
             },
             "name": {
             "array": [
-                {"xpath": "GT1",
+                {
                 "object": {
-                    "family": {"xpath": "last_name"},
+                    "family": {"xpath": "GT1/last_name"},
                     "given": {
                         "array": [
-                            {"xpath": "first_name"},
-                            {"xpath": "middle_name"}
+                            {"xpath": "GT1/first_name"},
+                            {"xpath": "GT1/middle_name"}
                         ]
                     }
                 }
@@ -799,28 +826,28 @@
             },
             "telecom": {
               "array": [
-                {
+                {"xpath": ".[GT1/home_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
                     "value": {"xpath": "GT1/home_phone"},
                     "use": {"xpath": "GT1/home_phone_type", "template": "transform_phone_type"}
                   }
                 },
-                {
+                {"xpath": ".[GT1/work_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
                     "value": {"xpath": "GT1/work_phone"},
                     "use": {"const": "work"}
                   }
                 },
-                {
+                {"xpath": ".[GT1/home_email!='']",
                   "object": {
                     "system": {"const": "email"},
                     "value": {"xpath": "GT1/home_email", "template": "transform_email_type"},
                     "use": {"const": "home"}
                   }
                 },
-                {
+                {"xpath": ".[GT1/work_email!='']",
                   "object": {
                     "system": {"const": "email"},
                     "value": {"xpath": "GT1/work_email", "template": "transform_email_type"},
@@ -833,20 +860,20 @@
             "birthDate": {"xpath": "GT1/dob", "template": "transform_date"},
             "address": {
                 "array": [
-                  {"xpath": "GT1",
+                  {
                     "object": {
-                      "use": {"xpath": "address_type", "template": "transform_address_use"},
+                      "use": {"xpath": "GT1/address_type", "template": "transform_address_use"},
                       "type": {"const": "physical"},
                       "line": {
                           "array": [
-                              {"xpath": "address_1"},
-                              {"xpath": "address_2"}
+                              {"xpath": "GT1/address_1"},
+                              {"xpath": "GT1/address_2"}
                           ]
                       },
-                      "city": {"xpath": "city"},
-                      "state": {"xpath": "state"},
-                      "postalCode": {"xpath": "zip"},
-                      "country": {"xpath": "country"}
+                      "city": {"xpath": "GT1/city"},
+                      "state": {"xpath": "GT1/state"},
+                      "postalCode": {"xpath": "GT1/zip"},
+                      "country": {"xpath": "GT1/country"}
                     }
                   }
                 ]
@@ -885,7 +912,7 @@
                     "value": {"xpath": "IN1", "template": "transform_insurance_identifier", "_comment": "insurance identifer value is also used as subscriber identifier value"}
                   }
                 },
-                {"xpath": "IN2",
+                {"xpath": ".[IN2/insured_ssn!='']",
                   "object": {
                     "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
                     "value": {"xpath": "insured_ssn"},
@@ -910,13 +937,13 @@
             },
             "name": {
             "array": [
-                {"xpath":"IN1",
+                {
                   "object": {
-                      "family": {"xpath": "insured_last_name"},
+                      "family": {"xpath": "IN1/insured_last_name"},
                       "given": {
                           "array": [
-                              {"xpath": "insured_first_name"},
-                              {"xpath": "insured_middle_name"}
+                              {"xpath": "IN1/insured_first_name"},
+                              {"xpath": "IN1/insured_middle_name"}
                           ]
                       }
                   }
@@ -931,28 +958,28 @@
             },
             "telecom": {
               "array": [
-                {
+                {"xpath": ".[IN2/insured_home_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
                     "value": {"xpath": "IN2/insured_home_phone"},
                     "use": {"xpath": "IN2/insured_home_phone_type", "template": "transform_phone_type"}
                   }
                 },
-                {
+                {"xpath": ".[IN2/insured_work_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
                     "value": {"xpath": "IN2/insured_work_phone"},
                     "use": {"const": "work"}
                   }
                 },
-                {
+                {"xpath": ".[IN2/insured_home_email!='']",
                   "object": {
                     "system": {"const": "email"},
                     "value": {"xpath": "IN2/insured_home_email", "template": "transform_email_type"},
                     "use": {"const": "home"}
                   }
                 },
-                {
+                {"xpath": ".[IN2/insured_work_email!='']",
                   "object": {
                     "system": {"const": "email"},
                     "value": {"xpath": "IN2/insured_work_email", "template": "transform_email_type"},
@@ -965,20 +992,20 @@
             "birthDate": {"xpath": "IN1/insured_dob", "template": "transform_date"},
             "address": {
                 "array": [
-                  {"xpath":"IN1",
+                  {
                     "object": {
-                      "use": {"xpath": "address_type", "template": "transform_address_use"},
+                      "use": {"xpath": "IN1/address_type", "template": "transform_address_use"},
                       "type": {"const": "physical"},
                       "line": {
                           "array": [
-                              {"xpath": "insured_address_1"},
-                              {"xpath": "insured_address_2"}
+                              {"xpath": "IN1/insured_address_1"},
+                              {"xpath": "IN1/insured_address_2"}
                           ]
                       },
-                      "city": {"xpath": "insured_city"},
-                      "state": {"xpath": "insured_state"},
-                      "postalCode": {"xpath": "insured_zip"},
-                      "country": {"xpath": "insured_country"}
+                      "city": {"xpath": "IN1/insured_city"},
+                      "state": {"xpath": "IN1/insured_state"},
+                      "postalCode": {"xpath": "IN1/insured_zip"},
+                      "country": {"xpath": "IN1/insured_country"}
                     }
                   }
                 ]
@@ -1022,10 +1049,10 @@
             "name": {"xpath": "IN1/company_name"},
             "telecom": {
               "array": [
-                {"xpath": "IN1",
+                {"xpath": ".[IN1/insurance_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
-                    "value": {"xpath": "insurance_phone"},
+                    "value": {"xpath": "IN1/insurance_phone"},
                     "use": {"const": "work"}
                   }
                 }
@@ -1033,20 +1060,20 @@
             },
             "address": {
               "array": [
-                {"xpath": "IN1",
+                {
                   "object": {
-                    "use": {"xpath": "address_type", "template": "transform_address_use"},
+                    "use": {"xpath": "IN1/address_type", "template": "transform_address_use"},
                     "type": {"const": "physical"},
                     "line": {
                         "array": [
-                            {"xpath": "address_1"},
-                            {"xpath": "address_2"}
+                            {"xpath": "IN1/address_1"},
+                            {"xpath": "IN1/address_2"}
                         ]
                     },
-                    "city": {"xpath": "city"},
-                    "state": {"xpath": "state"},
-                    "postalCode": {"xpath": "zip"},
-                    "country": {"xpath": "country"}
+                    "city": {"xpath": "IN1/city"},
+                    "state": {"xpath": "IN1/state"},
+                    "postalCode": {"xpath": "IN1/zip"},
+                    "country": {"xpath": "IN1/country"}
                   }
                 }
               ]
@@ -1734,9 +1761,8 @@
       "custom_func": {
           "name": "javascript",
           "args": [
-              {"const": "if (val && excluded_adts.includes(val)) {'urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7';} else {'urn:uuid:61ebe121-aa03-0001-0001-983a382abcd7';}"},
-              { "const": "excluded_adts" }, { "array": [ {"const": "A31", "type": "string" },{"const": "A40", "type": "string" }]},
-              {"const": "val"}, {"xpath": "."}
+              {"const": "if (val) {'urn:uuid:61ebe121-aa03-0001-0001-983a382abcd7';} else {'urn:uuid:61ebe121-aa01-0001-0001-983a382abcd7';}"},
+              {"const": "val"}, {"xpath": ".[count(PV1)=1]"}
           ]
       }
     },
