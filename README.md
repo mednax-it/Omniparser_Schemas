@@ -42,6 +42,7 @@ __Custom Resource IDs__
 2. Organization			    aa02
 	1. facility			    0001
 	2. payor				0002
+    3. department           0003
 3. Encounter				aa03
 	1. encounter			0001
 4. Account					aa04
