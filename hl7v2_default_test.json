@@ -154,7 +154,7 @@
                 {
                     "name": "IN1",
                     "elements": [
-                        {"name": "set_id", "index": 1, "default": "1"},     
+                        {"name": "set_id", "index": 1, "default": "1"},
                         {"name": "plan_id", "index": 2, "component_index": 1, "default": "00000"},
                         {"name": "plan_name", "index": 2, "component_index": 2, "default": "00000"},
                         {"name": "company_id", "index": 3, "component_index": 1, "default": "00000"},
@@ -606,9 +606,13 @@
               }
             },
             "type": {
-              "object": {
-                "text": {"xpath": "PV1", "template": "transform_encounter_types", "_comment": "Note: field is concatenation of 3 PV1 fields not easily mapped to FHIR"}
-              }
+              "array": [
+                {
+                  "object": {
+                    "text": {"xpath": "PV1", "template": "transform_encounter_types", "_comment": "Note: field is concatenation of 3 PV1 fields not easily mapped to FHIR"}
+                  }
+                }
+              ]
             },
             "participant": {
               "array": [
@@ -671,7 +675,7 @@
                   }
                 }
               ]
-            }, 
+            },
             "account": {
                 "array": [
                     {
@@ -802,7 +806,7 @@
                     {"const": "urn:uuid:61ebe121-aa05-0001-000"},
                     {"xpath": "GT1/set_id"},
                     {"const": "-983a382abcd7"}
-                ]  
+                ]
             }
         },
         "resource": {
@@ -934,7 +938,7 @@
                     {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa05-0002-000"},
                     {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
                     {"const": "suffix"}, {"const": "-983a382abcd7"}
-                ]  
+                ]
             }
         },
         "resource": {
@@ -1066,7 +1070,7 @@
                     {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa02-0002-000"},
                     {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
                     {"const": "suffix"}, {"const": "-983a382abcd7"}
-                ]  
+                ]
             }
         },
         "resource": {
@@ -1135,7 +1139,7 @@
               {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa06-0001-000"},
               {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
               {"const": "suffix"}, {"const": "-983a382abcd7"}
-            ]  
+            ]
           }
         },
         "resource": {
@@ -1203,7 +1207,7 @@
                                   {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa05-0002-000"},
                                   {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
                                   {"const": "suffix"}, {"const": "-983a382abcd7"}
-                              ]  
+                              ]
                           }
                         }
                       ]
@@ -1236,7 +1240,7 @@
                                 {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa02-0002-000"},
                                 {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
                                 {"const": "suffix"}, {"const": "-983a382abcd7"}
-                            ]  
+                            ]
                         }
                     }
                   }
@@ -1266,7 +1270,7 @@
               {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa08-0001-000"},
               {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
               {"const": "suffix"}, {"const": "-983a382abcd7"}
-            ]  
+            ]
           }
         },
         "resource": {
@@ -1332,7 +1336,7 @@
                   "coverage": {
                     "object": {
                       "type": {"const": "Coverage"},
-                      "reference": {          
+                      "reference": {
                           "custom_func":{
                           "name": "javascript",
                           "args": [
@@ -1340,7 +1344,7 @@
                             {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa06-0001-000"},
                             {"const": "index"}, {"xpath": "IN1/set_id", "template": "transform_insurance_set_id"},
                             {"const": "suffix"}, {"const": "-983a382abcd7"}
-                          ]  
+                          ]
                         }
                       }
                     }
