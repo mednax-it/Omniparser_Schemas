@@ -606,9 +606,9 @@
                 "end": {"xpath": "PV1/discharge_datetime", "template": "transform_datetime"}
               }
             },
-            "serviceProvider": {
+            "serviceProvider": {"xpath": ".[PV1/point_of_care!='']", "_comment": "Note: Organization (department) reference only populated with existence of point of care",
               "object": {
-                "reference": {"const": "urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"}
+                "reference": {"const": "urn:uuid:61ebe121-aa02-0003-0001-983a382abcd7"}
               }
             },
             "type": {
