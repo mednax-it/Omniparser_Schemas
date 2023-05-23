@@ -961,7 +961,7 @@
                 {"xpath": ".[IN2/insured_ssn!='']",
                   "object": {
                     "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
-                    "value": {"xpath": "insured_ssn", "template": "transform_ssn"},
+                    "value": {"xpath": "IN2/insured_ssn", "template": "transform_ssn"},
                     "type": {
                       "object": {
                         "coding": {
