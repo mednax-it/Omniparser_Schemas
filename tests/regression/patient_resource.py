@@ -7,9 +7,6 @@ from .reg_globals.patient_reg_global import (
     MIDDLENAME
 )
 
-
-
-
 def run():
     with open('output_regression.json') as data_file:
         data = json.load(data_file)

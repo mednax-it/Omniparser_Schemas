@@ -24,3 +24,5 @@ def fetch_parsed_text(text_to_parse):
     print(http_response.text)
     return http_response.text
 
+
+
