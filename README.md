@@ -144,3 +144,8 @@ If attending physician id does not exist, identifier will default to concatenati
 If referring physician id does not exist, identifier will default to concatenation of `mrn_facility`, the patient visit segment code "PV1" and the FHIR ParticipationType Code System value "REF"
 
     {mrn}-{facility_id}-PV1-REF
+
+
+**Note**
+
+Once regression tests were commenced in circleci and after review by Jason/Craig were completed, will provide env variable details and steps needed to run locally
