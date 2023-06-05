@@ -4,6 +4,7 @@ import random
 import string
 import requests
 import json
+import sys
 
 from omniparser_schemas.common.globals import(
    ROOT_URL
@@ -16,7 +17,7 @@ unique_mrn_number = str(unique_mrn_number)
 facilityId = "477"
 token = get_token()
 
-def regressionTest():
+def regression_test():
     response = postFHIRbunlde(unique_mrn_number, facilityId)
     # send the fhir request in smilecdr
     N=10
@@ -36,4 +37,9 @@ def regressionTest():
     with open("output_regression.json", "w") as regoutjson:
         json.dump(response.json(), regoutjson)
 
-regressionTest()
+
+def cli(args=None):
+    """Process command line arguments."""
+    if not args:
+        args = sys.argv[1:]
+    regression_test()
