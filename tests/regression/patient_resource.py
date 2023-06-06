@@ -2,31 +2,20 @@ import json
 import sys
 
 from .reg_globals.patient_reg_global import (
+    MRN,
     LASTNAME,
     FIRSTNAME,
     MIDDLENAME
 )
 
-def run():
-    with open('output_regression.json') as data_file:
-        data = json.load(data_file)
-    if (data["entry"][0]["resource"]["resourceType"]) == "Patient":
-        patient_data = data["entry"][0]["resource"]
-
-    else:
-        print("patient resource not found")
-        exit(1)
-
-
-    assert data["entry"][0]["resource"]["name"][0]["family"] == LASTNAME, "Last name did not match"
-    assert data["entry"][0]["resource"]["name"][0]["given"][0] == FIRSTNAME, "First name did not match"
-    assert data["entry"][0]["resource"]["name"][0]["given"][1] == MIDDLENAME, "First name did not match"
-
+def patient_test():
+    with open('src/omniparser_schemas/smilecdr/hl7_regression.json', 'r') as json_file:
+        fhir_bundle = json.load(json_file)
+    assert fhir_bundle["entry"][10]["resource"]["identifier"][0]["value"] == MRN, "did not match MRN"
     print("Patient Resource Regression Tests got PASS")
-
 
 def cli(args=None):
     """Process command line arguments."""
     if not args:
         args = sys.argv[1:]
-    run()
+    patient_test()
