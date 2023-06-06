@@ -9,7 +9,7 @@ import requests
 #   REQUEST_TIMEOUT
 #)
 UNIVERSAL_ETL_PARSER_CONTENT_SCHEMA="hl7v2_default"
-UNIVERSAL_ETL_PARSER_URL="https://universal-etl-parser.mdnxdev.com/"
+UNIVERSAL_ETL_PARSER_URL="https://universal-etl-parser.mdnxdev1.com/"
 REQUEST_TIMEOUT=90
 
 def fetch_parsed_text(text_to_parse):
