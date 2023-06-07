@@ -2,10 +2,10 @@ import importlib
 import json
 import sys
 
-from omniparser_schemas.smilecdr.universal_etl_parser import fetch_parsed_text
+from omniparser_schemas.parser.universal_etl_parser import fetch_parsed_text
 
 def validate_ETL_parser():
-   with importlib.resources.path("omniparser_schemas.smilecdr", "RegressionTestData.txt") as f:
+   with importlib.resources.path("omniparser_schemas.parser", "RegressionTestData.txt") as f:
       hl7content = f.read_text()
    # The universal parser need to have carriage return
    hl7content = hl7content.replace('\\r', '\r')
@@ -17,7 +17,7 @@ def validate_ETL_parser():
 
    json_data = json.loads(fhir_bundle)
 
-   with open("src/omniparser_schemas/smilecdr/hl7_regression.json", "w") as f:
+   with open("src/omniparser_schemas/parser/hl7_regression.json", "w") as f:
        json.dump(json_data, f)
 
 def cli(args=None):

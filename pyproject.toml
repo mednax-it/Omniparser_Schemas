@@ -17,5 +17,5 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-executeETLparser = "src.omniparser_schemas.smilecdr.main:cli"
+executeETLparser = "src.omniparser_schemas.parser.main:cli"
 test = "tests.regression.patient_resource:cli"

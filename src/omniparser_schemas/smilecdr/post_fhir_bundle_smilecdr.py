@@ -8,7 +8,7 @@ import requests
 from omniparser_schemas.common.globals import(
    ROOT_URL
 )
-from omniparser_schemas.smilecdr.universal_etl_parser import fetch_parsed_text
+from omniparser_schemas.parser.universal_etl_parser import fetch_parsed_text
 from omniparser_schemas.smilecdr.smile_cdr_token import get_token
 
 def postFHIRbunlde(mrn, facilityId):
