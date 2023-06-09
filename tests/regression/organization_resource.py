@@ -15,9 +15,10 @@ def org_test():
         fhir_bundle = json.load(json_file)
         TARGET_RESOURCE_TYPE = "Organization"
         entries = fhir_bundle["entry"]
-        results = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
+        filter_org = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
         ORG_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/facilityId-id"
-        results_org = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == ORG_IDENTIFIER, results))
-        assert results_org[0]["fullUrl"] == ORGANIZATION_FULL_URL, "did not match organization resource full url"
-        assert results_org[0]["request"]["method"] == REQUEST_TYPE[1], "did not match post request type"
-        print("FHIR bundle organization resource tests were successful")
+        org = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == ORG_IDENTIFIER, filter_org))
+
+    assert org[0]["fullUrl"] == ORGANIZATION_FULL_URL, "did not match organization resource full url"
+    assert org[0]["request"]["method"] == REQUEST_TYPE[1], "did not match post request type"
+    print("FHIR bundle organization resource tests were successful")
