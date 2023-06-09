@@ -33,7 +33,7 @@ from .reg_globals.reference_urls import(
 )
 
 from .reg_globals.request_type import(
-    PUT_REQUEST
+    REQUEST_TYPE
 )
 
 def patient_test():
@@ -65,7 +65,7 @@ def patient_test():
     assert fhir_bundle["entry"][10]["resource"]["multipleBirthInteger"] == BIRTHORDER, "did not match birthorder"
 
     assert fhir_bundle["entry"][10]["fullUrl"] == PATIENT_FULL_URL, "did not match patient's full url"
-    assert fhir_bundle["entry"][10]["request"]["method"] == PUT_REQUEST, "did not match request method"
+    assert fhir_bundle["entry"][10]["request"]["method"] == REQUEST_TYPE[0], "did not match request method"
 
     assert fhir_bundle["entry"][10]["request"]["url"] == f"Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|{MRN}&mrn-assigner={ORGANIZATION_FULL_URL}"
 
@@ -73,10 +73,3 @@ def patient_test():
     assert fhir_bundle["entry"][10]["resource"]["identifier"][2]["assigner"]["reference"] == ORGANIZATION_FULL_URL, "patient account reference did not match with organization reference URL"
 
     print("FHIR bundle patient resource tests were successful")
-
-
-def pat_cli(args=None):
-    """Process command line arguments."""
-    if not args:
-        args = sys.argv[1:]
-    patient_test()

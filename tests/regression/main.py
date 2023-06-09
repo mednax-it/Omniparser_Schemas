@@ -1,13 +1,13 @@
 import sys
 
-from patient_resource import pat_cli
-from organization_resource import org_cli
+from tests.regression.patient_resource import patient_test
+from tests.regression.organization_resource import org_test
 
 def run_tests():
-    pat_cli()
-    org_cli()
+    patient_test()
+    org_test()
 
-def run_cli(args=None):
+def cli(args=None):
     """Process command line arguments."""
     if not args:
         args = sys.argv[1:]
