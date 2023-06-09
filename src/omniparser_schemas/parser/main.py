@@ -13,6 +13,7 @@ def validate_ETL_parser():
    # call universal utl parser
    fhir_bundle_from_hl7 = fetch_parsed_text(hl7content)
       # Remove first and last character of fhir bundle
+   
    fhir_bundle = fhir_bundle_from_hl7[1:-1]
 
    json_data = json.loads(fhir_bundle)
