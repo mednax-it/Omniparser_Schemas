@@ -75,7 +75,7 @@ def patient_test():
     print("FHIR bundle patient resource tests were successful")
 
 
-def cli(args=None):
+def pat_cli(args=None):
     """Process command line arguments."""
     if not args:
         args = sys.argv[1:]
