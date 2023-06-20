@@ -7,6 +7,7 @@ from .reg_globals.patient_reg_global import (
     FIRSTNAME,
     MIDDLENAME,
     DOB,
+    DOD,
     GENDER,
     ADDRESS1,
     ADDRESS2,
@@ -45,6 +46,7 @@ from .reg_globals.patient_reg_global import (
     N_FIRSTNAME,
     N_MIDDLENAME,
     N_DOB,
+    N_DOD,
     N_GENDER,
     N_ADDRESS1,
     N_ADDRESS2,
@@ -107,6 +109,7 @@ def patient_test():
     assert pat[0]["resource"]["name"][0]["given"][0] == FIRSTNAME, "did not match firstname"
     assert pat[0]["resource"]["name"][0]["given"][1] == MIDDLENAME, "did not match middlename"
     assert pat[0]["resource"]["birthDate"] == DOB, "did not match dob"
+    assert pat[0]["resource"]["deceasedDateTime"] == DOD, "did not match dod"
     assert pat[0]["resource"]["gender"] == GENDER, "did not match gender"
     assert pat[0]["resource"]["address"][0]["line"][0] == ADDRESS1, "did not match address1"
     assert pat[0]["resource"]["address"][0]["line"][1] == ADDRESS2, "did not match address2"
@@ -153,6 +156,7 @@ def patient_test():
     assert not pat[0]["resource"]["name"][0]["given"][0] == N_FIRSTNAME, "negative test case failed"
     assert not pat[0]["resource"]["name"][0]["given"][1] == N_MIDDLENAME, "negative test case failed"
     assert not pat[0]["resource"]["birthDate"] == N_DOB, "negative test case failed"
+    assert not pat[0]["resource"]["deceasedDateTime"] == N_DOD, "negative test case failed"
     assert not pat[0]["resource"]["gender"] == N_GENDER, "negative test case failedr"
     assert not pat[0]["resource"]["address"][0]["line"][0] == N_ADDRESS1, "negative test case failed"
     assert not pat[0]["resource"]["address"][0]["line"][1] == N_ADDRESS2, "negative test case failed"
