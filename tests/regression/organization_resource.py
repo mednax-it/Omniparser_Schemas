@@ -40,12 +40,12 @@ def org_test():
     assert org[0]["resource"]["resourceType"] == URL[1], "did not match resource type"
 
     #Negative test cases
-    assert org[0]["fullUrl"] != N_ORGANIZATION_FULL_URL, "negative test case failed"
-    assert org[0]["request"]["ifNoneExist"] != N_IDENTIFIER, "negative test case failed"
-    assert org[0]["request"]["method"] != N_REQUEST_TYPE[1], "negative test case failed"
-    assert org[0]["request"]["url"] != N_URL[1], "negative test case failed"
-    assert org[0]["resource"]["identifier"][0]["system"] != N_SYSTEM, "negative test case failed"
-    assert org[0]["resource"]["identifier"][0]["value"] != N_VALUE, "negative test case failed"
-    assert org[0]["resource"]["resourceType"] != N_URL[1], "negative test case failed"
+    assert not org[0]["fullUrl"] == N_ORGANIZATION_FULL_URL, "negative test case failed"
+    assert not org[0]["request"]["ifNoneExist"] == N_IDENTIFIER, "negative test case failed"
+    assert not org[0]["request"]["method"] == N_REQUEST_TYPE[1], "negative test case failed"
+    assert not org[0]["request"]["url"] == N_URL[1], "negative test case failed"
+    assert not org[0]["resource"]["identifier"][0]["system"] == N_SYSTEM, "negative test case failed"
+    assert not org[0]["resource"]["identifier"][0]["value"] == N_VALUE, "negative test case failed"
+    assert not org[0]["resource"]["resourceType"] == N_URL[1], "negative test case failed"
 
     print("FHIR bundle organization resource tests were successful")
