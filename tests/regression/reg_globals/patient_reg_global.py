@@ -17,14 +17,68 @@ HOMEEMAIL="pid1@gmail.com"
 WORKPHONE="(479)555-5874"
 WORKPHONETYPE="work"
 WORKEMAIL="pid12@gmail.com"
-MARITALSTATUS="Unmarried"
 HOSPITALPATIENTNUMBER="9543332222"
 SSN="9543312222"
 #MULTIPLEBIRTH in HL7 message will transform to mulitplebirth integer if multiple birth is "Y"
 BIRTHORDER=2
 
+IDENTIFIER_SYSTEM="https://pediatrix.com/fhir/NamingSystem/mrn-id"
+MR_CODE="MR"
+MR_DISPLAY="Medical Record Number"
+MR_SYSTEM="http://terminology.hl7.org/CodeSystem/v2-0203"
+SSN_SYSTEM="http://hl7.org/fhir/sid/us-ssn"
+SSN_CODE="SS"
+SSN_DISPLAY="Social Security Number"
+SSN_TERMINOLOGY_SYSTEM="http://terminology.hl7.org/CodeSystem/v2-0203"
+HOSPITAL_PATIENT_SYSTEM="https://pediatrix.com/fhir/NamingSystem/hospital-patient-id"
+PATIENT_INTERNAL_CODE="PI"
+PATIENT_INTERNAL_DISPLAY="Patient Internal Identifier"
+PATIENT_INTERNAL_SYSTEM="http://terminology.hl7.org/CodeSystem/v2-0203"
+MARITALSTATUS_CODE="U"
+MARITALSTATUS_DISPLAY="Unmarried"
+MARITALSTATUS_SYSTEM="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+
 # Below are place holders but we are not transforming admit date and dsicharge date from PID segment
 #ADMITDATE=""
 #DISCHARGEDATE=""
 
-
+#Negative test data
+N_MRN=333345038901
+N_LASTNAME=333345038901
+N_FIRSTNAME=333345038902
+N_MIDDLENAME=33334503890
+N_DOB="SPIRNG"
+N_GENDER="F"
+N_ADDRESS1=33334503890
+N_ADDRESS2=33334503890
+N_CITY=33334503890
+N_STATE=33334503890
+N_ZIP=55555-5555
+N_COUNTRY=5
+N_ADDRESSTYPE=1
+N_HOMEPHONE=47689899090
+N_HOMEPHONETYPE=1
+N_HOMEEMAIL=47689899090
+N_WORKPHONE=479555-5874
+N_WORKPHONETYPE=47689899090
+N_WORKEMAIL=47689899090
+N_MARITALSTATUS=2
+N_HOSPITALPATIENTNUMBER=9543332222
+N_SSN=9543312222
+#MULTIPLEBIRTH in HL7 message will transform to mulitplebirth integer if multiple birth is "Y"
+N_BIRTHORDER="2"
+N_IDENTIFIER_SYSTEM="https://pediatrix.com/fhir/NamingSystem/mrnid"
+N_MR_CODE="MRN"
+N_MR_DISPLAY="Medical Record Numbers"
+N_MR_SYSTEM="http://terminology.hl7.org/CodeSystem/v3-0203"
+N_SSN_SYSTEM="http://hl7.org/fhir/sid/usssn"
+N_SSN_CODE="SSN"
+N_SSN_DISPLAY="Social security Number"
+N_SSN_TERMINOLOGY_SYSTEM="http://terminology.hl7.org/CodeSystem/v3-0203"
+N_HOSPITAL_PATIENT_SYSTEM="https://pediatrix.com/fhir/NamingSystem/hospital-patientid"
+N_PATIENT_INTERNAL_CODE="PID"
+N_PATIENT_INTERNAL_DISPLAY="Patient internal Identifier"
+N_PATIENT_INTERNAL_SYSTEM="http://terminology.hl7.org/CodeSystem/v3-0203"
+N_MARITALSTATUS_CODE="UN"
+N_MARITALSTATUS_DISPLAY="unmarried"
+N_MARITALSTATUS_SYSTEM="http://terminology.hl7.org/CodeSystem/v4-MaritalStatus"
