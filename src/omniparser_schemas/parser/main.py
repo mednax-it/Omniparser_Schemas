@@ -1,6 +1,7 @@
 import importlib
 import json
 import sys
+import os
 
 from omniparser_schemas.parser.universal_etl_parser import fetch_parsed_text
 
@@ -18,7 +19,12 @@ def validate_ETL_parser(resource, file):
 
    json_data = json.loads(fhir_bundle)
 
-   with open("tests/regression/regression_output/" + str(resource) + "/hl7_regression_" + str(resource) + "_" + str(file) + ".json", "w") as f:
+   OUTPUT_ROOT_PATH = "tests/regression/regression_output/"
+   PATH = OUTPUT_ROOT_PATH + str(resource)
+   if not os.path.exists(PATH):
+    os.makedirs(PATH)
+
+   with open(OUTPUT_ROOT_PATH + str(resource) + "/hl7_regression_" + str(resource) + "_" + str(file) + ".json", "w") as f:
        json.dump(json_data, f)
 
 def cli(args=None):
