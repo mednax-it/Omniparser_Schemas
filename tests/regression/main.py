@@ -12,6 +12,8 @@ def run_tests():
     # enc_test()
     # acc_test()
     insurancecoverage_test("insurancecoverage", "1")
+    insurancecoverage_test("insurancecoverage", "2")
+    insurancecoverage_test("insurancecoverage", "3")
 
 def cli(args=None):
     """Process command line arguments."""
