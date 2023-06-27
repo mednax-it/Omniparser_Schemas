@@ -4,12 +4,14 @@ from tests.regression.patient_resource import patient_test
 from tests.regression.organization_resource import org_test
 from tests.regression.encounter_resource import enc_test
 from tests.regression.account_resource import acc_test
+from tests.regression.coverage_resource import insurancecoverage_test
 
 def run_tests():
     patient_test("patient", "1")
     # org_test()
     # enc_test()
     # acc_test()
+    insurancecoverage_test("insurancecoverage", "1")
 
 def cli(args=None):
     """Process command line arguments."""
