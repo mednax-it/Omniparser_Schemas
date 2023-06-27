@@ -1,5 +1,6 @@
 import json
 import sys
+from omniparser_schemas.parser.main import validate_ETL_parser
 
 from .reg_globals.patient_reg_global import (
     MRN,
@@ -94,8 +95,10 @@ from .reg_globals.request_type import(
     N_REQUEST_TYPE
 )
 
-def patient_test():
-    with open('src/omniparser_schemas/parser/hl7_regression.json', 'r') as json_file:
+
+def patient_test(resource_name, testfile):
+    validate_ETL_parser(resource_name, testfile)
+    with open("tests/regression/regression_output/patient/hl7_regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
         fhir_bundle = json.load(json_file)
         TARGET_RESOURCE_TYPE = "Patient"
         entries = fhir_bundle["entry"]
@@ -200,3 +203,4 @@ def patient_test():
     assert not pat[0]["resource"]["identifier"][2]["assigner"]["reference"] == N_ORGANIZATION_FULL_URL, "negative test case failed"
 
     print("FHIR bundle patient resource tests were successful")
+
