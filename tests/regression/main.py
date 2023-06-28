@@ -8,12 +8,9 @@ from tests.regression.coverage_resource import insurancecoverage_test
 
 def run_tests():
     patient_test("patient", "1")
-    # org_test()
-    # enc_test()
-    # acc_test()
-    insurancecoverage_test("insurancecoverage", "1")
-    insurancecoverage_test("insurancecoverage", "2")
-    insurancecoverage_test("insurancecoverage", "3")
+    org_test("organization", "1")
+    enc_test("encounter", "1")
+    acc_test("account", "1")
 
 def cli(args=None):
     """Process command line arguments."""

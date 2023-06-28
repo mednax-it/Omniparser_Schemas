@@ -1,6 +1,8 @@
 import json
 import sys
 
+from omniparser_schemas.parser.main import validate_ETL_parser
+
 from .reg_globals.reference_urls import(
     ORGANIZATION_FULL_URL,
     URL,
@@ -22,8 +24,9 @@ from .reg_globals.organization_reg_globals import(
     N_VALUE
 )
 
-def org_test():
-    with open('src/omniparser_schemas/parser/hl7_regression.json', 'r') as json_file:
+def org_test(resource_name, testfile ):
+    validate_ETL_parser(resource_name, testfile)
+    with open("tests/regression/regression_output/" + str(resource_name) + "/hl7_regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
         fhir_bundle = json.load(json_file)
         TARGET_RESOURCE_TYPE = "Organization"
         entries = fhir_bundle["entry"]

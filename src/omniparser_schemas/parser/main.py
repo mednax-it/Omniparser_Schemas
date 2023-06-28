@@ -27,9 +27,4 @@ def validate_ETL_parser(resource, file):
    with open(PATH + "/hl7_regression_" + str(resource) + "_" + str(file) + ".json", "w") as f:
        json.dump(json_data, f)
 
-def cli(args=None):
-    """Process command line arguments."""
-    if not args:
-        args = sys.argv[1:]
-    validate_ETL_parser()
 
