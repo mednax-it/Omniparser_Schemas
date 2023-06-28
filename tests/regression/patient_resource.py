@@ -116,7 +116,7 @@ def patient_test(resource_name, testfile):
             assert pat[0]["resource"]["name"][0]["given"][1] == MIDDLENAME, "did not match middlename"
             assert pat[0]["resource"]["birthDate"] == DOB, "did not match dob"
             assert pat[0]["resource"]["deceasedDateTime"] == DOD, "did not match dod"
-            assert pat[0]["resource"]["gender"] == GENDER, "did not match gender"
+            assert pat[0]["resource"]["gender"] == GENDER[0], "did not match gender"
             assert pat[0]["resource"]["address"][0]["line"][0] == ADDRESS1, "did not match address1"
             assert pat[0]["resource"]["address"][0]["line"][1] == ADDRESS2, "did not match address2"
             assert pat[0]["resource"]["address"][0]["city"] == CITY, "did not match city"
@@ -216,12 +216,14 @@ def patient_test(resource_name, testfile):
             entries = fhir_bundle["entry"]
             pat = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
 
+            assert pat[0]["resource"]["gender"] == GENDER[1], "did not match gender"
             assert pat[0]["resource"]["address"][0]["use"] == ADDRESSUSE[0], "did not match addressuse"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == MARITALSTATUS_CODE[1], "did not match marital status code"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] ==  MARITALSTATUS_DISPLAY[1], "did not match marital status display"
 
             #negative test cases
 
+            assert not pat[0]["resource"]["gender"] == N_GENDER, "negative test case failedr"
             assert not pat[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
             assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == N_MARITALSTATUS_CODE, "negative test case failed"
             assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] == N_MARITALSTATUS_DISPLAY, "negative test case failed"
@@ -236,12 +238,13 @@ def patient_test(resource_name, testfile):
             entries = fhir_bundle["entry"]
             pat = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
 
+            assert pat[0]["resource"]["gender"] == GENDER[2], "did not match gender"
             assert pat[0]["resource"]["address"][0]["use"] == ADDRESSUSE[1], "did not match addressuse"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == MARITALSTATUS_CODE[2], "did not match marital status code"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] ==  MARITALSTATUS_DISPLAY[2], "did not match marital status display"
 
             #negative test cases
-
+            assert not pat[0]["resource"]["gender"] == N_GENDER, "negative test case failedr"
             assert not pat[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
             assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == N_MARITALSTATUS_CODE, "negative test case failed"
             assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] == N_MARITALSTATUS_DISPLAY, "negative test case failed"
