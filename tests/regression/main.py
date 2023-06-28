@@ -11,6 +11,9 @@ def run_tests():
     org_test("organization", "1")
     enc_test("encounter", "1")
     acc_test("account", "1")
+    insurancecoverage_test("insurancecoverage", "1")
+    insurancecoverage_test("insurancecoverage", "2")
+    insurancecoverage_test("insurancecoverage", "3")
 
 def cli(args=None):
     """Process command line arguments."""
