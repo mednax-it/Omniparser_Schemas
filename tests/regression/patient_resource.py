@@ -131,7 +131,6 @@ def patient_test(resource_name, testfile):
             assert pat[0]["resource"]["telecom"][1]["value"] == WORKPHONE, "did not match workphone"
             assert pat[0]["resource"]["telecom"][3]["use"] == WORKPHONETYPE, "did not match workphonetype"
             assert pat[0]["resource"]["telecom"][3]["value"] == WORKEMAIL, "did not match workemail"
-            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] == MARITALSTATUS_DISPLAY, "did not match maritalstatus"
             assert pat[0]["resource"]["identifier"][2]["value"] == HOSPITALPATIENTNUMBER, "did not match hospital patient number"
             assert pat[0]["resource"]["identifier"][1]["value"] == SSN, "did not match SSN"
             assert pat[0]["resource"]["multipleBirthInteger"] == BIRTHORDER, "did not match birthorder"
@@ -148,8 +147,8 @@ def patient_test(resource_name, testfile):
             assert pat[0]["resource"]["identifier"][2]["type"]["coding"][0]["code"] == PATIENT_INTERNAL_CODE, "did not match patient internal code"
             assert pat[0]["resource"]["identifier"][2]["type"]["coding"][0]["display"] == PATIENT_INTERNAL_DISPLAY, "did not match patient internal display"
             assert pat[0]["resource"]["identifier"][2]["type"]["coding"][0]["system"] == PATIENT_INTERNAL_SYSTEM, "did not match patient internal system"
-            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == MARITALSTATUS_CODE, "did not match marital status code"
-            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] ==  MARITALSTATUS_DISPLAY, "did not match marital status display"
+            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == MARITALSTATUS_CODE[0], "did not match marital status code"
+            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] ==  MARITALSTATUS_DISPLAY[0], "did not match marital status display"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["system"] == MARITALSTATUS_SYSTEM, "did not match marital status system"
 
             assert pat[0]["request"]["url"] == f"Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|{MRN}&mrn-assigner={ORGANIZATION_FULL_URL}"
@@ -218,6 +217,14 @@ def patient_test(resource_name, testfile):
             pat = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
 
             assert pat[0]["resource"]["address"][0]["use"] == ADDRESSUSE[0], "did not match addressuse"
+            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == MARITALSTATUS_CODE[1], "did not match marital status code"
+            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] ==  MARITALSTATUS_DISPLAY[1], "did not match marital status display"
+
+            #negative test cases
+
+            assert not pat[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
+            assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == N_MARITALSTATUS_CODE, "negative test case failed"
+            assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] == N_MARITALSTATUS_DISPLAY, "negative test case failed"
 
             print("FHIR bundle patient resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
@@ -230,10 +237,14 @@ def patient_test(resource_name, testfile):
             pat = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
 
             assert pat[0]["resource"]["address"][0]["use"] == ADDRESSUSE[1], "did not match addressuse"
+            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == MARITALSTATUS_CODE[2], "did not match marital status code"
+            assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] ==  MARITALSTATUS_DISPLAY[2], "did not match marital status display"
 
             #negative test cases
 
             assert not pat[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
+            assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == N_MARITALSTATUS_CODE, "negative test case failed"
+            assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] == N_MARITALSTATUS_DISPLAY, "negative test case failed"
 
             print("FHIR bundle patient resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 

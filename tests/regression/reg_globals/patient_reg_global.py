@@ -36,8 +36,8 @@ HOSPITAL_PATIENT_SYSTEM="https://pediatrix.com/fhir/NamingSystem/hospital-patien
 PATIENT_INTERNAL_CODE="PI"
 PATIENT_INTERNAL_DISPLAY="Patient Internal Identifier"
 PATIENT_INTERNAL_SYSTEM="http://terminology.hl7.org/CodeSystem/v2-0203"
-MARITALSTATUS_CODE="U"
-MARITALSTATUS_DISPLAY="Unmarried"
+MARITALSTATUS_CODE=["M","U","D"]
+MARITALSTATUS_DISPLAY=["Married", "Unmarried", "Divorced"]
 MARITALSTATUS_SYSTEM="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
 
 # Below are place holders but we are not transforming admit date and dsicharge date from PID segment
