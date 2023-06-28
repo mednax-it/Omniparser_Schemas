@@ -7,9 +7,9 @@ from tests.regression.account_resource import acc_test
 
 def run_tests():
     patient_test("patient", "1")
-    # org_test()
-    # enc_test()
-    # acc_test()
+    org_test("organization", "1")
+    enc_test("encounter", "1")
+    acc_test("account", "1")
 
 def cli(args=None):
     """Process command line arguments."""
