@@ -24,6 +24,7 @@ from .reg_globals.patient_reg_global import (
     WORKPHONE,
     WORKPHONETYPE,
     WORKEMAIL,
+    PHONETYPE,
     HOSPITALPATIENTNUMBER,
     SSN,
     BIRTHORDER,
@@ -64,6 +65,7 @@ from .reg_globals.patient_reg_global import (
     N_WORKPHONE,
     N_WORKPHONETYPE,
     N_WORKEMAIL,
+    N_PHONETYPE,
     N_MARITALSTATUS,
     N_HOSPITALPATIENTNUMBER,
     N_SSN,
@@ -131,6 +133,7 @@ def patient_test(resource_name, testfile):
             assert pat[0]["resource"]["telecom"][1]["value"] == WORKPHONE, "did not match workphone"
             assert pat[0]["resource"]["telecom"][3]["use"] == WORKPHONETYPE, "did not match workphonetype"
             assert pat[0]["resource"]["telecom"][3]["value"] == WORKEMAIL, "did not match workemail"
+            #assert pat[0]["resource"]["telecom"][2]["use"] == PHONETYPE[0], "did not match phone type"
             assert pat[0]["resource"]["identifier"][2]["value"] == HOSPITALPATIENTNUMBER, "did not match hospital patient number"
             assert pat[0]["resource"]["identifier"][1]["value"] == SSN, "did not match SSN"
             assert pat[0]["resource"]["multipleBirthInteger"] == BIRTHORDER, "did not match birthorder"
@@ -177,6 +180,7 @@ def patient_test(resource_name, testfile):
             assert not pat[0]["resource"]["telecom"][2]["value"] == N_HOMEEMAIL, "negative test case failed"
             assert not pat[0]["resource"]["telecom"][1]["value"] == N_WORKPHONE, "negative test case failed"
             assert not pat[0]["resource"]["telecom"][3]["use"] == N_WORKPHONETYPE, "negative test case failed"
+            assert not pat[0]["resource"]["telecom"][2]["use"] == N_PHONETYPE, "negative test case failed"
             assert not pat[0]["resource"]["telecom"][3]["value"] == N_WORKEMAIL, "negative test case failed"
             assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] == N_MARITALSTATUS, "negative test case failed"
             assert not pat[0]["resource"]["identifier"][2]["value"] == N_HOSPITALPATIENTNUMBER, "negative test case failed"
@@ -220,6 +224,7 @@ def patient_test(resource_name, testfile):
             assert pat[0]["resource"]["address"][0]["use"] == ADDRESSUSE[0], "did not match addressuse"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == MARITALSTATUS_CODE[1], "did not match marital status code"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] ==  MARITALSTATUS_DISPLAY[1], "did not match marital status display"
+            #assert pat[0]["resource"]["telecom"][2]["use"] == PHONETYPE[1], "did not match phone type"
 
             #negative test cases
 
@@ -227,7 +232,7 @@ def patient_test(resource_name, testfile):
             assert not pat[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
             assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == N_MARITALSTATUS_CODE, "negative test case failed"
             assert not pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] == N_MARITALSTATUS_DISPLAY, "negative test case failed"
-
+            #assert not pat[0]["resource"]["telecom"][2]["use"] == N_PHONETYPE, "negative test case failed"
             print("FHIR bundle patient resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "3"):
