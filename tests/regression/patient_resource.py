@@ -101,7 +101,7 @@ from .reg_globals.request_type import(
 def patient_test(resource_name, testfile):
     if(testfile == "1"):
         validate_ETL_parser(resource_name, testfile)
-        with open("tests/regression/regression_output/patient/hl7_regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
+        with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
             fhir_bundle = json.load(json_file)
             TARGET_RESOURCE_TYPE = "Patient"
             entries = fhir_bundle["entry"]
@@ -210,7 +210,7 @@ def patient_test(resource_name, testfile):
 
     elif(testfile == "2"):
         validate_ETL_parser(resource_name, testfile)
-        with open("tests/regression/regression_output/patient/hl7_regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
+        with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
             fhir_bundle = json.load(json_file)
             TARGET_RESOURCE_TYPE = "Patient"
             entries = fhir_bundle["entry"]
@@ -232,7 +232,7 @@ def patient_test(resource_name, testfile):
 
     elif(testfile == "3"):
         validate_ETL_parser(resource_name, testfile)
-        with open("tests/regression/regression_output/patient/hl7_regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
+        with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
             fhir_bundle = json.load(json_file)
             TARGET_RESOURCE_TYPE = "Patient"
             entries = fhir_bundle["entry"]
@@ -254,7 +254,7 @@ def patient_test(resource_name, testfile):
 
     elif(testfile == "4"):
         validate_ETL_parser(resource_name, testfile)
-        with open("tests/regression/regression_output/patient/hl7_regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
+        with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
             fhir_bundle = json.load(json_file)
             TARGET_RESOURCE_TYPE = "Patient"
             entries = fhir_bundle["entry"]
