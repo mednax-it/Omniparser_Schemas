@@ -47,7 +47,7 @@ from .reg_globals.organization_reg_globals import(
 
 def acc_test(resource_name, testfile):
     validate_ETL_parser(resource_name, testfile)
-    with open("tests/regression/regression_output/" + str(resource_name) + "/hl7_regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
+    with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
         fhir_bundle = json.load(json_file)
         TARGET_RESOURCE_TYPE = "Account"
         entries = fhir_bundle["entry"]

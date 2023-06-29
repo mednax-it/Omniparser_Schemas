@@ -24,7 +24,7 @@ def validate_ETL_parser(resource, file):
    if not os.path.exists(PATH):
     os.makedirs(PATH)
 
-   with open(PATH + "/hl7_regression_" + str(resource) + "_" + str(file) + ".json", "w") as f:
+   with open(PATH + "/regression_" + str(resource) + "_" + str(file) + ".json", "w") as f:
        json.dump(json_data, f)
 
 
