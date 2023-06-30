@@ -19,10 +19,8 @@ from .reg_globals.patient_reg_global import (
     ADDRESSTYPE,
     ADDRESSUSE,
     HOMEPHONE,
-    HOMEPHONETYPE,
     HOMEEMAIL,
     WORKPHONE,
-    WORKPHONETYPE,
     WORKEMAIL,
     PHONETYPE,
     HOSPITALPATIENTNUMBER,
@@ -128,10 +126,10 @@ def patient_test(resource_name, testfile):
             assert pat[0]["resource"]["address"][0]["type"] == ADDRESSTYPE, "did not match addresstype"
             assert pat[0]["resource"]["address"][0]["use"] == ADDRESSUSE[0], "did not match addressuse"
             assert pat[0]["resource"]["telecom"][0]["value"] == HOMEPHONE, "did not match homephone"
-            assert pat[0]["resource"]["telecom"][0]["use"] == HOMEPHONETYPE, "did not match homephonetype"
+            assert pat[0]["resource"]["telecom"][0]["use"] == PHONETYPE[0], "did not match homephonetype"
             assert pat[0]["resource"]["telecom"][2]["value"] == HOMEEMAIL, "did not match homeemail"
             assert pat[0]["resource"]["telecom"][1]["value"] == WORKPHONE, "did not match workphone"
-            assert pat[0]["resource"]["telecom"][3]["use"] == WORKPHONETYPE, "did not match workphonetype"
+            assert pat[0]["resource"]["telecom"][3]["use"] == PHONETYPE[2], "did not match workphonetype"
             assert pat[0]["resource"]["telecom"][3]["value"] == WORKEMAIL, "did not match workemail"
             assert pat[0]["resource"]["telecom"][2]["use"] == PHONETYPE[0], "did not match phone type"
             assert pat[0]["resource"]["identifier"][2]["value"] == HOSPITALPATIENTNUMBER, "did not match hospital patient number"
@@ -224,7 +222,7 @@ def patient_test(resource_name, testfile):
             assert pat[0]["resource"]["address"][0]["use"] == ADDRESSUSE[0], "did not match addressuse"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["code"] == MARITALSTATUS_CODE[1], "did not match marital status code"
             assert pat[0]["resource"]["maritalStatus"]["coding"][0]["display"] ==  MARITALSTATUS_DISPLAY[1], "did not match marital status display"
-            assert pat[0]["resource"]["telecom"][2]["use"] == PHONETYPE[1], "did not match phone type"
+            assert pat[0]["resource"]["telecom"][0]["use"] == PHONETYPE[1], "did not match phone type"
 
             #negative test cases
 

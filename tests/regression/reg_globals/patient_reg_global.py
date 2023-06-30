@@ -14,12 +14,10 @@ COUNTRY="US"
 ADDRESSUSE=["home","billing","work"]
 ADDRESSTYPE="physical"
 HOMEPHONE="(479)555-5874"
-HOMEPHONETYPE="home"
 HOMEEMAIL="pid1@gmail.com"
 WORKPHONE="(479)555-5875"
-WORKPHONETYPE="work"
 WORKEMAIL="pid12@gmail.com"
-PHONETYPE=["home","mobile"]
+PHONETYPE=["home","mobile","work"]
 HOSPITALPATIENTNUMBER="9543332222"
 SSN="9543312222"
 #MULTIPLEBIRTH in HL7 message will transform to mulitplebirth integer if multiple birth is "Y"
