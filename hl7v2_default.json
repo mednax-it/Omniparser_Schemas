@@ -1846,7 +1846,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "if (val) {switch(val.toUpperCase()) {case 'CP': 'mobile'; default: 'home'};} else {'home'}"},
+                {"const": "if (val) {switch(val.toUpperCase()) {case 'CP': 'mobile'; break; default: 'home'};} else {'home'}"},
                 {"const": "val"}, {"xpath": "."}
             ]
         }
