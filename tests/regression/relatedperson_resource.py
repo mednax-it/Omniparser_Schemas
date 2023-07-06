@@ -1,5 +1,4 @@
 import json
-import sys
 from omniparser_schemas.parser.main import validate_ETL_parser
 
 from.reg_globals.relatedperson_reg_global import (
@@ -15,6 +14,7 @@ from.reg_globals.relatedperson_reg_global import (
     GENDER,
     HOMEPHONE,
     SSN,
+    SSN_CODING_SYSTEM,
     LASTNAME,
     FIRSTNAME,
     MIDDLENAME,
@@ -25,16 +25,44 @@ from.reg_globals.relatedperson_reg_global import (
     WORKPHONE,
     WORKEMAIL,
     PHONETYPE,
-    IDENTIFIER_SYSTEM
+    IDENTIFIER_SYSTEM,
+    N_ADDRESS1,
+    N_ADDRESS2,
+    N_CITY,
+    N_STATE,
+    N_ZIP,
+    N_COUNTRY,
+    N_ADDRESSUSE,
+    N_DOB,
+    N_GENDER,
+    N_HOMEPHONE,
+    N_SSN,
+    N_SSN_CODING_SYSTEM,
+    N_LASTNAME,
+    N_FIRSTNAME,
+    N_MIDDLENAME,
+    N_TELECOM_SYSTEM,
+    N_ADDRESSTYPE,
+    N_HOMEPHONE,
+    N_HOMEEMAIL,
+    N_WORKPHONE,
+    N_WORKEMAIL,
+    N_PHONETYPE,
+    N_IDENTIFIER_SYSTEM
 )
 
 from tests.regression.reg_globals.request_type import (
-    REQUEST_TYPE
+    REQUEST_TYPE,
+    N_REQUEST_TYPE
 )
 
 from tests.regression.reg_globals.reference_urls import (
     RELATED_PERSON_GUARANTOR_FULL_URL,
-    PATIENT_FULL_URL
+    PATIENT_FULL_URL,
+    REFERENCE_TYPE,
+    N_RELATED_PERSON_GUARANTOR_FULL_URL,
+    N_PATIENT_FULL_URL,
+    N_REFERENCE_TYPE
 )
 
 from .reg_globals.organization_reg_globals import(
@@ -43,7 +71,9 @@ from .reg_globals.organization_reg_globals import(
 
 from .reg_globals.patient_reg_global import(
     MRN,
-    SSN_SYSTEM
+    SSN_SYSTEM,
+    N_MRN,
+    N_SSN_SYSTEM
 )
 
 def relatedperson_test(resource_name, testfile):
@@ -73,13 +103,13 @@ def relatedperson_test(resource_name, testfile):
             assert rel[3]["resource"]["identifier"][0]["system"] == IDENTIFIER_SYSTEM, "did not match identifier system"
             assert rel[3]["resource"]["identifier"][0]["value"] == f'{MRN}-{VALUE}-{RELATED_PERSON_ID[0]}', "did not match related person id value"
             assert rel[3]["resource"]["identifier"][1]["system"] == SSN_SYSTEM, "did not match ssn system"
-            assert rel[3]["resource"]["identifier"][1]["type"]["coding"][0]["system"] == "https://terminology.hl7.org/5.0.0/CodeSystem-v2-0203", "did not match SSN coding system"
+            assert rel[3]["resource"]["identifier"][1]["type"]["coding"][0]["system"] == SSN_CODING_SYSTEM, "did not match SSN coding system"
             assert rel[3]["resource"]["identifier"][1]["value"] == SSN, "did not match SSN"
             assert rel[3]["resource"]["name"][0]["family"] == LASTNAME[0], "did not match lastname"
             assert rel[3]["resource"]["name"][0]["given"][0] == FIRSTNAME[0], "did not match firstname"
             assert rel[3]["resource"]["name"][0]["given"][1] == MIDDLENAME[0], "did not match middlename"
             assert rel[3]["resource"]["patient"]["reference"] == PATIENT_FULL_URL, "did not match full url"
-            assert rel[3]["resource"]["patient"]["type"] == "Patient", "did not match type"
+            assert rel[3]["resource"]["patient"]["type"] == REFERENCE_TYPE[0], "did not match type"
             assert rel[3]["resource"]["telecom"][0]["system"] == TELECOM_SYSTEM[0], "did not match telecom system"
             assert rel[3]["resource"]["telecom"][0]["use"] == PHONETYPE[0], "did not match telecom use"
             assert rel[3]["resource"]["telecom"][0]["value"] == HOMEPHONE, "did not match homephone"
@@ -93,7 +123,44 @@ def relatedperson_test(resource_name, testfile):
             assert rel[3]["resource"]["telecom"][3]["use"] == PHONETYPE[2], "did not match email use"
             assert rel[3]["resource"]["telecom"][3]["value"] == WORKEMAIL, "did not match homeemail"
 
-            print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            ##Negative test cases
+            assert not rel[3]["fullUrl"] == N_RELATED_PERSON_GUARANTOR_FULL_URL, "negative test case failed"
+            assert not rel[3]["request"]["method"] == N_REQUEST_TYPE, "negative test case failed"
+            assert not rel[3]["request"]["url"] == f'RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|{N_MRN}-{VALUE}-{RELATED_PERSON_ID[0]}', "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["city"] == N_CITY, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["country"] == N_COUNTRY, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["line"][0] == N_ADDRESS1, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["line"][1] == N_ADDRESS2, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["postalCode"] == N_ZIP, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["state"] == N_STATE, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["type"] == N_ADDRESSTYPE, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
+            assert not rel[3]["resource"]["birthDate"] == N_DOB, "negative test case failed"
+            assert not rel[3]["resource"]["gender"] == N_GENDER, "negative test case failed"
+            assert not rel[3]["resource"]["identifier"][0]["system"] == N_IDENTIFIER_SYSTEM, "negative test case failed"
+            assert not rel[3]["resource"]["identifier"][0]["value"] == f'{N_MRN}-{VALUE}-{RELATED_PERSON_ID[0]}', "negative test case failed"
+            assert not rel[3]["resource"]["identifier"][1]["system"] == N_SSN_SYSTEM, "negative test case failed"
+            assert not rel[3]["resource"]["identifier"][1]["type"]["coding"][0]["system"] == N_SSN_CODING_SYSTEM, "negative test case failed"
+            assert not rel[3]["resource"]["identifier"][1]["value"] == N_SSN, "negative test case failed"
+            assert not rel[3]["resource"]["name"][0]["family"] == N_LASTNAME, "negative test case failed"
+            assert not rel[3]["resource"]["name"][0]["given"][0] == N_FIRSTNAME, "negative test case failed"
+            assert not rel[3]["resource"]["name"][0]["given"][1] == N_MIDDLENAME, "negative test case failed"
+            assert not rel[3]["resource"]["patient"]["reference"] == N_PATIENT_FULL_URL, "negative test case failed"
+            assert not rel[3]["resource"]["patient"]["type"] == N_REFERENCE_TYPE, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][0]["system"] == N_TELECOM_SYSTEM, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][0]["use"] == N_PHONETYPE, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][0]["value"] == N_HOMEPHONE, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][1]["system"] == N_TELECOM_SYSTEM, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][1]["use"] == N_PHONETYPE, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][1]["value"] == N_WORKPHONE, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][2]["system"] == N_TELECOM_SYSTEM, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][2]["use"] == N_PHONETYPE, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][2]["value"] == N_HOMEEMAIL, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][3]["system"] == N_TELECOM_SYSTEM, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][3]["use"] == N_PHONETYPE, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][3]["value"] == N_WORKEMAIL, "negative test case failed"
+
+        print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "2"):
         validate_ETL_parser(resource_name, testfile)
@@ -108,6 +175,11 @@ def relatedperson_test(resource_name, testfile):
             assert rel[3]["resource"]["gender"] == GENDER[1], "did not match gender"
             assert rel[3]["resource"]["telecom"][0]["use"] == PHONETYPE[1], "did not match telecom use"
             assert rel[3]["resource"]["address"][0]["use"] == ADDRESSUSE[0], "did not match address use"
+
+            #Negative test cases
+            assert not rel[3]["resource"]["gender"] == N_GENDER, "negative test case failed"
+            assert not rel[3]["resource"]["telecom"][0]["use"] == N_PHONETYPE, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
             print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
@@ -124,6 +196,10 @@ def relatedperson_test(resource_name, testfile):
             assert rel[3]["resource"]["gender"] == GENDER[2], "did not match gender"
             assert rel[3]["resource"]["address"][0]["use"] == ADDRESSUSE[1], "did not match address use"
 
+            #Negative test cases
+            assert not rel[3]["resource"]["gender"] == N_GENDER, "negative test case failed"
+            assert not rel[3]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
+
             print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
 
@@ -138,6 +214,9 @@ def relatedperson_test(resource_name, testfile):
             rel = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == RELPER_IDENTIFIER, filter_relper))
 
             assert rel[3]["resource"]["address"][0]["use"] == ADDRESSUSE[1], "did not match address use"
+
+            #Negative test cases
+            assert not rel[3]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
             print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
