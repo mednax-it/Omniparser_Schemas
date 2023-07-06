@@ -9,6 +9,12 @@ from tests.regression.relatedperson_resource import relatedperson_test
 
 def run_tests():
     patient_test("patient", "1")
+    patient_test("patient", "2")
+    patient_test("patient", "3")
+    patient_test("patient", "4")
+    patient_test("patient", "5")
+
+
     org_test("organization", "1")
     enc_test("encounter", "1")
     acc_test("account", "1")
