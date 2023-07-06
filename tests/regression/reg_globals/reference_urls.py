@@ -30,4 +30,4 @@ N_COVERAGE_FULL_URL_3="urn:uuid:61ebe121-aa06-0001-0002-983a382abcd7"
 N_RELATED_PERSON_GUARANTOR_FULL_URL="urn:uuid:61ebe121-aa05-0001-0002-983a382abcd7"
 
 N_REFERENCE_TYPE=["Patient1", "Organization1", "Encounter2", "Account4", "Practitioner5", "RelatedPerson6"]
-N_URL=["Patient1", "Organization1", "Encounter2", "Account4", "Practitioner5"]
+N_URL=["Patient1", "Organization1", "Encounter2", "Account4", "Practitioner5, RelatedPerson6"]
