@@ -76,6 +76,9 @@ from .reg_globals.patient_reg_global import(
     N_SSN_SYSTEM
 )
 
+## Note, we are not using ETL parser in these tests, we are re utilizing the files that were already ran for the test "relatedperson_resource.py"
+## Also these tests are performed on independent segments(additional subscriber segments can also be added, for example we can see 3 IN1 segments) that's why these test files can be resused for all related person resources(guarantor & subscriber)
+
 def relatedperson_insurance_1_test(resource_name, testfile):
     if(testfile == "1"):
         with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
@@ -159,5 +162,62 @@ def relatedperson_insurance_1_test(resource_name, testfile):
             assert not rel[0]["resource"]["telecom"][3]["use"] == N_PHONETYPE, "negative test case failed"
             assert not rel[0]["resource"]["telecom"][3]["value"] == N_WORKEMAIL, "negative test case failed"
 
-        print("FHIR bundle related person insurance resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+        print("FHIR bundle " + str(resource_name) + " subscriber resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
+    elif(testfile == "2"):
+        validate_ETL_parser(resource_name, testfile)
+        with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
+            fhir_bundle = json.load(json_file)
+            TARGET_RESOURCE_TYPE = "RelatedPerson"
+            entries = fhir_bundle["entry"]
+            filter_relper = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
+            RELPER_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"
+            rel = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == RELPER_IDENTIFIER, filter_relper))
+
+            assert rel[0]["resource"]["gender"] == GENDER[1], "did not match gender"
+            assert rel[0]["resource"]["telecom"][0]["use"] == PHONETYPE[1], "did not match telecom use"
+            assert rel[0]["resource"]["address"][0]["use"] == ADDRESSUSE[0], "did not match address use"
+
+            #Negative test cases
+            assert not rel[0]["resource"]["gender"] == N_GENDER, "negative test case failed"
+            assert not rel[0]["resource"]["telecom"][0]["use"] == N_PHONETYPE, "negative test case failed"
+            assert not rel[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
+
+            print("FHIR bundle " + str(resource_name) + " subscriber resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
+
+    elif(testfile == "3"):
+        validate_ETL_parser(resource_name, testfile)
+        with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
+            fhir_bundle = json.load(json_file)
+            TARGET_RESOURCE_TYPE = "RelatedPerson"
+            entries = fhir_bundle["entry"]
+            filter_relper = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
+            RELPER_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"
+            rel = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == RELPER_IDENTIFIER, filter_relper))
+
+            assert rel[0]["resource"]["gender"] == GENDER[2], "did not match gender"
+            assert rel[0]["resource"]["address"][0]["use"] == ADDRESSUSE[1], "did not match address use"
+
+            #Negative test cases
+            assert not rel[0]["resource"]["gender"] == N_GENDER, "negative test case failed"
+            assert not rel[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
+
+            print("FHIR bundle " + str(resource_name) + " subscriber resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+
+
+    elif(testfile == "4"):
+        validate_ETL_parser(resource_name, testfile)
+        with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
+            fhir_bundle = json.load(json_file)
+            TARGET_RESOURCE_TYPE = "RelatedPerson"
+            entries = fhir_bundle["entry"]
+            filter_relper = list(filter(lambda e: e["resource"]["resourceType"] == TARGET_RESOURCE_TYPE, entries))
+            RELPER_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"
+            rel = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == RELPER_IDENTIFIER, filter_relper))
+
+            assert rel[0]["resource"]["address"][0]["use"] == ADDRESSUSE[2], "did not match address use"
+
+            #Negative test cases
+            assert not rel[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
+
+            print("FHIR bundle " + str(resource_name) + " subscriber resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
