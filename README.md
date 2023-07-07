@@ -144,3 +144,15 @@ If attending physician id does not exist, identifier will default to concatenati
 If referring physician id does not exist, identifier will default to concatenation of `mrn_facility`, the patient visit segment code "PV1" and the FHIR ParticipationType Code System value "REF"
 
     {mrn}-{facility_id}-PV1-REF
+
+
+**To Run Tests locally**
+
+    1. Install poetry from https://python-poetry.org/docs/
+       Note: If you don't do the install—which download the dependencies and puts src/omniparser_schemas on the PYTHONPATH—you get this error:ModuleNotFoundError: No module named 'omniparser_schemas'
+    2. Run ETL parser to get FHIR bundle. Command for to get FHIR bundle "poetry run executeETLparser"
+    3. Run Regression Tests. Command to run regression tests "poetry run test"
+
+    Note: Currently tests were on resource level. As we progress we will have more resources and have complete regression tests.
+
+    Wait, are you looking for env variables? For now, no env needed. Happy Tests!!
