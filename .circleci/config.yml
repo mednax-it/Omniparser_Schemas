@@ -10,9 +10,6 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - run:
-          name: Run ETL Parser
-          command: poetry run executeETLparser
-      - run:
           name: Run tests
           command: poetry run test
       - persist_to_workspace:

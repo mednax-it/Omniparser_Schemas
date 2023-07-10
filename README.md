@@ -155,4 +155,4 @@ If referring physician id does not exist, identifier will default to concatenati
 
     Note: Currently tests were on resource level. As we progress we will have more resources and have complete regression tests.
 
-    Wait, are you looking for env variables? For now, no env needed. Happy Tests!!
+    Wait, are you looking for env variables? For now, no env needed. Happy Testing!!
