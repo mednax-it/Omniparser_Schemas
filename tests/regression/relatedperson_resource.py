@@ -160,7 +160,7 @@ def relatedperson_test(resource_name, testfile):
             assert not rel[3]["resource"]["telecom"][3]["use"] == N_PHONETYPE, "negative test case failed"
             assert not rel[3]["resource"]["telecom"][3]["value"] == N_WORKEMAIL, "negative test case failed"
 
-        print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+        print("FHIR bundle " + str(resource_name) + " guarantor resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "2"):
         validate_ETL_parser(resource_name, testfile)
@@ -181,7 +181,7 @@ def relatedperson_test(resource_name, testfile):
             assert not rel[3]["resource"]["telecom"][0]["use"] == N_PHONETYPE, "negative test case failed"
             assert not rel[3]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " guarantor resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "3"):
         validate_ETL_parser(resource_name, testfile)
@@ -200,7 +200,7 @@ def relatedperson_test(resource_name, testfile):
             assert not rel[3]["resource"]["gender"] == N_GENDER, "negative test case failed"
             assert not rel[3]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " guarantor resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
 
     elif(testfile == "4"):
@@ -213,12 +213,12 @@ def relatedperson_test(resource_name, testfile):
             RELPER_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"
             rel = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == RELPER_IDENTIFIER, filter_relper))
 
-            assert rel[3]["resource"]["address"][0]["use"] == ADDRESSUSE[1], "did not match address use"
+            assert rel[3]["resource"]["address"][0]["use"] == ADDRESSUSE[2], "did not match address use"
 
             #Negative test cases
             assert not rel[3]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " guarantor resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
 
 
