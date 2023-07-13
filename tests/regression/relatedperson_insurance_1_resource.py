@@ -57,7 +57,7 @@ from tests.regression.reg_globals.request_type import (
 )
 
 from tests.regression.reg_globals.reference_urls import (
-    RELATED_PERSON_INSURANCE_FULL_URL,
+    RELATED_PERSON_INSURANCE_FULL_URL_1,
     PATIENT_FULL_URL,
     REFERENCE_TYPE,
     N_RELATED_PERSON_INSURANCE_FULL_URL,
@@ -89,24 +89,24 @@ def relatedperson_insurance_1_test(resource_name, testfile):
             RELPER_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/relatedPerson-id"
             rel = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == RELPER_IDENTIFIER, filter_relper))
 
-            assert rel[0]["fullUrl"] == RELATED_PERSON_INSURANCE_FULL_URL, "did not match related person resource full url"
+            assert rel[0]["fullUrl"] == RELATED_PERSON_INSURANCE_FULL_URL_1, "did not match related person resource full url"
             assert rel[0]["request"]["method"] == REQUEST_TYPE[0], "did not match put request type"
             assert rel[0]["request"]["url"] == f'RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|{MRN}-{VALUE}-{RELATEDPERSON_ID[0]}', "did not match request url"
-            assert rel[0]["resource"]["address"][0]["city"] == CITY, "did not match city"
+            assert rel[0]["resource"]["address"][0]["city"] == CITY[0], "did not match city"
             assert rel[0]["resource"]["address"][0]["country"] == COUNTRY, "did not match country"
             assert rel[0]["resource"]["address"][0]["line"][0] == ADDRESS1[0], "did not match address1"
             assert rel[0]["resource"]["address"][0]["line"][1] == ADDRESS2[0], "did not match address2"
-            assert rel[0]["resource"]["address"][0]["postalCode"] == ZIP, "did not match postal code"
-            assert rel[0]["resource"]["address"][0]["state"] == STATE, "did not match state"
+            assert rel[0]["resource"]["address"][0]["postalCode"] == ZIP[0], "did not match postal code"
+            assert rel[0]["resource"]["address"][0]["state"] == STATE[0], "did not match state"
             assert rel[0]["resource"]["address"][0]["type"] == ADDRESSTYPE, "did not match address type"
             assert rel[0]["resource"]["address"][0]["use"] == ADDRESSUSE[0], "did not match address use"
-            assert rel[0]["resource"]["birthDate"] == DOB, "did not match DOB"
+            assert rel[0]["resource"]["birthDate"] == DOB[0], "did not match DOB"
             assert rel[0]["resource"]["gender"] == GENDER[0], "did not match gender"
             assert rel[0]["resource"]["identifier"][0]["system"] == IDENTIFIER_SYSTEM, "did not match identifier system"
             assert rel[0]["resource"]["identifier"][0]["value"] == f'{MRN}-{VALUE}-{RELATEDPERSON_ID[0]}', "did not match related person id value"
             assert rel[0]["resource"]["identifier"][1]["system"] == SSN_SYSTEM, "did not match ssn system"
             assert rel[0]["resource"]["identifier"][1]["type"]["coding"][0]["system"] == SSN_CODING_SYSTEM, "did not match SSN coding system"
-            assert rel[0]["resource"]["identifier"][1]["value"] == SSN, "did not match SSN"
+            assert rel[0]["resource"]["identifier"][1]["value"] == SSN[0], "did not match SSN"
             assert rel[0]["resource"]["name"][0]["family"] == LASTNAME[0], "did not match lastname"
             assert rel[0]["resource"]["name"][0]["given"][0] == FIRSTNAME[0], "did not match firstname"
             assert rel[0]["resource"]["name"][0]["given"][1] == MIDDLENAME[0], "did not match middlename"
@@ -162,7 +162,7 @@ def relatedperson_insurance_1_test(resource_name, testfile):
             assert not rel[0]["resource"]["telecom"][3]["use"] == N_PHONETYPE, "negative test case failed"
             assert not rel[0]["resource"]["telecom"][3]["value"] == N_WORKEMAIL, "negative test case failed"
 
-        print("FHIR bundle " + str(resource_name) + " subscriber resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+        print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "2"):
         validate_ETL_parser(resource_name, testfile)
@@ -183,7 +183,7 @@ def relatedperson_insurance_1_test(resource_name, testfile):
             assert not rel[0]["resource"]["telecom"][0]["use"] == N_PHONETYPE, "negative test case failed"
             assert not rel[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle " + str(resource_name) + " subscriber resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "3"):
         validate_ETL_parser(resource_name, testfile)
@@ -202,7 +202,7 @@ def relatedperson_insurance_1_test(resource_name, testfile):
             assert not rel[0]["resource"]["gender"] == N_GENDER, "negative test case failed"
             assert not rel[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle " + str(resource_name) + " subscriber resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
 
     elif(testfile == "4"):
@@ -220,4 +220,4 @@ def relatedperson_insurance_1_test(resource_name, testfile):
             #Negative test cases
             assert not rel[0]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle " + str(resource_name) + " subscriber resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
