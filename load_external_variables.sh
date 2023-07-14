@@ -4,6 +4,7 @@ set -e
 declare DEV_PARSER_URL=DEV_PARSER_URL_$1
 declare PROD_PARSER_URL=PROD_PARSER_URL_$1
 
+
 #!/bin/bash
 
 if [ "${CIRCLE_BRANCH}" == "main" ]
