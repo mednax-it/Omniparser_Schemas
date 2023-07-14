@@ -45,9 +45,9 @@ jobs:
 workflows:
   testPREPROD:
     jobs:
-      - test
+      - build_and_test
   testPROD:
     jobs:
-      - prod
+      - deploy_and_test
 
 
