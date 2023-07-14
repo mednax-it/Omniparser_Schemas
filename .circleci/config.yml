@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: "get env variables for pre prod"
-          command: echo 'export "PARSER_URL=${DEV_PARSER_URL)' >> "$BASH_ENV"
+          command: echo 'export PARSER_URL=${DEV_PARSER_URL}' >> "$BASH_ENV"
                    source "$BASH_ENV"
       - python/install-packages:
           pkg-manager: poetry
@@ -27,7 +27,7 @@ jobs:
       - checkout
       - run:
           name: "get env variables for prod"
-          command: echo 'export "PARSER_URL=${PROD_PARSER_URL)' >> "$BASH_ENV"
+          command: echo 'export PARSER_URL=${PROD_PARSER_URL}' >> "$BASH_ENV"
                    source "$BASH_ENV"
       - python/install-packages:
           pkg-manager: poetry
