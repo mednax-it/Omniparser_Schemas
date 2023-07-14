@@ -23,15 +23,15 @@ jobs:
   deploy_and_test:
     executor: python/default
     steps:
-      - checkout
-      - run:
-          name: "get env variables for prod"
-          command: bash load_external_variables.sh
       - when:
           condition:
             equal: [ main, << pipeline.git.branch >> ]
           steps:
             - run: echo "I am on main"
+      - checkout
+      - run:
+          name: "get env variables for prod"
+          command: bash load_external_variables.sh
       - python/install-packages:
           pkg-manager: poetry
       - run:
