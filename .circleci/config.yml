@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: "get env variables for pre prod"
-          command: bash load_external_variables.sh
+          command: echo -e "PARSER_URL=${DEV_PARSER_URL}" > ./.env
       - python/install-packages:
           pkg-manager: poetry
       - run:
@@ -23,15 +23,10 @@ jobs:
   deploy_and_test:
     executor: python/default
     steps:
-      - when:
-          condition:
-            equal: [ main, << pipeline.git.branch >> ]
-          steps:
-            - run: echo "I am on main"
       - checkout
       - run:
           name: "get env variables for prod"
-          command: bash load_external_variables.sh
+          command: echo -e "PARSER_URL=${PROD_PARSER_URL}" > ./.env
       - python/install-packages:
           pkg-manager: poetry
       - run:
@@ -43,11 +38,13 @@ jobs:
             - .
 
 workflows:
-  testPREPROD:
+  commit:
     jobs:
       - build_and_test
-  testPROD:
+  build:
     jobs:
-      - deploy_and_test
-
-
+      - deploy_and_test:
+          filters:
+            branches:
+              only:
+                - main
