@@ -10,8 +10,6 @@ jobs:
       - run:
           name: "get env variables for pre prod"
           command: bash load_external_variables.sh "DEV"
-          # command: echo 'export PARSER_URL=${DEV_PARSER_URL}' >> "$BASH_ENV"
-          #          source "$BASH_ENV"
       - python/install-packages:
           pkg-manager: poetry
       - run:
@@ -27,9 +25,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "get env variables for prod"
-          command: echo 'export PARSER_URL=${PROD_PARSER_URL}' >> "$BASH_ENV"
-                   source "$BASH_ENV"
+          name: "get env variables for pre prod"
+          command: bash load_external_variables.sh "DEV"
       - python/install-packages:
           pkg-manager: poetry
       - run:
