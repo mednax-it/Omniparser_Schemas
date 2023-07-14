@@ -153,8 +153,7 @@ If referring physician id does not exist, identifier will default to concatenati
     2. Create direnv from https://direnv.net/ . The .envrc file can be at parent directory of all your github projects, so it can load and unload env
        variables based on current directory(let's say you are on a github project, the .envrc file loads all the specific project env varibles before the shell gets started.)
     3. export below variables in .envrc file
-       export SCHEMA="hl7v2_default"
-       export PARSER="https://universal-etl-parser.mdnxdev.com/"
+       export PARSER_URL="https://universal-etl-parser.mdnxdev.com/"
     4. Run ETL parser to get FHIR bundle. Command for to get FHIR bundle "poetry run executeETLparser"
     5. Run Regression Tests. Command to run regression tests "poetry run test"
 

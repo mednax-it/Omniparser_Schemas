@@ -8,7 +8,7 @@ from omniparser_schemas.common.globals import(
 from http import HTTPStatus
 
 UNIVERSAL_ETL_PARSER_CONTENT_SCHEMA=PARSER_SCHEMA
-UNIVERSAL_ETL_PARSER_URL=os.environ['PARSER']
+UNIVERSAL_ETL_PARSER_URL=os.environ['PARSER_URL']
 REQUEST_TIMEOUT=PARSER_TIMEOUT
 
 def fetch_parsed_text(text_to_parse):
