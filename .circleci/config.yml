@@ -3,7 +3,7 @@ orbs:
   python: circleci/python@2.0.3
 
 jobs:
-  build_and_test:
+  pre_prod_test:
     executor: python/default
     steps:
       - checkout
@@ -20,7 +20,7 @@ jobs:
           paths:
             - .
 
-  deploy_and_test:
+  prod_test:
     executor: python/default
     steps:
       - checkout
@@ -40,13 +40,12 @@ jobs:
 workflows:
   commit:
     jobs:
-      - build_and_test:
+      - pre_prod_test:
           filters:
             branches:
-              only:
+              ignore:
                 - main
-
-      - deploy_and_test:
+      - prod_test:
           filters:
             branches:
               only:
