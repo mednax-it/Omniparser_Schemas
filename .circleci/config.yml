@@ -44,7 +44,7 @@ workflows:
           filters:
             branches:
               only:
-                - SMILECDR-445-config-bug-fix
+                - main
 
       - deploy_and_test:
           filters:
