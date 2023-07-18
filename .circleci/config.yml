@@ -3,7 +3,7 @@ orbs:
   python: circleci/python@2.0.3
 
 jobs:
-  build_and_test:
+  pre_prod_test:
     executor: python/default
     steps:
       - checkout
@@ -20,13 +20,13 @@ jobs:
           paths:
             - .
 
-  deploy_and_test:
+  prod_test:
     executor: python/default
     steps:
       - checkout
       - run:
-          name: "get env variables for pre prod"
-          command: bash load_external_variables.sh "DEV"
+          name: "get env variables for prod"
+          command: bash load_external_variables.sh "PROD"
       - python/install-packages:
           pkg-manager: poetry
       - run:
@@ -40,10 +40,12 @@ jobs:
 workflows:
   commit:
     jobs:
-      - build_and_test
-  build:
-    jobs:
-      - deploy_and_test:
+      - pre_prod_test:
+          filters:
+            branches:
+              ignore:
+                - main
+      - prod_test:
           filters:
             branches:
               only:
