@@ -1,16 +1,15 @@
 import sys
-
-from http import HTTPStatus
+import os
 import requests
+from omniparser_schemas.common.globals import(
+    PARSER_SCHEMA,
+    PARSER_TIMEOUT
+)
+from http import HTTPStatus
 
-#from omniparser_schemas.common.globals import(
-#   UNIVERSAL_ETL_PARSER_CONTENT_SCHEMA,
-#   UNIVERSAL_ETL_PARSER_URL,
-#   REQUEST_TIMEOUT
-#)
-UNIVERSAL_ETL_PARSER_CONTENT_SCHEMA="hl7v2_default"
-UNIVERSAL_ETL_PARSER_URL="https://universal-etl-parser.mdnxdev.com/"
-REQUEST_TIMEOUT=90
+UNIVERSAL_ETL_PARSER_CONTENT_SCHEMA=PARSER_SCHEMA
+UNIVERSAL_ETL_PARSER_URL=os.environ['PARSER_URL']
+REQUEST_TIMEOUT=PARSER_TIMEOUT
 
 def fetch_parsed_text(text_to_parse):
     headers = {"Content-Schema": UNIVERSAL_ETL_PARSER_CONTENT_SCHEMA}

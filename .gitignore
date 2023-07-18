@@ -2,6 +2,7 @@ output*.json
 inputTEST*
 .DS_Store
 regression*.json
+.envrc
 
 #======================================================================
 # Python-specific ignores, from:
