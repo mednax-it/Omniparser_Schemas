@@ -1602,7 +1602,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "val ? val.replace(/-/g,'') : ''"},
+              {"const": "val ? '999999999' : ''"},
                 {"const": "val"}, {"xpath": "."}
             ]
         }
