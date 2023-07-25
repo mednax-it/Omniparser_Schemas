@@ -25,8 +25,40 @@ def insurancecoverage_test(resource_name, testfile):
             COV_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/coverage-id"
             cov = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == COV_IDENTIFIER, filter_cov))
 
+            assert cov[0]["resource"]["resourceType"] ==
+            assert cov[0]["request"]["method"] ==
+            assert cov[0]["request"]["url"] ==
+            assert cov[0]["resource"]["beneficiary"]["display"] ==
+            assert cov[0]["resource"]["beneficiary"]["reference"] ==
+            assert cov[0]["resource"]["beneficiary"]["type"] ==
+            assert cov[0]["resource"]["class"][0]["type"]["coding"][0]["code"] ==
+            assert cov[0]["resource"]["class"][0]["type"]["coding"][0]["display"] ==
+            assert cov[0]["resource"]["class"][0]["type"]["coding"][0]["system"] ==
+            assert cov[0]["resource"]["class"][0]["value"] ==
+            assert cov[0]["resource"]["identifier"][0]["system"] ==
+            assert cov[0]["resource"]["identifier"][0]["value"] ==
+            assert cov[0]["resource"]["identifier"][1]["system"] ==
+            assert cov[0]["resource"]["identifier"][1]["value"] ==
+            assert cov[0]["resource"]["network"] ==
+            assert cov[0]["resource"]["order"] ==
+            assert cov[0]["resource"]["payor"][0]["reference"] ==
+            assert cov[0]["resource"]["period"]["end"] ==
+            assert cov[0]["resource"]["period"]["start"] ==
+            assert cov[0]["resource"]["policyHolder"]["reference"] ==
+            assert cov[0]["resource"]["relationship"]["coding"][0]["code"] ==
+            assert cov[0]["resource"]["relationship"]["coding"][0]["display"] ==
+            assert cov[0]["resource"]["relationship"]["coding"][0]["system"] ==
+            assert cov[0]["resource"]["status"] ==
+            assert cov[0]["resource"]["subscriber"]["display"] ==
+            assert cov[0]["resource"]["subscriber"]["identifier"]["system"] ==
+            assert cov[0]["resource"]["subscriber"]["identifier"]["value"] ==
+            assert cov[0]["resource"]["subscriber"]["reference"] ==
+            assert cov[0]["resource"]["subscriber"]["type"] ==
 
-            
+
+
+
+
 
 
             assert cov[0]["resource"]["relationship"]["coding"][0]["code"] == RELATIONSHIP_CODE[0]
