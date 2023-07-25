@@ -19,7 +19,7 @@ WORKPHONE="(479)555-5875"
 WORKEMAIL="pid12@gmail.com"
 PHONETYPE=["home","mobile","work"]
 HOSPITALPATIENTNUMBER="9543332222"
-SSN="9543312222"
+SSN="999999999"
 #MULTIPLEBIRTH in HL7 message will transform to mulitplebirth integer if multiple birth is "Y"
 BIRTHORDER=2
 
