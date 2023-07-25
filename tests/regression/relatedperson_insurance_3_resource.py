@@ -162,7 +162,7 @@ def relatedperson_insurance_3_test(resource_name, testfile):
             assert not rel[2]["resource"]["telecom"][3]["use"] == N_PHONETYPE, "negative test case failed"
             assert not rel[2]["resource"]["telecom"][3]["value"] == N_WORKEMAIL, "negative test case failed"
 
-        print("FHIR bundle " + str(resource_name) + " subscriber 3resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+        print("FHIR bundle " + str(resource_name) + " subscriber 3 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "2"):
         validate_ETL_parser(resource_name, testfile)
@@ -183,7 +183,7 @@ def relatedperson_insurance_3_test(resource_name, testfile):
             assert not rel[2]["resource"]["telecom"][0]["use"] == N_PHONETYPE, "negative test case failed"
             assert not rel[2]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle " + str(resource_name) + " subscriber 3resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " subscriber 3 resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "3"):
         validate_ETL_parser(resource_name, testfile)
@@ -202,7 +202,7 @@ def relatedperson_insurance_3_test(resource_name, testfile):
             assert not rel[2]["resource"]["gender"] == N_GENDER, "negative test case failed"
             assert not rel[2]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle " + str(resource_name) + " subscriber 3resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " subscriber 3 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
 
     elif(testfile == "4"):
@@ -220,4 +220,4 @@ def relatedperson_insurance_3_test(resource_name, testfile):
             #Negative test cases
             assert not rel[2]["resource"]["address"][0]["use"] == N_ADDRESSUSE, "negative test case failed"
 
-            print("FHIR bundle " + str(resource_name) + " subscriber 3resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle " + str(resource_name) + " subscriber 3 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
