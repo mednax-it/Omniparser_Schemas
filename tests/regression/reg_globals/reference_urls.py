@@ -14,6 +14,7 @@ RELATED_PERSON_INSURANCE_FULL_URL_2="urn:uuid:61ebe121-aa05-0002-0002-983a382abc
 RELATED_PERSON_INSURANCE_FULL_URL_3="urn:uuid:61ebe121-aa05-0002-0003-983a382abcd7"
 
 
+
 REFERENCE_TYPE=["Patient", "Organization", "Encounter", "Account", "Practitioner", "RelatedPerson"]
 URL=["Patient", "Organization", "Encounter", "Account", "Practitioner"]
 

@@ -25,6 +25,10 @@ def insurancecoverage_test(resource_name, testfile):
             COV_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/coverage-id"
             cov = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == COV_IDENTIFIER, filter_cov))
 
+
+            
+
+
             assert cov[0]["resource"]["relationship"]["coding"][0]["code"] == RELATIONSHIP_CODE[0]
             assert cov[0]["resource"]["relationship"]["coding"][0]["display"] == RELATIONSHIP_DISPLAY[0]
             assert cov[0]["resource"]["subscriber"]["identifier"]["system"] == SUBSCRIBER_IDENTIFIER_SYSTEM_RELATED_PERSON
