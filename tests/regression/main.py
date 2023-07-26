@@ -42,7 +42,6 @@ def run_tests():
     relatedperson_insurance_2_test("relatedperson", "3")
     relatedperson_insurance_2_test("relatedperson", "4")
 
-
     relatedperson_insurance_3_test("relatedperson", "1")
     relatedperson_insurance_3_test("relatedperson", "2")
     relatedperson_insurance_3_test("relatedperson", "3")
