@@ -60,7 +60,7 @@ from tests.regression.reg_globals.reference_urls import (
     RELATED_PERSON_INSURANCE_FULL_URL_2,
     PATIENT_FULL_URL,
     REFERENCE_TYPE,
-    N_RELATED_PERSON_INSURANCE_FULL_URL,
+    N_RELATED_PERSON_INSURANCE_FULL_URL_2,
     N_PATIENT_FULL_URL,
     N_REFERENCE_TYPE
 )
@@ -126,7 +126,7 @@ def relatedperson_insurance_2_test(resource_name, testfile):
             assert rel[1]["resource"]["telecom"][3]["value"] == WORKEMAIL[1], "did not match homeemail"
 
             ##Negative test cases
-            assert not rel[1]["fullUrl"] == N_RELATED_PERSON_INSURANCE_FULL_URL, "negative test case failed"
+            assert not rel[1]["fullUrl"] == N_RELATED_PERSON_INSURANCE_FULL_URL_2, "negative test case failed"
             assert not rel[1]["request"]["method"] == N_REQUEST_TYPE, "negative test case failed"
             assert not rel[1]["request"]["url"] == f'RelatedPerson?identifier=https://pediatrix.com/fhir/NamingSystem/relatedPerson-id|{N_MRN}-{VALUE}-{RELATEDPERSON_ID[0]}', "negative test case failed"
             assert not rel[1]["resource"]["address"][0]["city"] == N_CITY, "negative test case failed"
