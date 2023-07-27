@@ -5,6 +5,7 @@ from tests.regression.organization_resource import org_test
 from tests.regression.encounter_resource import enc_test
 from tests.regression.account_resource import acc_test
 from tests.regression.coverage_1_resource import insurancecoverage_test
+from tests.regression.coverage_2_resource import insurancecoverage_2_test
 from tests.regression.relatedperson_resource import relatedperson_test
 from tests.regression.relatedperson_insurance_1_resource import relatedperson_insurance_1_test
 from tests.regression.relatedperson_insurance_2_resource import relatedperson_insurance_2_test
@@ -26,6 +27,10 @@ def run_tests():
     insurancecoverage_test("insurancecoverage", "1")
     insurancecoverage_test("insurancecoverage", "2")
     insurancecoverage_test("insurancecoverage", "3")
+
+    insurancecoverage_2_test("insurancecoverage", "1")
+    insurancecoverage_2_test("insurancecoverage", "2")
+    insurancecoverage_2_test("insurancecoverage", "3")
 
     relatedperson_test("relatedperson", "1")
     relatedperson_test("relatedperson", "2")
