@@ -133,4 +133,4 @@ def insurancecoverage_3_test(resource_name, testfile):
             assert not cov[2]["resource"]["subscriber"]["reference"] == N_RELATED_PERSON_INSURANCE_FULL_URL_1, "negative test case failed"
             assert not cov[2]["resource"]["subscriber"]["type"] == N_COVERAGE_SUBSCRIBER_TYPE, "negative test case failed"
 
-            print("FHIR bundle coverage 2 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle coverage 3 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")

@@ -11,8 +11,8 @@ from tests.regression.relatedperson_resource import relatedperson_test
 from tests.regression.relatedperson_insurance_1_resource import relatedperson_insurance_1_test
 from tests.regression.relatedperson_insurance_2_resource import relatedperson_insurance_2_test
 from tests.regression.relatedperson_insurance_3_resource import relatedperson_insurance_3_test
-from tests.regression.practitioner_attending_resource import practitioner_test
-
+from tests.regression.practitioner_attending_resource import practitioner_attending_test
+from tests.regression.practitioner_referring_resource import practitioner_referring_test
 
 def run_tests():
     patient_test("patient", "1")
@@ -28,8 +28,8 @@ def run_tests():
     acc_test("account", "1")
 
     insurancecoverage_1_test("insurancecoverage", "1")
-    insurancecoverage_2_test("insurancecoverage", "2")
-    insurancecoverage_3_test("insurancecoverage", "3")
+    insurancecoverage_1_test("insurancecoverage", "2")
+    insurancecoverage_1_test("insurancecoverage", "3")
 
     insurancecoverage_2_test("insurancecoverage", "1")
     insurancecoverage_2_test("insurancecoverage", "2")
@@ -59,7 +59,9 @@ def run_tests():
     relatedperson_insurance_3_test("relatedperson", "3")
     relatedperson_insurance_3_test("relatedperson", "4")
 
-    practitioner_test("practitioner", "1")
+    practitioner_attending_test("practitioner", "1")
+    #practitioner referring tests also use same test file that is being used by practitioner attending tests
+    practitioner_referring_test("practitioner", "1")
 
 def cli(args=None):
     """Process command line arguments."""
