@@ -142,7 +142,7 @@ def insurancecoverage_1_test(resource_name, testfile):
             assert not cov[2]["resource"]["relationship"]["coding"][0]["display"] == N_RELATIONSHIP_DISPLAY[0], "negative test case failed"
             assert not cov[2]["resource"]["subscriber"]["identifier"]["system"] == N_SUBSCRIBER_IDENTIFIER_SYSTEM_RELATED_PERSON, "negative test case failed"
 
-            print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle coverage 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "2"):
         validate_ETL_parser(resource_name, testfile)
@@ -163,7 +163,7 @@ def insurancecoverage_1_test(resource_name, testfile):
             assert not cov[0]["resource"]["relationship"]["coding"][0]["display"] == N_RELATIONSHIP_DISPLAY[3], "negative test case failed"
             assert not cov[0]["resource"]["subscriber"]["identifier"]["system"] == N_SUBSCRIBER_IDENTIFIER_SYSTEM_RELATED_PERSON, "negative test case failed"
 
-            print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle coverage 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
     elif(testfile == "3"):
         validate_ETL_parser(resource_name, testfile)
@@ -184,7 +184,7 @@ def insurancecoverage_1_test(resource_name, testfile):
             assert not cov[0]["resource"]["relationship"]["coding"][0]["display"] == N_RELATIONSHIP_DISPLAY[1], "negative test case failed"
             assert not cov[0]["resource"]["subscriber"]["identifier"]["system"] == N_SUBSCRIBER_IDENTIFIER_SYSTEM_PATIENT, "negative test case failed"
 
-            print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+            print("FHIR bundle coverage 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
 
 
