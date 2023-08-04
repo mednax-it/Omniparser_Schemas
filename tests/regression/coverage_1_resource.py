@@ -64,7 +64,7 @@ from .reg_globals.patient_reg_global import(
 
 from omniparser_schemas.parser.main import validate_ETL_parser
 
-def insurancecoverage_test(resource_name, testfile):
+def insurancecoverage_1_test(resource_name, testfile):
     if(testfile == "1"):
         validate_ETL_parser(resource_name, testfile)
         with open("tests/regression/regression_output/" + str(resource_name) + "/regression_" + str(resource_name) + "_" + str(testfile) + ".json",  'r') as json_file:
@@ -158,18 +158,10 @@ def insurancecoverage_test(resource_name, testfile):
             assert cov[0]["resource"]["relationship"]["coding"][0]["display"] == RELATIONSHIP_DISPLAY[1], "did not match relationship display"
             assert cov[0]["resource"]["subscriber"]["identifier"]["system"] == SUBSCRIBER_IDENTIFIER_SYSTEM[0], "did not match subscriber system"
 
-            assert cov[2]["resource"]["relationship"]["coding"][0]["code"] == RELATIONSHIP_CODE[2], "did not match relationship code"
-            assert cov[2]["resource"]["relationship"]["coding"][0]["display"] == RELATIONSHIP_DISPLAY[2], "did not match relationship display"
-            assert cov[2]["resource"]["subscriber"]["identifier"]["system"] == SUBSCRIBER_IDENTIFIER_SYSTEM[0], "did not match subscriber system"
-
             #Negative test cases
             assert not cov[0]["resource"]["relationship"]["coding"][0]["code"] == N_RELATIONSHIP_CODE[3], "negative test case failed"
             assert not cov[0]["resource"]["relationship"]["coding"][0]["display"] == N_RELATIONSHIP_DISPLAY[3], "negative test case failed"
             assert not cov[0]["resource"]["subscriber"]["identifier"]["system"] == N_SUBSCRIBER_IDENTIFIER_SYSTEM_RELATED_PERSON, "negative test case failed"
-
-            assert not cov[2]["resource"]["relationship"]["coding"][0]["code"] == N_RELATIONSHIP_CODE[0], "negative test case failed"
-            assert not cov[2]["resource"]["relationship"]["coding"][0]["display"] == N_RELATIONSHIP_DISPLAY[0], "negative test case failed"
-            assert not cov[2]["resource"]["subscriber"]["identifier"]["system"] == N_SUBSCRIBER_IDENTIFIER_SYSTEM_RELATED_PERSON, "negative test case failed"
 
             print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
@@ -191,10 +183,6 @@ def insurancecoverage_test(resource_name, testfile):
             assert not cov[0]["resource"]["relationship"]["coding"][0]["code"] == N_RELATIONSHIP_CODE[1], "negative test case failed"
             assert not cov[0]["resource"]["relationship"]["coding"][0]["display"] == N_RELATIONSHIP_DISPLAY[1], "negative test case failed"
             assert not cov[0]["resource"]["subscriber"]["identifier"]["system"] == N_SUBSCRIBER_IDENTIFIER_SYSTEM_PATIENT, "negative test case failed"
-
-            assert not cov[2]["resource"]["relationship"]["coding"][0]["code"] == N_RELATIONSHIP_CODE[2], "negative test case failed"
-            assert not cov[2]["resource"]["relationship"]["coding"][0]["display"] == N_RELATIONSHIP_DISPLAY[2], "negative test case failed"
-            assert not cov[2]["resource"]["subscriber"]["identifier"]["system"] == N_SUBSCRIBER_IDENTIFIER_SYSTEM_PATIENT, "negative test case failed"
 
             print("FHIR bundle coverage resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
