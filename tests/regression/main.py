@@ -13,6 +13,7 @@ from tests.regression.relatedperson_insurance_2_resource import relatedperson_in
 from tests.regression.relatedperson_insurance_3_resource import relatedperson_insurance_3_test
 from tests.regression.practitioner_attending_resource import practitioner_attending_test
 from tests.regression.practitioner_referring_resource import practitioner_referring_test
+from tests.regression.claim_1_resource import claim_1_test
 
 def run_tests():
     patient_test("patient", "1")
@@ -62,6 +63,8 @@ def run_tests():
     practitioner_attending_test("practitioner", "1")
     #practitioner referring tests also use same test file that is being used by practitioner attending tests
     practitioner_referring_test("practitioner", "1")
+
+    claim_1_test("claim", "1")
 
 def cli(args=None):
     """Process command line arguments."""
