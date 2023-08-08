@@ -13,7 +13,7 @@ from .reg_globals.claim_reg_globals import(
 )
 
 from .reg_globals.reference_urls import(
-   CLAIM_RESOURCE_FULL_URL,
+   CLAIM_RESOURCE_FULL_URL_1,
    COVERAGE_FULL_URL_1,
    PATIENT_FULL_URL,
    ORGANIZATION_FULL_URL
@@ -50,17 +50,17 @@ def claim_1_test(resource_name, testfile):
             CLAIM_IDENTIFIER = "https://pediatrix.com/fhir/NamingSystem/claim-id"
             claim = list(filter(lambda e: e["resource"]["identifier"][0]["system"] == CLAIM_IDENTIFIER, filter_cov))
 
-            assert claim[0]["fullUrl"] == CLAIM_RESOURCE_FULL_URL, "did not match full url"
-            assert claim[0]["request"]["url"] == f'Claim?identifier={CLAIM_IDENTIFIER_SYSTEM}|{MRN}-{VALUE}-{CLAIM_AUTH_NUMBER}', "did not match request url"
+            assert claim[0]["fullUrl"] == CLAIM_RESOURCE_FULL_URL_1, "did not match full url"
+            assert claim[0]["request"]["url"] == f'Claim?identifier={CLAIM_IDENTIFIER_SYSTEM}|{MRN}-{VALUE}-{CLAIM_AUTH_NUMBER[0]}', "did not match request url"
             CLAIM_DATE = claim[0]["resource"]["created"]
             CREATED_DATE = CLAIM_DATE[:10]
             assert CURRENT_DATE == CREATED_DATE, "did not match claim created date"
             assert claim[0]["resource"]["identifier"][0]["system"] == CLAIM_IDENTIFIER_SYSTEM, "did not match claim identifier system"
-            assert claim[0]["resource"]["identifier"][0]["value"] == f'{MRN}-{VALUE}-{CLAIM_AUTH_NUMBER}', "did not match claim value"
+            assert claim[0]["resource"]["identifier"][0]["value"] == f'{MRN}-{VALUE}-{CLAIM_AUTH_NUMBER[0]}', "did not match claim value"
             assert claim[0]["resource"]["insurance"][0]["coverage"]["reference"] == COVERAGE_FULL_URL_1, "did not match coverage URL"
             assert claim[0]["resource"]["insurance"][0]["coverage"]["type"] == URL[5], "did not match coverage type"
             assert claim[0]["resource"]["insurance"][0]["focal"] == 1, "did not match focal"
-            assert claim[0]["resource"]["insurance"][0]["preAuthRef"][0] == CLAIM_AUTH_NUMBER, "did not match preAuthRef"
+            assert claim[0]["resource"]["insurance"][0]["preAuthRef"][0] == CLAIM_AUTH_NUMBER[0], "did not match preAuthRef"
             assert claim[0]["resource"]["insurance"][0]["sequence"] == CLAIM_SEQUENCE, "did not match insurance sequence"
             assert claim[0]["resource"]["patient"]["reference"] == PATIENT_FULL_URL, "did not match patient full url"
             assert claim[0]["resource"]["patient"]["type"] == URL[0], "did not match patient type"
@@ -86,7 +86,7 @@ def claim_1_test(resource_name, testfile):
             assert not claim[0]["resource"]["insurance"][0]["coverage"]["type"] == URL[4], "negative test case failed"
             assert not claim[0]["resource"]["insurance"][0]["focal"] == 0, "negative test case failed"
             assert not claim[0]["resource"]["insurance"][0]["preAuthRef"][0] == CLAIM_CODE, "negative test case failed"
-            assert not claim[0]["resource"]["insurance"][0]["sequence"] == CLAIM_AUTH_NUMBER, "negative test case failed"
+            assert not claim[0]["resource"]["insurance"][0]["sequence"] == CLAIM_AUTH_NUMBER[0], "negative test case failed"
             assert not claim[0]["resource"]["patient"]["reference"] == ORGANIZATION_FULL_URL, "negative test case failed"
             assert not claim[0]["resource"]["patient"]["type"] == URL[1], "negative test case failed"
             assert not claim[0]["resource"]["priority"]["coding"][0]["code"] == CLAIM_CODE[1], "negative test case failed"
@@ -100,4 +100,3 @@ def claim_1_test(resource_name, testfile):
             assert not claim[0]["resource"]["use"] == CLAIM_STATUS, "negative test case failed"
 
             print("FHIR bundle claim 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
-            
