@@ -14,6 +14,8 @@ from tests.regression.relatedperson_insurance_3_resource import relatedperson_in
 from tests.regression.practitioner_attending_resource import practitioner_attending_test
 from tests.regression.practitioner_referring_resource import practitioner_referring_test
 from tests.regression.claim_1_resource import claim_1_test
+from tests.regression.claim_2_resource import claim_2_test
+from tests.regression.claim_3_resource import claim_3_test
 
 def run_tests():
     patient_test("patient", "1")
@@ -61,10 +63,15 @@ def run_tests():
     relatedperson_insurance_3_test("relatedperson", "4")
 
     practitioner_attending_test("practitioner", "1")
-    #practitioner referring tests also use same test file that is being used by practitioner attending tests
+    #practitioner referring tests use same test file that is being used by practitioner attending tests
     practitioner_referring_test("practitioner", "1")
 
     claim_1_test("claim", "1")
+    #claim 2 tests use same test file that is being used by claim 1 tests
+    claim_2_test("claim", "1")
+    #claim 3 tests use same test file that is being used by claim 1 tests
+    claim_3_test("claim", "1")
+
 
 def cli(args=None):
     """Process command line arguments."""
