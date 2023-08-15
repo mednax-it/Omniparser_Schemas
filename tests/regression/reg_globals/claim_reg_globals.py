@@ -1,4 +1,3 @@
-CLAIM_IDENTIFIER_SYSTEM="https://pediatrix.com/fhir/NamingSystem/claim-id"
 CLAIM_AUTH_NUMBER=["3456T789", "20071PED", "7899PDX1"]
 CLAIM_SEQUENCE=1
 CLAIM_STATUS="active"
