@@ -90,3 +90,5 @@ def claim_1_test(resource_name, testfile, identifier_url, identifier_id):
         assert not claim[0]["resource"]["type"]["coding"][0]["display"] == CLAIM_CODE[1], "negative test case failed"
         assert not claim[0]["resource"]["type"]["coding"][0]["system"] == CLAIM_CODE_SYSTEM[0], "negative test case failed"
         assert not claim[0]["resource"]["use"] == CLAIM_STATUS, "negative test case failed"
+
+        print("FHIR bundle claim 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
