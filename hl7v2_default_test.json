@@ -1304,7 +1304,7 @@
                 {
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/claim-id"},
-                    "value": {"xpath": "IN1", "template": "transform_insurance_identifier"}
+                    "value": {"xpath": "IN1", "template": "transform_insurance_identifier", "_comment": "for now insurance identifer value is also used as claim identifier value"}
                   }
                 }
               ]
