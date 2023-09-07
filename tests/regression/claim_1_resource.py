@@ -43,7 +43,7 @@ def claim_1_test(resource_name, testfile, identifier_url, identifier_id):
         CURRENT_DATE = DATE_TIME_NOW.strftime("%Y-%m-%d")
         claim = filter_resource(resource_name, testfile, identifier_url, identifier_id)
         assert claim[0]["fullUrl"] == CLAIM_RESOURCE_FULL_URL_1, "did not match full url"
-        assert claim[0]["request"]["url"] == f'{RESOURCE_NAME[1]}?identifier={IDENTIFIER_URL}/{IDENTIFIER_ID[1]}|{MRN}-{FACILITY_ID}-{CLAIM_AUTH_NUMBER[0]}', "did not match request url"
+        assert claim[0]["request"]["url"] == f'{RESOURCE_NAME[1]}?identifier={IDENTIFIER_URL}/{IDENTIFIER_ID[1]}|{MRN}-{FACILITY_ID}-{COVERAGE_ID[0]}', "did not match request url"
         CLAIM_DATE = claim[0]["resource"]["created"]
         CREATED_DATE = CLAIM_DATE[:10]
         assert CURRENT_DATE == CREATED_DATE, "did not match claim created date"
