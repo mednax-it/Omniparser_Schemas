@@ -10,6 +10,10 @@ from .reg_globals.claim_reg_globals import(
     CLAIM_USE
 )
 
+from .reg_globals.relatedperson_insurance_reg_global import(
+    RELATEDPERSON_INSURANCE_ID
+)
+
 from .reg_globals.reference_urls import(
    CLAIM_RESOURCE_FULL_URL_2,
    COVERAGE_FULL_URL_2,
@@ -44,7 +48,8 @@ def claim_2_test(resource_name, testfile, identifier_url, identifier_id):
         CREATED_DATE = CLAIM_DATE[:10]
         assert CURRENT_DATE == CREATED_DATE, "did not match claim created date"
         assert claim[1]["resource"]["identifier"][0]["system"] == f'{IDENTIFIER_URL}/{IDENTIFIER_ID[1]}', "did not match claim identifier system"
-        assert claim[1]["resource"]["identifier"][0]["value"] == f'{MRN}-{FACILITY_ID}-{CLAIM_AUTH_NUMBER[1]}', "did not match claim value"
+        # Instead of adding a test to make sure if there is no policy number, the claim id should be "{MRN}-{facility-id}-{insurance/SET_ID}"
+        assert claim[1]["resource"]["identifier"][0]["value"] == f'{MRN}-{FACILITY_ID}-{RELATEDPERSON_INSURANCE_ID[2]}', "did not match claim value"
         assert claim[1]["resource"]["insurance"][0]["coverage"]["reference"] == COVERAGE_FULL_URL_2, "did not match coverage URL"
         assert claim[1]["resource"]["insurance"][0]["coverage"]["type"] == RESOURCE_NAME[2], "did not match coverage type"
         assert claim[1]["resource"]["insurance"][0]["focal"] == 1, "did not match focal"

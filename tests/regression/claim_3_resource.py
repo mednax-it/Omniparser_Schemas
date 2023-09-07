@@ -17,6 +17,10 @@ from .reg_globals.reference_urls import(
    ORGANIZATION_FULL_URL
 )
 
+from .reg_globals.coverage_reg_globals import(
+    COVERAGE_ID
+)
+
 from .reg_globals.organization_reg_globals import(
     FACILITY_ID
 )
@@ -44,7 +48,7 @@ def claim_3_test(resource_name, testfile, identifier_url, identifier_id):
         CREATED_DATE = CLAIM_DATE[:10]
         assert CURRENT_DATE == CREATED_DATE, "did not match claim created date"
         assert claim[2]["resource"]["identifier"][0]["system"] == f'{IDENTIFIER_URL}/{IDENTIFIER_ID[1]}', "did not match claim identifier system"
-        assert claim[2]["resource"]["identifier"][0]["value"] == f'{MRN}-{FACILITY_ID}-{CLAIM_AUTH_NUMBER[2]}', "did not match claim value"
+        assert claim[2]["resource"]["identifier"][0]["value"] == f'{MRN}-{FACILITY_ID}-{COVERAGE_ID[3]}', "did not match claim value"
         assert claim[2]["resource"]["insurance"][0]["coverage"]["reference"] == COVERAGE_FULL_URL_3, "did not match coverage URL"
         assert claim[2]["resource"]["insurance"][0]["coverage"]["type"] == RESOURCE_NAME[2], "did not match coverage type"
         assert claim[2]["resource"]["insurance"][0]["focal"] == 1, "did not match focal"

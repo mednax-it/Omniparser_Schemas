@@ -1804,9 +1804,9 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!authnumber || authnumber == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(authnumber).replace(/\\%[A-F0-9]{2}/g,'')"},
+                {"const": "!policy_number || policy_number == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(policy_number).replace(/\\%[A-F0-9]{2}/g,'')"},
+                {"const": "policy_number"}, {"xpath": "policy_number"},
                 {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
-                {"const": "authnumber"}, {"xpath": "auth_number"},
                 {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
             ]
         }
