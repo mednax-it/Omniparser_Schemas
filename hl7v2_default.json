@@ -4,7 +4,7 @@
     "file_format_type": "edi"
   },
   "file_declaration": {
-    "segment_delimiter": "\r",
+    "segment_delimiter": "\\r",
     "element_delimiter": "|",
     "component_delimiter": "^",
     "segment_declarations": [
@@ -1304,7 +1304,7 @@
                 {
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/claim-id"},
-                    "value": {"xpath": "IN1", "template": "transform_coverage_identifier"}
+                    "value": {"xpath": "IN1", "template": "transform_insurance_identifier", "_comment": "for now insurance identifer value is also used as claim identifier value"}
                   }
                 }
               ]
@@ -1977,7 +1977,7 @@
           "name": "concat",
           "args": [
               { "const": "Claim?identifier=https://pediatrix.com/fhir/NamingSystem/claim-id|" },
-              { "xpath": ".", "template": "transform_coverage_identifier" }
+              { "xpath": ".", "template": "transform_insurance_identifier" }
           ]
       }
     },
