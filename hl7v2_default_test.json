@@ -1304,7 +1304,7 @@
                 {
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/claim-id"},
-                    "value": {"xpath": "IN1", "template": "transform_claim_identifier"}
+                    "value": {"xpath": "IN1", "template": "transform_coverage_identifier"}
                   }
                 }
               ]
@@ -1800,17 +1800,6 @@
             ]
         }
     },
-    "transform_claim_identifier": {
-        "custom_func": {
-            "name": "javascript",
-            "args": [
-                {"const": "!policy_number || policy_number == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(policy_number).replace(/\\%[A-F0-9]{2}/g,'')"},
-                {"const": "policy_number"}, {"xpath": "policy_number"},
-                {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
-                {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
-            ]
-        }
-    },
     "transform_attending_physician_identifier": {
         "custom_func": {
             "name": "javascript",
@@ -1988,7 +1977,7 @@
           "name": "concat",
           "args": [
               { "const": "Claim?identifier=https://pediatrix.com/fhir/NamingSystem/claim-id|" },
-              { "xpath": ".", "template": "transform_claim_identifier" }
+              { "xpath": ".", "template": "transform_coverage_identifier" }
           ]
       }
     },
