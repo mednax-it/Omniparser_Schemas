@@ -10,6 +10,10 @@ from .reg_globals.claim_reg_globals import(
     CLAIM_USE
 )
 
+from .reg_globals.coverage_reg_globals import(
+    COVERAGE_ID
+)
+
 from .reg_globals.reference_urls import(
    CLAIM_RESOURCE_FULL_URL_3,
    COVERAGE_FULL_URL_3,
@@ -39,12 +43,12 @@ def claim_3_test(resource_name, testfile, identifier_url, identifier_id):
         CURRENT_DATE = DATE_TIME_NOW.strftime("%Y-%m-%d")
         claim = filter_resource(resource_name, testfile, identifier_url, identifier_id)
         assert claim[2]["fullUrl"] == CLAIM_RESOURCE_FULL_URL_3, "did not match full url"
-        assert claim[2]["request"]["url"] == f'{RESOURCE_NAME[1]}?identifier={IDENTIFIER_URL}/{IDENTIFIER_ID[1]}|{MRN}-{FACILITY_ID}-{CLAIM_AUTH_NUMBER[2]}', "did not match request url"
+        assert claim[2]["request"]["url"] == f'{RESOURCE_NAME[1]}?identifier={IDENTIFIER_URL}/{IDENTIFIER_ID[1]}|{MRN}-{FACILITY_ID}-{COVERAGE_ID[2]}', "did not match request url"
         CLAIM_DATE = claim[2]["resource"]["created"]
         CREATED_DATE = CLAIM_DATE[:10]
         assert CURRENT_DATE == CREATED_DATE, "did not match claim created date"
         assert claim[2]["resource"]["identifier"][0]["system"] == f'{IDENTIFIER_URL}/{IDENTIFIER_ID[1]}', "did not match claim identifier system"
-        assert claim[2]["resource"]["identifier"][0]["value"] == f'{MRN}-{FACILITY_ID}-{CLAIM_AUTH_NUMBER[2]}', "did not match claim value"
+        assert claim[2]["resource"]["identifier"][0]["value"] == f'{MRN}-{FACILITY_ID}-{COVERAGE_ID[2]}', "did not match value"
         assert claim[2]["resource"]["insurance"][0]["coverage"]["reference"] == COVERAGE_FULL_URL_3, "did not match coverage URL"
         assert claim[2]["resource"]["insurance"][0]["coverage"]["type"] == RESOURCE_NAME[2], "did not match coverage type"
         assert claim[2]["resource"]["insurance"][0]["focal"] == 1, "did not match focal"
