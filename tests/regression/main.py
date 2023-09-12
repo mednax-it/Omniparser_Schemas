@@ -26,8 +26,8 @@ from tests.regression.claim_3_resource import claim_3_test
 
 def run_tests():
     acc_test(RESOURCE_NAME[0], "1", IDENTIFIER_URL, IDENTIFIER_ID[0])
-    #All claim tests use same claim test file
     claim_1_test(RESOURCE_NAME[1], "1", IDENTIFIER_URL, IDENTIFIER_ID[1])
+    claim_1_test(RESOURCE_NAME[1], "2", IDENTIFIER_URL, IDENTIFIER_ID[1])
     claim_2_test(RESOURCE_NAME[1], "1", IDENTIFIER_URL, IDENTIFIER_ID[1])
     claim_3_test(RESOURCE_NAME[1], "1", IDENTIFIER_URL, IDENTIFIER_ID[1])
     insurancecoverage_1_test(RESOURCE_NAME[2], "1", IDENTIFIER_URL, IDENTIFIER_ID[2])
