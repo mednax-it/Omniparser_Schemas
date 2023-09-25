@@ -248,7 +248,7 @@
             {"template": "organization_facility_resource"},
             {"xpath": ".[count(PID)=1]", "template": "patient_resource"},
             {"xpath": ".[count(PV1)=1]", "template": "encounter_resource"},
-            {"xpath": ".[EVN/message_typecode!='A40'and guarantor[position()>0]]","template": "account_resource"},
+            {"xpath": ".[EVN/message_typecode!='A40' and guarantor[position()>0]]","template": "account_resource"},
             {"xpath": ".[PV1/point_of_care!='']","template": "organization_department_resource"},
             {"xpath": ".[PV1/attending_physician_id!='']", "template": "practitioner_attending_resource"},
             {"xpath": ".[PV1/referring_physician_id!='']", "template": "practitioner_referring_resource"},
