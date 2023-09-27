@@ -63,13 +63,17 @@
         },
         {"name": "NTE","min": 0, "max": -1},
         {"name": "ZPD","min": 0, "max": -1},
+        {"name": "LAN","min": 0, "max": -1},
+        {"name": "ZPD","min": 0, "max": -1},
         {"name": "PD1","min": 0, "max": -1},
+        {"name": "ZOE","min": 0, "max": -1},
         {"name": "NTE","min": 0, "max": -1},
         {"name": "ZPI","min": 0, "max": -1},
         {"name": "ZEI","min": 0, "max": -1},
         {"name": "MRG","min": 0, "max": -1},
         {"name": "ROL","min": 0, "max": -1},
         {"name": "CON","min": 0, "max": -1},
+        {"name": "NTE","min": 0, "max": -1},
         {"name": "NK1","min": 0, "max": -1},
         {"name": "ZKI","min": 0, "max": -1},
         {"name": "PV1","min": 0,
@@ -91,6 +95,7 @@
                 {"name": "discharge_datetime", "index": 45, "default": ""}
             ]
         },
+        {"name": "ZOE","min": 0, "max": -1},
         {"name": "PV2","min": 0, "max": -1},
         {"name": "PD1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
@@ -195,7 +200,7 @@
                     ]
                 },
                 {
-                    "name": "IN2", "min": 0,
+                    "name": "IN2", "min": 0, "max": -1,
                     "elements": [
                         {"name": "insured_ssn", "index": 2, "default": ""},
                         {"name": "insured_home_phone", "index": 63, "component_index": 1, "default": ""},
@@ -231,7 +236,15 @@
         {"name": "ZPV","min": 0, "max": -1},
         {"name": "ZEX","min": 0, "max": -1},
         {"name": "ZRE","min": 0, "max": -1},
-        {"name": "ZQA","min": 0, "max": -1}
+        {"name": "ZQA","min": 0, "max": -1},
+        {"name": "ZMP","min": 0, "max": -1},
+        {"name": "ZEM","min": 0, "max": -1},
+        {"name": "ZAD","min": 0, "max": -1},
+        {"name": "ZVQ","min": 0, "max": -1},
+        {"name": "ZMD","min": 0, "max": -1},
+        {"name": "ZET","min": 0, "max": -1},
+        {"name": "ZCQ","min": 0, "max": -1},
+        {"name": "ZUD","min": 0, "max": -1}
         ]
       }
     ]
@@ -981,10 +994,10 @@
                     "value": {"xpath": "IN1", "template": "transform_insurance_identifier", "_comment": "insurance identifer value is also used as subscriber identifier value"}
                   }
                 },
-                {"xpath": ".[IN2/insured_ssn!='']",
+                {"xpath": ".[IN2[position()=1]/insured_ssn!='']",
                   "object": {
                     "system": {"const": "http://hl7.org/fhir/sid/us-ssn"},
-                    "value": {"xpath": "IN2/insured_ssn", "template": "transform_ssn"},
+                    "value": {"xpath": "IN2[position()=1]/insured_ssn", "template": "transform_ssn"},
                     "type": {
                       "object": {
                         "coding": {
@@ -1027,31 +1040,31 @@
             },
             "telecom": {
               "array": [
-                {"xpath": ".[IN2/insured_home_phone!='']",
+                {"xpath": ".[IN2[position()=1]/insured_home_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
-                    "value": {"xpath": "IN2/insured_home_phone"},
-                    "use": {"xpath": "IN2/insured_home_phone_type", "template": "transform_phone_type"}
+                    "value": {"xpath": "IN2[position()=1]/insured_home_phone"},
+                    "use": {"xpath": "IN2[position()=1]/insured_home_phone_type", "template": "transform_phone_type"}
                   }
                 },
-                {"xpath": ".[IN2/insured_work_phone!='']",
+                {"xpath": ".[IN2[position()=1]/insured_work_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
-                    "value": {"xpath": "IN2/insured_work_phone"},
+                    "value": {"xpath": "IN2[position()=1]/insured_work_phone"},
                     "use": {"const": "work"}
                   }
                 },
-                {"xpath": ".[IN2/insured_home_email!='']",
+                {"xpath": ".[IN2[position()=1]/insured_home_email!='']",
                   "object": {
                     "system": {"const": "email"},
-                    "value": {"xpath": "IN2/insured_home_email", "template": "transform_email_type"},
+                    "value": {"xpath": "IN2[position()=1]/insured_home_email", "template": "transform_email_type"},
                     "use": {"const": "home"}
                   }
                 },
-                {"xpath": ".[IN2/insured_work_email!='']",
+                {"xpath": ".[IN2[position()=1]/insured_work_email!='']",
                   "object": {
                     "system": {"const": "email"},
-                    "value": {"xpath": "IN2/insured_work_email", "template": "transform_email_type"},
+                    "value": {"xpath": "IN2[position()=1]/insured_work_email", "template": "transform_email_type"},
                     "use": {"const": "work"}
                   }
                 }
