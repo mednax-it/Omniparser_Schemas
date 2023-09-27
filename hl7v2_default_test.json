@@ -261,12 +261,13 @@
             {"template": "organization_facility_resource"},
             {"xpath": ".[count(PID)=1]", "template": "patient_resource"},
             {"xpath": ".[count(PV1)=1]", "template": "encounter_resource"},
-            {"xpath": ".[EVN/message_typecode!='A40']","template": "account_resource"},
+            {"xpath": ".[EVN/message_typecode!='A40' and guarantor[position()>0]]","template": "account_resource"},
             {"xpath": ".[PV1/point_of_care!='']","template": "organization_department_resource"},
             {"xpath": ".[PV1/attending_physician_id!='']", "template": "practitioner_attending_resource"},
             {"xpath": ".[PV1/referring_physician_id!='']", "template": "practitioner_referring_resource"},
             {"xpath": "guarantor[position()=1]", "template": "relatedperson_guarantor_resource"},
             {"xpath": "guarantor[position()=2]", "template": "relatedperson_guarantor_resource"},
+            {"xpath": "guarantor[position()=3]", "template": "relatedperson_guarantor_resource"},
             {"xpath": "insurance[position()=1]", "template": "organization_payor_resource", "_comment": "resource for Organization of primary Payer, if found"},
             {"xpath": "insurance[position()=1]", "template": "coverage_resource", "_comment": "resource for Primary Coverage 1st insurance instance found"},
             {"xpath": "insurance[position()=1][//insurance[position()=1]/IN1/insured_patient_relationship[translate(text(), 'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')][not(.='SELF') and not(.='01') and not(.='S') and not(.='SP') and not(.='SE')]]", "template": "relatedperson_subscriber_resource", "_comment": "relatedperson resource for subscriber will be generated IFF insured patient relationship (IN1.17) is NOT 'SELF'"},
@@ -699,7 +700,7 @@
             },
             "account": {
                 "array": [
-                    {
+                    {"xpath": "guarantor[position()=1]",
                         "object": {
                             "type": {"const": "Account"},
                             "reference": {"const": "urn:uuid:61ebe121-aa04-0001-0001-983a382abcd7"}
@@ -805,7 +806,27 @@
                       }
                     }
                   }
+                },
+                {"xpath": "guarantor[position()=2]",
+                  "object": {
+                    "party": {
+                      "object": {
+                        "type": {"const": "RelatedPerson"},
+                        "reference": {"const": "urn:uuid:61ebe121-aa05-0001-0002-983a382abcd7"}
+                      }
+                    }
+                  }
+                },
+                {"xpath": "guarantor[position()=3]",
+                "object": {
+                  "party": {
+                    "object": {
+                      "type": {"const": "RelatedPerson"},
+                      "reference": {"const": "urn:uuid:61ebe121-aa05-0001-0003-983a382abcd7"}
+                    }
+                  }
                 }
+              }
               ]
             }
           }

@@ -4,7 +4,9 @@ from .reg_globals.reference_urls import(
     COVERAGE_FULL_URL_1,
     COVERAGE_FULL_URL_2,
     COVERAGE_FULL_URL_3,
-    RELATED_PERSON_GUARANTOR_FULL_URL,
+    RELATED_PERSON_GUARANTOR_FULL_URL_1,
+    RELATED_PERSON_GUARANTOR_FULL_URL_2,
+    RELATED_PERSON_GUARANTOR_FULL_URL_3
 )
 
 from .reg_globals.identifier_urls import(
@@ -45,8 +47,12 @@ def acc_test(resource_name, testfile, identifier_url, identifier_id):
     assert acc[0]["resource"]["coverage"][1]["priority"] == 2,  "did not match priority"
     assert acc[0]["resource"]["coverage"][2]["coverage"]["reference"] == COVERAGE_FULL_URL_3, "did not match coverage full URL"
     assert acc[0]["resource"]["coverage"][2]["priority"] == 3,  "did not match priority"
-    assert acc[0]["resource"]["guarantor"][0]["party"]["reference"] == RELATED_PERSON_GUARANTOR_FULL_URL,  "did not match guarantor reference"
+    assert acc[0]["resource"]["guarantor"][0]["party"]["reference"] == RELATED_PERSON_GUARANTOR_FULL_URL_1,  "did not match guarantor reference"
     assert acc[0]["resource"]["guarantor"][0]["party"]["type"] == RESOURCE_NAME[7], "did not match reference type"
+    assert acc[0]["resource"]["guarantor"][1]["party"]["reference"] == RELATED_PERSON_GUARANTOR_FULL_URL_2,  "did not match guarantor reference"
+    assert acc[0]["resource"]["guarantor"][1]["party"]["type"] == RESOURCE_NAME[7], "did not match reference type"
+    assert acc[0]["resource"]["guarantor"][2]["party"]["reference"] == RELATED_PERSON_GUARANTOR_FULL_URL_3,  "did not match guarantor reference"
+    assert acc[0]["resource"]["guarantor"][2]["party"]["type"] == RESOURCE_NAME[7], "did not match reference type"
     assert acc[0]["resource"]["identifier"][0]["system"] == f'{IDENTIFIER_URL}/{IDENTIFIER_ID[0]}', "did not match indentifier system"
     assert acc[0]["resource"]["identifier"][0]["value"] == f'{MRN}-{FACILITY_ID}', "did not match identifier value"
     assert acc[0]["resource"]["resourceType"] == RESOURCE_NAME[0], "did not match resource"
@@ -61,14 +67,18 @@ def acc_test(resource_name, testfile, identifier_url, identifier_id):
     assert not acc[0]["fullUrl"] == PATIENT_FULL_URL, "negative test case failed"
     assert not acc[0]["request"]["method"] == REQUEST_TYPE[1], "negative test case failed"
     assert not acc[0]["request"]["url"] == {MRN}-{FACILITY_ID}, "negative test case failed"
-    assert not acc[0]["resource"]["coverage"][0]["coverage"]["reference"] == RELATED_PERSON_GUARANTOR_FULL_URL, "negative test case failed"
+    assert not acc[0]["resource"]["coverage"][0]["coverage"]["reference"] == RELATED_PERSON_GUARANTOR_FULL_URL_1, "negative test case failed"
     assert not acc[0]["resource"]["coverage"][0]["priority"] == 3,  "negative test case failed"
     assert not acc[0]["resource"]["coverage"][1]["coverage"]["reference"] == ACCOUNT_FULL_URL, "negative test case failed"
     assert not acc[0]["resource"]["coverage"][1]["priority"] == 1,  "negative test case failed"
     assert not acc[0]["resource"]["coverage"][2]["coverage"]["reference"] == PATIENT_FULL_URL, "negative test case failed"
     assert not acc[0]["resource"]["coverage"][2]["priority"] == 2,  "negative test case failed"
-    assert not acc[0]["resource"]["guarantor"][0]["party"]["reference"] == ACCOUNT_FULL_URL,  "negative test case failed"
+    assert not acc[0]["resource"]["guarantor"][0]["party"]["reference"] == COVERAGE_FULL_URL_1,  "negative test case failed"
     assert not acc[0]["resource"]["guarantor"][0]["party"]["type"] == RESOURCE_NAME[0], "negative test case failed"
+    assert not acc[0]["resource"]["guarantor"][0]["party"]["reference"] == COVERAGE_FULL_URL_2,  "negative test case failed"
+    assert not acc[0]["resource"]["guarantor"][0]["party"]["type"] == RESOURCE_NAME[1], "negative test case failed"
+    assert not acc[0]["resource"]["guarantor"][0]["party"]["reference"] == COVERAGE_FULL_URL_3,  "negative test case failed"
+    assert not acc[0]["resource"]["guarantor"][0]["party"]["type"] == RESOURCE_NAME[2], "negative test case failed"
     assert not acc[0]["resource"]["identifier"][0]["system"] == IDENTIFIER_URL, "negative test case failed"
     assert not acc[0]["resource"]["identifier"][0]["value"] == f'{FACILITY_ID}-{MRN}', "negative test case failed"
     assert not acc[0]["resource"]["resourceType"] == RESOURCE_NAME[3], "negative test case failed"
