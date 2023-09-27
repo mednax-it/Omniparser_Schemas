@@ -29,7 +29,7 @@ from tests.regression.reg_globals.request_type import (
 )
 
 from tests.regression.reg_globals.reference_urls import (
-    RELATED_PERSON_GUARANTOR_FULL_URL,
+    RELATED_PERSON_GUARANTOR_FULL_URL_1,
     PATIENT_FULL_URL
 )
 
@@ -53,7 +53,7 @@ from omniparser_schemas.parser.filter import filter_resource
 def relatedperson_test(resource_name, testfile, identifier_url, identifier_id):
     if(testfile == "1"):
         rel = filter_resource(resource_name, testfile, identifier_url, identifier_id)
-        assert rel[3]["fullUrl"] == RELATED_PERSON_GUARANTOR_FULL_URL, "did not match related person resource full url"
+        assert rel[3]["fullUrl"] == RELATED_PERSON_GUARANTOR_FULL_URL_1, "did not match related person resource full url"
         assert rel[3]["request"]["method"] == REQUEST_TYPE[0], "did not match put request type"
         assert rel[3]["request"]["url"] == f'{RESOURCE_NAME[7]}?identifier={IDENTIFIER_URL}/{IDENTIFIER_ID[4]}|{MRN}-{FACILITY_ID}-{RELATED_PERSON_ID[0]}', "did not match request url"
         assert rel[3]["resource"]["address"][0]["city"] == CITY, "did not match city"
@@ -111,7 +111,7 @@ def relatedperson_test(resource_name, testfile, identifier_url, identifier_id):
         assert not rel[3]["resource"]["name"][0]["family"] == FIRSTNAME, "negative test case failed"
         assert not rel[3]["resource"]["name"][0]["given"][0] == LASTNAME, "negative test case failed"
         assert not rel[3]["resource"]["name"][0]["given"][1] == MIDDLENAME, "negative test case failed"
-        assert not rel[3]["resource"]["patient"]["reference"] == RELATED_PERSON_GUARANTOR_FULL_URL, "negative test case failed"
+        assert not rel[3]["resource"]["patient"]["reference"] == RELATED_PERSON_GUARANTOR_FULL_URL_1, "negative test case failed"
         assert not rel[3]["resource"]["patient"]["type"] == RESOURCE_NAME[1], "negative test case failed"
         assert not rel[3]["resource"]["telecom"][0]["system"] == PHONETYPE, "negative test case failed"
         assert not rel[3]["resource"]["telecom"][0]["use"] == ADDRESSUSE, "negative test case failed"
