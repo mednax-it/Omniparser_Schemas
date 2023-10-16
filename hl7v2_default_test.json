@@ -1827,7 +1827,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!policy_number || policy_number == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(policy_numbe.toUpperCase()r).replace(/\\%[A-F0-9]{2}/g,'')"},
+                {"const": "!policy_number || policy_number == '' ? mrnfacility + '-IN1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(policy_number.toUpperCase()).replace(/\\%[A-F0-9]{2}/g,'')"},
                 {"const": "policy_number"}, {"xpath": "policy_number"},
                 {"const": "setid"}, {"xpath": "set_id", "template": "transform_insurance_set_id"},
                 {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility", "_comment": "IN1 passed in, navigate to root so PID can be referenced"}
@@ -1944,11 +1944,12 @@
     },
     "patient_put_request": {
       "custom_func": {
-          "name": "concat",
+          "name": "javascript",
           "args": [
-              { "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
-              { "xpath": "PID/mrn" },
-              { "const": "&mrn-assigner=urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7" }
+              { "const": "Patientidentifier + mrn.toUpperCase() + mrnassigner" },
+              { "const": "Patientidentifier" }, {"const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
+              { "const": "mrn" }, { "xpath": "PID/mrn" },
+              { "const": "mrnassigner" }, { "const": "&mrn-assigner=urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7" }
           ]
       }
     },
@@ -2044,10 +2045,11 @@
     },
     "concat_mrn_facility": {
       "custom_func": {
-          "name": "concat",
+          "name": "javascript",
           "args": [
-              { "xpath": "PID/mrn" },
-              { "const": "-{{FacilityId}}" }
+              {"const": "mrn.toUpperCase() + Facility_Id"},
+              {"const": "mrn"},{ "xpath": "PID/mrn" },
+              {"const": "Facility_Id"},{ "const": "-{{FacilityId}}" }
           ]
       }
     },
