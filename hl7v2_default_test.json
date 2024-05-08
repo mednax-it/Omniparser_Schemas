@@ -63,6 +63,7 @@
         },
         {"name": "NTE","min": 0, "max": -1},
         {"name": "ZPD","min": 0, "max": -1},
+        {"name": "ZTP","min": 0, "max": -1},
         {"name": "LAN","min": 0, "max": -1},
         {"name": "ZPD","min": 0, "max": -1},
         {"name": "PD1","min": 0, "max": -1},
@@ -244,7 +245,8 @@
         {"name": "ZMD","min": 0, "max": -1},
         {"name": "ZET","min": 0, "max": -1},
         {"name": "ZCQ","min": 0, "max": -1},
-        {"name": "ZUD","min": 0, "max": -1}
+        {"name": "ZUD","min": 0, "max": -1},
+        {"name": "ZPA","min": 0, "max": -1}
         ]
       }
     ]
