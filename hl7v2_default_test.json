@@ -111,7 +111,8 @@
         {"name": "allergy", "type":"segment_group","min": 0, "max": -1,
             "child_segments": [
                 {"name": "AL1","min": 0,"max": -1},
-                {"name": "ZAL","min": 0,"max": -1}
+                {"name": "ZAL","min": 0,"max": -1},
+                {"name": "NTE","min": 0, "max": -1}
             ]
         },
         {"name": "ACC","min": 0, "max": -1},
