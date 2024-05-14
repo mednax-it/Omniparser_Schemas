@@ -536,8 +536,8 @@
               ]
             },
             "gender": {"xpath": "PID/gender", "template": "transform_gender_code"},
-            "birthDate": {"xpath": "PID/dob", "template": "transform_date"},
-            "deceasedDateTime": {"xpath": "PID/date_of_death", "template": "transform_date"},
+            "birthDate": {"xpath": "PID/dob", "template": "transform_datetime"},
+            "deceasedDateTime": {"xpath": "PID/date_of_death", "template": "transform_datetime"},
             "address": {
               "array": [
                 {
@@ -943,7 +943,7 @@
               ]
             },
             "gender": {"xpath": "GT1/gender", "template": "transform_gender_code"},
-            "birthDate": {"xpath": "GT1/dob", "template": "transform_date"},
+            "birthDate": {"xpath": "GT1/dob", "template": "transform_datetime"},
             "address": {
                 "array": [
                   {
@@ -1075,7 +1075,7 @@
               ]
             },
             "gender": {"xpath": "IN1/insured_gender", "template": "transform_gender_code"},
-            "birthDate": {"xpath": "IN1/insured_dob", "template": "transform_date"},
+            "birthDate": {"xpath": "IN1/insured_dob", "template": "transform_datetime"},
             "address": {
                 "array": [
                   {
@@ -1707,24 +1707,6 @@
             ]
         }
     },
-    "transform_date": {
-        "custom_func": {
-            "name": "javascript",
-            "args": [
-                {"const": "dt===null ? '' : dt.substring(0,10);"},
-                {"const": "dt"},{
-                    "custom_func": {
-                        "name": "dateTimeToRFC3339",
-                        "args": [
-                            { "xpath": "." },
-                            { "const": "", "_comment": "fromTZ" },
-                            { "const": "", "_comment": "toTZ" }
-                        ]
-                    }
-                }
-            ]
-        }
-    },
     "transform_current_datetime": {
         "custom_func": {
             "name": "javascript",
@@ -1737,17 +1719,8 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "dt===null ? '' : dt.substring(0,10);"},
-                {"const": "dt"},{
-                    "custom_func": {
-                        "name": "dateTimeToRFC3339",
-                        "args": [
-                            { "xpath": "." },
-                            { "const": "", "_comment": "fromTZ" },
-                            { "const": "", "_comment": "toTZ" }
-                        ]
-                    }
-                }
+                {"const": "var dateString; if(inputDate && 8 <= inputDate.length && inputDate.length <= 23){dateString = inputDate.substring(0,4) + '-' + inputDate.substring(4,6) + '-' + inputDate.substring(6,8);} else if (inputDate && inputDate.length == 24) {dateString = inputDate.substring(0,4) + '-' + inputDate.substring(4,6) + '-' + inputDate.substring(6,8) + 'T' + inputDate.substring(8,10) + ':' + inputDate.substring(10,12) + ':' + inputDate.substring(12,14) + inputDate.substring(19,22) + ':' + inputDate.substring(22);} else {dateString = '';}; new Date(dateString) == 'Invalid Date' ? '' : (new Date(dateString)).toISOString().substring(0,10);"},
+                {"const": "inputDate"},{ "xpath": "." }
             ]
         }
     },
