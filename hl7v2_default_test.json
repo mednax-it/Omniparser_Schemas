@@ -1285,7 +1285,7 @@
             },
             "period": {
               "object": {
-                "start": {"xpath": "IN1/plan_effective_date", "template": "transform_datetime"},
+                "start": {"xpath": "IN1/plan_effective_date", "template": "transform_date"},
                 "end": {"xpath": "IN1", "template": "transform_coverage_expiration"}
               }
             },
@@ -1715,22 +1715,40 @@
             ]
         }
     },
+    "transform_date": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "dt===null ? '' : dt.substring(0,10);"},
+                {"const": "dt"},{
+                    "custom_func": {
+                        "name": "dateTimeToRFC3339",
+                        "args": [
+                            { "xpath": "." },
+                            { "const": "", "_comment": "fromTZ" },
+                            { "const": "", "_comment": "toTZ" }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
     "transform_datetime": {
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "var dateString; if(inputDate && 8 <= inputDate.length && inputDate.length <= 23){dateString = inputDate.substring(0,4) + '-' + inputDate.substring(4,6) + '-' + inputDate.substring(6,8);} else if (inputDate && inputDate.length == 24) {dateString = inputDate.substring(0,4) + '-' + inputDate.substring(4,6) + '-' + inputDate.substring(6,8) + 'T' + inputDate.substring(8,10) + ':' + inputDate.substring(10,12) + ':' + inputDate.substring(12,14) + inputDate.substring(19,22) + ':' + inputDate.substring(22);} else {dateString = '';}; new Date(dateString) == 'Invalid Date' ? '' : (new Date(dateString)).toISOString().substring(0,10);"},
+                {"const": "inputDate = inputDate ? inputDate.match(/([1-9][0-9]{3})(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])(([01][0-9]|2[0-3])([0-5][0-9])(([0-5][0-9]|60)(\\.[0-9]{1,4})?)?(\\+|-)(0[0-9]|1[0-3])[0-5][0-9])?/) : null; var dateTimeString = ''; if (inputDate !== null){dateString = inputDate[0]; dateTimeString = dateString.slice(0,4) + '-' + dateString.slice(4,6) + '-' + dateString.slice(6,8); if (dateString.length > 8) {var timeString = dateString.slice(8,-5); var tz = dateString.slice(-5); if (timeString.length == 4) {dateTimeString += 'T' + timeString.slice(0,2) + ':' + timeString.slice(2,4) + tz;} else {dateTimeString += 'T' + timeString.slice(0,2) + ':' + timeString.slice(2,4) + ':' + timeString.slice(4,6) + tz;}}}; new Date(dateTimeString) == 'Invalid Date' ? '' : (new Date(dateTimeString)).toISOString().slice(0,10);"},
                 {"const": "inputDate"},{ "xpath": "." }
             ]
         }
-    },
+    },    
     "transform_coverage_expiration": {
       "custom_func": {
           "name": "javascript",
           "args": [
               {"const": "enddate ? (!startdate && !enddate) || enddate < startdate ? '' : enddate : ''"},
-              {"const": "enddate"}, {"xpath": "plan_expiration_date", "template": "transform_datetime"},
-              {"const": "startdate"}, {"xpath": "plan_effective_date", "template": "transform_datetime"}
+              {"const": "enddate"}, {"xpath": "plan_expiration_date", "template": "transform_date"},
+              {"const": "startdate"}, {"xpath": "plan_effective_date", "template": "transform_date"}
           ]
       }
     },
@@ -1760,7 +1778,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "!admitdate ? mrnfacility : mrnfacility + '-' + admitdate.replace(/-/g,'')"},
+                {"const": "!admitdate ? mrnfacility : mrnfacility + '-' + admitdate.slice(0,10).replace(/-/g,'')"},
                 {"const": "admitdate"}, {"xpath": "admit_datetime", "template": "transform_datetime"},
                 {"const": "mrnfacility"}, {"xpath": "..", "template": "concat_mrn_facility"}
             ]
