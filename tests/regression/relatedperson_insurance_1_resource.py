@@ -49,6 +49,7 @@ from .reg_globals.identifier_urls import(
 )
 
 from omniparser_schemas.parser.filter import filter_resource
+from omniparser_schemas.custom.check_FHIR_resource_element import check_if_FHIR_resource_element_exists
 
 def relatedperson_insurance_1_test(resource_name, testfile, identifier_url, identifier_id):
     if(testfile == "1"):
@@ -139,6 +140,8 @@ def relatedperson_insurance_1_test(resource_name, testfile, identifier_url, iden
         assert not rel[0]["resource"]["gender"] == GENDER[0], "negative test case failed"
         assert not rel[0]["resource"]["telecom"][0]["use"] == ADDRESSUSE, "negative test case failed"
         assert not rel[0]["resource"]["address"][0]["use"] == PHONETYPE, "negative test case failed"
+        ##Check improper year https://mednax1500.atlassian.net/browse/SMILECDR-882
+        # assert check_if_FHIR_resource_element_exists(rel, 0, "resource", "birthDate") == "FHIR resource element not found", "negative test case failed"
 
         print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
@@ -151,6 +154,9 @@ def relatedperson_insurance_1_test(resource_name, testfile, identifier_url, iden
         #Negative test cases
         assert not rel[0]["resource"]["gender"] == GENDER[1], "negative test case failed"
         assert not rel[0]["resource"]["address"][0]["use"] == PHONETYPE, "negative test case failed"
+        ##Check improper months https://mednax1500.atlassian.net/browse/SMILECDR-882
+        assert check_if_FHIR_resource_element_exists(rel, 0, "resource", "birthDate") == "FHIR resource element not found", "negative test case failed"
+        assert check_if_FHIR_resource_element_exists(rel, 1, "resource", "birthDate") == "FHIR resource element not found", "negative test case failed"
 
         print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
@@ -161,5 +167,43 @@ def relatedperson_insurance_1_test(resource_name, testfile, identifier_url, iden
 
         #Negative test cases
         assert not rel[0]["resource"]["address"][0]["use"] == PHONETYPE, "negative test case failed"
+        ##Check improper dates https://mednax1500.atlassian.net/browse/SMILECDR-882
+        assert check_if_FHIR_resource_element_exists(rel, 0, "resource", "birthDate") == "FHIR resource element not found", "negative test case failed"
+        assert check_if_FHIR_resource_element_exists(rel, 1, "resource", "birthDate") == "FHIR resource element not found", "negative test case failed"
+
+        print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+
+    elif(testfile == "5"):
+        rel = filter_resource(resource_name, testfile, identifier_url, identifier_id)
+       
+        #Negative test cases
+        ##Check improper HH https://mednax1500.atlassian.net/browse/SMILECDR-882
+        assert rel[0]["resource"]["birthDate"] == DOB[0], "did not match DOB"
+         ##Check improper MM https://mednax1500.atlassian.net/browse/SMILECDR-882
+        assert rel[1]["resource"]["birthDate"] == DOB[1], "did not match DOB"
+
+        print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+
+
+    elif(testfile == "6"):
+        rel = filter_resource(resource_name, testfile, identifier_url, identifier_id)
+
+        #Negative test cases
+        ##Check improper SS https://mednax1500.atlassian.net/browse/SMILECDR-882
+        assert rel[0]["resource"]["birthDate"] == DOB[0], "did not match DOB"
+        ##Check improper Fractional seconds https://mednax1500.atlassian.net/browse/SMILECDR-882
+        assert rel[1]["resource"]["birthDate"] == DOB[1], "did not match DOB"
+
+        print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+
+
+    elif(testfile == "7"):
+        rel = filter_resource(resource_name, testfile, identifier_url, identifier_id)
+
+        #Negative test cases
+        ##Check improper TimeZone https://mednax1500.atlassian.net/browse/SMILECDR-882
+        assert rel[0]["resource"]["birthDate"] == DOB[0], "did not match DOB"
+        ##Check improper Precision https://mednax1500.atlassian.net/browse/SMILECDR-882
+        assert rel[1]["resource"]["birthDate"] == DOB[1], "did not match DOB"
 
         print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
