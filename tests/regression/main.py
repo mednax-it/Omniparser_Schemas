@@ -3,7 +3,8 @@ import sys
 from .reg_globals.identifier_urls import(
     IDENTIFIER_URL,
     IDENTIFIER_ID,
-    RESOURCE_NAME
+    RESOURCE_NAME,
+    UNUSED_RES_NAME
 )
 
 from tests.regression.patient_resource import patient_test
@@ -22,6 +23,7 @@ from tests.regression.practitioner_referring_resource import practitioner_referr
 from tests.regression.claim_1_resource import claim_1_test
 from tests.regression.claim_2_resource import claim_2_test
 from tests.regression.claim_3_resource import claim_3_test
+from tests.regression.unused import unused_test
 
 
 def run_tests():
@@ -71,6 +73,9 @@ def run_tests():
     relatedperson_insurance_3_test(RESOURCE_NAME[7], "2", IDENTIFIER_URL, IDENTIFIER_ID[4])
     relatedperson_insurance_3_test(RESOURCE_NAME[7], "3", IDENTIFIER_URL, IDENTIFIER_ID[4])
     relatedperson_insurance_3_test(RESOURCE_NAME[7], "4", IDENTIFIER_URL, IDENTIFIER_ID[4])
+
+    ##Tests for segments with no elements
+    unused_test(UNUSED_RES_NAME, "1")
 
 def cli(args=None):
     """Process command line arguments."""

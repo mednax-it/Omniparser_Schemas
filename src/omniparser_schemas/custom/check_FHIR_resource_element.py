@@ -5,3 +5,12 @@ def check_if_FHIR_resource_element_exists(data, index, path, subpath):
     except KeyError:
         return "FHIR resource element not found"
 
+
+def check_if_FHIR_resource_type_exists(resourceType, jsonData):
+    try:
+        resourceType(**jsonData)
+        return False
+    except KeyError:
+        return "FHIR resource Type not found"
+
+

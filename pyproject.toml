@@ -10,6 +10,7 @@ packages = [{include = "omniparser_schemas", from="src"}]
 python = "^3.10"
 requests = "^2.31.0"
 pyjwt = "^2.7.0"
+"fhir.resources" = "^7.0.2"
 
 
 [build-system]
