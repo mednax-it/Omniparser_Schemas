@@ -141,7 +141,7 @@ def relatedperson_insurance_1_test(resource_name, testfile, identifier_url, iden
         assert not rel[0]["resource"]["telecom"][0]["use"] == ADDRESSUSE, "negative test case failed"
         assert not rel[0]["resource"]["address"][0]["use"] == PHONETYPE, "negative test case failed"
         ##Check improper year https://mednax1500.atlassian.net/browse/SMILECDR-882
-        # assert check_if_FHIR_resource_element_exists(rel, 0, "resource", "birthDate") == "FHIR resource element not found", "negative test case failed"
+        assert check_if_FHIR_resource_element_exists(rel, 0, "resource", "birthDate") == "FHIR resource element not found", "negative test case failed"
 
         print("FHIR bundle " + str(resource_name) + " subscriber 1 resource tests for "  + str(resource_name) + " testfile " + str(testfile) + " were successful")
 
@@ -175,7 +175,7 @@ def relatedperson_insurance_1_test(resource_name, testfile, identifier_url, iden
 
     elif(testfile == "5"):
         rel = filter_resource(resource_name, testfile, identifier_url, identifier_id)
-       
+
         #Negative test cases
         ##Check improper HH https://mednax1500.atlassian.net/browse/SMILECDR-882
         assert rel[0]["resource"]["birthDate"] == DOB[0], "did not match DOB"
