@@ -65,6 +65,4 @@ def practitioner_referring_test(resource_name, testfile, identifier_url, identif
     assert not refphys[1]["resource"]["identifier"][1]["value"] == PRACTITIONER_NPI_NUMBER[0], "negative test case failed"
     assert not refphys[1]["resource"]["name"][0]["family"] == PRACTITIONER_GIVEN_NAME, "negative test case failed"
     assert not refphys[1]["resource"]["name"][0]["given"][0] == PRACTITIONER_FAMILY_NAME, "negative test case failed"
-
-
-print("FHIR bundle referring practitioner resource tests were successful")
+    print("FHIR bundle referring practitioner resource tests were successful")
