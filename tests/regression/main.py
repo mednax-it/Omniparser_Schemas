@@ -45,6 +45,7 @@ def run_tests():
     patient_test(RESOURCE_NAME[5], "2", IDENTIFIER_URL, IDENTIFIER_ID[5])
     patient_test(RESOURCE_NAME[5], "3", IDENTIFIER_URL, IDENTIFIER_ID[5])
     patient_test(RESOURCE_NAME[5], "4", IDENTIFIER_URL, IDENTIFIER_ID[5])
+    patient_test(RESOURCE_NAME[5], "5", IDENTIFIER_URL, IDENTIFIER_ID[5])
     practitioner_attending_test(RESOURCE_NAME[6], "1", IDENTIFIER_URL, IDENTIFIER_ID[10])
     #practitioner referring tests use same test file that is being used by practitioner attending tests
     practitioner_referring_test(RESOURCE_NAME[6], "1", IDENTIFIER_URL, IDENTIFIER_ID[10])
@@ -57,6 +58,9 @@ def run_tests():
     relatedperson_insurance_1_test(RESOURCE_NAME[7], "2", IDENTIFIER_URL, IDENTIFIER_ID[4])
     relatedperson_insurance_1_test(RESOURCE_NAME[7], "3", IDENTIFIER_URL, IDENTIFIER_ID[4])
     relatedperson_insurance_1_test(RESOURCE_NAME[7], "4", IDENTIFIER_URL, IDENTIFIER_ID[4])
+    relatedperson_insurance_1_test(RESOURCE_NAME[7], "5", IDENTIFIER_URL, IDENTIFIER_ID[4])
+    relatedperson_insurance_1_test(RESOURCE_NAME[7], "6", IDENTIFIER_URL, IDENTIFIER_ID[4])
+    relatedperson_insurance_1_test(RESOURCE_NAME[7], "7", IDENTIFIER_URL, IDENTIFIER_ID[4])
 
     relatedperson_insurance_2_test(RESOURCE_NAME[7], "1", IDENTIFIER_URL, IDENTIFIER_ID[4])
     relatedperson_insurance_2_test(RESOURCE_NAME[7], "2", IDENTIFIER_URL, IDENTIFIER_ID[4])
