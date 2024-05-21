@@ -846,14 +846,15 @@
     "relatedperson_guarantor_resource": {
       "object": {
         "fullUrl": {
-            "custom_func":{
-                "name": "concat",
-                "args": [
-                    {"const": "urn:uuid:61ebe121-aa05-0001-000"},
-                    {"xpath": "GT1/set_id"},
-                    {"const": "-983a382abcd7"}
-                ]
-            }
+          "custom_func":{
+              "name": "javascript",
+              "args": [
+                  {"const": "prefix + index.toString() + suffix"},
+                  {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa05-0001-000"},
+                  {"const": "index"}, {"xpath": "GT1/set_id", "template": "transform_guarantor_set_id"},
+                  {"const": "suffix"}, {"const": "-983a382abcd7"}
+              ]
+          }
         },
         "resource": {
           "object": {
