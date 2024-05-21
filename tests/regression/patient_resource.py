@@ -195,8 +195,15 @@ def patient_test(resource_name, testfile, identifier_url, identifier_id):
         pat=filter_resource(resource_name, testfile, identifier_url, identifier_id)
 
         assert pat[0]["resource"]["address"][0]["use"] == ADDRESSUSE[2], "did not match addressuse"
+        assert pat[0]["resource"]["birthDate"] == DOB, "did not match dob"
 
         #negative test cases
         assert not pat[0]["resource"]["address"][0]["use"] == ADDRESSTYPE, "negative test case failed"
 
         print("FHIR bundle patient resource tests for " + str(resource_name) + " testfile " + str(testfile) + " were successful")
+
+    elif(testfile == "5"):
+        pat=filter_resource(resource_name, testfile, identifier_url, identifier_id)
+
+        assert pat[0]["resource"]["birthDate"] == DOB, "did not match dob"
+
