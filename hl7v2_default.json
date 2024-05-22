@@ -99,6 +99,7 @@
         {"name": "ZOE","min": 0, "max": -1},
         {"name": "PV2","min": 0, "max": -1},
         {"name": "PD1","min": 0, "max": -1},
+        {"name": "NK1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
         {"name": "ZVI","min": 0, "max": -1},
         {"name": "ZIF","min": 0, "max": -1},
@@ -111,6 +112,7 @@
         {"name": "allergy", "type":"segment_group","min": 0, "max": -1,
             "child_segments": [
                 {"name": "AL1","min": 0,"max": -1},
+                {"name": "DG1","min": 0, "max": -1},
                 {"name": "ZAL","min": 0,"max": -1},
                 {"name": "NTE","min": 0, "max": -1}
             ]
@@ -223,6 +225,7 @@
         },
         {"name": "DG1","min": 0, "max": -1},
         {"name": "AL1","min": 0, "max": -1},
+        {"name": "DG1","min": 0, "max": -1},
         {"name": "PR1","min": 0, "max": -1},
         {"name": "ACC","min": 0, "max": -1},
         {"name": "UB1","min": 0, "max": -1},
