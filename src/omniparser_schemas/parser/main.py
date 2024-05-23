@@ -13,8 +13,8 @@ def validate_ETL_parser(resource, file):
 
    # call universal utl parser
    fhir_bundle_from_hl7 = fetch_parsed_text(hl7content)
-      # Remove first and last character of fhir bundle
 
+   # Remove first and last character of fhir bundle
    fhir_bundle = fhir_bundle_from_hl7[1:-1]
 
    json_data = json.loads(fhir_bundle)
@@ -28,3 +28,24 @@ def validate_ETL_parser(resource, file):
        json.dump(json_data, f)
 
 
+def validate_ETL_parser_missing_segment(missingsegment):
+   with importlib.resources.path("tests.regression.regression_test_data." + str(missingsegment) + ".txt") as f:
+      hl7content = f.read_text()
+   # The universal parser need to have carriage return
+   hl7content = hl7content.replace('\\r', '\r')
+
+   # call universal utl parser
+   fhir_bundle_from_hl7 = fetch_parsed_text(hl7content)
+
+   # Remove first and last character of fhir bundle
+   fhir_bundle = fhir_bundle_from_hl7[1:-1]
+
+   json_data = json.loads(fhir_bundle)
+
+   OUTPUT_ROOT_PATH = "tests/regression/regression_output/"
+   PATH = OUTPUT_ROOT_PATH + str(missingsegment)
+   if not os.path.exists(PATH):
+    os.makedirs(PATH)
+
+   with open(PATH + "/regression_" + str(missingsegment) + ".json", "w") as f:
+       json.dump(json_data, f)
