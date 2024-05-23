@@ -23,7 +23,7 @@ def fetch_parsed_text(text_to_parse):
 
     if http_response.status_code != HTTPStatus.OK:
         error_message = http_response.status_code
-        print(error_message)
+        print("Error code:",error_message, http_response.text)
         exit(1)
 
     return http_response.text

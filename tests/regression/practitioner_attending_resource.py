@@ -67,4 +67,4 @@ def practitioner_attending_test(resource_name, testfile, identifier_url, identif
     assert not attphys[0]["resource"]["name"][0]["given"][0] == PRACTITIONER_FAMILY_NAME, "negative test case failed"
 
 
-print("FHIR bundle attending practitioner resource tests were successful")
+    print("FHIR bundle attending practitioner resource tests were successful")
