@@ -67,6 +67,7 @@
         {"name": "LAN","min": 0, "max": -1},
         {"name": "ZPD","min": 0, "max": -1},
         {"name": "PD1","min": 0, "max": -1},
+        {"name": "ARV","min": 0, "max": -1},
         {"name": "ZOE","min": 0, "max": -1},
         {"name": "NTE","min": 0, "max": -1},
         {"name": "ZPI","min": 0, "max": -1},
@@ -99,6 +100,7 @@
         {"name": "ZOE","min": 0, "max": -1},
         {"name": "PV2","min": 0, "max": -1},
         {"name": "PD1","min": 0, "max": -1},
+        {"name": "NK1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
         {"name": "ZVI","min": 0, "max": -1},
         {"name": "ZIF","min": 0, "max": -1},
@@ -111,6 +113,7 @@
         {"name": "allergy", "type":"segment_group","min": 0, "max": -1,
             "child_segments": [
                 {"name": "AL1","min": 0,"max": -1},
+                {"name": "DG1","min": 0, "max": -1},
                 {"name": "ZAL","min": 0,"max": -1},
                 {"name": "NTE","min": 0, "max": -1}
             ]
@@ -223,6 +226,7 @@
         },
         {"name": "DG1","min": 0, "max": -1},
         {"name": "AL1","min": 0, "max": -1},
+        {"name": "DG1","min": 0, "max": -1},
         {"name": "PR1","min": 0, "max": -1},
         {"name": "ACC","min": 0, "max": -1},
         {"name": "UB1","min": 0, "max": -1},
@@ -234,16 +238,20 @@
         {"name": "ZIN","min": 0, "max": -1},
         {"name": "ZIM","min": 0, "max": -1},
         {"name": "ZCN","min": 0, "max": -1},
-        {"name": "ZCS","min": 0, "max": -1},
         {"name": "ZM1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
         {"name": "ZEX","min": 0, "max": -1},
         {"name": "ZRE","min": 0, "max": -1},
+        {"name": "ZAC","min": 0, "max": -1},
         {"name": "ZQA","min": 0, "max": -1},
+        {"name": "ZCS","min": 0, "max": -1},
+        {"name": "ZSU","min": 0, "max": -1},
         {"name": "ZMP","min": 0, "max": -1},
         {"name": "ZEM","min": 0, "max": -1},
         {"name": "ZAD","min": 0, "max": -1},
+        {"name": "ZNM","min": 0, "max": -1},
         {"name": "ZVQ","min": 0, "max": -1},
+        {"name": "ZMS","min": 0, "max": -1},
         {"name": "ZMD","min": 0, "max": -1},
         {"name": "ZET","min": 0, "max": -1},
         {"name": "ZCQ","min": 0, "max": -1},
@@ -846,14 +854,15 @@
     "relatedperson_guarantor_resource": {
       "object": {
         "fullUrl": {
-            "custom_func":{
-                "name": "concat",
-                "args": [
-                    {"const": "urn:uuid:61ebe121-aa05-0001-000"},
-                    {"xpath": "GT1/set_id"},
-                    {"const": "-983a382abcd7"}
-                ]
-            }
+          "custom_func":{
+              "name": "javascript",
+              "args": [
+                  {"const": "prefix + index.toString() + suffix"},
+                  {"const": "prefix"}, {"const": "urn:uuid:61ebe121-aa05-0001-000"},
+                  {"const": "index"}, {"xpath": "GT1/set_id", "template": "transform_guarantor_set_id"},
+                  {"const": "suffix"}, {"const": "-983a382abcd7"}
+              ]
+          }
         },
         "resource": {
           "object": {

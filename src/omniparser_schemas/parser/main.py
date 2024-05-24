@@ -11,10 +11,10 @@ def validate_ETL_parser(resource, file):
    # The universal parser need to have carriage return
    hl7content = hl7content.replace('\\r', '\r')
 
-   # call universal utl parser
+   # call universal etl parser
    fhir_bundle_from_hl7 = fetch_parsed_text(hl7content)
-      # Remove first and last character of fhir bundle
 
+   # Remove first and last character of fhir bundle
    fhir_bundle = fhir_bundle_from_hl7[1:-1]
 
    json_data = json.loads(fhir_bundle)
@@ -26,5 +26,3 @@ def validate_ETL_parser(resource, file):
 
    with open(PATH + "/regression_" + str(resource) + "_" + str(file) + ".json", "w") as f:
        json.dump(json_data, f)
-
-
