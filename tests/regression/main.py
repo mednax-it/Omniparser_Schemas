@@ -22,6 +22,7 @@ from tests.regression.practitioner_referring_resource import practitioner_referr
 from tests.regression.claim_1_resource import claim_1_test
 from tests.regression.claim_2_resource import claim_2_test
 from tests.regression.claim_3_resource import claim_3_test
+from tests.regression.missing_segment import missing_segment_test
 
 
 def run_tests():
@@ -71,6 +72,8 @@ def run_tests():
     relatedperson_insurance_3_test(RESOURCE_NAME[7], "2", IDENTIFIER_URL, IDENTIFIER_ID[4])
     relatedperson_insurance_3_test(RESOURCE_NAME[7], "3", IDENTIFIER_URL, IDENTIFIER_ID[4])
     relatedperson_insurance_3_test(RESOURCE_NAME[7], "4", IDENTIFIER_URL, IDENTIFIER_ID[4])
+
+    missing_segment_test()
 
 def cli(args=None):
     """Process command line arguments."""
