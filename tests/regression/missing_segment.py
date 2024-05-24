@@ -35,4 +35,5 @@ def missing_segment_test():
             with open(PATH + "/regression_" + str(segments) + "_" + str(filename) + ".json", "w") as f:
               json.dump(json_data, f)
 
-            print("FHIR bundle with missing segment " + filename + " were successful")
+
+    print("FHIR bundle with missing segments tests were successful")
