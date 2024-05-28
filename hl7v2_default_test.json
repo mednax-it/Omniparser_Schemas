@@ -99,6 +99,7 @@
         },
         {"name": "ZOE","min": 0, "max": -1},
         {"name": "PV2","min": 0, "max": -1},
+        {"name": "IAM","min": 0, "max": -1},
         {"name": "PD1","min": 0, "max": -1},
         {"name": "NK1","min": 0, "max": -1},
         {"name": "ZPV","min": 0, "max": -1},
