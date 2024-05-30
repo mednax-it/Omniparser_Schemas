@@ -146,16 +146,3 @@ If referring physician id does not exist, identifier will default to concatenati
     {mrn}-{facility_id}-PV1-REF
 
 
-**To Run Tests locally**
-
-    1. Install poetry from https://python-poetry.org/docs/
-       Note: If you don't do the install—which download the dependencies and puts src/omniparser_schemas on the PYTHONPATH—you get this error:ModuleNotFoundError: No module named 'omniparser_schemas'
-    2. Create direnv from https://direnv.net/ . The .envrc file can be at parent directory of all your github projects, so it can load and unload env
-       variables based on current directory(let's say you are on a github project, the .envrc file loads all the specific project env varibles before the shell gets started.)
-    3. export below variables in .envrc file
-       export PARSER_URL="https://universal-etl-parser.mdnxdev.com/"
-    4. Run ETL parser to get FHIR bundle. Command for to get FHIR bundle "poetry run executeETLparser"
-    5. Run Regression Tests. Command to run regression tests "poetry run test"
-
-    Note: Currently tests were on resource level. As we progress we will have more resources and have complete regression tests.
-
