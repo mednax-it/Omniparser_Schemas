@@ -1,2 +1,0 @@
-PARSER_SCHEMA="hl7v2_default"
-PARSER_TIMEOUT=90
