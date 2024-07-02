@@ -277,7 +277,7 @@
             {"xpath": ".[EVN/message_typecode!='A40' and guarantor[position()>0]]","template": "account_resource"},
             {"xpath": ".[PV1/point_of_care!='']","template": "organization_department_resource"},
             {"xpath": ".[PV1/attending_physician_id!='']", "template": "practitioner_attending_resource"},
-            {"xpath": ".[PV1/referring_physician_id!='']", "template": "practitioner_referring_resource"},
+            {"xpath": ".[PV1/referring_physician_id!='' and PV1/referring_physician_id!=PV1/attending_physician_id]", "template": "practitioner_referring_resource"},
             {"xpath": "guarantor[position()=1]", "template": "relatedperson_guarantor_resource"},
             {"xpath": "guarantor[position()=2]", "template": "relatedperson_guarantor_resource"},
             {"xpath": "guarantor[position()=3]", "template": "relatedperson_guarantor_resource"},
@@ -704,7 +704,7 @@
                     "individual": {
                       "object": {
                         "type": {"const": "Practitioner"},
-                        "reference": {"const": "urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7"}
+                        "reference": {"xpath": ".", "template": "transform_referring_physician_url"}
                       }
                     }
                   }
@@ -1847,6 +1847,15 @@
                 {"const": "npi"}, {"xpath": "attending_physician_id"},
                 {"const": "idtype"}, {"const": "ATND"},
                 {"const": "mrnfacility"}, {"xpath": "..", "template": "concat_mrn_facility"}
+            ]
+        }
+    },
+    "transform_referring_physician_url": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                {"const": "rendisref ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7'"},
+                {"const": "rendisref"}, {"xpath": ".[PV1/referring_physician_id=PV1/attending_physician_id]"}
             ]
         }
     },
