@@ -56,6 +56,7 @@ __Custom Resource IDs__
 7. Practitioner			    aa07
 	1. admitting			0001
 	2. referring			0002
+    3. admitting            0003
 8. Claim                    aa08
     1. Claim                0001
 
@@ -144,5 +145,15 @@ If attending physician id does not exist, identifier will default to concatenati
 If referring physician id does not exist, identifier will default to concatenation of `mrn_facility`, the patient visit segment code "PV1" and the FHIR ParticipationType Code System value "REF"
 
     {mrn}-{facility_id}-PV1-REF
+
+**Admitting Physician Identifier**
+
+*Pratictioner* resource will be used to retain the Admitting Physician information. the identifier will be concatenation of `mrn_facility` and the referring physician id (PV1.17.1)
+
+    {mrn}-{facility_id}-{admitting_physician_id}
+
+If admitting physician id does not exist, identifier will default to concatenation of `mrn_facility`, the patient visit segment code "PV1" and the FHIR ParticipationType Code System value "ADM"
+
+    {mrn}-{facility_id}-PV1-ADM
 
 
