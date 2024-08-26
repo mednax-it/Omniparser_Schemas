@@ -17,7 +17,8 @@
             "elements": [
                 {"name": "sending_facility", "index": 3},
                 {"name": "datetime_of_message", "index": 6},
-                {"name": "message_trigger", "index": 8},
+                {"name": "message_type", "index": 8, "component_index": 1, "default": ""},
+                {"name": "trigger_event", "index": 8, "component_index": 2, "default": ""},
                 {"name": "message_control_id", "index": 9}
             ]
         },
@@ -278,7 +279,7 @@
             {"template": "organization_facility_resource"},
             {"xpath": ".[count(PID)=1]", "template": "patient_resource"},
             {"xpath": ".[count(PV1)=1]", "template": "encounter_resource"},
-            {"xpath": ".[EVN/message_typecode!='A40' and guarantor[position()>0]]","template": "account_resource"},
+            {"xpath": ".[((EVN/message_typecode and EVN/message_typecode!='' and EVN/message_typecode!='A40') or (MSH/trigger_event and MSH/trigger_event!='' and MSH/trigger_event!='A40'))  and guarantor[position()>0]]","template": "account_resource"},
             {"xpath": ".[PV1/point_of_care!='']","template": "organization_department_resource"},
             {"xpath": ".[PV1/attending_physician_id!='']", "template": "practitioner_attending_resource"},
             {"xpath": ".[PV1/referring_physician_id!='' and PV1/referring_physician_id!=PV1/attending_physician_id]", "template": "practitioner_referring_resource"},
@@ -321,7 +322,7 @@
             "eventCoding": {
               "object": {
                 "system": {"const": "http://terminology.hl7.org/CodeSystem/v2"},
-                "code": {"xpath": "EVN/message_typecode"}
+                "code": {"template": "transform_event_trigger"}
               }
             },
             "sender": {
@@ -1966,7 +1967,7 @@
             "args": [
                 {"const": "!npi || npi == '' ? mrnfacility + '-PV1-' + idtype : mrnfacility + '-' + encodeURIComponent(npi).replace(/\\%[A-F0-9]{2}/g,'')"},
                 {"const": "npi"}, {"xpath": "admitting_physician_id", "template": "transform_physician_identifier"},
-                {"const": "idtype"}, {"const": "ATND"},
+                {"const": "idtype"}, {"const": "ADM"},
                 {"const": "mrnfacility"}, {"xpath": "..", "template": "concat_mrn_facility"}
             ]
         }
@@ -2064,6 +2065,16 @@
                 { "xpath": "MSH/datetime_of_message" }
             ]
         }
+    },
+    "transform_event_trigger": {
+      "custom_func": {
+          "name": "javascript",
+          "args": [
+              {"const": "!evntrigger ? !mshtrigger ? '' : mshtrigger : evntrigger"},
+              {"const": "mshtrigger"}, {"xpath": "MSH/trigger_event"},
+              {"const": "evntrigger"}, {"xpath": "EVN/message_typecode"}
+          ]
+      }
     },
     "transform_relatedperson_guarantor_identifier": {
       "custom_func": {
