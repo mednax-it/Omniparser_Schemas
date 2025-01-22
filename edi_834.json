@@ -7,7 +7,6 @@
     "element_delimiter": "*",
     "segment_delimiter": "~",
     "component_delimiter": ":",
-    "repetition_delimiter": "^",
     "ignore_crlf": true,
     "segment_declarations": [
       {
