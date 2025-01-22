@@ -1,0 +1,36 @@
+{
+  "parser_settings": {
+    "version": "omni.2.1",
+    "file_format_type": "edi"
+  },
+  "file_declaration": {
+    "element_delimiter": "*",
+    "segment_delimiter": "~",
+    "component_delimiter": ":",
+    "ignore_crlf": true,
+    "segment_declarations": [
+      {
+        "name": "ISA",
+        "elements": [
+          {
+            "name": "ISA06",
+            "index": 6
+          }
+        ]
+      }
+    ]
+  },
+  "transform_declarations": {
+    "FINAL_OUTPUT": {
+      "object": {
+        "interchange_sender_id": {
+          "array": [
+            {
+              "xpath": "ISA/ISA06"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
