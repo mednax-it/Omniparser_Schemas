@@ -11,11 +11,11 @@
     "segment_declarations": [
       {
         "name": "ISA",
+        "is_target": true,
         "elements": [
           {
             "name": "ISA06",
-            "index": 6,
-            "is_target": true
+            "index": 6
           }
         ]
       }
