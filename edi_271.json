@@ -14,7 +14,8 @@
         "elements": [
           {
             "name": "ISA06",
-            "index": 6
+            "index": 6,
+            "is_target": true
           }
         ]
       }
