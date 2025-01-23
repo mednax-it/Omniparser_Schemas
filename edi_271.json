@@ -68,57 +68,302 @@
                                 "type": "segment_group",
                                 "child_segments": [
                                   {
-                                    "name": "information_receiver_name_loop",
-                                    "type": "segment_group",
-                                    "child_segments": [
-                                      {}
-                                    ]
-                                  },
-                                  {
-                                    "name": "subscriber_level_loop",
-                                    "type": "segment_group",
+                                    "name": "HL",
                                     "child_segments": [
                                       {
-                                        "name": "subscriber_name_loop",
+                                        "name": "information_receiver_name_loop",
                                         "type": "segment_group",
                                         "child_segments": [
                                           {
-                                            "name": "subscriber_eligibility_or_benefit_information_loop",
-                                            "type": "segment_group",
+                                            "name": "NM1"
+                                          },
+                                          {
+                                            "name": "REF",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "N3",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "N4",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "AAA",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "PRV",
+                                            "min": 0
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "subscriber_level_loop",
+                                        "type": "segment_group",
+                                        "child_segments": [
+                                          {
+                                            "name": "HL",
                                             "child_segments": [
                                               {
-                                                "name": "subscriber_eligibility_or_benefit_additional_information_loop",
-                                                "type": "segment_group"
+                                                "name": "TRN",
+                                                "min": 0
                                               },
                                               {
-                                                "name": "subscriber_benefit_related_entity_name_loop",
-                                                "type": "segment_group"
+                                                "name": "subscriber_name_loop",
+                                                "type": "segment_group",
+                                                "child_segments": [
+                                                  {
+                                                    "name": "NM1"
+                                                  },
+                                                  {
+                                                    "name": "REF",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "N3",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "N4",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "AAA",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "PRV",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "DMG",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "INS",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "HI",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "DTP",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "NPI",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "subscriber_eligibility_or_benefit_information_loop",
+                                                    "type": "segment_group",
+                                                    "child_segments": [
+                                                      {
+                                                        "name": "EB"
+                                                      },
+                                                      {
+                                                        "name": "HSD",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "REF",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "DTP",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "AAA",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "MSG",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "subscriber_eligibility_or_benefit_additional_information_loop",
+                                                        "type": "segment_group",
+                                                        "child_segments": [
+                                                          {
+                                                            "name": "III"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "name": "LS",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "subscriber_benefit_related_entity_name_loop",
+                                                        "type": "segment_group",
+                                                        "child_segments": [
+                                                          {
+                                                            "name": "NM1"
+                                                          },
+                                                          {
+                                                            "name": "N3",
+                                                            "min": 0
+                                                          },
+                                                          {
+                                                            "name": "N4",
+                                                            "min": 0
+                                                          },
+                                                          {
+                                                            "name": "PER",
+                                                            "min": 0
+                                                          },
+                                                          {
+                                                            "name": "PRV",
+                                                            "min": 0
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "name": "LE",
+                                                        "min": 0
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
                                               }
                                             ]
                                           }
                                         ]
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "name": "dependent_level_loop",
-                                    "type": "segment_group",
-                                    "child_segments": [
+                                      },
                                       {
-                                        "name": "dependent_name_loop",
+                                        "name": "dependent_level_loop",
                                         "type": "segment_group",
                                         "child_segments": [
                                           {
-                                            "name": "dependent_eligibility_or_benefit_information_loop",
-                                            "type": "segment_group",
+                                            "name": "HL",
                                             "child_segments": [
                                               {
-                                                "name": "dependent_eligibility_or_benefit_additional_information_loop",
-                                                "type": "segment_group"
+                                                "name": "TRN",
+                                                "min": 0
                                               },
                                               {
-                                                "name": "dependent_benefit_related_entity_name_loop",
-                                                "type": "segment_group"
+                                                "name": "dependent_name_loop",
+                                                "type": "segment_group",
+                                                "child_segments": [
+                                                  {
+                                                    "name": "NM1"
+                                                  },
+                                                  {
+                                                    "name": "REF",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "N3",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "N4",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "AAA",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "PRV",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "DMG",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "INS",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "HI",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "DTP",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "NPI",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "dependent_eligibility_or_benefit_information_loop",
+                                                    "type": "segment_group",
+                                                    "child_segments": [
+                                                      {
+                                                        "name": "EB"
+                                                      },
+                                                      {
+                                                        "name": "HSD",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "REF",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "DTP",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "AAA",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "MSG",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "dependent_eligibility_or_benefit_additional_information_loop",
+                                                        "type": "segment_group",
+                                                        "child_segments": [
+                                                          {
+                                                            "name": "III"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "name": "LS",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "dependent_benefit_related_entity_name_loop",
+                                                        "type": "segment_group",
+                                                        "child_segments": [
+                                                          {
+                                                            "name": "NM1"
+                                                          },
+                                                          {
+                                                            "name": "N3",
+                                                            "min": 0
+                                                          },
+                                                          {
+                                                            "name": "N4",
+                                                            "min": 0
+                                                          },
+                                                          {
+                                                            "name": "PER",
+                                                            "min": 0
+                                                          },
+                                                          {
+                                                            "name": "PRV",
+                                                            "min": 0
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "name": "LE",
+                                                        "min": 0
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
                                               }
                                             ]
                                           }
@@ -137,12 +382,21 @@
                         ]
                       }
                     ]
+                  },
+                  {
+                    "name": "SE"
                   }
                 ]
+              },
+              {
+                "name": "GE"
               }
             ]
           }
         ]
+      },
+      {
+        "name": "IEA"
       }
     ]
   },
