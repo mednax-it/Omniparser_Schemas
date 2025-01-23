@@ -11,11 +11,136 @@
     "segment_declarations": [
       {
         "name": "ISA",
-        "is_target": true,
-        "elements": [
+        "child_segments": [
           {
-            "name": "ISA06",
-            "index": 6
+            "name": "functional_groups",
+            "type": "segment_group",
+            "child_segments": [
+              {
+                "name": "GS",
+                "child_segments": [
+                  {
+                    "name": "ST",
+                    "max": -1,
+                    "child_segments": [
+                      {
+                        "name": "transaction_sets",
+                        "type": "segment_group",
+                        "is_target": true,
+                        "child_segments": [
+                          {
+                            "name": "BHT",
+                            "elements": [
+                              {
+                                "name": "BHT03",
+                                "index": 3
+                              }
+                            ]
+                          },
+                          {
+                            "name": "HL",
+                            "child_segments": [
+                              {
+                                "name": "information_source_name_loop",
+                                "type": "segment_group",
+                                "child_segments": [
+                                  {
+                                    "name": "NM1",
+                                    "elements": [
+                                      {
+                                        "index": 3,
+                                        "name": "payer_name"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "PER",
+                                    "min": 0
+                                  },
+                                  {
+                                    "name": "information_source_AAA",
+                                    "min": 0
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "information_receiver_level_loop",
+                                "type": "segment_group",
+                                "child_segments": [
+                                  {
+                                    "name": "information_receiver_name_loop",
+                                    "type": "segment_group",
+                                    "child_segments": [
+                                      {}
+                                    ]
+                                  },
+                                  {
+                                    "name": "subscriber_level_loop",
+                                    "type": "segment_group",
+                                    "child_segments": [
+                                      {
+                                        "name": "subscriber_name_loop",
+                                        "type": "segment_group",
+                                        "child_segments": [
+                                          {
+                                            "name": "subscriber_eligibility_or_benefit_information_loop",
+                                            "type": "segment_group",
+                                            "child_segments": [
+                                              {
+                                                "name": "subscriber_eligibility_or_benefit_additional_information_loop",
+                                                "type": "segment_group"
+                                              },
+                                              {
+                                                "name": "subscriber_benefit_related_entity_name_loop",
+                                                "type": "segment_group"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "dependent_level_loop",
+                                    "type": "segment_group",
+                                    "child_segments": [
+                                      {
+                                        "name": "dependent_name_loop",
+                                        "type": "segment_group",
+                                        "child_segments": [
+                                          {
+                                            "name": "dependent_eligibility_or_benefit_information_loop",
+                                            "type": "segment_group",
+                                            "child_segments": [
+                                              {
+                                                "name": "dependent_eligibility_or_benefit_additional_information_loop",
+                                                "type": "segment_group"
+                                              },
+                                              {
+                                                "name": "dependent_benefit_related_entity_name_loop",
+                                                "type": "segment_group"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "information_source_AAA",
+                            "min": 0
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -24,8 +149,11 @@
   "transform_declarations": {
     "FINAL_OUTPUT": {
       "object": {
-        "interchange_sender_id": {
-          "xpath": "ISA/ISA06"
+        "account_number": {
+          "xpath": "BHT/BHT03"
+        },
+        "payer_name": {
+          "xpath": "HL/information_source_name_loop/NM1/payer_name"
         }
       }
     }
