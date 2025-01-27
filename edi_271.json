@@ -315,6 +315,10 @@
                                                     "name": "NM1",
                                                     "elements": [
                                                       {
+                                                        "index": 1,
+                                                        "name": "entity_identifier_code"
+                                                      },
+                                                      {
                                                         "index": 3,
                                                         "name": "last_name"
                                                       },
@@ -528,6 +532,9 @@
         },
         "subscriber_gender": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/DMG/gender"
+        },
+        "patient_indicator": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/entity_identifier_code"
         },
         "patient_last_name": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/last_name"
