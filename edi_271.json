@@ -148,7 +148,17 @@
                                           {
                                             "name": "REF",
                                             "min": 0,
-                                            "max": 9
+                                            "max": 9,
+                                            "elements": [
+                                              {
+                                                "index": 1,
+                                                "name": "reference_identification_qualifier"
+                                              },
+                                              {
+                                                "index": 2,
+                                                "name": "eligibility_benefit_identifier"
+                                              }
+                                            ]
                                           },
                                           {
                                             "name": "N3",
@@ -215,17 +225,7 @@
                                               {
                                                 "name": "REF",
                                                 "min": 0,
-                                                "max": 9,
-                                                "elements": [
-                                                  {
-                                                    "index": 1,
-                                                    "name": "reference_identification_qualifier"
-                                                  },
-                                                  {
-                                                    "index": 2,
-                                                    "name": "eligibility_benefit_identifier"
-                                                  }
-                                                ]
+                                                "max": 9
                                               },
                                               {
                                                 "name": "DTP",
@@ -547,16 +547,13 @@
         "subscriber_eligibility_or_benefit_information": {
           "array": [
             {
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/REF",
               "object": {
                 "reference_identification_qualifier": {
-                  "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/REF/reference_identification_qualifier"
-                }
-              }
-            },
-            {
-              "object": {
+                  "xpath": "reference_identification_qualifier"
+                },
                 "eligibility_benefit_identifier": {
-                  "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/REF/eligibility_benefit_identifier"
+                  "xpath": "eligibility_benefit_identifier"
                 }
               }
             }
