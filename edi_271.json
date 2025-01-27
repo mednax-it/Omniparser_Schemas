@@ -156,7 +156,7 @@
                                               },
                                               {
                                                 "index": 2,
-                                                "name": "eligibility_benefit_identifier"
+                                                "name": "subscriber_supplemental_identifier"
                                               }
                                             ]
                                           },
@@ -552,8 +552,8 @@
                 "reference_identification_qualifier": {
                   "xpath": "reference_identification_qualifier"
                 },
-                "eligibility_benefit_identifier": {
-                  "xpath": "eligibility_benefit_identifier"
+                "subscriber_supplemental_identifier": {
+                  "xpath": "subscriber_supplemental_identifier"
                 }
               }
             }
