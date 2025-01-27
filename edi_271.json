@@ -543,6 +543,24 @@
         },
         "patient_gender": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/DMG/gender"
+        },
+        "subscriber_eligibility_or_benefit_information": {
+          "array": [
+            {
+              "object": {
+                "reference_identification_qualifier": {
+                  "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/REF/reference_identification_qualifier"
+                }
+              }
+            },
+            {
+              "object": {
+                "eligibility_benefit_identifier": {
+                  "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/REF/eligibility_benefit_identifier"
+                }
+              }
+            }
+          ]
         }
       }
     }
