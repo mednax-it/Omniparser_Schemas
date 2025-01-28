@@ -128,19 +128,23 @@
                                             "elements": [
                                               {
                                                 "index": 3,
-                                                "name": "last_name"
+                                                "name": "last_name",
+                                                "default": ""
                                               },
                                               {
                                                 "index": 4,
-                                                "name": "first_name"
+                                                "name": "first_name",
+                                                "default": ""
                                               },
                                               {
                                                 "index": 5,
-                                                "name": "middle_name"
+                                                "name": "middle_name",
+                                                "default": ""
                                               },
                                               {
                                                 "index": 9,
-                                                "name": "payer_policy_number"
+                                                "name": "payer_policy_number",
+                                                "default": ""
                                               }
                                             ]
                                           },
@@ -151,11 +155,13 @@
                                             "elements": [
                                               {
                                                 "index": 1,
-                                                "name": "reference_identification_qualifier"
+                                                "name": "reference_identification_qualifier",
+                                                "default": ""
                                               },
                                               {
                                                 "index": 2,
-                                                "name": "subscriber_supplemental_identifier"
+                                                "name": "subscriber_supplemental_identifier",
+                                                "default": ""
                                               }
                                             ]
                                           },
@@ -182,11 +188,13 @@
                                             "elements": [
                                               {
                                                 "index": 2,
-                                                "name": "birth_date"
+                                                "name": "birth_date",
+                                                "default": ""
                                               },
                                               {
                                                 "index": 3,
-                                                "name": "gender"
+                                                "name": "gender",
+                                                "default": ""
                                               }
                                             ]
                                           },
@@ -319,15 +327,18 @@
                                                       },
                                                       {
                                                         "index": 3,
-                                                        "name": "last_name"
+                                                        "name": "last_name",
+                                                        "default": ""
                                                       },
                                                       {
                                                         "index": 4,
-                                                        "name": "first_name"
+                                                        "name": "first_name",
+                                                        "default": ""
                                                       },
                                                       {
                                                         "index": 5,
-                                                        "name": "middle_name"
+                                                        "name": "middle_name",
+                                                        "default": ""
                                                       }
                                                     ]
                                                   },
@@ -359,11 +370,13 @@
                                                     "elements": [
                                                       {
                                                         "index": 2,
-                                                        "name": "birth_date"
+                                                        "name": "birth_date",
+                                                        "default": ""
                                                       },
                                                       {
                                                         "index": 3,
-                                                        "name": "gender"
+                                                        "name": "gender",
+                                                        "default": ""
                                                       }
                                                     ]
                                                   },
