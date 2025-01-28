@@ -6,7 +6,6 @@
   "file_declaration": {
     "element_delimiter": "*",
     "segment_delimiter": "~",
-    "component_delimiter": ":",
     "ignore_crlf": true,
     "segment_declarations": [
       {
@@ -485,12 +484,7 @@
                     ]
                   },
                   {
-                    "name": "information_source_AAA",
-                    "min": 0
-                  },
-                  {
-                    "name": "SE",
-                    "max": -1
+                    "name": "SE"
                   }
                 ]
               },
