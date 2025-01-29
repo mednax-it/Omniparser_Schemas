@@ -1,0 +1,579 @@
+{
+  "parser_settings": {
+    "version": "omni.2.1",
+    "file_format_type": "edi"
+  },
+  "file_declaration": {
+    "element_delimiter": "*",
+    "segment_delimiter": "~",
+    "ignore_crlf": true,
+    "segment_declarations": [
+      {
+        "name": "ISA",
+        "child_segments": [
+          {
+            "name": "functional_group",
+            "type": "segment_group",
+            "max": -1,
+            "child_segments": [
+              {
+                "name": "GS"
+              },
+              {
+                "name": "transaction",
+                "type": "segment_group",
+                "max": -1,
+                "is_target": true,
+                "child_segments": [
+                  {
+                    "name": "ST"
+                  },
+                  {
+                    "name": "BHT",
+                    "elements": [
+                      {
+                        "name": "BHT03",
+                        "index": 3
+                      }
+                    ]
+                  },
+                  {
+                    "name": "HL",
+                    "child_segments": [
+                      {
+                        "name": "information_source_name_loop",
+                        "type": "segment_group",
+                        "child_segments": [
+                          {
+                            "name": "NM1",
+                            "elements": [
+                              {
+                                "index": 3,
+                                "name": "payer_name"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "PER",
+                            "min": 0,
+                            "max": 3
+                          },
+                          {
+                            "name": "AAA",
+                            "min": 0,
+                            "max": 9
+                          }
+                        ]
+                      },
+                      {
+                        "name": "information_receiver_level_loop",
+                        "type": "segment_group",
+                        "min": 0,
+                        "max": -1,
+                        "child_segments": [
+                          {
+                            "name": "HL",
+                            "child_segments": [
+                              {
+                                "name": "information_receiver_name_loop",
+                                "type": "segment_group",
+                                "child_segments": [
+                                  {
+                                    "name": "NM1"
+                                  },
+                                  {
+                                    "name": "REF",
+                                    "min": 0,
+                                    "max": 9
+                                  },
+                                  {
+                                    "name": "N3",
+                                    "min": 0
+                                  },
+                                  {
+                                    "name": "N4",
+                                    "min": 0
+                                  },
+                                  {
+                                    "name": "AAA",
+                                    "min": 0,
+                                    "max": 9
+                                  },
+                                  {
+                                    "name": "PRV",
+                                    "min": 0
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "subscriber_level_loop",
+                                "type": "segment_group",
+                                "min": 0,
+                                "max": -1,
+                                "child_segments": [
+                                  {
+                                    "name": "HL",
+                                    "child_segments": [
+                                      {
+                                        "name": "TRN",
+                                        "min": 0,
+                                        "max": 3
+                                      },
+                                      {
+                                        "name": "subscriber_name_loop",
+                                        "type": "segment_group",
+                                        "child_segments": [
+                                          {
+                                            "name": "NM1",
+                                            "elements": [
+                                              {
+                                                "index": 3,
+                                                "name": "last_name",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 4,
+                                                "name": "first_name",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 5,
+                                                "name": "middle_name",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 9,
+                                                "name": "payer_policy_number",
+                                                "default": ""
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "REF",
+                                            "min": 0,
+                                            "max": 9,
+                                            "elements": [
+                                              {
+                                                "index": 1,
+                                                "name": "reference_identification_qualifier",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 2,
+                                                "name": "subscriber_supplemental_identifier",
+                                                "default": ""
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "N3",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "N4",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "AAA",
+                                            "min": 0,
+                                            "max": 9
+                                          },
+                                          {
+                                            "name": "PRV",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "DMG",
+                                            "min": 0,
+                                            "elements": [
+                                              {
+                                                "index": 2,
+                                                "name": "birth_date",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 3,
+                                                "name": "gender",
+                                                "default": ""
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "INS",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "HI",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "DTP",
+                                            "min": 0,
+                                            "max": 9
+                                          },
+                                          {
+                                            "name": "MPI",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "subscriber_eligibility_or_benefit_information_loop",
+                                            "type": "segment_group",
+                                            "min": 0,
+                                            "max": -1,
+                                            "child_segments": [
+                                              {
+                                                "name": "EB"
+                                              },
+                                              {
+                                                "name": "HSD",
+                                                "min": 0,
+                                                "max": 9
+                                              },
+                                              {
+                                                "name": "REF",
+                                                "min": 0,
+                                                "max": 9
+                                              },
+                                              {
+                                                "name": "DTP",
+                                                "min": 0,
+                                                "max": 20
+                                              },
+                                              {
+                                                "name": "AAA",
+                                                "min": 0,
+                                                "max": 9
+                                              },
+                                              {
+                                                "name": "MSG",
+                                                "min": 0,
+                                                "max": 10
+                                              },
+                                              {
+                                                "name": "subscriber_eligibility_or_benefit_additional_information_loop",
+                                                "type": "segment_group",
+                                                "min": 0,
+                                                "max": 10,
+                                                "child_segments": [
+                                                  {
+                                                    "name": "III"
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "name": "LS",
+                                                "min": 0
+                                              },
+                                              {
+                                                "name": "subscriber_benefit_related_entity_name_loop",
+                                                "type": "segment_group",
+                                                "min": 0,
+                                                "max": 23,
+                                                "child_segments": [
+                                                  {
+                                                    "name": "NM1"
+                                                  },
+                                                  {
+                                                    "name": "N3",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "N4",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "PER",
+                                                    "min": 0,
+                                                    "max": 3
+                                                  },
+                                                  {
+                                                    "name": "PRV",
+                                                    "min": 0
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "name": "LE",
+                                                "min": 0
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "dependent_level_loop",
+                                        "type": "segment_group",
+                                        "min": 0,
+                                        "max": -1,
+                                        "child_segments": [
+                                          {
+                                            "name": "HL",
+                                            "child_segments": [
+                                              {
+                                                "name": "TRN",
+                                                "min": 0,
+                                                "max": 3
+                                              },
+                                              {
+                                                "name": "dependent_name_loop",
+                                                "type": "segment_group",
+                                                "child_segments": [
+                                                  {
+                                                    "name": "NM1",
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "entity_identifier_code"
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "last_name",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 4,
+                                                        "name": "first_name",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 5,
+                                                        "name": "middle_name",
+                                                        "default": ""
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "name": "REF",
+                                                    "min": 0,
+                                                    "max": 9
+                                                  },
+                                                  {
+                                                    "name": "N3",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "N4",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "AAA",
+                                                    "min": 0,
+                                                    "max": 9
+                                                  },
+                                                  {
+                                                    "name": "PRV",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "DMG",
+                                                    "min": 0,
+                                                    "elements": [
+                                                      {
+                                                        "index": 2,
+                                                        "name": "birth_date",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "gender",
+                                                        "default": ""
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "name": "INS",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "HI",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "DTP",
+                                                    "min": 0,
+                                                    "max": 9
+                                                  },
+                                                  {
+                                                    "name": "MPI",
+                                                    "min": 0
+                                                  },
+                                                  {
+                                                    "name": "dependent_eligibility_or_benefit_information_loop",
+                                                    "type": "segment_group",
+                                                    "min": 0,
+                                                    "max": -1,
+                                                    "child_segments": [
+                                                      {
+                                                        "name": "EB"
+                                                      },
+                                                      {
+                                                        "name": "HSD",
+                                                        "min": 0,
+                                                        "max": 9
+                                                      },
+                                                      {
+                                                        "name": "REF",
+                                                        "min": 0,
+                                                        "max": 9
+                                                      },
+                                                      {
+                                                        "name": "DTP",
+                                                        "min": 0,
+                                                        "max": 20
+                                                      },
+                                                      {
+                                                        "name": "AAA",
+                                                        "min": 0,
+                                                        "max": 9
+                                                      },
+                                                      {
+                                                        "name": "MSG",
+                                                        "min": 0,
+                                                        "max": 10
+                                                      },
+                                                      {
+                                                        "name": "dependent_eligibility_or_benefit_additional_information_loop",
+                                                        "type": "segment_group",
+                                                        "min": 0,
+                                                        "max": 10,
+                                                        "child_segments": [
+                                                          {
+                                                            "name": "III"
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "name": "LS",
+                                                        "min": 0
+                                                      },
+                                                      {
+                                                        "name": "dependent_benefit_related_entity_name_loop",
+                                                        "type": "segment_group",
+                                                        "min": 0,
+                                                        "max": 23,
+                                                        "child_segments": [
+                                                          {
+                                                            "name": "NM1"
+                                                          },
+                                                          {
+                                                            "name": "N3",
+                                                            "min": 0
+                                                          },
+                                                          {
+                                                            "name": "N4",
+                                                            "min": 0
+                                                          },
+                                                          {
+                                                            "name": "PER",
+                                                            "min": 0,
+                                                            "max": 3
+                                                          },
+                                                          {
+                                                            "name": "PRV",
+                                                            "min": 0
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "name": "LE",
+                                                        "min": 0
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SE"
+                  }
+                ]
+              },
+              {
+                "name": "GE"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "IEA"
+      }
+    ]
+  },
+  "transform_declarations": {
+    "FINAL_OUTPUT": {
+      "object": {
+        "account_number_and_waystar_payer_id": {
+          "xpath": "BHT/BHT03"
+        },
+        "payer_name": {
+          "xpath": "HL/information_source_name_loop/NM1/payer_name"
+        },
+        "subscriber_last_name": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/last_name"
+        },
+        "subscriber_first_name": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/first_name"
+        },
+        "subscriber_middle_name": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/middle_name"
+        },
+        "payer_policy_number": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/payer_policy_number"
+        },
+        "subscriber_birth_date": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/DMG/birth_date"
+        },
+        "subscriber_gender": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/DMG/gender"
+        },
+        "patient_indicator": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/entity_identifier_code"
+        },
+        "patient_last_name": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/last_name"
+        },
+        "patient_first_name": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/first_name"
+        },
+        "patient_middle_name": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/middle_name"
+        },
+        "patient_birth_date": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/DMG/birth_date"
+        },
+        "patient_gender": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/DMG/gender"
+        },
+        "subscriber_eligibility_or_benefit_information": {
+          "array": [
+            {
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/REF",
+              "object": {
+                "reference_identification_qualifier": {
+                  "xpath": "reference_identification_qualifier"
+                },
+                "subscriber_supplemental_identifier": {
+                  "xpath": "subscriber_supplemental_identifier"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
