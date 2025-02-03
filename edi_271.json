@@ -222,7 +222,18 @@
                                             "max": -1,
                                             "child_segments": [
                                               {
-                                                "name": "EB"
+                                                "name": "EB",
+                                                "elements": [
+                                                  {
+                                                    "index": 1,
+                                                    "name": "eligibility_benefit_information"
+                                                  },
+                                                  {
+                                                    "index": 3,
+                                                    "name": "service_type_code",
+                                                    "default": ""
+                                                  }
+                                                ]
                                               },
                                               {
                                                 "name": "HSD",
@@ -404,7 +415,18 @@
                                                     "max": -1,
                                                     "child_segments": [
                                                       {
-                                                        "name": "EB"
+                                                        "name": "EB",
+                                                        "elements": [
+                                                          {
+                                                            "index": 1,
+                                                            "name": "eligibility_benefit_information"
+                                                          },
+                                                          {
+                                                            "index": 3,
+                                                            "name": "service_type_code",
+                                                            "default": ""
+                                                          }
+                                                        ]
                                                       },
                                                       {
                                                         "name": "HSD",
@@ -568,6 +590,36 @@
                 },
                 "subscriber_supplemental_identifier": {
                   "xpath": "subscriber_supplemental_identifier"
+                }
+              }
+            }
+          ]
+        },
+        "subscriber_eligibility_benefit_information": {
+          "array": [
+            {
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/EB",
+              "object": {
+                "eligibility_benefit_information": {
+                  "xpath": "eligibility_benefit_information"
+                },
+                "service_type_code": {
+                  "xpath": "service_type_code"
+                }
+              }
+            }
+          ]
+        },
+        "patient_eligibility_benefit_information": {
+          "array": [
+            {
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/EB",
+              "object": {
+                "eligibility_benefit_information": {
+                  "xpath": "eligibility_benefit_information"
+                },
+                "service_type_code": {
+                  "xpath": "service_type_code"
                 }
               }
             }
