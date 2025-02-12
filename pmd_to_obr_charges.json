@@ -1,7 +1,7 @@
 {
   "parser_settings": {
     "version": "omni.2.1",
-    "file_format_type": "csv"
+    "file_format_type": "csv2"
   },
   "file_declaration": {
     "delimiter": ",",
