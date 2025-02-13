@@ -36,284 +36,112 @@
             "index": 5
           },
           {
-            "name": "patient_middle",
-            "index": 6
-          },
-          {
             "name": "patient_sex",
-            "index": 6
-          },
-          {
-            "name": "patient_dob",
             "index": 7
           },
           {
-            "name": "admit",
+            "name": "patient_dob",
             "index": 8
           },
           {
-            "name": "discharge",
-            "index": 9
-          },
-          {
             "name": "dos",
-            "index": 10
-          },
-          {
-            "name": "icd_1",
             "index": 11
           },
           {
-            "name": "icd_2",
+            "name": "icd_1",
             "index": 12
           },
           {
-            "name": "icd_3",
+            "name": "icd_2",
             "index": 13
           },
           {
-            "name": "icd_4",
+            "name": "icd_3",
             "index": 14
           },
           {
-            "name": "icd_5",
+            "name": "icd_4",
             "index": 15
           },
           {
-            "name": "icd_6",
+            "name": "icd_5",
             "index": 16
           },
           {
-            "name": "icd_7",
+            "name": "icd_6",
             "index": 17
           },
           {
-            "name": "icd_8",
+            "name": "icd_7",
             "index": 18
           },
           {
-            "name": "icd_9",
+            "name": "icd_8",
             "index": 19
           },
           {
-            "name": "icd_10",
+            "name": "icd_9",
             "index": 20
           },
           {
-            "name": "billing_provider",
+            "name": "icd_10",
             "index": 21
           },
           {
-            "name": "performing_ordering",
+            "name": "billing_provider",
             "index": 22
           },
           {
-            "name": "charge_code_1",
-            "index": 25
+            "name": "performing_ordering",
+            "index": 23
           },
           {
-            "name": "charge_code_2",
+            "name": "charge_code_1",
             "index": 26
           },
           {
-            "name": "charge_code_3",
+            "name": "charge_code_2",
             "index": 27
           },
           {
-            "name": "charge_code_4",
+            "name": "charge_code_3",
             "index": 28
           },
           {
-            "name": "charge_code_5",
+            "name": "charge_code_4",
             "index": 29
           },
           {
-            "name": "charge_code_6",
+            "name": "charge_code_5",
             "index": 30
           },
           {
-            "name": "charge_code_7",
+            "name": "charge_code_6",
             "index": 31
           },
           {
-            "name": "charge_code_8",
+            "name": "charge_code_7",
             "index": 32
           },
           {
-            "name": "charge_code_9",
+            "name": "charge_code_8",
             "index": 33
           },
           {
-            "name": "charge_code_10",
+            "name": "charge_code_9",
             "index": 34
           },
           {
-            "name": "sedation_time_start",
-            "index": 45
+            "name": "charge_code_10",
+            "index": 35
           },
           {
-            "name": "sedation_time_stop",
+            "name": "sedation_time_start",
             "index": 46
           },
           {
-            "name": "total_minutes",
+            "name": "sedation_time_stop",
             "index": 47
-          },
-          {
-            "name": "supervising_provider",
-            "index": 48
-          },
-          {
-            "name": "visit_note",
-            "index": 49
-          },
-          {
-            "name": "supervision_level",
-            "index": 50
-          },
-          {
-            "name": "practice_name",
-            "index": 51
-          },
-          {
-            "name": "provider_group_id",
-            "index": 52
-          },
-          {
-            "name": "location_name",
-            "index": 53
-          },
-          {
-            "name": "visit_id",
-            "index": 54
-          },
-          {
-            "name": "created",
-            "index": 55
-          },
-          {
-            "name": "approved",
-            "index": 56
-          },
-          {
-            "name": "status",
-            "index": 57
-          },
-          {
-            "name": "cpt_hash",
-            "index": 58
-          },
-          {
-            "name": "cpt_count",
-            "index": 59
-          },
-          {
-            "name": "units",
-            "index": 60
-          },
-          {
-            "name": "referral",
-            "index": 61
-          },
-          {
-            "name": "referral_npi",
-            "index": 62
-          },
-          {
-            "name": "provider_npi",
-            "index": 63
-          },
-          {
-            "name": "ref_auth",
-            "index": 64
-          },
-          {
-            "name": "patient_address",
-            "index": 65
-          },
-          {
-            "name": "patient_city",
-            "index": 66
-          },
-          {
-            "name": "patient_state",
-            "index": 67
-          },
-          {
-            "name": "patient_zip",
-            "index": 68
-          },
-          {
-            "name": "pcp_name",
-            "index": 69
-          },
-          {
-            "name": "pcp_npi",
-            "index": 70
-          },
-          {
-            "name": "insurance_only",
-            "index": 71
-          },
-          {
-            "name": "insurance_1",
-            "index": 72
-          },
-          {
-            "name": "policy_1",
-            "index": 73
-          },
-          {
-            "name": "group_1",
-            "index": 74
-          },
-          {
-            "name": "insurance_2",
-            "index": 75
-          },
-          {
-            "name": "policy_2",
-            "index": 76
-          },
-          {
-            "name": "group_2",
-            "index": 77
-          },
-          {
-            "name": "insurance_3",
-            "index": 78
-          },
-          {
-            "name": "policy_3",
-            "index": 79
-          },
-          {
-            "name": "group_3",
-            "index": 80
-          },
-          {
-            "name": "insurance_4",
-            "index": 81
-          },
-          {
-            "name": "policy_4",
-            "index": 82
-          },
-          {
-            "name": "group_4",
-            "index": 83
-          },
-          {
-            "name": "insurance_5",
-            "index": 84
-          },
-          {
-            "name": "policy_5",
-            "index": 85
-          },
-          {
-            "name": "group_5",
-            "index": 86
           }
         ]
       }
@@ -321,7 +149,7 @@
   },
   "transform_declarations": {
     "FINAL_OUTPUT": {
-      "xpath": ".[not(contains(hospital_code, 'Summary for '))]",
+      "xpath": ".[string-length(hospital_code) < 5]",
       "object": {
         "hospital_code": {
           "xpath": "hospital_code"
