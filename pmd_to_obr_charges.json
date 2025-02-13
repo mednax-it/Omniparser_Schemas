@@ -149,7 +149,7 @@
   },
   "transform_declarations": {
     "FINAL_OUTPUT": {
-      "xpath": ".[not(contains(hospital_code, 'Summary for '))]",
+      "xpath": ".[string-length(hospital_code) < 5]",
       "object": {
         "hospital_code": {
           "xpath": "hospital_code"
