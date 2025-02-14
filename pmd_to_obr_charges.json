@@ -142,6 +142,10 @@
           {
             "name": "sedation_time_stop",
             "index": 47
+          },
+          {
+            "name": "supervising_provider",
+            "index": 49
           }
         ]
       }
@@ -246,6 +250,9 @@
         },
         "sedation_time_stop": {
           "xpath": "sedation_time_stop"
+        },
+        "supervising_provider": {
+          "xpath": "supervising_provider"
         }
       }
     }
