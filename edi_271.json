@@ -232,6 +232,11 @@
                                                     "index": 3,
                                                     "name": "service_type_code",
                                                     "default": ""
+                                                  },
+                                                  {
+                                                    "index": 5,
+                                                    "name": "plan_coverage_description",
+                                                    "default": ""
                                                   }
                                                 ]
                                               },
@@ -425,6 +430,11 @@
                                                             "index": 3,
                                                             "name": "service_type_code",
                                                             "default": ""
+                                                          },
+                                                          {
+                                                            "index": 5,
+                                                            "name": "plan_coverage_description",
+                                                            "default": ""
                                                           }
                                                         ]
                                                       },
@@ -605,6 +615,9 @@
                 },
                 "service_type_code": {
                   "xpath": "service_type_code"
+                },
+                "plan_coverage_description": {
+                  "xpath": "plan_coverage_description"
                 }
               }
             }
@@ -620,6 +633,9 @@
                 },
                 "service_type_code": {
                   "xpath": "service_type_code"
+                },
+                "plan_coverage_description": {
+                  "xpath": "plan_coverage_description"
                 }
               }
             }
