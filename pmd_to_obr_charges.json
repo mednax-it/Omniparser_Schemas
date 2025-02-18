@@ -1,0 +1,260 @@
+{
+  "parser_settings": {
+    "version": "omni.2.1",
+    "file_format_type": "csv2"
+  },
+  "file_declaration": {
+    "delimiter": ",",
+    "records": [
+      {
+        "header": "^Hospital Code,Department,MRN,Patient Last,Patient First,Patient Middle,Patient Sex,Patient DOB,Admit,Discharge,DOS,ICD 1,ICD 2,ICD 3,ICD 4,ICD 5,ICD 6,ICD 7,ICD 8,ICD 9,ICD 10,Billing Provider,Performing/Ordering,Department,DOS,Charge Code 1,Charge Code 2,Charge Code 3,Charge Code 4,Charge Code 5,Charge Code 6,Charge Code 7,Charge Code 8,Charge Code 9,Charge Code 10,ICD 1,ICD 2,ICD 3,ICD 4,ICD 5,ICD 6,ICD 7,ICD 8,ICD 9,ICD 10,Sedation Time Start,Sedation Time Stop,Total Minutes,Supervising Provider,Visit Note,Supervision Level,Practice Name,Provider Group ID,Location Name,Visit ID,Created,Approved,Status,CPT Hash,CPT Count,Units,Referral,Referral NPI,Provider NPI,Ref Auth,Patient Address,Patient City,Patient State,Patient Zip,PCP Name,PCP NPI,Insurance ONLY,Insurance #1,Policy #1,Group #1,Insurance #2,Policy #2,Group #2,Insurance #3,Policy #3,Group #3,Insurance #4,Policy #4,Group #4,Insurance #5,Policy #5,Group #5$",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "max": -1,
+        "is_target": true,
+        "columns": [
+          {
+            "name": "hospital_code",
+            "index": 1
+          },
+          {
+            "name": "department",
+            "index": 2
+          },
+          {
+            "name": "mrn",
+            "index": 3
+          },
+          {
+            "name": "patient_last",
+            "index": 4
+          },
+          {
+            "name": "patient_first",
+            "index": 5
+          },
+          {
+            "name": "patient_sex",
+            "index": 7
+          },
+          {
+            "name": "patient_dob",
+            "index": 8
+          },
+          {
+            "name": "dos",
+            "index": 11
+          },
+          {
+            "name": "icd_1",
+            "index": 12
+          },
+          {
+            "name": "icd_2",
+            "index": 13
+          },
+          {
+            "name": "icd_3",
+            "index": 14
+          },
+          {
+            "name": "icd_4",
+            "index": 15
+          },
+          {
+            "name": "icd_5",
+            "index": 16
+          },
+          {
+            "name": "icd_6",
+            "index": 17
+          },
+          {
+            "name": "icd_7",
+            "index": 18
+          },
+          {
+            "name": "icd_8",
+            "index": 19
+          },
+          {
+            "name": "icd_9",
+            "index": 20
+          },
+          {
+            "name": "icd_10",
+            "index": 21
+          },
+          {
+            "name": "billing_provider",
+            "index": 22
+          },
+          {
+            "name": "performing_ordering",
+            "index": 23
+          },
+          {
+            "name": "charge_code_1",
+            "index": 26
+          },
+          {
+            "name": "charge_code_2",
+            "index": 27
+          },
+          {
+            "name": "charge_code_3",
+            "index": 28
+          },
+          {
+            "name": "charge_code_4",
+            "index": 29
+          },
+          {
+            "name": "charge_code_5",
+            "index": 30
+          },
+          {
+            "name": "charge_code_6",
+            "index": 31
+          },
+          {
+            "name": "charge_code_7",
+            "index": 32
+          },
+          {
+            "name": "charge_code_8",
+            "index": 33
+          },
+          {
+            "name": "charge_code_9",
+            "index": 34
+          },
+          {
+            "name": "charge_code_10",
+            "index": 35
+          },
+          {
+            "name": "sedation_time_start",
+            "index": 46
+          },
+          {
+            "name": "sedation_time_stop",
+            "index": 47
+          },
+          {
+            "name": "supervising_provider",
+            "index": 49
+          }
+        ]
+      }
+    ]
+  },
+  "transform_declarations": {
+    "FINAL_OUTPUT": {
+      "xpath": ".[string-length(hospital_code) < 5]",
+      "object": {
+        "hospital_code": {
+          "xpath": "hospital_code"
+        },
+        "department": {
+          "xpath": "department"
+        },
+        "mrn": {
+          "xpath": "mrn"
+        },
+        "patient_last": {
+          "xpath": "patient_last"
+        },
+        "patient_first": {
+          "xpath": "patient_first"
+        },
+        "patient_sex": {
+          "xpath": "patient_sex"
+        },
+        "patient_dob": {
+          "xpath": "patient_dob"
+        },
+        "dos": {
+          "xpath": "dos"
+        },
+        "icd_1": {
+          "xpath": "icd_1"
+        },
+        "icd_2": {
+          "xpath": "icd_2"
+        },
+        "icd_3": {
+          "xpath": "icd_3"
+        },
+        "icd_4": {
+          "xpath": "icd_4"
+        },
+        "icd_5": {
+          "xpath": "icd_5"
+        },
+        "icd_6": {
+          "xpath": "icd_6"
+        },
+        "icd_7": {
+          "xpath": "icd_7"
+        },
+        "icd_8": {
+          "xpath": "icd_8"
+        },
+        "icd_9": {
+          "xpath": "icd_9"
+        },
+        "icd_10": {
+          "xpath": "icd_10"
+        },
+        "billing_provider": {
+          "xpath": "billing_provider"
+        },
+        "performing_ordering": {
+          "xpath": "performing_ordering"
+        },
+        "charge_code_1": {
+          "xpath": "charge_code_1"
+        },
+        "charge_code_2": {
+          "xpath": "charge_code_2"
+        },
+        "charge_code_3": {
+          "xpath": "charge_code_3"
+        },
+        "charge_code_4": {
+          "xpath": "charge_code_4"
+        },
+        "charge_code_5": {
+          "xpath": "charge_code_5"
+        },
+        "charge_code_6": {
+          "xpath": "charge_code_6"
+        },
+        "charge_code_7": {
+          "xpath": "charge_code_7"
+        },
+        "charge_code_8": {
+          "xpath": "charge_code_8"
+        },
+        "charge_code_9": {
+          "xpath": "charge_code_9"
+        },
+        "charge_code_10": {
+          "xpath": "charge_code_10"
+        },
+        "sedation_time_start": {
+          "xpath": "sedation_time_start"
+        },
+        "sedation_time_stop": {
+          "xpath": "sedation_time_stop"
+        },
+        "supervising_provider": {
+          "xpath": "supervising_provider"
+        }
+      }
+    }
+  }
+}
