@@ -1,7 +1,8 @@
 {
   "parser_settings": {
     "version": "omni.2.1",
-    "file_format_type": "csv2"
+    "file_format_type": "csv2",
+    "debug": 1
   },
   "file_declaration": {
     "delimiter": ",",
@@ -154,6 +155,9 @@
   "transform_declarations": {
     "FINAL_OUTPUT": {
       "object": {
+        "line_num": {
+          "xpath": "__debug/line_num"
+        },
         "hospital_code": {
           "xpath": "hospital_code"
         },
