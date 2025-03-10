@@ -748,13 +748,6 @@
               }
             }
           ]
-        },
-        "patient_validation_messages": {
-          "array": [
-            {
-              "xpath": "HL/information_receiver_level_loop/subscriber_level_loop/HL/dependent_level_loop/AAA"
-            }
-          ]
         }
       }
     }
