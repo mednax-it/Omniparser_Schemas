@@ -167,11 +167,40 @@
                                           },
                                           {
                                             "name": "N3",
-                                            "min": 0
+                                            "min": 0,
+                                            "elements": [
+                                              {
+                                                "index": 1,
+                                                "name": "subscriber_address_line1",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 2,
+                                                "name": "subscriber_address_line2",
+                                                "default": ""
+                                              }
+                                            ]
                                           },
                                           {
                                             "name": "N4",
-                                            "min": 0
+                                            "min": 0,
+                                            "elements": [
+                                              {
+                                                "index": 1,
+                                                "name": "subscriber_city_name",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 2,
+                                                "name": "subscriber_state_code",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 3,
+                                                "name": "subscriber_postal_zone_or_zip_code",
+                                                "default": ""
+                                              }
+                                            ]
                                           },
                                           {
                                             "name": "AAA",
@@ -389,11 +418,40 @@
                                                   },
                                                   {
                                                     "name": "N3",
-                                                    "min": 0
+                                                    "min": 0,
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "dependent_address_line1",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "dependent_address_line2",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "N4",
-                                                    "min": 0
+                                                    "min": 0,
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "dependent_city_name",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "dependent_state_code",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "dependent_postal_zone_or_zip_code",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "AAA",
@@ -611,6 +669,21 @@
         "subscriber_middle_name": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/middle_name"
         },
+        "subscriber_address_line1": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/N3/subscriber_address_line1"
+        },
+        "subscriber_address_line2": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/N3/subscriber_address_line2"
+        },
+        "subscriber_city": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/N4/subscriber_city_name"
+        },
+        "subscriber_state": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/N4/subscriber_state_code"
+        },
+        "subscriber_zip": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/N4/subscriber_postal_zone_or_zip_code"
+        },
         "payer_policy_number": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/payer_policy_number"
         },
@@ -631,6 +704,21 @@
         },
         "patient_middle_name": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/middle_name"
+        },
+        "patient_address_line1": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/N3/dependent_address_line1"
+        },
+        "patient_address_line2": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/N3/dependent_address_line2"
+        },
+        "patient_city": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/N4/dependent_city_name"
+        },
+        "patient_state": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/N4/dependent_state_code"
+        },
+        "patient_zip": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/N4/dependent_postal_zone_or_zip_code"
         },
         "patient_birth_date": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/DMG/birth_date"
