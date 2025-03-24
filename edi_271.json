@@ -294,7 +294,24 @@
                                               {
                                                 "name": "DTP",
                                                 "min": 0,
-                                                "max": 20
+                                                "max": 20,
+                                                "elements": [
+                                                  {
+                                                    "index": 1,
+                                                    "name": "date_time_qualifier",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 2,
+                                                    "name": "date_time_period_format_qualifier",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 3,
+                                                    "name": "eligibility_or_benefit_date_time_period",
+                                                    "default": ""
+                                                  }
+                                                ]
                                               },
                                               {
                                                 "name": "AAA",
@@ -804,16 +821,25 @@
         "subscriber_eligibility_benefit_information": {
           "array": [
             {
-              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/EB",
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop",
               "object": {
                 "eligibility_benefit_information": {
-                  "xpath": "eligibility_benefit_information"
+                  "xpath": "EB/eligibility_benefit_information"
                 },
                 "service_type_code": {
-                  "xpath": "service_type_code"
+                  "xpath": "EB/service_type_code"
                 },
                 "plan_coverage_description": {
-                  "xpath": "plan_coverage_description"
+                  "xpath": "EB/plan_coverage_description"
+                },
+                "date_time_qualifier": {
+                  "xpath": "DTP/date_time_qualifier"
+                },
+                "date_time_period_format_qualifier": {
+                  "xpath": "DTP/date_time_period_format_qualifier"
+                },
+                "eligibility_or_benefit_date_time_period": {
+                  "xpath": "DTP/eligibility_or_benefit_date_time_period"
                 }
               }
             }
