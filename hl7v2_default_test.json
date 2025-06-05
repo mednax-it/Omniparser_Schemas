@@ -573,7 +573,7 @@
                 }
               ]
             },
-            "maritalStatus": {"xpath": ".[PID/marital_status!='']",
+            "maritalStatus": {"xpath": ".[transform_marital_code!='']",
               "object": {
                 "coding": {
                   "array": [
