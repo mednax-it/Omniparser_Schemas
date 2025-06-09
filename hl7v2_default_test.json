@@ -1707,7 +1707,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': 'M'; break; case 'S': 'U'; break; case 'D': 'D'; break; default: ''};} else {''}"},
+                {"const": "if (val) { switch(val.substring(0,1).toUpperCase()) {case 'M': return 'M'; case 'S': return 'U'; case 'D': return 'D'; default: return '';}} else { return '';}"},
                 {"const": "val"}, {"xpath": "."}
             ]
         }
@@ -1716,7 +1716,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': 'Married'; break; case 'S': 'Unmarried'; break; case 'D': 'Divorced'; break; default: ''};} else {''}"},
+                {"const": "if (val) { switch(val.substring(0,1).toUpperCase()) {case 'M': return 'Married'; case 'U': return 'Unmarried'; case 'D': return 'Divorced'; default: return '';}} else { return '';}"},
                 {"const": "val"}, {"xpath": "."}
             ]
         }
