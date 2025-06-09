@@ -1716,7 +1716,7 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                {"const": "if (val) { switch(val.substring(0,1).toUpperCase()) {case 'M': return 'Married'; case 'U': return 'Unmarried'; case 'D': return 'Divorced'; default: return '';}} else { return '';}"},
+                {"const": "if (val) { switch(val.substring(0,1).toUpperCase()) {case 'M': return 'Married'; case 'S': return 'Unmarried'; case 'D': return 'Divorced'; default: return '';}} else { return '';}"},
                 {"const": "val"}, {"xpath": "."}
             ]
         }
