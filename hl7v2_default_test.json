@@ -1707,8 +1707,8 @@
         "custom_func": {
             "name": "javascript",
             "args": [
-                { "const": "if (val) { switch(val.substring(0,1).toUpperCase()) {case 'M': case 'S': case 'D': return 'http://terminology.hl7.org/CodeSystem/v3-MaritalStatus'; default: return ''; } } else { return ''; }"},
-                { "const": "val" }, { "xpath": "." }
+                {"const": "let result = ''; if (val) {switch(val.substring(0,1).toUpperCase()) {case 'M': case 'S': case 'D': result = 'http://terminology.hl7.org/CodeSystem/v3-MaritalStatus'; break; default: result = ''; } } return result;"},
+                {"const": "val" }, {"xpath": "." }
             ]
         }
     },
