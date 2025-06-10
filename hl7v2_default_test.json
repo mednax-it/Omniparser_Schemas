@@ -579,7 +579,7 @@
                   "array": [
                     {   "xpath": "PID/marital_status",
                         "object": {
-                            "system": {"const": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"},
+                            "system": {"template": "transform_marital_system"},
                             "code": {"template": "transform_marital_code"},
                             "display": {"template": "transform_marital_display"}
                         }
@@ -1701,6 +1701,15 @@
               "ifNoneExist": {"xpath": "PV1", "template": "practitioner_admitting_post_request"}
             }
           }
+        }
+    },
+    "transform_marital_system": {
+        "custom_func": {
+            "name": "javascript",
+            "args": [
+                { "const": "if (val) { switch(val.substring(0,1).toUpperCase()) {case 'M': case 'S': case 'D': return 'http://terminology.hl7.org/CodeSystem/v3-MaritalStatus'; default: return ''; } } else { return ''; }"},
+                { "const": "val" }, { "xpath": "." }
+            ]
         }
     },
     "transform_marital_code": {
