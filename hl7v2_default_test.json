@@ -573,7 +573,7 @@
                 }
               ]
             },
-            "maritalStatus": {"xpath": ".[transform_marital_code!='']",
+            "maritalStatus": {"xpath": ".[lower-case(PID/marital_status) = 'married' or lower-case(PID/marital_status) = 'single' or lower-case(PID/marital_status) = 'divorced']",
               "object": {
                 "coding": {
                   "array": [
