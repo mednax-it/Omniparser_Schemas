@@ -271,7 +271,8 @@
                                                   },
                                                   {
                                                     "index": 2,
-                                                    "name": "benefit_coverage_level_code"
+                                                    "name": "benefit_coverage_level_code",
+                                                    "default": ""
                                                   },
                                                   {
                                                     "index": 3,
