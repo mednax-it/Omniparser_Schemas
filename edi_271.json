@@ -344,7 +344,7 @@
                                                 "name": "MSG",
                                                 "min": 0,
                                                 "max": 10,
-                                                "child_segments": [
+                                                "elements": [
                                                   {
                                                     "index": 1,
                                                     "name": "free_form_message_text",
@@ -612,7 +612,7 @@
                                                         "name": "MSG",
                                                         "min": 0,
                                                         "max": 10,
-                                                        "child_segments": [
+                                                        "elements": [
                                                           {
                                                             "index": 1,
                                                             "name": "free_form_message_text",
