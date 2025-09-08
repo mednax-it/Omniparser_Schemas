@@ -866,6 +866,9 @@
                 },
                 "eligibility_or_benefit_date_time_period": {
                   "xpath": "DTP/eligibility_or_benefit_date_time_period"
+                },
+                "msg": {
+                  "xpath": "MSG"
                 }
               }
             }
