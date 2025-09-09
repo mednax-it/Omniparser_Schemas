@@ -882,7 +882,11 @@
                   "xpath": "DTP/eligibility_or_benefit_date_time_period"
                 },
                 "msg": {
-                  "xpath": "MSG/free_form_message_text"
+                  "array":[
+                    {
+                      "xpath": "MSG/free_form_message_text"
+                    }
+                  ]
                 }
               }
             }
