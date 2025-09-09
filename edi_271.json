@@ -881,7 +881,7 @@
                 "eligibility_or_benefit_date_time_period": {
                   "xpath": "DTP/eligibility_or_benefit_date_time_period"
                 },
-                "msg": {
+                "messages": {
                   "array":[
                     {
                       "xpath": "MSG/free_form_message_text"
