@@ -343,7 +343,14 @@
                                               {
                                                 "name": "MSG",
                                                 "min": 0,
-                                                "max": 10
+                                                "max": 10,
+                                                "elements": [
+                                                  {
+                                                    "index": 1,
+                                                    "name": "free_form_message_text",
+                                                    "default": ""
+                                                  }
+                                                ]
                                               },
                                               {
                                                 "name": "subscriber_eligibility_or_benefit_additional_information_loop",
@@ -604,7 +611,14 @@
                                                       {
                                                         "name": "MSG",
                                                         "min": 0,
-                                                        "max": 10
+                                                        "max": 10,
+                                                        "elements": [
+                                                          {
+                                                            "index": 1,
+                                                            "name": "free_form_message_text",
+                                                            "default": ""
+                                                          }
+                                                        ]
                                                       },
                                                       {
                                                         "name": "dependent_eligibility_or_benefit_additional_information_loop",
@@ -866,6 +880,13 @@
                 },
                 "eligibility_or_benefit_date_time_period": {
                   "xpath": "DTP/eligibility_or_benefit_date_time_period"
+                },
+                "messages": {
+                  "array":[
+                    {
+                      "xpath": "MSG/free_form_message_text"
+                    }
+                  ]
                 }
               }
             }
