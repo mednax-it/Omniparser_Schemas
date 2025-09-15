@@ -374,7 +374,22 @@
                                                 "max": 23,
                                                 "child_segments": [
                                                   {
-                                                    "name": "NM1"
+                                                    "name": "NM1",
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "entity_identifier_code"
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "entity_type_qualifier"
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "benefit_related_entity_last_or_organization_name",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "N3",
@@ -642,7 +657,22 @@
                                                         "max": 23,
                                                         "child_segments": [
                                                           {
-                                                            "name": "NM1"
+                                                            "name": "NM1",
+                                                            "elements": [
+                                                              {
+                                                                "index": 1,
+                                                                "name": "entity_identifier_code"
+                                                              },
+                                                              {
+                                                                "index": 2,
+                                                                "name": "entity_type_qualifier"
+                                                              },
+                                                              {
+                                                                "index": 3,
+                                                                "name": "benefit_related_entity_last_or_organization_name",
+                                                                "default": ""
+                                                              }
+                                                            ]
                                                           },
                                                           {
                                                             "name": "N3",
@@ -882,7 +912,7 @@
                   "xpath": "DTP/eligibility_or_benefit_date_time_period"
                 },
                 "messages": {
-                  "array":[
+                  "array": [
                     {
                       "xpath": "MSG/free_form_message_text"
                     }
@@ -905,6 +935,42 @@
                 },
                 "plan_coverage_description": {
                   "xpath": "plan_coverage_description"
+                }
+              }
+            }
+          ]
+        },
+        "subscriber_benefit_related_entity_name": {
+          "array": [
+            {
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/subscriber_benefit_related_entity_name_loop/NM1",
+              "object": {
+                "entity_identifier_code": {
+                  "xpath": "entity_identifier_code"
+                },
+                "entity_type_qualifier": {
+                  "xpath": "entity_type_qualifier"
+                },
+                "benefit_related_entity_last_or_organization_name": {
+                  "xpath": "benefit_related_entity_last_or_organization_name"
+                }
+              }
+            }
+          ]
+        },
+        "patient_related_entity_name": {
+          "array": [
+            {
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/dependent_benefit_related_entity_name_loop/NM1",
+              "object": {
+                "entity_identifier_code": {
+                  "xpath": "entity_identifier_code"
+                },
+                "entity_type_qualifier": {
+                  "xpath": "entity_type_qualifier"
+                },
+                "benefit_related_entity_last_or_organization_name": {
+                  "xpath": "benefit_related_entity_last_or_organization_name"
                 }
               }
             }
