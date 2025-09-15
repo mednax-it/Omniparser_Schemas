@@ -374,7 +374,22 @@
                                                 "max": 23,
                                                 "child_segments": [
                                                   {
-                                                    "name": "NM1"
+                                                    "name": "NM1",
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "entity_identifier_code"
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "entity_type_qualifier"
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "benefit_related_entity_last_or_organization_name",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "N3",
@@ -642,7 +657,22 @@
                                                         "max": 23,
                                                         "child_segments": [
                                                           {
-                                                            "name": "NM1"
+                                                            "name": "NM1",
+                                                            "elements": [
+                                                              {
+                                                                "index": 1,
+                                                                "name": "entity_identifier_code"
+                                                              },
+                                                              {
+                                                                "index": 2,
+                                                                "name": "entity_type_qualifier"
+                                                              },
+                                                              {
+                                                                "index": 3,
+                                                                "name": "benefit_related_entity_last_or_organization_name",
+                                                                "default": ""
+                                                              }
+                                                            ]
                                                           },
                                                           {
                                                             "name": "N3",
