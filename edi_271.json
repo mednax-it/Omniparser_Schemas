@@ -943,7 +943,7 @@
         "subscriber_benefit_related_entity_name": {
           "array": [
             {
-              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/LS/subscriber_benefit_related_entity_name_loop",
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/subscriber_benefit_related_entity_name_loop",
               "object": {
                 "entity_identifier_code": {
                   "xpath": "NM1/entity_identifier_code"
@@ -961,7 +961,7 @@
         "patient_related_entity_name": {
           "array": [
             {
-              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/LS",
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/dependent_eligibility_or_benefit_additional_information_loop",
               "object": {
                 "entity_identifier_code": {
                   "xpath": "NM1/entity_identifier_code"
