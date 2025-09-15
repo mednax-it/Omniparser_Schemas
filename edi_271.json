@@ -943,16 +943,16 @@
         "subscriber_benefit_related_entity_name": {
           "array": [
             {
-              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/LS/subscriber_benefit_related_entity_name_loop/NM1",
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/subscriber_benefit_related_entity_name_loop",
               "object": {
                 "entity_identifier_code": {
-                  "xpath": "entity_identifier_code"
+                  "xpath": "NM1/entity_identifier_code"
                 },
                 "entity_type_qualifier": {
-                  "xpath": "entity_type_qualifier"
+                  "xpath": "NM1/entity_type_qualifier"
                 },
                 "benefit_related_entity_last_or_organization_name": {
-                  "xpath": "benefit_related_entity_last_or_organization_name"
+                  "xpath": "NM1/benefit_related_entity_last_or_organization_name"
                 }
               }
             }
@@ -961,16 +961,16 @@
         "patient_related_entity_name": {
           "array": [
             {
-              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/LS/dependent_benefit_related_entity_name_loop/NM1",
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/dependent_benefit_related_entity_name_loop",
               "object": {
                 "entity_identifier_code": {
-                  "xpath": "entity_identifier_code"
+                  "xpath": "NM1/entity_identifier_code"
                 },
                 "entity_type_qualifier": {
-                  "xpath": "entity_type_qualifier"
+                  "xpath": "NM1/entity_type_qualifier"
                 },
                 "benefit_related_entity_last_or_organization_name": {
-                  "xpath": "benefit_related_entity_last_or_organization_name"
+                  "xpath": "NM1/benefit_related_entity_last_or_organization_name"
                 }
               }
             }
