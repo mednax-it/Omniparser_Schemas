@@ -1,3 +1,24 @@
+# Business Requirement: HL7v2 to FHIR Schema
+
+This repository contains schemas for transforming HL7v2 healthcare messages into FHIR-compliant resources using Omniparser. The main business requirements addressed by these schemas are:
+
+- **Patient Data Integration:** Convert HL7v2 patient, encounter, insurance, and provider data into standardized FHIR resources for downstream clinical and billing systems.
+- **Facility-Specific Resource Identification:** Ensure all FHIR resource identifiers are unique and traceable to both the patient and the facility, supporting multi-facility environments.
+- **Comprehensive Coverage:** Map all relevant HL7v2 segments (PID, PV1, IN1, GT1, etc.) to their corresponding FHIR resource types (Patient, Encounter, Account, Coverage, Organization, Practitioner, RelatedPerson, Claim).
+- **Conditional Resource Creation:** Only create FHIR resources when required HL7v2 fields are present, reducing unnecessary data and supporting business logic (e.g., only create a department resource if a point of care exists).
+- **Consistent Identifiers:** Use business rules to generate resource identifiers, combining patient MRN, FacilityID, and other key fields to ensure uniqueness and traceability.
+- **Support for Multiple Insurances and Guarantors:** Handle multiple insurance and guarantor entries, mapping them to FHIR arrays as required for accurate billing and coverage representation.
+
+### Example Use Cases
+
+- A hospital receives an HL7v2 message for a patient admission. The schema transforms this message into a FHIR Bundle containing Patient, Encounter, Organization, Coverage, and Practitioner resources, each with identifiers that include the FacilityID.
+- When a patient has multiple insurances, the schema generates multiple Coverage and Organization resources, each linked to the correct insurance instance.
+- If a department (point of care) is specified, a corresponding Organization resource is created for that department.
+
+### Compliance and Interoperability
+
+- The schema supports healthcare interoperability standards, enabling integration with EHRs, billing systems, and analytics platforms.
+- Ensures compliance with FHIR resource structure and identifier conventions.
 # Omniparser_Schemas
 
 Placeholder for Omniparser Schemas used by universal-etl-parser API.
