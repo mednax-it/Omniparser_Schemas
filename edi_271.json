@@ -909,7 +909,11 @@
                   "xpath": "DTP/date_time_period_format_qualifier"
                 },
                 "eligibility_or_benefit_date_time_period": {
-                  "xpath": "DTP/eligibility_or_benefit_date_time_period"
+                  "array": [
+                    {
+                      "xpath": "DTP/eligibility_or_benefit_date_time_period"
+                    }
+                  ]
                 },
                 "messages": {
                   "array": [
