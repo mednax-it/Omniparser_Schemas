@@ -902,20 +902,21 @@
                 "plan_coverage_description": {
                   "xpath": "EB/plan_coverage_description"
                 },
-                "date_time_qualifier": {
-                  "xpath": "DTP/date_time_qualifier"
-                },
-                "date_time_period_format_qualifier": {
+                "DTP": {
                   "array": [
                     {
-                      "xpath": "DTP/date_time_period_format_qualifier"
-                    }
-                  ]
-                },
-                "eligibility_or_benefit_date_time_period": {
-                  "array": [
-                    {
-                      "xpath": "DTP/eligibility_or_benefit_date_time_period"
+                      "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/DTP",
+                      "object": {
+                        "date_time_qualifier": {
+                          "xpath": "date_time_qualifier"
+                        },
+                        "date_time_period_format_qualifier": {
+                          "xpath": "date_time_period_format_qualifier"
+                        },
+                        "eligibility_or_benefit_date_time_period": {
+                          "xpath": "eligibility_or_benefit_date_time_period"
+                        }
+                      }
                     }
                   ]
                 },
