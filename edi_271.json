@@ -735,6 +735,9 @@
   "transform_declarations": {
     "FINAL_OUTPUT": {
       "object": {
+        "account_number_and_waystar_payer_id": {
+          "xpath": "BHT/BHT03"
+        },
         "account_ids": {
           "xpath": "BHT/BHT03"
         },
