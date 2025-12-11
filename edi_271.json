@@ -738,6 +738,9 @@
         "account_ids": {
           "xpath": "BHT/BHT03"
         },
+        "account_number_and_waystar_payer_id": {
+          "xpath": "BHT/BHT03"
+        },
         "payer_name": {
           "xpath": "HL/information_source_name_loop/NM1/payer_name"
         },
