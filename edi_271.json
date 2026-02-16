@@ -46,6 +46,7 @@
                         "child_segments": [
                           {
                             "name": "NM1",
+                            "min": 0,
                             "elements": [
                               {
                                 "index": 3,
