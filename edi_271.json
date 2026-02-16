@@ -46,6 +46,8 @@
                         "child_segments": [
                           {
                             "name": "NM1",
+                            "min": 0,
+                            "max": 1,
                             "elements": [
                               {
                                 "index": 3,
@@ -54,10 +56,14 @@
                             ]
                           },
                           {
-                            "name": "PER"
+                            "name": "PER",
+                            "min": 0,
+                            "max": 3
                           },
                           {
-                            "name": "AAA"
+                            "name": "AAA",
+                            "min": 0,
+                            "max": 9
                           }
                         ]
                       },
