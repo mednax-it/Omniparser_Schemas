@@ -718,14 +718,12 @@
                     ]
                   },
                   {
-                    "name": "SE",
-                    "min": 0
+                    "name": "SE"
                   }
                 ]
               },
               {
-                "name": "GE",
-                "min": 0
+                "name": "GE"
               }
             ]
           }
