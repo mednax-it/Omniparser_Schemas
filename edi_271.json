@@ -42,14 +42,10 @@
                     "child_segments": [
                       {
                         "name": "information_source_name_loop",
-                        "min": 0,
-                        "max": 1,
                         "type": "segment_group",
                         "child_segments": [
                           {
                             "name": "NM1",
-                            "min": 0,
-                            "max": 1,
                             "elements": [
                               {
                                 "index": 3,
@@ -739,10 +735,10 @@
   "transform_declarations": {
     "FINAL_OUTPUT": {
       "object": {
-        "account_number_and_waystar_payer_id": {
+        "account_ids": {
           "xpath": "BHT/BHT03"
         },
-        "account_ids": {
+        "account_number_and_waystar_payer_id": {
           "xpath": "BHT/BHT03"
         },
         "payer_name": {
