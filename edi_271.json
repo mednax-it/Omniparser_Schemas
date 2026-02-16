@@ -43,8 +43,6 @@
                       {
                         "name": "information_source_name_loop",
                         "type": "segment_group",
-                        "min": 0,
-                        "max": 1,
                         "child_segments": [
                           {
                             "name": "NM1",
@@ -56,14 +54,10 @@
                             ]
                           },
                           {
-                            "name": "PER",
-                            "min": 0,
-                            "max": 3
+                            "name": "PER"
                           },
                           {
-                            "name": "AAA",
-                            "min": 0,
-                            "max": 9
+                            "name": "AAA"
                           }
                         ]
                       },
