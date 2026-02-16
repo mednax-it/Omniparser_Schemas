@@ -43,6 +43,8 @@
                       {
                         "name": "information_source_name_loop",
                         "type": "segment_group",
+                        "min": 0,
+                        "max": 1,
                         "child_segments": [
                           {
                             "name": "NM1",
