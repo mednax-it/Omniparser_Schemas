@@ -41,13 +41,16 @@
                     "name": "HL",
                     "child_segments": [
                       {
-                        "name": "information_source_name_loop",
+                        "name": "AAA",
                         "min": 0,
+                        "max": 9
+                      },
+                      {
+                        "name": "information_source_name_loop",
                         "type": "segment_group",
                         "child_segments": [
                           {
                             "name": "NM1",
-                            "min": 0,
                             "elements": [
                               {
                                 "index": 3,
