@@ -746,9 +746,14 @@
             }
           ]
         },
+        
         "dependent_info": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop",
           "template": "dependent_level"
+        },
+        "subscriber_info": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop",
+          "template": "subscriber_level"
         }
       }
     },
@@ -799,6 +804,90 @@
         "country": { "xpath": "N4/country" },
         "provider_code": { "xpath": "PRV/provider_code" },
         "provider_taxonomy_code": { "xpath": "PRV/provider_taxonomy_code" }
+      }
+    },
+    "subscriber_level": {
+      "object": {
+        "trace_info": {
+          "array": [
+            {
+              "xpath": "HL/TRN",
+              "object": {
+                "type_code": { "xpath": "type_code" },
+                "number": { "xpath": "number" },
+                "assigning_entity_id": { "xpath": "assigning_entity_id" },
+                "assigning_entity_additional_id": { "xpath": "assigning_entity_additional_id" }
+              }
+            }
+          ]
+        },
+        "last_name": { "xpath": "HL/subscriber_name_loop/NM1/last_name" },
+        "first_name": { "xpath": "HL/subscriber_name_loop/NM1/first_name" },
+        "middle_name": { "xpath": "HL/subscriber_name_loop/NM1/middle_name" },
+        "payer_policy_number": { "xpath": "HL/subscriber_name_loop/NM1/payer_policy_number" },
+        "address_line1": { "xpath": "HL/subscriber_name_loop/N3/subscriber_address_line1" },
+        "address_line2": { "xpath": "HL/subscriber_name_loop/N3/subscriber_address_line2" },
+        "city": { "xpath": "HL/subscriber_name_loop/N4/subscriber_city_name" },
+        "state": { "xpath": "HL/subscriber_name_loop/N4/subscriber_state_code" },
+        "zip": { "xpath": "HL/subscriber_name_loop/N4/subscriber_postal_zone_or_zip_code" },
+        "country": { "xpath": "HL/subscriber_name_loop/N4/subscriber_country_code" },
+        "birth_date": { "xpath": "HL/subscriber_name_loop/DMG/birth_date" },
+        "gender": { "xpath": "HL/subscriber_name_loop/DMG/gender" },
+        "supplemental_identifiers": {
+          "array": [
+            {
+              "xpath": "HL/subscriber_name_loop/REF",
+              "object": {
+                "reference_identification_qualifier": { "xpath": "reference_identification_qualifier" },
+                "subscriber_supplemental_identifier": { "xpath": "subscriber_supplemental_identifier" }
+              }
+            }
+          ]
+        },
+        "name_loop_validation_messages": {
+          "array": [
+            {
+              "xpath": "HL/subscriber_name_loop/AAA",
+              "object": {
+                "valid_request_indicator": { "xpath": "valid_request_indicator" },
+                "reject_reason_code": { "xpath": "reject_reason_code" },
+                "follow_up_action_code": { "xpath": "follow_up_action_code" }
+              }
+            }
+          ]
+        },
+        "benefit_loop_validation_messages": {
+          "array": [
+            {
+              "xpath": "HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/AAA",
+              "object": {
+                "valid_request_indicator": { "xpath": "valid_request_indicator" },
+                "reject_reason_code": { "xpath": "reject_reason_code" },
+                "follow_up_action_code": { "xpath": "follow_up_action_code" }
+              }
+            }
+          ]
+        },
+        "eligibility_benefit_information": {
+          "array": [
+            {
+              "xpath": "HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop",
+              "template": "eb_loop_info"
+            }
+          ]
+        },
+        "benefit_related_entity_name": {
+          "array": [
+            {
+              "xpath": "HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/subscriber_benefit_related_entity_name_loop",
+              "template": "benefit_related_entity"
+            }
+          ]
+        },
+        "dependent": {
+          "xpath": "HL/dependent_level_loop",
+          "template": "dependent_level"
+        }
       }
     },
     "dependent_level": {
