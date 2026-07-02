@@ -1862,7 +1862,7 @@
                 {"const": "inputDate"},{ "xpath": "." }
             ]
         }
-    },    
+    },
     "transform_coverage_expiration": {
       "custom_func": {
           "name": "javascript",
