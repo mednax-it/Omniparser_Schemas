@@ -1400,6 +1400,7 @@
           ]
         },
 
+        
         "account_ids": {
           "xpath": "BHT/BHT03",
           "object": {
@@ -1578,6 +1579,18 @@
         },
         "eligibility_end_date": {
           "xpath": "DTP[date_time_qualifier='357' and date_time_period_format_qualifier='D8']/eligibility_or_benefit_date_time_period"
+        },
+        "benefit_related_entity_name": {
+          "array": [
+            {
+              "xpath": "subscriber_benefit_related_entity_name_loop",
+              "template": "benefit_related_entity"
+            },
+            {
+              "xpath": "dependent_benefit_related_entity_name_loop",
+              "template": "benefit_related_entity"
+            }
+          ]
         }
       }
     },
