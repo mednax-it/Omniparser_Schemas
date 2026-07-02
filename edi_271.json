@@ -1401,70 +1401,72 @@
         },
 
         "account_ids": {
-          "xpath": "BHT/BHT03"
-        },
-        "account_number": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              {
-                "const": "var parts = account_ids ? account_ids.split('-') : []; parts[0] || ''"
-              },
-              {
-                "const": "account_ids"
-              },
-              {
-                "xpath": "BHT/BHT03"
+          "xpath": "BHT/BHT03",
+          "object": {
+            "account_number": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[0] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
               }
-            ]
-          }
-        },
-        "waystar_payer_id": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              {
-                "const": "var parts = account_ids ? account_ids.split('-') : []; parts[1] || ''"
-              },
-              {
-                "const": "account_ids"
-              },
-              {
-                "xpath": "BHT/BHT03"
+            },
+            "waystar_payer_id": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[1] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
               }
-            ]
-          }
-        },
-        "admit_id": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              {
-                "const": "var parts = account_ids ? account_ids.split('-') : []; parts[2] || ''"
-              },
-              {
-                "const": "account_ids"
-              },
-              {
-                "xpath": "BHT/BHT03"
+            },
+            "admit_id": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[2] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
               }
-            ]
-          }
-        },
-        "subscriber_id": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              {
-                "const": "var parts = account_ids ? account_ids.split('-') : []; parts[3] || ''"
-              },
-              {
-                "const": "account_ids"
-              },
-              {
-                "xpath": "BHT/BHT03"
+            },
+            "subscriber_id": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[3] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
               }
-            ]
+            }
           }
         },
         "create_date": {
