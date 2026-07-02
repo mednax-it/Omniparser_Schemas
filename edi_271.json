@@ -1166,60 +1166,8 @@
   "transform_declarations": {
     "FINAL_OUTPUT": {
       "object": {
-        "account_ids": {
-          "xpath": "BHT/BHT03"
-        },
         "account_number_and_waystar_payer_id": {
           "xpath": "BHT/BHT03"
-        },
-        "account_number": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              { "const": "var parts = account_ids ? account_ids.split('-') : []; parts[0] || ''" },
-              { "const": "account_ids" },
-              { "xpath": "BHT/BHT03" }
-            ]
-          }
-        },
-        "waystar_payer_id": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              { "const": "var parts = account_ids ? account_ids.split('-') : []; parts[1] || ''" },
-              { "const": "account_ids" },
-              { "xpath": "BHT/BHT03" }
-            ]
-          }
-        },
-        "admit_id": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              { "const": "var parts = account_ids ? account_ids.split('-') : []; parts[2] || ''" },
-              { "const": "account_ids" },
-              { "xpath": "BHT/BHT03" }
-            ]
-          }
-        },
-        "subscriber_id": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              { "const": "var parts = account_ids ? account_ids.split('-') : []; parts[3] || ''" },
-              { "const": "account_ids" },
-              { "xpath": "BHT/BHT03" }
-            ]
-          }
-        },
-        "create_date": {
-          "xpath": "BHT/create_date"
-        },
-        "create_time": {
-          "xpath": "BHT/create_time"
-        },
-        "payer_name": {
-          "xpath": "HL/information_source_name_loop/NM1/payer_name"
         },
         "subscriber_last_name": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/last_name"
@@ -1422,22 +1370,6 @@
             }
           ]
         },
-        "patient_type": {
-          "custom_func": {
-            "name": "javascript",
-            "args": [
-              {
-                "const": "patient_indicator ? 'pad' : 'ssp'"
-              },
-              {
-                "const": "patient_indicator"
-              },
-              {
-                "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/entity_identifier_code"
-              }
-            ]
-          }
-        },
         "subscriber_eligibility_benefit_information": {
           "array": [
             {
@@ -1469,6 +1401,99 @@
               "template": "benefit_related_entity"
             }
           ]
+        },
+        
+        "account_ids": {
+          "xpath": "BHT/BHT03"
+        },
+        "account_number": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              {
+                "const": "var parts = account_ids ? account_ids.split('-') : []; parts[0] || ''"
+              },
+              {
+                "const": "account_ids"
+              },
+              {
+                "xpath": "BHT/BHT03"
+              }
+            ]
+          }
+        },
+        "waystar_payer_id": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              {
+                "const": "var parts = account_ids ? account_ids.split('-') : []; parts[1] || ''"
+              },
+              {
+                "const": "account_ids"
+              },
+              {
+                "xpath": "BHT/BHT03"
+              }
+            ]
+          }
+        },
+        "admit_id": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              {
+                "const": "var parts = account_ids ? account_ids.split('-') : []; parts[2] || ''"
+              },
+              {
+                "const": "account_ids"
+              },
+              {
+                "xpath": "BHT/BHT03"
+              }
+            ]
+          }
+        },
+        "subscriber_id": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              {
+                "const": "var parts = account_ids ? account_ids.split('-') : []; parts[3] || ''"
+              },
+              {
+                "const": "account_ids"
+              },
+              {
+                "xpath": "BHT/BHT03"
+              }
+            ]
+          }
+        },
+        "create_date": {
+          "xpath": "BHT/create_date"
+        },
+        "create_time": {
+          "xpath": "BHT/create_time"
+        },
+        "payer_name": {
+          "xpath": "HL/information_source_name_loop/NM1/payer_name"
+        },
+        "patient_type": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              {
+                "const": "patient_indicator ? 'pad' : 'ssp'"
+              },
+              {
+                "const": "patient_indicator"
+              },
+              {
+                "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/entity_identifier_code"
+              }
+            ]
+          }
         },
         "dependent_info": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop",
