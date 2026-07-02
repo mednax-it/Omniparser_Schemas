@@ -3,3 +3,4 @@ output*.json
 *.txt
 *.hl7
 
+claude.sh
