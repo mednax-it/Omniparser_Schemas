@@ -1172,6 +1172,46 @@
         "account_number_and_waystar_payer_id": {
           "xpath": "BHT/BHT03"
         },
+        "account_number": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              { "const": "var parts = account_ids ? account_ids.split('-') : []; parts[0] || ''" },
+              { "const": "account_ids" },
+              { "xpath": "BHT/BHT03" }
+            ]
+          }
+        },
+        "waystar_payer_id": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              { "const": "var parts = account_ids ? account_ids.split('-') : []; parts[1] || ''" },
+              { "const": "account_ids" },
+              { "xpath": "BHT/BHT03" }
+            ]
+          }
+        },
+        "admit_id": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              { "const": "var parts = account_ids ? account_ids.split('-') : []; parts[2] || ''" },
+              { "const": "account_ids" },
+              { "xpath": "BHT/BHT03" }
+            ]
+          }
+        },
+        "subscriber_id": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              { "const": "var parts = account_ids ? account_ids.split('-') : []; parts[3] || ''" },
+              { "const": "account_ids" },
+              { "xpath": "BHT/BHT03" }
+            ]
+          }
+        },
         "create_date": {
           "xpath": "BHT/create_date"
         },
