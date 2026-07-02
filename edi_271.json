@@ -1196,9 +1196,6 @@
         "subscriber_country": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/N4/subscriber_country_code"
         },
-        "payer_policy_number": {
-          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/payer_policy_number"
-        },
         "subscriber_birth_date": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/DMG/birth_date"
         },
@@ -1402,7 +1399,7 @@
             }
           ]
         },
-        
+
         "account_ids": {
           "xpath": "BHT/BHT03"
         },
@@ -1478,6 +1475,9 @@
         },
         "payer_name": {
           "xpath": "HL/information_source_name_loop/NM1/payer_name"
+        },
+        "payer_policy_number": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/payer_policy_number"
         },
         "patient_type": {
           "custom_func": {
