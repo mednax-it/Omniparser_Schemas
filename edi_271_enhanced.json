@@ -395,6 +395,10 @@
                                             "default": ""
                                           },
                                           {
+                                            "index": 8,
+                                            "name": "benefit_percent"
+                                          },
+                                          {
                                             "index": 11,
                                             "name": "auth_cert_identifier",
                                             "default": ""
@@ -753,9 +757,6 @@
           "object": {
             "name": {
               "xpath": "HL/information_source_name_loop/NM1/payer_name"
-            },
-            "policy_number": {
-              "xpath": "HL/info_receiver_loop/information_receiver_name_loop/subscriber_level_loop[./HL[level_code='22']]/HL/subscriber_name_loop/NM1/payer_policy_number"
             }
           }
         },
@@ -770,18 +771,50 @@
                 "const": "patient_indicator"
               },
               {
-                "xpath": "HL/info_receiver_loop/information_receiver_name_loop/subscriber_level_loop[./HL[level_code='23']]/HL/subscriber_name_loop/NM1/entity_identifier_code"
+                "xpath": "HL/info_receiver_loop/subscriber_level_loop[./HL[level_code='23']]/subscriber_name_loop/NM1/entity_identifier_code"
               }
             ]
           }
         },
-        "dependent_info": {
-          "xpath": "HL/info_receiver_loop/information_receiver_name_loop/subscriber_level_loop[./HL[level_code='23']]",
-          "template": "dependent_level"
+        "subscriber_trace_info": {
+          "array": [
+            {
+              "xpath": "HL/info_receiver_loop/subscriber_level_loop[./HL[level_code='22']]",
+              "template": "trace_info"
+            }
+          ]
         },
-        "subscriber_info": {
-          "xpath": "HL/info_receiver_loop/information_receiver_name_loop/subscriber_level_loop[./HL[level_code='22']]",
-          "template": "subscriber_level"
+        "dependent_trace_info": {
+          "array": [
+            {
+              "xpath": "HL/info_receiver_loop/subscriber_level_loop[./HL[level_code='23']]",
+              "template": "trace_info"
+            }
+          ]
+        },
+        "subscriber": {
+          "xpath": "HL/info_receiver_loop/subscriber_level_loop[./HL[level_code='22']]/subscriber_name_loop",
+          "template": "member_name_loop"
+        },
+        "subscriber_benefits": {
+          "array": [
+            {
+              "xpath": "HL/info_receiver_loop/subscriber_level_loop[./HL[level_code='22']]/subscriber_name_loop/subscriber_eb_loop",
+              "template": "eb_loop_info"
+            }
+          ]
+        },
+        "dependent": {
+          "xpath": "HL/info_receiver_loop/subscriber_level_loop[./HL[level_code='23']]/subscriber_name_loop",
+          "template": "member_name_loop"
+        },
+        "dependent_benefits": {
+          "array": [
+            {
+              "xpath": "HL/info_receiver_loop/subscriber_level_loop[./HL[level_code='23']]/subscriber_name_loop/subscriber_eb_loop",
+              "template": "eb_loop_info"
+            }
+          ]
         }
       }
     },
@@ -823,6 +856,9 @@
         },
         "benefit_amount": {
           "xpath": "EB/benefit_amount"
+        },
+        "benefit_percent": {
+          "xpath": "EB/benefit_percent"
         },
         "auth_cert_identifier": {
           "xpath": "EB/auth_cert_identifier"
@@ -952,6 +988,24 @@
     },
     "member_name_loop": {
       "object": {
+        "payer_policy_number": {
+          "xpath": "NM1/payer_policy_number"
+        },
+        "supplemental_identifiers": {
+          "array": [
+            {
+              "xpath": "REF",
+              "object": {
+                "qualifier": {
+                  "xpath": "qualifier"
+                },
+                "id": {
+                  "xpath": "id"
+                }
+              }
+            }
+          ]
+        },
         "last_name": {
           "xpath": "NM1/last_name"
         },
@@ -1023,74 +1077,13 @@
         }
       }
     },
-    "subscriber_level": {
-      "object": {
-        "trace_info": {
-          "array": [
-            {
-              "xpath": "HL/TRN",
-              "template": "trace_entry"
-            }
-          ]
-        },
-        "payer_policy_number": {
-          "xpath": "HL/subscriber_name_loop/NM1/payer_policy_number"
-        },
-        "supplemental_identifiers": {
-          "array": [
-            {
-              "xpath": "HL/subscriber_name_loop/REF",
-              "object": {
-                "qualifier": {
-                  "xpath": "qualifier"
-                },
-                "id": {
-                  "xpath": "id"
-                }
-              }
-            }
-          ]
-        },
-        "member_info": {
-          "xpath": "HL/subscriber_name_loop",
-          "template": "member_name_loop"
-        },
-        "eligibility_benefit_information": {
-          "array": [
-            {
-              "xpath": "HL/subscriber_name_loop/subscriber_eb_loop",
-              "template": "eb_loop_info"
-            }
-          ]
+    "trace_info": {
+      "array": [
+        {
+          "xpath": "TRN",
+          "template": "trace_entry"
         }
-      }
-    },
-    "dependent_level": {
-      "object": {
-        "trace_info": {
-          "array": [
-            {
-              "xpath": "HL/TRN",
-              "template": "trace_entry"
-            }
-          ]
-        },
-        "indicator": {
-          "xpath": "HL/subscriber_name_loop/NM1/entity_identifier_code"
-        },
-        "member_info": {
-          "xpath": "HL/subscriber_name_loop",
-          "template": "member_name_loop"
-        },
-        "eligibility_benefit_information": {
-          "array": [
-            {
-              "xpath": "HL/subscriber_name_loop/subscriber_eb_loop",
-              "template": "eb_loop_info"
-            }
-          ]
-        }
-      }
+      ]
     }
   }
 }
