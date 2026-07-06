@@ -1277,6 +1277,22 @@
         }
       }
     },
+    "trace_entry": {
+      "object": {
+        "type_code": {
+          "xpath": "type_code"
+        },
+        "number": {
+          "xpath": "number"
+        },
+        "assigning_entity_id": {
+          "xpath": "assigning_entity_id"
+        },
+        "assigning_entity_additional_id": {
+          "xpath": "assigning_entity_additional_id"
+        }
+      }
+    },
     "eb_loop_info": {
       "object": {
         "eligibility_benefit_information": {
@@ -1509,20 +1525,7 @@
           "array": [
             {
               "xpath": "HL/TRN",
-              "object": {
-                "type_code": {
-                  "xpath": "type_code"
-                },
-                "number": {
-                  "xpath": "number"
-                },
-                "assigning_entity_id": {
-                  "xpath": "assigning_entity_id"
-                },
-                "assigning_entity_additional_id": {
-                  "xpath": "assigning_entity_additional_id"
-                }
-              }
+              "template": "trace_entry"
             }
           ]
         },
@@ -1572,20 +1575,7 @@
           "array": [
             {
               "xpath": "HL/TRN",
-              "object": {
-                "type_code": {
-                  "xpath": "type_code"
-                },
-                "number": {
-                  "xpath": "number"
-                },
-                "assigning_entity_id": {
-                  "xpath": "assigning_entity_id"
-                },
-                "assigning_entity_additional_id": {
-                  "xpath": "assigning_entity_additional_id"
-                }
-              }
+              "template": "trace_entry"
             }
           ]
         },
