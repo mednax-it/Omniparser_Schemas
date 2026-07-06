@@ -92,12 +92,6 @@
                         "child_segments": [
                           {
                             "name": "HL",
-                            "elements": [
-                              {
-                                "index": 3,
-                                "name": "level_code"
-                              }
-                            ],
                             "child_segments": [
                               {
                                 "name": "TRN",
@@ -600,12 +594,6 @@
                                 "child_segments": [
                                   {
                                     "name": "HL",
-                                    "elements": [
-                                      {
-                                        "index": 3,
-                                        "name": "level_code"
-                                      }
-                                    ],
                                     "child_segments": [
                                       {
                                         "name": "TRN",
@@ -1215,7 +1203,7 @@
               "xpath": "HL/information_source_name_loop/NM1/payer_name"
             },
             "policy_number": {
-              "xpath": "HL/subscriber_level_loop[./HL[level_code='22']]/HL/subscriber_name_loop/NM1/payer_policy_number"
+              "xpath": "HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/payer_policy_number"
             }
           }
         },
@@ -1230,17 +1218,17 @@
                 "const": "patient_indicator"
               },
               {
-                "xpath": "HL/subscriber_level_loop[./HL[level_code='22']]/HL/dependent_level_loop[./HL[level_code='23']]/HL/dependent_name_loop/NM1/entity_identifier_code"
+                "xpath": "HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/entity_identifier_code"
               }
             ]
           }
         },
         "dependent_info": {
-          "xpath": "HL/subscriber_level_loop[./HL[level_code='22']]/HL/dependent_level_loop[./HL[level_code='23']]",
+          "xpath": "HL/subscriber_level_loop/HL/dependent_level_loop",
           "template": "dependent_level"
         },
         "subscriber_info": {
-          "xpath": "HL/subscriber_level_loop[./HL[level_code='22']]",
+          "xpath": "HL/subscriber_level_loop",
           "template": "subscriber_level"
         }
       }
