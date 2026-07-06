@@ -10,6 +10,12 @@
     "segment_declarations": [
       {
         "name": "ISA",
+        "elements": [
+          {
+            "name": "process_date",
+            "index": 9
+          }
+        ],
         "child_segments": [
           {
             "name": "functional_group",
@@ -34,6 +40,14 @@
                       {
                         "name": "BHT03",
                         "index": 3
+                      },
+                      {
+                        "name": "create_date",
+                        "index": 4
+                      },
+                      {
+                        "name": "create_time",
+                        "index": 5
                       }
                     ]
                   },
@@ -122,7 +136,29 @@
                                       {
                                         "name": "TRN",
                                         "min": 0,
-                                        "max": 3
+                                        "max": 3,
+                                        "elements": [
+                                          {
+                                            "index": 1,
+                                            "name": "type_code",
+                                            "default": ""
+                                          },
+                                          {
+                                            "index": 2,
+                                            "name": "number",
+                                            "default": ""
+                                          },
+                                          {
+                                            "index": 3,
+                                            "name": "assigning_entity_id",
+                                            "default": ""
+                                          },
+                                          {
+                                            "index": 4,
+                                            "name": "assigning_entity_additional_id",
+                                            "default": ""
+                                          }
+                                        ]
                                       },
                                       {
                                         "name": "subscriber_name_loop",
@@ -144,6 +180,11 @@
                                               {
                                                 "index": 5,
                                                 "name": "middle_name",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 8,
+                                                "name": "id_code_qualifier",
                                                 "default": ""
                                               },
                                               {
@@ -204,6 +245,11 @@
                                                 "index": 3,
                                                 "name": "subscriber_postal_zone_or_zip_code",
                                                 "default": ""
+                                              },
+                                              {
+                                                "index": 4,
+                                                "name": "subscriber_country_code",
+                                                "default": ""
                                               }
                                             ]
                                           },
@@ -220,6 +266,11 @@
                                               {
                                                 "index": 3,
                                                 "name": "reject_reason_code",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 4,
+                                                "name": "follow_up_action_code",
                                                 "default": ""
                                               }
                                             ]
@@ -255,7 +306,24 @@
                                           {
                                             "name": "DTP",
                                             "min": 0,
-                                            "max": 9
+                                            "max": 9,
+                                            "elements": [
+                                              {
+                                                "index": 1,
+                                                "name": "date_time_qualifier",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 2,
+                                                "name": "date_time_period_format_qualifier",
+                                                "default": ""
+                                              },
+                                              {
+                                                "index": 3,
+                                                "name": "date_time_period",
+                                                "default": ""
+                                              }
+                                            ]
                                           },
                                           {
                                             "name": "MPI",
@@ -293,6 +361,26 @@
                                                     "index": 5,
                                                     "name": "plan_coverage_description",
                                                     "default": ""
+                                                  },
+                                                  {
+                                                    "index": 6,
+                                                    "name": "time_period_qualifier",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 7,
+                                                    "name": "benefit_amount",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 11,
+                                                    "name": "auth_cert_identifier",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 12,
+                                                    "name": "in_network_indicator",
+                                                    "default": ""
                                                   }
                                                 ]
                                               },
@@ -304,7 +392,24 @@
                                               {
                                                 "name": "REF",
                                                 "min": 0,
-                                                "max": 9
+                                                "max": 9,
+                                                "elements": [
+                                                  {
+                                                    "index": 1,
+                                                    "name": "qualifier",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 2,
+                                                    "name": "id",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 3,
+                                                    "name": "name",
+                                                    "default": ""
+                                                  }
+                                                ]
                                               },
                                               {
                                                 "name": "DTP",
@@ -341,6 +446,11 @@
                                                   {
                                                     "index": 3,
                                                     "name": "reject_reason_code",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 4,
+                                                    "name": "follow_up_action_code",
                                                     "default": ""
                                                   }
                                                 ]
@@ -393,25 +503,118 @@
                                                         "index": 3,
                                                         "name": "benefit_related_entity_last_or_organization_name",
                                                         "default": ""
+                                                      },
+                                                      {
+                                                        "index": 4,
+                                                        "name": "benefit_related_entity_first_name",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 5,
+                                                        "name": "benefit_related_entity_middle_name",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 8,
+                                                        "name": "id_code_qualifier",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 9,
+                                                        "name": "entity_id",
+                                                        "default": ""
                                                       }
                                                     ]
                                                   },
                                                   {
                                                     "name": "N3",
-                                                    "min": 0
+                                                    "min": 0,
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "address_line1",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "address_line2",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "N4",
-                                                    "min": 0
+                                                    "min": 0,
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "city",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "state",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "zip",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 4,
+                                                        "name": "country",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "PER",
                                                     "min": 0,
-                                                    "max": 3
+                                                    "max": 3,
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "function_code",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "contact_name",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "contact_qualifier",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 4,
+                                                        "name": "contact_number",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "PRV",
-                                                    "min": 0
+                                                    "min": 0,
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "provider_code",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "reference_id_qualifier",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "provider_taxonomy_code",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   }
                                                 ]
                                               },
@@ -435,7 +638,29 @@
                                               {
                                                 "name": "TRN",
                                                 "min": 0,
-                                                "max": 3
+                                                "max": 3,
+                                                "elements": [
+                                                  {
+                                                    "index": 1,
+                                                    "name": "type_code",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 2,
+                                                    "name": "number",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 3,
+                                                    "name": "assigning_entity_id",
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "index": 4,
+                                                    "name": "assigning_entity_additional_id",
+                                                    "default": ""
+                                                  }
+                                                ]
                                               },
                                               {
                                                 "name": "dependent_name_loop",
@@ -462,13 +687,35 @@
                                                         "index": 5,
                                                         "name": "middle_name",
                                                         "default": ""
+                                                      },
+                                                      {
+                                                        "index": 8,
+                                                        "name": "id_code_qualifier",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 9,
+                                                        "name": "member_id",
+                                                        "default": ""
                                                       }
                                                     ]
                                                   },
                                                   {
                                                     "name": "REF",
                                                     "min": 0,
-                                                    "max": 9
+                                                    "max": 9,
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "qualifier",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "id",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "N3",
@@ -504,6 +751,11 @@
                                                         "index": 3,
                                                         "name": "dependent_postal_zone_or_zip_code",
                                                         "default": ""
+                                                      },
+                                                      {
+                                                        "index": 4,
+                                                        "name": "dependent_country_code",
+                                                        "default": ""
                                                       }
                                                     ]
                                                   },
@@ -520,6 +772,11 @@
                                                       {
                                                         "index": 3,
                                                         "name": "reject_reason_code",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 4,
+                                                        "name": "follow_up_action_code",
                                                         "default": ""
                                                       }
                                                     ]
@@ -555,7 +812,24 @@
                                                   {
                                                     "name": "DTP",
                                                     "min": 0,
-                                                    "max": 9
+                                                    "max": 9,
+                                                    "elements": [
+                                                      {
+                                                        "index": 1,
+                                                        "name": "date_time_qualifier",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 2,
+                                                        "name": "date_time_period_format_qualifier",
+                                                        "default": ""
+                                                      },
+                                                      {
+                                                        "index": 3,
+                                                        "name": "date_time_period",
+                                                        "default": ""
+                                                      }
+                                                    ]
                                                   },
                                                   {
                                                     "name": "MPI",
@@ -593,6 +867,26 @@
                                                             "index": 5,
                                                             "name": "plan_coverage_description",
                                                             "default": ""
+                                                          },
+                                                          {
+                                                            "index": 6,
+                                                            "name": "time_period_qualifier",
+                                                            "default": ""
+                                                          },
+                                                          {
+                                                            "index": 7,
+                                                            "name": "benefit_amount",
+                                                            "default": ""
+                                                          },
+                                                          {
+                                                            "index": 11,
+                                                            "name": "auth_cert_identifier",
+                                                            "default": ""
+                                                          },
+                                                          {
+                                                            "index": 12,
+                                                            "name": "in_network_indicator",
+                                                            "default": ""
                                                           }
                                                         ]
                                                       },
@@ -604,12 +898,46 @@
                                                       {
                                                         "name": "REF",
                                                         "min": 0,
-                                                        "max": 9
+                                                        "max": 9,
+                                                        "elements": [
+                                                          {
+                                                            "index": 1,
+                                                            "name": "qualifier",
+                                                            "default": ""
+                                                          },
+                                                          {
+                                                            "index": 2,
+                                                            "name": "id",
+                                                            "default": ""
+                                                          },
+                                                          {
+                                                            "index": 3,
+                                                            "name": "name",
+                                                            "default": ""
+                                                          }
+                                                        ]
                                                       },
                                                       {
                                                         "name": "DTP",
                                                         "min": 0,
-                                                        "max": 20
+                                                        "max": 20,
+                                                        "elements": [
+                                                          {
+                                                            "index": 1,
+                                                            "name": "date_time_qualifier",
+                                                            "default": ""
+                                                          },
+                                                          {
+                                                            "index": 2,
+                                                            "name": "date_time_period_format_qualifier",
+                                                            "default": ""
+                                                          },
+                                                          {
+                                                            "index": 3,
+                                                            "name": "eligibility_or_benefit_date_time_period",
+                                                            "default": ""
+                                                          }
+                                                        ]
                                                       },
                                                       {
                                                         "name": "AAA",
@@ -624,6 +952,11 @@
                                                           {
                                                             "index": 3,
                                                             "name": "reject_reason_code",
+                                                            "default": ""
+                                                          },
+                                                          {
+                                                            "index": 4,
+                                                            "name": "follow_up_action_code",
                                                             "default": ""
                                                           }
                                                         ]
@@ -676,25 +1009,118 @@
                                                                 "index": 3,
                                                                 "name": "benefit_related_entity_last_or_organization_name",
                                                                 "default": ""
+                                                              },
+                                                              {
+                                                                "index": 4,
+                                                                "name": "benefit_related_entity_first_name",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 5,
+                                                                "name": "benefit_related_entity_middle_name",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 8,
+                                                                "name": "id_code_qualifier",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 9,
+                                                                "name": "entity_id",
+                                                                "default": ""
                                                               }
                                                             ]
                                                           },
                                                           {
                                                             "name": "N3",
-                                                            "min": 0
+                                                            "min": 0,
+                                                            "elements": [
+                                                              {
+                                                                "index": 1,
+                                                                "name": "address_line1",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 2,
+                                                                "name": "address_line2",
+                                                                "default": ""
+                                                              }
+                                                            ]
                                                           },
                                                           {
                                                             "name": "N4",
-                                                            "min": 0
+                                                            "min": 0,
+                                                            "elements": [
+                                                              {
+                                                                "index": 1,
+                                                                "name": "city",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 2,
+                                                                "name": "state",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 3,
+                                                                "name": "zip",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 4,
+                                                                "name": "country",
+                                                                "default": ""
+                                                              }
+                                                            ]
                                                           },
                                                           {
                                                             "name": "PER",
                                                             "min": 0,
-                                                            "max": 3
+                                                            "max": 3,
+                                                            "elements": [
+                                                              {
+                                                                "index": 1,
+                                                                "name": "function_code",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 2,
+                                                                "name": "contact_name",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 3,
+                                                                "name": "contact_qualifier",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 4,
+                                                                "name": "contact_number",
+                                                                "default": ""
+                                                              }
+                                                            ]
                                                           },
                                                           {
                                                             "name": "PRV",
-                                                            "min": 0
+                                                            "min": 0,
+                                                            "elements": [
+                                                              {
+                                                                "index": 1,
+                                                                "name": "provider_code",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 2,
+                                                                "name": "reference_id_qualifier",
+                                                                "default": ""
+                                                              },
+                                                              {
+                                                                "index": 3,
+                                                                "name": "provider_taxonomy_code",
+                                                                "default": ""
+                                                              }
+                                                            ]
                                                           }
                                                         ]
                                                       },
@@ -740,14 +1166,8 @@
   "transform_declarations": {
     "FINAL_OUTPUT": {
       "object": {
-        "account_ids": {
-          "xpath": "BHT/BHT03"
-        },
         "account_number_and_waystar_payer_id": {
           "xpath": "BHT/BHT03"
-        },
-        "payer_name": {
-          "xpath": "HL/information_source_name_loop/NM1/payer_name"
         },
         "subscriber_last_name": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/last_name"
@@ -773,14 +1193,35 @@
         "subscriber_zip": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/N4/subscriber_postal_zone_or_zip_code"
         },
-        "payer_policy_number": {
-          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/payer_policy_number"
+        "subscriber_country": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/N4/subscriber_country_code"
         },
         "subscriber_birth_date": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/DMG/birth_date"
         },
         "subscriber_gender": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/DMG/gender"
+        },
+        "subscriber_trace_info": {
+          "array": [
+            {
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/TRN",
+              "object": {
+                "type_code": {
+                  "xpath": "type_code"
+                },
+                "number": {
+                  "xpath": "number"
+                },
+                "assigning_entity_id": {
+                  "xpath": "assigning_entity_id"
+                },
+                "assigning_entity_additional_id": {
+                  "xpath": "assigning_entity_additional_id"
+                }
+              }
+            }
+          ]
         },
         "patient_indicator": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/entity_identifier_code"
@@ -809,11 +1250,35 @@
         "patient_zip": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/N4/dependent_postal_zone_or_zip_code"
         },
+        "patient_country": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/N4/dependent_country_code"
+        },
         "patient_birth_date": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/DMG/birth_date"
         },
         "patient_gender": {
           "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/DMG/gender"
+        },
+        "dependent_trace_info": {
+          "array": [
+            {
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/TRN",
+              "object": {
+                "type_code": {
+                  "xpath": "type_code"
+                },
+                "number": {
+                  "xpath": "number"
+                },
+                "assigning_entity_id": {
+                  "xpath": "assigning_entity_id"
+                },
+                "assigning_entity_additional_id": {
+                  "xpath": "assigning_entity_additional_id"
+                }
+              }
+            }
+          ]
         },
         "subscriber_eligibility_or_benefit_information": {
           "array": [
@@ -840,6 +1305,9 @@
                 },
                 "reject_reason_code": {
                   "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
                 }
               }
             }
@@ -855,6 +1323,9 @@
                 },
                 "reject_reason_code": {
                   "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
                 }
               }
             }
@@ -870,6 +1341,9 @@
                 },
                 "reject_reason_code": {
                   "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
                 }
               }
             }
@@ -885,6 +1359,9 @@
                 },
                 "reject_reason_code": {
                   "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
                 }
               }
             }
@@ -894,102 +1371,485 @@
           "array": [
             {
               "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop",
-              "object": {
-                "eligibility_benefit_information": {
-                  "xpath": "EB/eligibility_benefit_information"
-                },
-                "benefit_coverage_level_code": {
-                  "xpath": "EB/benefit_coverage_level_code"
-                },
-                "service_type_code": {
-                  "xpath": "EB/service_type_code"
-                },
-                "insurance_type_code": {
-                  "xpath": "EB/insurance_type_code"
-                },
-                "plan_coverage_description": {
-                  "xpath": "EB/plan_coverage_description"
-                },
-                "DTP": {
-                  "array": [
-                    {
-                      "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/DTP",
-                      "object": {
-                        "date_time_qualifier": {
-                          "xpath": "date_time_qualifier"
-                        },
-                        "date_time_period_format_qualifier": {
-                          "xpath": "date_time_period_format_qualifier"
-                        },
-                        "eligibility_or_benefit_date_time_period": {
-                          "xpath": "eligibility_or_benefit_date_time_period"
-                        }
-                      }
-                    }
-                  ]
-                },
-                "messages": {
-                  "array": [
-                    {
-                      "xpath": "MSG/free_form_message_text"
-                    }
-                  ]
-                }
-              }
+              "template": "eb_loop_info"
             }
           ]
         },
         "patient_eligibility_benefit_information": {
           "array": [
             {
-              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/EB",
-              "object": {
-                "eligibility_benefit_information": {
-                  "xpath": "eligibility_benefit_information"
-                },
-                "service_type_code": {
-                  "xpath": "service_type_code"
-                },
-                "plan_coverage_description": {
-                  "xpath": "plan_coverage_description"
-                }
-              }
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop",
+              "template": "eb_loop_info"
             }
           ]
         },
         "subscriber_benefit_related_entity_name": {
           "array": [
             {
-              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/subscriber_benefit_related_entity_name_loop/NM1",
-              "object": {
-                "entity_identifier_code": {
-                  "xpath": "entity_identifier_code"
-                },
-                "entity_type_qualifier": {
-                  "xpath": "entity_type_qualifier"
-                },
-                "benefit_related_entity_last_or_organization_name": {
-                  "xpath": "benefit_related_entity_last_or_organization_name"
-                }
-              }
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/subscriber_benefit_related_entity_name_loop",
+              "template": "benefit_related_entity"
             }
           ]
         },
         "patient_benefit_related_entity_name": {
           "array": [
             {
-              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/dependent_benefit_related_entity_name_loop/NM1",
+              "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/dependent_benefit_related_entity_name_loop",
+              "template": "benefit_related_entity"
+            }
+          ]
+        },
+
+
+        "account_ids": {
+          "xpath": "BHT/BHT03",
+          "object": {
+            "account_number": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[0] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
+              }
+            },
+            "waystar_payer_id": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[1] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
+              }
+            },
+            "admit_id": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[2] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
+              }
+            },
+            "subscriber_id": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[3] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "create_date": {
+          "xpath": "BHT/create_date"
+        },
+        "create_time": {
+          "xpath": "BHT/create_time"
+        },
+        "payer_name": {
+          "xpath": "HL/information_source_name_loop/NM1/payer_name"
+        },
+        "payer_policy_number": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/subscriber_name_loop/NM1/payer_policy_number"
+        },
+        "patient_type": {
+          "custom_func": {
+            "name": "javascript",
+            "args": [
+              {
+                "const": "patient_indicator ? 'pad' : 'ssp'"
+              },
+              {
+                "const": "patient_indicator"
+              },
+              {
+                "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop/HL/dependent_name_loop/NM1/entity_identifier_code"
+              }
+            ]
+          }
+        },
+        "dependent_info": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop/HL/dependent_level_loop",
+          "template": "dependent_level"
+        },
+        "subscriber_info": {
+          "xpath": "HL/information_receiver_level_loop/HL/subscriber_level_loop",
+          "template": "subscriber_level"
+        }
+      }
+    },
+    "eb_loop_info": {
+      "object": {
+        "eligibility_benefit_information": {
+          "xpath": "EB/eligibility_benefit_information"
+        },
+        "benefit_coverage_level_code": {
+          "xpath": "EB/benefit_coverage_level_code"
+        },
+        "service_type_code": {
+          "xpath": "EB/service_type_code"
+        },
+        "insurance_type_code": {
+          "xpath": "EB/insurance_type_code"
+        },
+        "plan_coverage_description": {
+          "xpath": "EB/plan_coverage_description"
+        },
+        "time_period_qualifier": {
+          "xpath": "EB/time_period_qualifier"
+        },
+        "benefit_amount": {
+          "xpath": "EB/benefit_amount"
+        },
+        "auth_cert_identifier": {
+          "xpath": "EB/auth_cert_identifier"
+        },
+        "in_network_indicator": {
+          "xpath": "EB/in_network_indicator"
+        },
+        "DTP": {
+          "array": [
+            {
+              "xpath": "DTP",
               "object": {
-                "entity_identifier_code": {
-                  "xpath": "entity_identifier_code"
+                "date_time_qualifier": {
+                  "xpath": "date_time_qualifier"
                 },
-                "entity_type_qualifier": {
-                  "xpath": "entity_type_qualifier"
+                "date_time_period_format_qualifier": {
+                  "xpath": "date_time_period_format_qualifier"
                 },
-                "benefit_related_entity_last_or_organization_name": {
-                  "xpath": "benefit_related_entity_last_or_organization_name"
+                "eligibility_or_benefit_date_time_period": {
+                  "xpath": "eligibility_or_benefit_date_time_period"
                 }
               }
+            }
+          ]
+        },
+        "messages": {
+          "array": [
+            {
+              "xpath": "MSG/free_form_message_text"
+            }
+          ]
+        },
+        "period_start_date": {
+          "xpath": "DTP[date_time_qualifier='193' and date_time_period_format_qualifier='D8']/eligibility_or_benefit_date_time_period"
+        },
+        "period_end_date": {
+          "xpath": "DTP[date_time_qualifier='194' and date_time_period_format_qualifier='D8']/eligibility_or_benefit_date_time_period"
+        },
+        "benefit_start_date": {
+          "xpath": "DTP[date_time_qualifier='348' and date_time_period_format_qualifier='D8']/eligibility_or_benefit_date_time_period"
+        },
+        "benefit_end_date": {
+          "xpath": "DTP[date_time_qualifier='349' and date_time_period_format_qualifier='D8']/eligibility_or_benefit_date_time_period"
+        },
+        "eligibility_start_date": {
+          "xpath": "DTP[date_time_qualifier='356' and date_time_period_format_qualifier='D8']/eligibility_or_benefit_date_time_period"
+        },
+        "eligibility_end_date": {
+          "xpath": "DTP[date_time_qualifier='357' and date_time_period_format_qualifier='D8']/eligibility_or_benefit_date_time_period"
+        },
+        "benefit_related_entity_name": {
+          "array": [
+            {
+              "xpath": "subscriber_benefit_related_entity_name_loop",
+              "template": "benefit_related_entity"
+            },
+            {
+              "xpath": "dependent_benefit_related_entity_name_loop",
+              "template": "benefit_related_entity"
+            }
+          ]
+        }
+      }
+    },
+    "benefit_related_entity": {
+      "object": {
+        "entity_identifier_code": {
+          "xpath": "NM1/entity_identifier_code"
+        },
+        "entity_type_qualifier": {
+          "xpath": "NM1/entity_type_qualifier"
+        },
+        "benefit_related_entity_last_or_organization_name": {
+          "xpath": "NM1/benefit_related_entity_last_or_organization_name"
+        },
+        "benefit_related_entity_first_name": {
+          "xpath": "NM1/benefit_related_entity_first_name"
+        },
+        "benefit_related_entity_middle_name": {
+          "xpath": "NM1/benefit_related_entity_middle_name"
+        },
+        "id_code_qualifier": {
+          "xpath": "NM1/id_code_qualifier"
+        },
+        "entity_id": {
+          "xpath": "NM1/entity_id"
+        },
+        "address_line1": {
+          "xpath": "N3/address_line1"
+        },
+        "address_line2": {
+          "xpath": "N3/address_line2"
+        },
+        "city": {
+          "xpath": "N4/city"
+        },
+        "state": {
+          "xpath": "N4/state"
+        },
+        "zip": {
+          "xpath": "N4/zip"
+        },
+        "country": {
+          "xpath": "N4/country"
+        },
+        "provider_code": {
+          "xpath": "PRV/provider_code"
+        },
+        "provider_taxonomy_code": {
+          "xpath": "PRV/provider_taxonomy_code"
+        }
+      }
+    },
+    "member_name_loop": {
+      "object": {
+        "last_name": {
+          "xpath": "NM1/last_name"
+        },
+        "first_name": {
+          "xpath": "NM1/first_name"
+        },
+        "middle_name": {
+          "xpath": "NM1/middle_name"
+        },
+        "member_id": {
+          "xpath": "NM1[id_code_qualifier='MI']/member_id"
+        },
+        "group_number": {
+          "xpath": "REF[qualifier='6P']/id"
+        },
+        "plan_number": {
+          "xpath": "REF[qualifier='18']/id"
+        },
+        "ins_policy_number": {
+          "xpath": "REF[qualifier='IG']/id"
+        },
+        "plan_network_id": {
+          "xpath": "REF[qualifier='N6']/id"
+        },
+        "medicaid_recipient_id": {
+          "xpath": "REF[qualifier='NQ']/id"
+        },
+        "address_line1": {
+          "xpath": "N3/address_line_1"
+        },
+        "address_line2": {
+          "xpath": "N3/address_line_2"
+        },
+        "city": {
+          "xpath": "N4/city"
+        },
+        "state": {
+          "xpath": "N4/state"
+        },
+        "zip": {
+          "xpath": "N4/zip"
+        },
+        "country": {
+          "xpath": "N4/country"
+        },
+        "birth_date": {
+          "xpath": "DMG/birth_date"
+        },
+        "gender": {
+          "xpath": "DMG/gender"
+        },
+        "name_loop_validation_messages": {
+          "array": [
+            {
+              "xpath": "AAA",
+              "object": {
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "subscriber_level": {
+      "object": {
+        "trace_info": {
+          "array": [
+            {
+              "xpath": "HL/TRN",
+              "object": {
+                "type_code": {
+                  "xpath": "type_code"
+                },
+                "number": {
+                  "xpath": "number"
+                },
+                "assigning_entity_id": {
+                  "xpath": "assigning_entity_id"
+                },
+                "assigning_entity_additional_id": {
+                  "xpath": "assigning_entity_additional_id"
+                }
+              }
+            }
+          ]
+        },
+        "payer_policy_number": {
+          "xpath": "HL/subscriber_name_loop/NM1/payer_policy_number"
+        },
+        "supplemental_identifiers": {
+          "array": [
+            {
+              "xpath": "HL/subscriber_name_loop/REF",
+              "object": {
+                "qualifier": {
+                  "xpath": "qualifier"
+                },
+                "id": {
+                  "xpath": "id"
+                }
+              }
+            }
+          ]
+        },
+        "member_info": {
+          "xpath": "HL/subscriber_name_loop",
+          "template": "member_name_loop"
+        },
+        "benefit_loop_validation_messages": {
+          "array": [
+            {
+              "xpath": "HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/AAA",
+              "object": {
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
+              }
+            }
+          ]
+        },
+        "eligibility_benefit_information": {
+          "array": [
+            {
+              "xpath": "HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop",
+              "template": "eb_loop_info"
+            }
+          ]
+        },
+        "dependents": {
+          "array": [
+            {
+              "xpath": "HL/dependent_level_loop",
+              "template": "dependent_level"
+            }
+          ]
+        }
+      }
+    },
+    "dependent_level": {
+      "object": {
+        "trace_info": {
+          "array": [
+            {
+              "xpath": "HL/TRN",
+              "object": {
+                "type_code": {
+                  "xpath": "type_code"
+                },
+                "number": {
+                  "xpath": "number"
+                },
+                "assigning_entity_id": {
+                  "xpath": "assigning_entity_id"
+                },
+                "assigning_entity_additional_id": {
+                  "xpath": "assigning_entity_additional_id"
+                }
+              }
+            }
+          ]
+        },
+        "indicator": {
+          "xpath": "HL/dependent_name_loop/NM1/entity_identifier_code"
+        },
+        "member_info": {
+          "xpath": "HL/dependent_name_loop",
+          "template": "member_name_loop"
+        },
+        "benefit_loop_validation_messages": {
+          "array": [
+            {
+              "xpath": "HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/AAA",
+              "object": {
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
+              }
+            }
+          ]
+        },
+        "eligibility_benefit_information": {
+          "array": [
+            {
+              "xpath": "HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop",
+              "template": "eb_loop_info"
             }
           ]
         }
