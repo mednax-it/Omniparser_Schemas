@@ -1360,6 +1360,24 @@
               "template": "benefit_related_entity"
             }
           ]
+        },
+        "validation_messages": {
+          "array": [
+            {
+              "xpath": "AAA",
+              "object": {
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
+              }
+            }
+          ]
         }
       }
     },
@@ -1530,24 +1548,6 @@
           "xpath": "HL/subscriber_name_loop",
           "template": "member_name_loop"
         },
-        "benefit_loop_validation_messages": {
-          "array": [
-            {
-              "xpath": "HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/AAA",
-              "object": {
-                "valid_request_indicator": {
-                  "xpath": "valid_request_indicator"
-                },
-                "reject_reason_code": {
-                  "xpath": "reject_reason_code"
-                },
-                "follow_up_action_code": {
-                  "xpath": "follow_up_action_code"
-                }
-              }
-            }
-          ]
-        },
         "eligibility_benefit_information": {
           "array": [
             {
@@ -1595,24 +1595,6 @@
         "member_info": {
           "xpath": "HL/dependent_name_loop",
           "template": "member_name_loop"
-        },
-        "benefit_loop_validation_messages": {
-          "array": [
-            {
-              "xpath": "HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/AAA",
-              "object": {
-                "valid_request_indicator": {
-                  "xpath": "valid_request_indicator"
-                },
-                "reject_reason_code": {
-                  "xpath": "reject_reason_code"
-                },
-                "follow_up_action_code": {
-                  "xpath": "follow_up_action_code"
-                }
-              }
-            }
-          ]
         },
         "eligibility_benefit_information": {
           "array": [
