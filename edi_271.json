@@ -1779,14 +1779,6 @@
             }
           ]
         },
-        "benefit_related_entity_name": {
-          "array": [
-            {
-              "xpath": "HL/subscriber_name_loop/subscriber_eligibility_or_benefit_information_loop/subscriber_benefit_related_entity_name_loop",
-              "template": "benefit_related_entity"
-            }
-          ]
-        },
         "dependents": {
           "array": [
             {
@@ -1915,14 +1907,6 @@
             {
               "xpath": "HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop",
               "template": "eb_loop_info"
-            }
-          ]
-        },
-        "benefit_related_entity_name": {
-          "array": [
-            {
-              "xpath": "HL/dependent_name_loop/dependent_eligibility_or_benefit_information_loop/dependent_benefit_related_entity_name_loop",
-              "template": "benefit_related_entity"
             }
           ]
         }
