@@ -161,12 +161,12 @@
                                     "elements": [
                                       {
                                         "index": 1,
-                                        "name": "reference_identification_qualifier",
+                                        "name": "qualifier",
                                         "default": ""
                                       },
                                       {
                                         "index": 2,
-                                        "name": "subscriber_supplemental_identifier",
+                                        "name": "id",
                                         "default": ""
                                       }
                                     ]
@@ -177,12 +177,12 @@
                                     "elements": [
                                       {
                                         "index": 1,
-                                        "name": "subscriber_address_line1",
+                                        "name": "address_line_1",
                                         "default": ""
                                       },
                                       {
                                         "index": 2,
-                                        "name": "subscriber_address_line2",
+                                        "name": "address_line_2",
                                         "default": ""
                                       }
                                     ]
@@ -193,22 +193,22 @@
                                     "elements": [
                                       {
                                         "index": 1,
-                                        "name": "subscriber_city_name",
+                                        "name": "city",
                                         "default": ""
                                       },
                                       {
                                         "index": 2,
-                                        "name": "subscriber_state_code",
+                                        "name": "state",
                                         "default": ""
                                       },
                                       {
                                         "index": 3,
-                                        "name": "subscriber_postal_zone_or_zip_code",
+                                        "name": "zip",
                                         "default": ""
                                       },
                                       {
                                         "index": 4,
-                                        "name": "subscriber_country_code",
+                                        "name": "country",
                                         "default": ""
                                       }
                                     ]
@@ -683,12 +683,12 @@
                                             "elements": [
                                               {
                                                 "index": 1,
-                                                "name": "dependent_address_line1",
+                                                "name": "address_line_1",
                                                 "default": ""
                                               },
                                               {
                                                 "index": 2,
-                                                "name": "dependent_address_line2",
+                                                "name": "address_line_2",
                                                 "default": ""
                                               }
                                             ]
@@ -699,22 +699,22 @@
                                             "elements": [
                                               {
                                                 "index": 1,
-                                                "name": "dependent_city_name",
+                                                "name": "city",
                                                 "default": ""
                                               },
                                               {
                                                 "index": 2,
-                                                "name": "dependent_state_code",
+                                                "name": "state",
                                                 "default": ""
                                               },
                                               {
                                                 "index": 3,
-                                                "name": "dependent_postal_zone_or_zip_code",
+                                                "name": "zip",
                                                 "default": ""
                                               },
                                               {
                                                 "index": 4,
-                                                "name": "dependent_country_code",
+                                                "name": "country",
                                                 "default": ""
                                               }
                                             ]
