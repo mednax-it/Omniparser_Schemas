@@ -774,11 +774,11 @@
   "transform_declarations": {
     "FINAL_OUTPUT": {
       "object": {
-        "account_id": {
-          "xpath": "BHT/BHT03"
-        },
         "account_ids": {
           "object": {
+            "id": {
+              "xpath": "BHT/BHT03"
+            },
             "account_number": {
               "custom_func": {
                 "name": "javascript",
