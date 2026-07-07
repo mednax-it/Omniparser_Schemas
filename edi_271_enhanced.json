@@ -10,193 +10,738 @@
     "segment_declarations": [
       {
         "name": "ISA",
-        "elements": [{"name": "process_date", "index": 9}],
+        "elements": [
+          {
+            "name": "process_date",
+            "index": 9
+          }
+        ],
         "child_segments": [
           {
             "name": "GS",
             "child_segments": [
               {
-                "name": "transaction", "type": "segment_group", "max": -1, "is_target": true,
+                "name": "transaction",
+                "type": "segment_group",
+                "max": -1,
+                "is_target": true,
                 "child_segments": [
-                  {"name": "ST"},
-                  {"name": "BHT", "elements": [
-                    {"name": "BHT03", "index": 3, "default": ""},
-                    {"name": "create_date", "index": 4},
-                    {"name": "create_time", "index": 5}
-                  ]},
-                  {"name": "info_source_level", "type": "segment_group", "max": -1,
+                  {
+                    "name": "ST"
+                  },
+                  {
+                    "name": "BHT",
+                    "elements": [
+                      {
+                        "name": "BHT03",
+                        "index": 3,
+                        "default": ""
+                      },
+                      {
+                        "name": "create_date",
+                        "index": 4
+                      },
+                      {
+                        "name": "create_time",
+                        "index": 5
+                      }
+                    ]
+                  },
+                  {
+                    "name": "info_source_level",
+                    "type": "segment_group",
+                    "max": -1,
                     "child_segments": [
-                      {"name": "HL"},
-                      {"name": "AAA", "min": 0, "max": 9, "elements": [
-                        {"name": "valid_request_indicator", "index": 1, "default": ""},
-                        {"name": "reject_reason_code", "index": 3, "default": ""},
-                        {"name": "follow_up_action_code", "index": 4, "default": ""}
-                      ]},
-                      {"name": "info_source_name", "type": "segment_group",
-                        "child_segments": [
-                          {"name": "NM1", "elements": [
-                            {"name": "payer_name", "index": 3}
-                          ]},
-                          {"name": "PER", "min": 0, "max": 3},
-                          {"name": "AAA", "min": 0, "max": 9, "elements": [
-                            {"name": "valid_request_indicator", "index": 1, "default": ""},
-                            {"name": "reject_reason_code", "index": 3, "default": ""},
-                            {"name": "follow_up_action_code", "index": 4, "default": ""}
-                          ]}
+                      {
+                        "name": "HL"
+                      },
+                      {
+                        "name": "AAA",
+                        "min": 0,
+                        "max": 9,
+                        "elements": [
+                          {
+                            "name": "valid_request_indicator",
+                            "index": 1,
+                            "default": ""
+                          },
+                          {
+                            "name": "reject_reason_code",
+                            "index": 3,
+                            "default": ""
+                          },
+                          {
+                            "name": "follow_up_action_code",
+                            "index": 4,
+                            "default": ""
+                          }
                         ]
                       },
-                      {"name": "info_receiver_loop", "type": "segment_group", "min": 0, "max": -1,
+                      {
+                        "name": "info_source_name",
+                        "type": "segment_group",
                         "child_segments": [
-                          {"name": "HL"},
-                          {"name": "info_receiver_name", "type": "segment_group",
+                          {
+                            "name": "NM1",
+                            "elements": [
+                              {
+                                "name": "payer_name",
+                                "index": 3
+                              }
+                            ]
+                          },
+                          {
+                            "name": "PER",
+                            "min": 0,
+                            "max": 3
+                          },
+                          {
+                            "name": "AAA",
+                            "min": 0,
+                            "max": 9,
+                            "elements": [
+                              {
+                                "name": "valid_request_indicator",
+                                "index": 1,
+                                "default": ""
+                              },
+                              {
+                                "name": "reject_reason_code",
+                                "index": 3,
+                                "default": ""
+                              },
+                              {
+                                "name": "follow_up_action_code",
+                                "index": 4,
+                                "default": ""
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "info_receiver_loop",
+                        "type": "segment_group",
+                        "min": 0,
+                        "max": -1,
+                        "child_segments": [
+                          {
+                            "name": "HL"
+                          },
+                          {
+                            "name": "info_receiver_name",
+                            "type": "segment_group",
                             "child_segments": [
-                              {"name": "NM1"},
-                              {"name": "REF", "min": 0, "max": 9},
-                              {"name": "N3", "min": 0},
-                              {"name": "N4", "min": 0},
-                              {"name": "AAA", "min": 0, "max": 9, "elements": [
-                                {"name": "valid_request_indicator", "index": 1, "default": ""},
-                                {"name": "reject_reason_code", "index": 3, "default": ""},
-                                {"name": "follow_up_action_code", "index": 4, "default": ""}
-                              ]},
-                              {"name": "PRV", "min": 0},
-                              {"name": "subscriber_level_loop", "type": "segment_group", "min": 0, "max": -1,
+                              {
+                                "name": "NM1"
+                              },
+                              {
+                                "name": "REF",
+                                "min": 0,
+                                "max": 9
+                              },
+                              {
+                                "name": "N3",
+                                "min": 0
+                              },
+                              {
+                                "name": "N4",
+                                "min": 0
+                              },
+                              {
+                                "name": "AAA",
+                                "min": 0,
+                                "max": 9,
+                                "elements": [
+                                  {
+                                    "name": "valid_request_indicator",
+                                    "index": 1,
+                                    "default": ""
+                                  },
+                                  {
+                                    "name": "reject_reason_code",
+                                    "index": 3,
+                                    "default": ""
+                                  },
+                                  {
+                                    "name": "follow_up_action_code",
+                                    "index": 4,
+                                    "default": ""
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "PRV",
+                                "min": 0
+                              },
+                              {
+                                "name": "subscriber_level_loop",
+                                "type": "segment_group",
+                                "min": 0,
+                                "max": -1,
                                 "child_segments": [
-                                  {"name": "HL", "elements": [
-                                    {"name": "level_code", "index": 3}
-                                  ]},
-                                  {"name": "TRN", "min": 0, "max": 3, "elements": [
-                                    {"name": "type_code", "index": 1, "default": ""},
-                                    {"name": "number", "index": 2, "default": ""},
-                                    {"name": "assigning_entity_id", "index": 3, "default": ""},
-                                    {"name": "assigning_entity_additional_id", "index": 4, "default": ""}
-                                  ]},
-                                  {"name": "subscriber_name_loop", "type": "segment_group",
+                                  {
+                                    "name": "HL",
+                                    "elements": [
+                                      {
+                                        "name": "level_code",
+                                        "index": 3
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "TRN",
+                                    "min": 0,
+                                    "max": 3,
+                                    "elements": [
+                                      {
+                                        "name": "type_code",
+                                        "index": 1,
+                                        "default": ""
+                                      },
+                                      {
+                                        "name": "number",
+                                        "index": 2,
+                                        "default": ""
+                                      },
+                                      {
+                                        "name": "assigning_entity_id",
+                                        "index": 3,
+                                        "default": ""
+                                      },
+                                      {
+                                        "name": "assigning_entity_additional_id",
+                                        "index": 4,
+                                        "default": ""
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "name": "subscriber_name_loop",
+                                    "type": "segment_group",
                                     "child_segments": [
-                                      {"name": "NM1", "elements": [
-                                        {"name": "entity_identifier_code", "index": 1, "default": ""},
-                                        {"name": "last_name", "index": 3, "default": ""},
-                                        {"name": "first_name", "index": 4, "default": ""},
-                                        {"name": "middle_name", "index": 5, "default": ""},
-                                        {"name": "primary_qualifier", "index": 8, "default": ""},
-                                        {"name": "primary_id", "index": 9, "default": ""}
-                                      ]},
-                                      {"name": "REF", "min": 0, "max": 9, "elements": [
-                                        {"name": "qualifier", "index": 1, "default": ""},
-                                        {"name": "id", "index": 2, "default": ""},
-                                        {"name": "name", "index": 3, "default": ""}
-                                      ]},
-                                      {"name": "N3", "min": 0, "elements": [
-                                        {"name": "address_line_1", "index": 1, "default": ""},
-                                        {"name": "address_line_2", "index": 2, "default": ""}
-                                      ]},
-                                      {"name": "N4", "min": 0, "elements": [
-                                        {"name": "city", "index": 1, "default": ""},
-                                        {"name": "state", "index": 2, "default": ""},
-                                        {"name": "zip", "index": 3, "default": ""},
-                                        {"name": "country", "index": 4, "default": ""}
-                                      ]},
-                                      {"name": "AAA", "min": 0, "max": 9, "elements": [
-                                        {"name": "valid_request_indicator", "index": 1, "default": ""},
-                                        {"name": "reject_reason_code", "index": 3, "default": ""},
-                                        {"name": "follow_up_action_code", "index": 4, "default": ""}
-                                      ]},
-                                      {"name": "PRV", "min": 0},
-                                      {"name": "DMG", "min": 0, "elements": [
-                                        {"name": "birth_date", "index": 2, "default": ""},
-                                        {"name": "gender", "index": 3, "default": ""}
-                                      ]},
-                                      {"name": "INS", "min": 0},
-                                      {"name": "HI", "min": 0},
-                                      {"name": "DTP", "min": 0, "max": 9, "elements": [
-                                        {"name": "date_time_qualifier", "index": 1, "default": ""},
-                                        {"name": "date_time_period_format_qualifier", "index": 2, "default": ""},
-                                        {"name": "date_time_period", "index": 3, "default": ""}
-                                      ]},
-                                      {"name": "MPI", "min": 0},
-                                      {"name": "subscriber_eb_loop", "type": "segment_group", "min": 0, "max": -1,
-                                        "child_segments": [
-                                          {"name": "EB", "elements": [
-                                            {"name": "eligibility_benefit_information", "index": 1},
-                                            {"name": "benefit_coverage_level_code", "index": 2, "default": ""},
-                                            {"name": "service_type_code", "index": 3, "default": ""},
-                                            {"name": "insurance_type_code", "index": 4, "default": ""},
-                                            {"name": "plan_coverage_description", "index": 5, "default": ""},
-                                            {"name": "time_period_qualifier", "index": 6, "default": ""},
-                                            {"name": "benefit_amount", "index": 7, "default": ""},
-                                            {"name": "percent", "index": 8, "default": ""},
-                                            {"name": "quantity_qualifier", "index": 9, "default": ""},
-                                            {"name": "quantity", "index": 10, "default": ""},
-                                            {"name": "auth_required", "index": 11, "default": ""},
-                                            {"name": "in_network_indicator", "index": 12, "default": ""}
-                                          ]},
-                                          {"name": "HSD", "min": 0, "max": 9, "elements": [
-                                            {"name": "quantity_qualifier", "index": 1, "default": ""},
-                                            {"name": "quantity", "index": 2, "default": ""},
-                                            {"name": "unit_basis_measurement_code", "index": 3, "default": ""},
-                                            {"name": "time_period_qualifier", "index": 5, "default": ""},
-                                            {"name": "period_count", "index": 6, "default": ""}
-                                          ]},
-                                          {"name": "REF", "min": 0, "max": 9, "elements": [
-                                            {"name": "qualifier", "index": 1, "default": ""},
-                                            {"name": "id", "index": 2, "default": ""},
-                                            {"name": "name", "index": 3, "default": ""}
-                                          ]},
-                                          {"name": "DTP", "min": 0, "max": 20, "elements": [
-                                            {"name": "date_time_qualifier", "index": 1, "default": ""},
-                                            {"name": "date_time_period_format_qualifier", "index": 2, "default": ""},
-                                            {"name": "eligibility_or_benefit_date_time_period", "index": 3, "default": ""}
-                                          ]},
-                                          {"name": "AAA", "min": 0, "max": 9, "elements": [
-                                            {"name": "valid_request_indicator", "index": 1, "default": ""},
-                                            {"name": "reject_reason_code", "index": 3, "default": ""},
-                                            {"name": "follow_up_action_code", "index": 4, "default": ""}
-                                          ]},
-                                          {"name": "MSG", "min": 0, "max": 10, "elements": [
-                                            {"name": "free_form_message_text", "index": 1, "default": ""}
-                                          ]},
-                                          {"name": "subscriber_eb_additional_loop", "type": "segment_group", "min": 0, "max": 10,
-                                            "child_segments": [{"name": "III", "elements": [
-                                              {"name": "code_list_qualifier", "index": 1, "default": ""},
-                                              {"name": "industry_code", "index": 2, "default": ""}
-                                            ]}]
+                                      {
+                                        "name": "NM1",
+                                        "elements": [
+                                          {
+                                            "name": "entity_identifier_code",
+                                            "index": 1,
+                                            "default": ""
                                           },
-                                          {"name": "LS", "min": 0},
-                                          {"name": "subscriber_related_entity_loop", "type": "segment_group", "min": 0, "max": 23,
-                                            "child_segments": [
-                                              {"name": "NM1", "elements": [
-                                                {"name": "entity_identifier_code", "index": 1},
-                                                {"name": "entity_type_qualifier", "index": 2},
-                                                {"name": "benefit_related_entity_last_or_organization_name", "index": 3, "default": ""},
-                                                {"name": "benefit_related_entity_first_name", "index": 4, "default": ""},
-                                                {"name": "benefit_related_entity_middle_name", "index": 5, "default": ""},
-                                                {"name": "id_code_qualifier", "index": 8, "default": ""},
-                                                {"name": "entity_id", "index": 9, "default": ""}
-                                              ]},
-                                              {"name": "N3", "min": 0, "elements": [
-                                                {"name": "address_line1", "index": 1, "default": ""},
-                                                {"name": "address_line2", "index": 2, "default": ""}
-                                              ]},
-                                              {"name": "N4", "min": 0, "elements": [
-                                                {"name": "city", "index": 1, "default": ""},
-                                                {"name": "state", "index": 2, "default": ""},
-                                                {"name": "zip", "index": 3, "default": ""},
-                                                {"name": "country", "index": 4, "default": ""}
-                                              ]},
-                                              {"name": "PER", "min": 0, "max": 3, "elements": [
-                                                {"name": "function_code", "index": 1, "default": ""},
-                                                {"name": "contact_name", "index": 2, "default": ""},
-                                                {"name": "contact_qualifier", "index": 3, "default": ""},
-                                                {"name": "contact_number", "index": 4, "default": ""}
-                                              ]},
-                                              {"name": "PRV", "min": 0, "elements": [
-                                                {"name": "provider_code", "index": 1, "default": ""},
-                                                {"name": "reference_id_qualifier", "index": 2, "default": ""},
-                                                {"name": "provider_taxonomy_code", "index": 3, "default": ""}
-                                              ]}
+                                          {
+                                            "name": "last_name",
+                                            "index": 3,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "first_name",
+                                            "index": 4,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "middle_name",
+                                            "index": 5,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "primary_qualifier",
+                                            "index": 8,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "primary_id",
+                                            "index": 9,
+                                            "default": ""
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "REF",
+                                        "min": 0,
+                                        "max": 9,
+                                        "elements": [
+                                          {
+                                            "name": "qualifier",
+                                            "index": 1,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "id",
+                                            "index": 2,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "name",
+                                            "index": 3,
+                                            "default": ""
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "N3",
+                                        "min": 0,
+                                        "elements": [
+                                          {
+                                            "name": "address_line_1",
+                                            "index": 1,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "address_line_2",
+                                            "index": 2,
+                                            "default": ""
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "N4",
+                                        "min": 0,
+                                        "elements": [
+                                          {
+                                            "name": "city",
+                                            "index": 1,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "state",
+                                            "index": 2,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "zip",
+                                            "index": 3,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "country",
+                                            "index": 4,
+                                            "default": ""
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "AAA",
+                                        "min": 0,
+                                        "max": 9,
+                                        "elements": [
+                                          {
+                                            "name": "valid_request_indicator",
+                                            "index": 1,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "reject_reason_code",
+                                            "index": 3,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "follow_up_action_code",
+                                            "index": 4,
+                                            "default": ""
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "PRV",
+                                        "min": 0
+                                      },
+                                      {
+                                        "name": "DMG",
+                                        "min": 0,
+                                        "elements": [
+                                          {
+                                            "name": "birth_date",
+                                            "index": 2,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "gender",
+                                            "index": 3,
+                                            "default": ""
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "INS",
+                                        "min": 0
+                                      },
+                                      {
+                                        "name": "HI",
+                                        "min": 0
+                                      },
+                                      {
+                                        "name": "DTP",
+                                        "min": 0,
+                                        "max": 9,
+                                        "elements": [
+                                          {
+                                            "name": "date_time_qualifier",
+                                            "index": 1,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "date_time_period_format_qualifier",
+                                            "index": 2,
+                                            "default": ""
+                                          },
+                                          {
+                                            "name": "date_time_period",
+                                            "index": 3,
+                                            "default": ""
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "name": "MPI",
+                                        "min": 0
+                                      },
+                                      {
+                                        "name": "subscriber_eb_loop",
+                                        "type": "segment_group",
+                                        "min": 0,
+                                        "max": -1,
+                                        "child_segments": [
+                                          {
+                                            "name": "EB",
+                                            "elements": [
+                                              {
+                                                "name": "eligibility_benefit_information",
+                                                "index": 1
+                                              },
+                                              {
+                                                "name": "benefit_coverage_level_code",
+                                                "index": 2,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "service_type_code",
+                                                "index": 3,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "insurance_type_code",
+                                                "index": 4,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "plan_coverage_description",
+                                                "index": 5,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "time_period_qualifier",
+                                                "index": 6,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "benefit_amount",
+                                                "index": 7,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "percent",
+                                                "index": 8,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "quantity_qualifier",
+                                                "index": 9,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "quantity",
+                                                "index": 10,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "auth_required",
+                                                "index": 11,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "in_network_indicator",
+                                                "index": 12,
+                                                "default": ""
+                                              }
                                             ]
                                           },
-                                          {"name": "LE", "min": 0}
+                                          {
+                                            "name": "HSD",
+                                            "min": 0,
+                                            "max": 9,
+                                            "elements": [
+                                              {
+                                                "name": "quantity_qualifier",
+                                                "index": 1,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "quantity",
+                                                "index": 2,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "unit_basis_measurement_code",
+                                                "index": 3,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "time_period_qualifier",
+                                                "index": 5,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "period_count",
+                                                "index": 6,
+                                                "default": ""
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "REF",
+                                            "min": 0,
+                                            "max": 9,
+                                            "elements": [
+                                              {
+                                                "name": "qualifier",
+                                                "index": 1,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "id",
+                                                "index": 2,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "name",
+                                                "index": 3,
+                                                "default": ""
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "DTP",
+                                            "min": 0,
+                                            "max": 20,
+                                            "elements": [
+                                              {
+                                                "name": "date_time_qualifier",
+                                                "index": 1,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "date_time_period_format_qualifier",
+                                                "index": 2,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "eligibility_or_benefit_date_time_period",
+                                                "index": 3,
+                                                "default": ""
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "AAA",
+                                            "min": 0,
+                                            "max": 9,
+                                            "elements": [
+                                              {
+                                                "name": "valid_request_indicator",
+                                                "index": 1,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "reject_reason_code",
+                                                "index": 3,
+                                                "default": ""
+                                              },
+                                              {
+                                                "name": "follow_up_action_code",
+                                                "index": 4,
+                                                "default": ""
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "MSG",
+                                            "min": 0,
+                                            "max": 10,
+                                            "elements": [
+                                              {
+                                                "name": "free_form_message_text",
+                                                "index": 1,
+                                                "default": ""
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "subscriber_eb_additional_loop",
+                                            "type": "segment_group",
+                                            "min": 0,
+                                            "max": 10,
+                                            "child_segments": [
+                                              {
+                                                "name": "III",
+                                                "elements": [
+                                                  {
+                                                    "name": "code_list_qualifier",
+                                                    "index": 1,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "industry_code",
+                                                    "index": 2,
+                                                    "default": ""
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "LS",
+                                            "min": 0
+                                          },
+                                          {
+                                            "name": "subscriber_related_entity_loop",
+                                            "type": "segment_group",
+                                            "min": 0,
+                                            "max": 23,
+                                            "child_segments": [
+                                              {
+                                                "name": "NM1",
+                                                "elements": [
+                                                  {
+                                                    "name": "entity_identifier_code",
+                                                    "index": 1
+                                                  },
+                                                  {
+                                                    "name": "entity_type_qualifier",
+                                                    "index": 2
+                                                  },
+                                                  {
+                                                    "name": "benefit_related_entity_last_or_organization_name",
+                                                    "index": 3,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "benefit_related_entity_first_name",
+                                                    "index": 4,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "benefit_related_entity_middle_name",
+                                                    "index": 5,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "id_code_qualifier",
+                                                    "index": 8,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "entity_id",
+                                                    "index": 9,
+                                                    "default": ""
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "name": "N3",
+                                                "min": 0,
+                                                "elements": [
+                                                  {
+                                                    "name": "address_line1",
+                                                    "index": 1,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "address_line2",
+                                                    "index": 2,
+                                                    "default": ""
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "name": "N4",
+                                                "min": 0,
+                                                "elements": [
+                                                  {
+                                                    "name": "city",
+                                                    "index": 1,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "state",
+                                                    "index": 2,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "zip",
+                                                    "index": 3,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "country",
+                                                    "index": 4,
+                                                    "default": ""
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "name": "PER",
+                                                "min": 0,
+                                                "max": 3,
+                                                "elements": [
+                                                  {
+                                                    "name": "function_code",
+                                                    "index": 1,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "contact_name",
+                                                    "index": 2,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "contact_qualifier",
+                                                    "index": 3,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "contact_number",
+                                                    "index": 4,
+                                                    "default": ""
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "name": "PRV",
+                                                "min": 0,
+                                                "elements": [
+                                                  {
+                                                    "name": "provider_code",
+                                                    "index": 1,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "reference_id_qualifier",
+                                                    "index": 2,
+                                                    "default": ""
+                                                  },
+                                                  {
+                                                    "name": "provider_taxonomy_code",
+                                                    "index": 3,
+                                                    "default": ""
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "LE",
+                                            "min": 0
+                                          }
                                         ]
                                       }
                                     ]
@@ -209,29 +754,44 @@
                       }
                     ]
                   },
-                  {"name": "SE"}
+                  {
+                    "name": "SE"
+                  }
                 ]
               }
             ]
           },
-          {"name": "GE"}
+          {
+            "name": "GE"
+          }
         ]
       },
-      {"name": "IEA"}
+      {
+        "name": "IEA"
+      }
     ]
   },
   "transform_declarations": {
     "FINAL_OUTPUT": {
       "object": {
+        "account_id": {
+          "xpath": "BHT/BHT03"
+        },
         "account_ids": {
           "object": {
             "account_number": {
               "custom_func": {
                 "name": "javascript",
                 "args": [
-                  {"const": "var parts = bht03 ? bht03.split('-') : []; parts[0] || ''"},
-                  {"const": "bht03"},
-                  {"xpath": "BHT/BHT03"}
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[0] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
                 ]
               }
             },
@@ -239,9 +799,15 @@
               "custom_func": {
                 "name": "javascript",
                 "args": [
-                  {"const": "var parts = bht03 ? bht03.split('-') : []; parts[1] || ''"},
-                  {"const": "bht03"},
-                  {"xpath": "BHT/BHT03"}
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[1] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
                 ]
               }
             },
@@ -249,9 +815,15 @@
               "custom_func": {
                 "name": "javascript",
                 "args": [
-                  {"const": "var parts = bht03 ? bht03.split('-') : []; parts[2] || ''"},
-                  {"const": "bht03"},
-                  {"xpath": "BHT/BHT03"}
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[2] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
                 ]
               }
             },
@@ -259,38 +831,70 @@
               "custom_func": {
                 "name": "javascript",
                 "args": [
-                  {"const": "var parts = bht03 ? bht03.split('-') : []; parts[3] || ''"},
-                  {"const": "bht03"},
-                  {"xpath": "BHT/BHT03"}
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[3] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
                 ]
               }
             }
           }
         },
-        "create_date": {"xpath": "BHT/create_date"},
-        "create_time": {"xpath": "BHT/create_time"},
+        "create_date": {
+          "xpath": "BHT/create_date"
+        },
+        "create_time": {
+          "xpath": "BHT/create_time"
+        },
         "payer": {
           "object": {
-            "name": {"xpath": "info_source_level/info_source_name/NM1/payer_name"},
-            "policy_number": {"xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]/subscriber_name_loop/NM1/primary_id"},
-            "policy_number_qualifier": {"xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]/subscriber_name_loop/NM1/primary_qualifier"}
+            "name": {
+              "xpath": "info_source_level/info_source_name/NM1/payer_name"
+            },
+            "policy_number": {
+              "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]/subscriber_name_loop/NM1/primary_id"
+            },
+            "policy_number_qualifier": {
+              "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]/subscriber_name_loop/NM1/primary_qualifier"
+            }
           }
         },
         "patient_type": {
           "custom_func": {
             "name": "javascript",
             "args": [
-              {"const": "dependent_entity_code ? 'pad' : 'ssp'"},
-              {"const": "dependent_entity_code"},
-              {"xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='23']]/subscriber_name_loop/NM1/entity_identifier_code"}
+              {
+                "const": "dependent_entity_code ? 'pad' : 'ssp'"
+              },
+              {
+                "const": "dependent_entity_code"
+              },
+              {
+                "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='23']]/subscriber_name_loop/NM1/entity_identifier_code"
+              }
             ]
           }
         },
         "subscriber_trace_info": {
-          "array": [{"xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]", "template": "trace_info"}]
+          "array": [
+            {
+              "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]",
+              "template": "trace_info"
+            }
+          ]
         },
         "dependent_trace_info": {
-          "array": [{"xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='23']]", "template": "trace_info"}]
+          "array": [
+            {
+              "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='23']]",
+              "template": "trace_info"
+            }
+          ]
         },
         "subscriber_info": {
           "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]",
@@ -301,43 +905,94 @@
           "template": "dependent_level"
         },
         "source_validation_messages": {
-          "array": [{"xpath": "info_source_level/AAA", "object": {
-            "valid_request_indicator": {"xpath": "valid_request_indicator"},
-            "reject_reason_code": {"xpath": "reject_reason_code"},
-            "follow_up_action_code": {"xpath": "follow_up_action_code"}
-          }}]
+          "array": [
+            {
+              "xpath": "info_source_level/AAA",
+              "object": {
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
+              }
+            }
+          ]
         },
         "source_name_validation_messages": {
-          "array": [{"xpath": "info_source_level/info_source_name/AAA", "object": {
-            "valid_request_indicator": {"xpath": "valid_request_indicator"},
-            "reject_reason_code": {"xpath": "reject_reason_code"},
-            "follow_up_action_code": {"xpath": "follow_up_action_code"}
-          }}]
+          "array": [
+            {
+              "xpath": "info_source_level/info_source_name/AAA",
+              "object": {
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
+              }
+            }
+          ]
         },
         "receiver_validation_messages": {
-          "array": [{"xpath": "info_source_level/info_receiver_loop/AAA", "object": {
-            "valid_request_indicator": {"xpath": "valid_request_indicator"},
-            "reject_reason_code": {"xpath": "reject_reason_code"},
-            "follow_up_action_code": {"xpath": "follow_up_action_code"}
-          }}]
+          "array": [
+            {
+              "xpath": "info_source_level/info_receiver_loop/AAA",
+              "object": {
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
+              }
+            }
+          ]
         }
       }
     },
     "trace_entry": {
       "object": {
-        "type_code": {"xpath": "type_code"},
-        "number": {"xpath": "number"},
-        "assigning_entity_id": {"xpath": "assigning_entity_id"},
-        "assigning_entity_additional_id": {"xpath": "assigning_entity_additional_id"}
+        "type_code": {
+          "xpath": "type_code"
+        },
+        "number": {
+          "xpath": "number"
+        },
+        "assigning_entity_id": {
+          "xpath": "assigning_entity_id"
+        },
+        "assigning_entity_additional_id": {
+          "xpath": "assigning_entity_additional_id"
+        }
       }
     },
     "trace_info": {
-      "array": [{"xpath": "TRN", "template": "trace_entry"}]
+      "array": [
+        {
+          "xpath": "TRN",
+          "template": "trace_entry"
+        }
+      ]
     },
     "subscriber_level": {
       "object": {
         "trace_info": {
-          "array": [{"xpath": "TRN", "template": "trace_entry"}]
+          "array": [
+            {
+              "xpath": "TRN",
+              "template": "trace_entry"
+            }
+          ]
         },
         "payer_policy_number": {
           "xpath": "subscriber_name_loop/NM1/primary_id"
@@ -347,8 +1002,12 @@
             {
               "xpath": "subscriber_name_loop/REF",
               "object": {
-                "qualifier": {"xpath": "qualifier"},
-                "id": {"xpath": "id"}
+                "qualifier": {
+                  "xpath": "qualifier"
+                },
+                "id": {
+                  "xpath": "id"
+                }
               }
             }
           ]
@@ -358,14 +1017,24 @@
           "template": "member_name_loop"
         },
         "eligibility_benefit_information": {
-          "array": [{"xpath": "subscriber_name_loop/subscriber_eb_loop", "template": "eb_loop_info"}]
+          "array": [
+            {
+              "xpath": "subscriber_name_loop/subscriber_eb_loop",
+              "template": "eb_loop_info"
+            }
+          ]
         }
       }
     },
     "dependent_level": {
       "object": {
         "trace_info": {
-          "array": [{"xpath": "TRN", "template": "trace_entry"}]
+          "array": [
+            {
+              "xpath": "TRN",
+              "template": "trace_entry"
+            }
+          ]
         },
         "indicator": {
           "xpath": "subscriber_name_loop/NM1/entity_identifier_code"
@@ -375,114 +1044,251 @@
           "template": "member_name_loop"
         },
         "eligibility_benefit_information": {
-          "array": [{"xpath": "subscriber_name_loop/subscriber_eb_loop", "template": "eb_loop_info"}]
+          "array": [
+            {
+              "xpath": "subscriber_name_loop/subscriber_eb_loop",
+              "template": "eb_loop_info"
+            }
+          ]
         }
       }
     },
     "member_name_loop": {
       "object": {
-        "last_name": {"xpath": "NM1/last_name"},
-        "first_name": {"xpath": "NM1/first_name"},
-        "middle_name": {"xpath": "NM1/middle_name"},
-        "member_id": {"xpath": "NM1[primary_qualifier='MI' or primary_qualifier='ZZ' or primary_qualifier='II']/primary_id"},
-        "group_number": {"xpath": "REF[qualifier='6P' or qualifier='1L']/id"},
-        "plan_number": {"xpath": "REF[qualifier='18']/id"},
-        "ins_policy_number": {"xpath": "REF[qualifier='IG']/id"},
-        "plan_network_id": {"xpath": "REF[qualifier='N6']/id"},
-        "medicaid_recipient_id": {"xpath": "REF[qualifier='NQ']/id"},
-        "address_line1": {"xpath": "N3/address_line_1"},
-        "address_line2": {"xpath": "N3/address_line_2"},
-        "city": {"xpath": "N4/city"},
-        "state": {"xpath": "N4/state"},
-        "zip": {"xpath": "N4/zip"},
-        "country": {"xpath": "N4/country"},
-        "birth_date": {"xpath": "DMG/birth_date"},
-        "gender": {"xpath": "DMG/gender"},
+        "last_name": {
+          "xpath": "NM1/last_name"
+        },
+        "first_name": {
+          "xpath": "NM1/first_name"
+        },
+        "middle_name": {
+          "xpath": "NM1/middle_name"
+        },
+        "member_id": {
+          "xpath": "NM1[primary_qualifier='MI' or primary_qualifier='ZZ' or primary_qualifier='II']/primary_id"
+        },
+        "group_number": {
+          "xpath": "REF[qualifier='6P' or qualifier='1L']/id"
+        },
+        "plan_number": {
+          "xpath": "REF[qualifier='18']/id"
+        },
+        "ins_policy_number": {
+          "xpath": "REF[qualifier='IG']/id"
+        },
+        "plan_network_id": {
+          "xpath": "REF[qualifier='N6']/id"
+        },
+        "medicaid_recipient_id": {
+          "xpath": "REF[qualifier='NQ']/id"
+        },
+        "address_line1": {
+          "xpath": "N3/address_line_1"
+        },
+        "address_line2": {
+          "xpath": "N3/address_line_2"
+        },
+        "city": {
+          "xpath": "N4/city"
+        },
+        "state": {
+          "xpath": "N4/state"
+        },
+        "zip": {
+          "xpath": "N4/zip"
+        },
+        "country": {
+          "xpath": "N4/country"
+        },
+        "birth_date": {
+          "xpath": "DMG/birth_date"
+        },
+        "gender": {
+          "xpath": "DMG/gender"
+        },
         "name_loop_validation_messages": {
           "array": [
             {
               "xpath": "AAA",
               "object": {
-                "valid_request_indicator": {"xpath": "valid_request_indicator"},
-                "reject_reason_code": {"xpath": "reject_reason_code"},
-                "follow_up_action_code": {"xpath": "follow_up_action_code"}
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
               }
             }
           ]
         },
         "eligibility_dates": {
-          "array": [{"xpath": "DTP", "object": {
-            "date_time_qualifier": {"xpath": "date_time_qualifier"},
-            "date_time_period_format_qualifier": {"xpath": "date_time_period_format_qualifier"},
-            "date_time_period": {"xpath": "date_time_period"}
-          }}]
+          "array": [
+            {
+              "xpath": "DTP",
+              "object": {
+                "date_time_qualifier": {
+                  "xpath": "date_time_qualifier"
+                },
+                "date_time_period_format_qualifier": {
+                  "xpath": "date_time_period_format_qualifier"
+                },
+                "date_time_period": {
+                  "xpath": "date_time_period"
+                }
+              }
+            }
+          ]
         }
       }
     },
     "eb_loop_info": {
       "object": {
-        "eligibility_benefit_information": {"xpath": "EB/eligibility_benefit_information"},
-        "benefit_coverage_level_code": {"xpath": "EB/benefit_coverage_level_code"},
-        "service_type_code": {"xpath": "EB/service_type_code"},
-        "insurance_type_code": {"xpath": "EB/insurance_type_code"},
-        "plan_coverage_description": {"xpath": "EB/plan_coverage_description"},
-        "time_period_qualifier": {"xpath": "EB/time_period_qualifier"},
-        "benefit_amount": {"xpath": "EB/benefit_amount"},
-        "percent": {"xpath": "EB/percent"},
-        "quantity_qualifier": {"xpath": "EB/quantity_qualifier"},
-        "quantity": {"xpath": "EB/quantity"},
-        "auth_required": {"xpath": "EB/auth_required"},
-        "in_network_indicator": {"xpath": "EB/in_network_indicator"},
+        "eligibility_benefit_information": {
+          "xpath": "EB/eligibility_benefit_information"
+        },
+        "benefit_coverage_level_code": {
+          "xpath": "EB/benefit_coverage_level_code"
+        },
+        "service_type_code": {
+          "xpath": "EB/service_type_code"
+        },
+        "insurance_type_code": {
+          "xpath": "EB/insurance_type_code"
+        },
+        "plan_coverage_description": {
+          "xpath": "EB/plan_coverage_description"
+        },
+        "time_period_qualifier": {
+          "xpath": "EB/time_period_qualifier"
+        },
+        "benefit_amount": {
+          "xpath": "EB/benefit_amount"
+        },
+        "percent": {
+          "xpath": "EB/percent"
+        },
+        "quantity_qualifier": {
+          "xpath": "EB/quantity_qualifier"
+        },
+        "quantity": {
+          "xpath": "EB/quantity"
+        },
+        "auth_required": {
+          "xpath": "EB/auth_required"
+        },
+        "in_network_indicator": {
+          "xpath": "EB/in_network_indicator"
+        },
         "DTP": {
           "array": [
             {
               "xpath": "DTP",
               "object": {
-                "date_time_qualifier": {"xpath": "date_time_qualifier"},
-                "date_time_period_format_qualifier": {"xpath": "date_time_period_format_qualifier"},
-                "eligibility_or_benefit_date_time_period": {"xpath": "eligibility_or_benefit_date_time_period"}
+                "date_time_qualifier": {
+                  "xpath": "date_time_qualifier"
+                },
+                "date_time_period_format_qualifier": {
+                  "xpath": "date_time_period_format_qualifier"
+                },
+                "eligibility_or_benefit_date_time_period": {
+                  "xpath": "eligibility_or_benefit_date_time_period"
+                }
               }
             }
           ]
         },
         "service_delivery": {
-          "array": [{"xpath": "HSD", "object": {
-            "quantity_qualifier": {"xpath": "quantity_qualifier"},
-            "quantity": {"xpath": "quantity"},
-            "time_period_qualifier": {"xpath": "time_period_qualifier"},
-            "period_count": {"xpath": "period_count"}
-          }}]
+          "array": [
+            {
+              "xpath": "HSD",
+              "object": {
+                "quantity_qualifier": {
+                  "xpath": "quantity_qualifier"
+                },
+                "quantity": {
+                  "xpath": "quantity"
+                },
+                "time_period_qualifier": {
+                  "xpath": "time_period_qualifier"
+                },
+                "period_count": {
+                  "xpath": "period_count"
+                }
+              }
+            }
+          ]
         },
         "messages": {
-          "array": [{"xpath": "MSG/free_form_message_text"}]
+          "array": [
+            {
+              "xpath": "MSG/free_form_message_text"
+            }
+          ]
         },
-        "period_start_date": {"xpath": "DTP[date_time_qualifier='193']/eligibility_or_benefit_date_time_period"},
-        "period_end_date": {"xpath": "DTP[date_time_qualifier='194']/eligibility_or_benefit_date_time_period"},
-        "benefit_start_date": {"xpath": "DTP[date_time_qualifier='348']/eligibility_or_benefit_date_time_period"},
-        "benefit_end_date": {"xpath": "DTP[date_time_qualifier='349']/eligibility_or_benefit_date_time_period"},
-        "eligibility_start_date": {"xpath": "DTP[date_time_qualifier='356']/eligibility_or_benefit_date_time_period"},
-        "eligibility_end_date": {"xpath": "DTP[date_time_qualifier='357']/eligibility_or_benefit_date_time_period"},
-        "plan_period": {"xpath": "DTP[date_time_qualifier='291']/eligibility_or_benefit_date_time_period"},
-        "eligibility_date": {"xpath": "DTP[date_time_qualifier='307']/eligibility_or_benefit_date_time_period"},
+        "period_start_date": {
+          "xpath": "DTP[date_time_qualifier='193']/eligibility_or_benefit_date_time_period"
+        },
+        "period_end_date": {
+          "xpath": "DTP[date_time_qualifier='194']/eligibility_or_benefit_date_time_period"
+        },
+        "benefit_start_date": {
+          "xpath": "DTP[date_time_qualifier='348']/eligibility_or_benefit_date_time_period"
+        },
+        "benefit_end_date": {
+          "xpath": "DTP[date_time_qualifier='349']/eligibility_or_benefit_date_time_period"
+        },
+        "eligibility_start_date": {
+          "xpath": "DTP[date_time_qualifier='356']/eligibility_or_benefit_date_time_period"
+        },
+        "eligibility_end_date": {
+          "xpath": "DTP[date_time_qualifier='357']/eligibility_or_benefit_date_time_period"
+        },
+        "plan_period": {
+          "xpath": "DTP[date_time_qualifier='291']/eligibility_or_benefit_date_time_period"
+        },
+        "eligibility_date": {
+          "xpath": "DTP[date_time_qualifier='307']/eligibility_or_benefit_date_time_period"
+        },
         "benefit_related_entities": {
           "array": [
-            {"xpath": "subscriber_related_entity_loop", "template": "benefit_related_entity"}
+            {
+              "xpath": "subscriber_related_entity_loop",
+              "template": "benefit_related_entity"
+            }
           ]
         },
         "additional_information": {
-          "array": [{"xpath": "subscriber_eb_additional_loop/III", "object": {
-            "code_list_qualifier": {"xpath": "code_list_qualifier"},
-            "industry_code": {"xpath": "industry_code"}
-          }}]
+          "array": [
+            {
+              "xpath": "subscriber_eb_additional_loop/III",
+              "object": {
+                "code_list_qualifier": {
+                  "xpath": "code_list_qualifier"
+                },
+                "industry_code": {
+                  "xpath": "industry_code"
+                }
+              }
+            }
+          ]
         },
         "validation_messages": {
           "array": [
             {
               "xpath": "AAA",
               "object": {
-                "valid_request_indicator": {"xpath": "valid_request_indicator"},
-                "reject_reason_code": {"xpath": "reject_reason_code"},
-                "follow_up_action_code": {"xpath": "follow_up_action_code"}
+                "valid_request_indicator": {
+                  "xpath": "valid_request_indicator"
+                },
+                "reject_reason_code": {
+                  "xpath": "reject_reason_code"
+                },
+                "follow_up_action_code": {
+                  "xpath": "follow_up_action_code"
+                }
               }
             }
           ]
@@ -491,21 +1297,51 @@
     },
     "benefit_related_entity": {
       "object": {
-        "entity_identifier_code": {"xpath": "NM1/entity_identifier_code"},
-        "entity_type_qualifier": {"xpath": "NM1/entity_type_qualifier"},
-        "benefit_related_entity_last_or_organization_name": {"xpath": "NM1/benefit_related_entity_last_or_organization_name"},
-        "benefit_related_entity_first_name": {"xpath": "NM1/benefit_related_entity_first_name"},
-        "benefit_related_entity_middle_name": {"xpath": "NM1/benefit_related_entity_middle_name"},
-        "id_code_qualifier": {"xpath": "NM1/id_code_qualifier"},
-        "entity_id": {"xpath": "NM1/entity_id"},
-        "address_line1": {"xpath": "N3/address_line1"},
-        "address_line2": {"xpath": "N3/address_line2"},
-        "city": {"xpath": "N4/city"},
-        "state": {"xpath": "N4/state"},
-        "zip": {"xpath": "N4/zip"},
-        "country": {"xpath": "N4/country"},
-        "provider_code": {"xpath": "PRV/provider_code"},
-        "provider_taxonomy_code": {"xpath": "PRV/provider_taxonomy_code"}
+        "entity_identifier_code": {
+          "xpath": "NM1/entity_identifier_code"
+        },
+        "entity_type_qualifier": {
+          "xpath": "NM1/entity_type_qualifier"
+        },
+        "benefit_related_entity_last_or_organization_name": {
+          "xpath": "NM1/benefit_related_entity_last_or_organization_name"
+        },
+        "benefit_related_entity_first_name": {
+          "xpath": "NM1/benefit_related_entity_first_name"
+        },
+        "benefit_related_entity_middle_name": {
+          "xpath": "NM1/benefit_related_entity_middle_name"
+        },
+        "id_code_qualifier": {
+          "xpath": "NM1/id_code_qualifier"
+        },
+        "entity_id": {
+          "xpath": "NM1/entity_id"
+        },
+        "address_line1": {
+          "xpath": "N3/address_line1"
+        },
+        "address_line2": {
+          "xpath": "N3/address_line2"
+        },
+        "city": {
+          "xpath": "N4/city"
+        },
+        "state": {
+          "xpath": "N4/state"
+        },
+        "zip": {
+          "xpath": "N4/zip"
+        },
+        "country": {
+          "xpath": "N4/country"
+        },
+        "provider_code": {
+          "xpath": "PRV/provider_code"
+        },
+        "provider_taxonomy_code": {
+          "xpath": "PRV/provider_taxonomy_code"
+        }
       }
     }
   }
