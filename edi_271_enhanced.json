@@ -87,6 +87,16 @@
                               {
                                 "name": "payer_name",
                                 "index": 3
+                              },
+                              {
+                                "name": "id_code_qualifier",
+                                "index": 8,
+                                "default": ""
+                              },
+                              {
+                                "name": "entity_id",
+                                "index": 9,
+                                "default": ""
                               }
                             ]
                           },
@@ -827,7 +837,7 @@
                 ]
               }
             },
-            "subscriber_id": {
+            "patient_payer_id": {
               "custom_func": {
                 "name": "javascript",
                 "args": [
@@ -856,11 +866,11 @@
             "name": {
               "xpath": "info_source_level/info_source_name/NM1/payer_name"
             },
-            "policy_number": {
-              "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]/subscriber_name_loop/NM1/primary_id"
+            "id_qualifier": {
+              "xpath": "info_source_level/info_source_name/NM1/id_code_qualifier"
             },
-            "policy_number_qualifier": {
-              "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]/subscriber_name_loop/NM1/primary_qualifier"
+            "id": {
+              "xpath": "info_source_level/info_source_name/NM1/entity_id"
             }
           }
         },
@@ -875,7 +885,7 @@
                 "const": "dependent_entity_code"
               },
               {
-                "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='23']]/subscriber_name_loop/NM1/entity_identifier_code"
+                "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='23']][1]/subscriber_name_loop/NM1/entity_identifier_code"
               }
             ]
           }
@@ -897,11 +907,11 @@
           ]
         },
         "subscriber_info": {
-          "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']]",
+          "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='22']][1]",
           "template": "subscriber_level"
         },
         "dependent_info": {
-          "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='23']]",
+          "xpath": "info_source_level/info_receiver_loop/info_receiver_name/subscriber_level_loop[./HL[level_code='23']][1]",
           "template": "dependent_level"
         },
         "source_validation_messages": {
@@ -943,7 +953,7 @@
         "receiver_validation_messages": {
           "array": [
             {
-              "xpath": "info_source_level/info_receiver_loop/AAA",
+              "xpath": "info_source_level/info_receiver_loop/info_receiver_name/AAA",
               "object": {
                 "valid_request_indicator": {
                   "xpath": "valid_request_indicator"
@@ -995,7 +1005,7 @@
           ]
         },
         "payer_policy_number": {
-          "xpath": "subscriber_name_loop/NM1/primary_id"
+          "xpath": "subscriber_name_loop/NM1[primary_qualifier='MI']/primary_id"
         },
         "supplemental_identifiers": {
           "array": [
@@ -1039,6 +1049,9 @@
         "indicator": {
           "xpath": "subscriber_name_loop/NM1/entity_identifier_code"
         },
+        "payer_policy_number": {
+          "xpath": "subscriber_name_loop/NM1[primary_qualifier='MI']/primary_id"
+        },
         "member_info": {
           "xpath": "subscriber_name_loop",
           "template": "member_name_loop"
@@ -1068,7 +1081,7 @@
           "xpath": "NM1[primary_qualifier='MI' or primary_qualifier='ZZ' or primary_qualifier='II']/primary_id"
         },
         "group_number": {
-          "xpath": "REF[qualifier='6P' or qualifier='1L']/id"
+          "xpath": "REF[qualifier='6P']/id"
         },
         "plan_number": {
           "xpath": "REF[qualifier='18']/id"
