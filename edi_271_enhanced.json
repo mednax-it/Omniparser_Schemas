@@ -852,6 +852,22 @@
                   }
                 ]
               }
+            },
+            "hospital_code": {
+              "custom_func": {
+                "name": "javascript",
+                "args": [
+                  {
+                    "const": "var parts = bht03 ? bht03.split('-') : []; parts[4] || ''"
+                  },
+                  {
+                    "const": "bht03"
+                  },
+                  {
+                    "xpath": "BHT/BHT03"
+                  }
+                ]
+              }
             }
           }
         },
