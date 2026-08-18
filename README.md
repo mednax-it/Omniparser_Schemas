@@ -1,19 +1,93 @@
 # Omniparser_Schemas
 
-Placeholder for Omniparser Schemas used by universal-etl-parser API.
+JSON schemas used by the [universal-etl-parser](https://universal-etl-parser.mdnxdev.com/) API to transform HL7v2 messages into FHIR R4 transaction bundles.
 
-## Branch flow for schema changes
+Regression tested by [omniparser-schema-template-tests](https://github.com/mednax-it/omniparser-schema-template-tests).
+
+## Schema Files
+
+| File | Environment | `Content-Schema` header value |
+|---|---|---|
+| `hl7v2_default.json` | Production | `hl7v2_default` |
+| `hl7v2_default_test.json` | Nonprod / spike validation | `hl7v2_default_test` |
+| `edi_271.json` | All | `edi_271` |
+| `edi_271_enhanced.json` | All | `edi_271_enhanced` |
+
+> **Important:** The regression test suite targets `hl7v2_default` (production schema). All schema changes must be applied to `hl7v2_default.json` — not only `hl7v2_default_test.json` — to be covered by regression tests.
+
+## Development Workflow
+
+### Feature branch flow
 
 ```mermaid
 graph LR;
-    nonprod[nonprod] --> pr{{Pull Request}} --> main[main]
+    main[main] --> fb[feature branch]
+    fb --> nonprod[nonprod]
+    nonprod --> test{{Regression Tests}}
+    test --> pr{{Pull Request}}
+    pr --> main
 ```
 
-Helpful links:
+1. **Branch** from `main` — never from `nonprod` (`nonprod` may lag behind `main` and contains unmerged work)
+2. **Develop** schema changes on the feature branch
+3. **Merge** the feature branch into `nonprod` (no PR review required) — deploys to the nonprod parser
+4. **Run** regression tests against nonprod (see [Testing](#testing))
+5. **Iterate** on the feature branch if tests fail, re-merge to `nonprod`
+6. **Open a PR** from the feature branch → `main` once tests pass
 
-* [Link to nonprod branch](https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod)
+### Branch links
+
+* [nonprod branch](https://github.com/mednax-it/Omniparser_Schemas/tree/nonprod)
 * [Open a pull request](https://github.com/mednax-it/Omniparser_Schemas/compare/main...nonprod)
-* [Link to main branch](https://github.com/mednax-it/Omniparser_Schemas)
+* [main branch](https://github.com/mednax-it/Omniparser_Schemas)
+
+## Testing
+
+Regression tests live in [omniparser-schema-template-tests](https://github.com/mednax-it/omniparser-schema-template-tests). Tests POST raw HL7 messages to the nonprod parser and assert against the returned FHIR Bundle.
+
+### How it connects
+
+```
+omniparser-schema-template-tests
+  │  POST HL7 message body
+  │  Header: Content-Schema: hl7v2_default
+  ▼
+universal-etl-parser (https://universal-etl-parser.mdnxdev.com/)
+  │  resolves schema by name
+  ▼
+Omniparser_Schemas/hl7v2_default.json  ← must contain your changes
+```
+
+### Run regression tests
+
+```bash
+# Prerequisites: poetry (https://python-poetry.org) and direnv (https://direnv.net)
+export PARSER_URL="https://universal-etl-parser.mdnxdev.com/"
+
+cd omniparser-schema-template-tests
+poetry install
+poetry run test
+```
+
+### Adding test coverage for new schema features
+
+Every schema change that affects FHIR output needs corresponding coverage in `omniparser-schema-template-tests`:
+
+| Step | Location | Action |
+|---|---|---|
+| 1 | `tests/regression/regression_test_data/<Resource>/` | Add HL7 test data file (next sequential number) |
+| 2 | `tests/regression/reg_globals/<resource>_reg_global.py` | Add expected value constants |
+| 3 | `tests/regression/<resource>_resource.py` | Add assertions in a new `if testfile == "<n>":` block |
+| 4 | `tests/regression/main.py` | Register the new test case |
+
+### Known parser schema constraints
+
+The Omniparser `omni.2.1` schema validator enforces strict property rules. The following are **not supported** and will cause a `400` validation error:
+
+- `repeat_index` — accessing specific HL7 repetitions (fields separated by `~`) is not natively supported
+- `repetition_delimiter` — cannot be declared in `file_declaration`
+
+To handle HL7 repeated fields (e.g. PID-9 patient aliases), capture the raw field value without `component_index` and parse repetitions using a `custom_func` JavaScript transform. See `transform_alias_1_last_name` in `hl7v2_default.json` for a working example.
 
 ## HL7 Omniparser Schema
 
