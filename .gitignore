@@ -4,3 +4,4 @@ output*.json
 *.hl7
 
 claude.sh
+.claude
