@@ -525,14 +525,10 @@
                   "object": {
                     "use": {"const": "nickname"},
                     "family": {"xpath": "PID/alias_1_last_name"},
-                    "given": {
-                      "array": [
-                        {"xpath": "PID/alias_1_given_raw", "template": "transform_alias_1_first_name"}
-                      ]
-                    }
+                    "given": {"xpath": "PID/alias_1_given_raw", "template": "transform_alias_1_first_name"}
                   }
                 },
-                {"xpath": ".[contains(PID/alias_1_given_raw, '~')]",
+                {"xpath": ".[PID/alias_2_given_1!='']",
                   "object": {
                     "use": {"const": "nickname"},
                     "family": {"xpath": "PID/alias_1_given_raw", "template": "transform_alias_2_last_name"},
