@@ -7,6 +7,7 @@
     "segment_delimiter": "\r",
     "element_delimiter": "|",
     "component_delimiter": "^",
+    "repetition_delimiter": "~",
     "segment_declarations": [
       {
         "name": "patient",
@@ -55,10 +56,9 @@
                 {"name": "marital_status", "index": 16, "default": "Unknown"},
                 {"name": "hospital_patient_number", "index": 18, "component_index": 1, "default": ""},
                 {"name": "ssn", "index": 19, "default": ""},
-                {"name": "alias_1_last_name", "index": 9, "component_index": 1, "default": ""},
-                {"name": "alias_1_given_raw", "index": 9, "component_index": 2, "default": ""},
-                {"name": "alias_2_given_1", "index": 9, "component_index": 3, "default": ""},
-                {"name": "alias_2_given_2", "index": 9, "component_index": 4, "default": ""},
+                {"name": "alias_family", "index": 9, "component_index": 1, "default": ""},
+                {"name": "alias_given", "index": 9, "component_index": 2, "default": ""},
+                {"name": "alias_middle", "index": 9, "component_index": 3, "default": ""},
                 {"name": "multiple_birth", "index": 24, "default": ""},
                 {"name": "date_of_death", "index": 29, "component_index": 1, "default": ""},
                 {"name": "birth_order", "index": 25, "default": ""},
@@ -521,21 +521,25 @@
                     }
                   }
                 },
-                {"xpath": ".[PID/alias_1_last_name!='']",
+                {"xpath": ".[PID/alias_family!='']",
                   "object": {
                     "use": {"const": "nickname"},
-                    "family": {"xpath": "PID/alias_1_last_name"},
-                    "given": {"xpath": "PID/alias_1_given_raw", "template": "transform_alias_1_first_name"}
-                  }
-                },
-                {"xpath": ".[PID/alias_2_given_1!='']",
-                  "object": {
-                    "use": {"const": "nickname"},
-                    "family": {"xpath": "PID/alias_1_given_raw", "template": "transform_alias_2_last_name"},
+                    "family": {"xpath": "PID/alias_family"},
                     "given": {
                       "array": [
-                        {"xpath": "PID/alias_2_given_1"},
-                        {"xpath": "PID/alias_2_given_2"}
+                        {"xpath": "PID/alias_given"}
+                      ]
+                    }
+                  }
+                },
+                {"xpath": ".[PID/alias_given[2]!='']",
+                  "object": {
+                    "use": {"const": "nickname"},
+                    "family": {"xpath": "PID/alias_family[2]"},
+                    "given": {
+                      "array": [
+                        {"xpath": "PID/alias_given[2]"},
+                        {"xpath": "PID/alias_middle"}
                       ]
                     }
                   }
@@ -2257,24 +2261,6 @@
               {"const": "transform_coverage_codeable"}, {"template": "transform_coverage_codeable"},
               {"const": "group_number"}, {"xpath": "IN1/group_number"}
           ]
-      }
-    },
-    "transform_alias_1_first_name": {
-      "custom_func": {
-        "name": "javascript",
-        "args": [
-          {"const": "val ? val.split('~')[0] : ''"},
-          {"const": "val"}, {"xpath": "."}
-        ]
-      }
-    },
-    "transform_alias_2_last_name": {
-      "custom_func": {
-        "name": "javascript",
-        "args": [
-          {"const": "val && val.indexOf('~') !== -1 ? val.split('~')[1] : ''"},
-          {"const": "val"}, {"xpath": "."}
-        ]
       }
     }
   }
