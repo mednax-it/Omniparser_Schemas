@@ -521,13 +521,13 @@
                     }
                   }
                 },
-                {"xpath": ".[PID/alias_family!='']",
+                {"xpath": ".[PID/alias_family[1]!='']",
                   "object": {
                     "use": {"const": "nickname"},
-                    "family": {"xpath": "PID/alias_family"},
+                    "family": {"xpath": "PID/alias_family[1]"},
                     "given": {
                       "array": [
-                        {"xpath": "PID/alias_given"}
+                        {"xpath": "PID/alias_given[1]"}
                       ]
                     }
                   }
