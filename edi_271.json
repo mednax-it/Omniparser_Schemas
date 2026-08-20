@@ -6,8 +6,6 @@
   "file_declaration": {
     "element_delimiter": "*",
     "segment_delimiter": "~",
-    "repetition_delimiter": "~",
-    "this_does_not_exist_and_throws_an_error": "~",
     "ignore_crlf": true,
     "segment_declarations": [
       {
