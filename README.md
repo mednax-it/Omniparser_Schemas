@@ -82,12 +82,50 @@ Every schema change that affects FHIR output needs corresponding coverage in `om
 
 ### Known parser schema constraints
 
-The Omniparser `omni.2.1` schema validator enforces strict property rules. The following are **not supported** and will cause a `400` validation error:
+The Omniparser `omni.2.1` schema validator enforces strict property rules. The following is **not supported** and will cause a `400` validation error:
 
-- `repeat_index` — accessing specific HL7 repetitions (fields separated by `~`) is not natively supported
-- `repetition_delimiter` — cannot be declared in `file_declaration`
+- `repeat_index` — not a valid element property; `additionalProperties: false` in the validator rejects it
 
-To handle HL7 repeated fields (e.g. PID-9 patient aliases), capture the raw field value without `component_index` and parse repetitions using a `custom_func` JavaScript transform. See `transform_alias_1_last_name` in `hl7v2_default.json` for a working example.
+#### Handling HL7 repeated fields (e.g. PID-9 patient aliases)
+
+`repetition_delimiter` **is supported** in `file_declaration` (introduced in Omniparser on 2023-07-25; present in all versions `>= v1.0.6`). When set, the reader splits each field value on the delimiter before component splitting, producing one IDR node per repetition — all sharing the same element name.
+
+**Pattern — `repetition_delimiter` + XPath positional predicates:**
+
+```json
+"file_declaration": {
+    "repetition_delimiter": "~",
+    ...
+}
+```
+
+Declare a single element for each component position. For a field like PID-9 = `SOMELASTNAME^BABYBOY~SOMELASTNAME^TEST^NOAH`, the reader produces:
+- Two `alias_family` nodes: `SOMELASTNAME`, `SOMELASTNAME`
+- Two `alias_given` nodes: `BABYBOY`, `TEST`
+- One `alias_middle` node: `NOAH`
+
+```json
+{"name": "alias_family", "index": 9, "component_index": 1, "default": ""},
+{"name": "alias_given",  "index": 9, "component_index": 2, "default": ""},
+{"name": "alias_middle", "index": 9, "component_index": 3, "default": ""}
+```
+
+Use XPath positional predicates `[1]` / `[2]` in the output schema to address each repetition:
+
+```json
+{"xpath": ".[PID/alias_family[1]!='']", "object": {
+    "family": {"xpath": "PID/alias_family[1]"},
+    "given":  {"array": [{"xpath": "PID/alias_given[1]"}]}
+}},
+{"xpath": ".[PID/alias_given[2]!='']", "object": {
+    "family": {"xpath": "PID/alias_family[2]"},
+    "given":  {"array": [{"xpath": "PID/alias_given[2]"}, {"xpath": "PID/alias_middle"}]}
+}}
+```
+
+> **Important:** Scalar fields (`family`, `use`, etc.) require exactly one XPath result. Always use explicit positional predicates (`[1]`, `[2]`) when `repetition_delimiter` is set — omitting them on a multi-value field causes a `400` error: *"xpath query … yielded more than one result"*.
+
+See `hl7v2_default.json` (PID alias elements and `Patient.name` array) for a complete working example.
 
 ## HL7 Omniparser Schema
 
