@@ -551,8 +551,8 @@
                 {"xpath": ".[PID/home_phone!='']",
                   "object": {
                     "system": {"const": "phone"},
-                    "value": {"xpath": "PID/home_phone"},
-                    "use": {"xpath": "PID/home_phone_type", "template": "transform_phone_type"}
+                    "value": {"xpath": "PID/home_phone[1]"},
+                    "use": {"xpath": "PID/home_phone_type[1]", "template": "transform_phone_type"}
                   }
                 },
                 {"xpath": ".[PID/work_phone!='']",
