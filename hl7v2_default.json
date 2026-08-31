@@ -524,10 +524,10 @@
                 {"xpath": ".[PID/alias_family[1]!='']",
                   "object": {
                     "use": {"const": "nickname"},
-                    "family": {"xpath": "PID/alias_family[1]"},
+                    "family": {"xpath": "PID/alias_family[1]", "template": "transform_strip_hl7_escape"},
                     "given": {
                       "array": [
-                        {"xpath": "PID/alias_given[1]"}
+                        {"xpath": "PID/alias_given[1]", "template": "transform_strip_hl7_escape"}
                       ]
                     }
                   }
@@ -535,11 +535,11 @@
                 {"xpath": ".[PID/alias_given[2]!='']",
                   "object": {
                     "use": {"const": "nickname"},
-                    "family": {"xpath": "PID/alias_family[2]"},
+                    "family": {"xpath": "PID/alias_family[2]", "template": "transform_strip_hl7_escape"},
                     "given": {
                       "array": [
-                        {"xpath": "PID/alias_given[2]"},
-                        {"xpath": "PID/alias_middle"}
+                        {"xpath": "PID/alias_given[2]", "template": "transform_strip_hl7_escape"},
+                        {"xpath": "PID/alias_middle", "template": "transform_strip_hl7_escape"}
                       ]
                     }
                   }
@@ -2261,6 +2261,15 @@
               {"const": "transform_coverage_codeable"}, {"template": "transform_coverage_codeable"},
               {"const": "group_number"}, {"xpath": "IN1/group_number"}
           ]
+      }
+    },
+    "transform_strip_hl7_escape": {
+      "custom_func": {
+        "name": "javascript",
+        "args": [
+          {"const": "val ? val.replace(/\\\\+$/, '') : ''"},
+          {"const": "val"}, {"xpath": "."}
+        ]
       }
     }
   }
