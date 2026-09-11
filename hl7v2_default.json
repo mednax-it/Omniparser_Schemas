@@ -1486,10 +1486,10 @@
                 "array": [
                   { "xpath": "PV1",
                     "object": {
-                      "family": {"xpath": "attending_physician_last_name"},
+                      "family": {"xpath": "attending_physician_last_name[1]"},
                       "given": {
                           "array": [
-                              {"xpath": "attending_physician_first_name"}
+                              {"xpath": "attending_physician_first_name[1]"}
                           ]
                       }
                     }
@@ -1562,10 +1562,10 @@
                 "array": [
                   { "xpath": "PV1",
                     "object": {
-                      "family": {"xpath": "referring_physician_last_name"},
+                      "family": {"xpath": "referring_physician_last_name[1]"},
                       "given": {
                           "array": [
-                              {"xpath": "referring_physician_first_name"}
+                              {"xpath": "referring_physician_first_name[1]"}
                           ]
                       }
                     }
@@ -1638,10 +1638,10 @@
                 "array": [
                   { "xpath": "PV1",
                     "object": {
-                      "family": {"xpath": "admitting_physician_last_name"},
+                      "family": {"xpath": "admitting_physician_last_name[1]"},
                       "given": {
                           "array": [
-                              {"xpath": "admitting_physician_first_name"}
+                              {"xpath": "admitting_physician_first_name[1]"}
                           ]
                       }
                     }
