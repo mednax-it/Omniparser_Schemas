@@ -1771,7 +1771,7 @@
                                 {
                                     "object": {
                                         "use": {
-                                            "xpath": "PID/address_type",
+                                            "xpath": "PID/address_type[1]",
                                             "template": "transform_address_use"
                                         },
                                         "type": {
@@ -2466,7 +2466,7 @@
                                 {
                                     "object": {
                                         "use": {
-                                            "xpath": "GT1/address_type",
+                                            "xpath": "GT1/address_type[1]",
                                             "template": "transform_address_use"
                                         },
                                         "type": {
@@ -2705,7 +2705,7 @@
                                 {
                                     "object": {
                                         "use": {
-                                            "xpath": "IN1/insured_address_type",
+                                            "xpath": "IN1/insured_address_type[1]",
                                             "template": "transform_address_use"
                                         },
                                         "type": {
@@ -2829,7 +2829,7 @@
                                 {
                                     "object": {
                                         "use": {
-                                            "xpath": "IN1/address_type",
+                                            "xpath": "IN1/address_type[1]",
                                             "template": "transform_address_use"
                                         },
                                         "type": {
