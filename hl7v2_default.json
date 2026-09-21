@@ -1241,7 +1241,7 @@
                             "template": "practitioner_referring_resource"
                         },
                         {
-                            "xpath": ".[PV1/admitting_physician_id[1]!='' and not(PV1/admitting_physician_id[1]=PV1/attending_physician_id[1] or PV1/admitting_physician_id[1]=PV1/referring_physician_id)]",
+                            "xpath": ".[PV1/admitting_physician_id[1]!='' and not(PV1/admitting_physician_id[1]=(PV1/attending_physician_id[1]|PV1/referring_physician_id))]",
                             "template": "practitioner_admitting_resource"
                         },
                         {
@@ -4328,19 +4328,25 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "admtisatnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : admtisref ? 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
+                        "const": "admtis===attnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : admtis===refr ? 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
                     },
                     {
-                        "const": "admtisref"
+                        "const": "admtis"
                     },
                     {
-                        "xpath": ".[PV1/admitting_physician_id[1]=PV1/referring_physician_id]"
+                        "xpath": "PV1/admitting_physician_id[1]"
                     },
                     {
-                        "const": "admtisatnd"
+                        "const": "attnd"
                     },
                     {
-                        "xpath": ".[PV1/admitting_physician_id[1]=PV1/attending_physician_id[1]]"
+                        "xpath": "PV1/attending_physician_id[1]"
+                    },
+                    {
+                        "const": "refr"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id"
                     }
                 ]
             }
