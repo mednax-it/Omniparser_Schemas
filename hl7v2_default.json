@@ -1237,11 +1237,11 @@
                             "template": "practitioner_attending_resource"
                         },
                         {
-                            "xpath": ".[PV1/referring_physician_id[1]!='' and PV1/referring_physician_id[1]!=PV1/attending_physician_id[1]]",
+                            "xpath": ".[PV1/referring_physician_id!='' and PV1/referring_physician_id!=PV1/attending_physician_id[1]]",
                             "template": "practitioner_referring_resource"
                         },
                         {
-                            "xpath": ".[PV1/admitting_physician_id[1]!='' and PV1/admitting_physician_id[1]!=PV1/attending_physician_id[1] and PV1/admitting_physician_id[1]!=PV1/referring_physician_id[1]]",
+                            "xpath": ".[PV1/admitting_physician_id[1]!='' and PV1/admitting_physician_id[1]!=PV1/attending_physician_id[1] and PV1/admitting_physician_id[1]!=PV1/referring_physician_id]",
                             "template": "practitioner_admitting_resource"
                         },
                         {
@@ -1979,7 +1979,7 @@
                                     }
                                 },
                                 {
-                                    "xpath": ".[PV1/referring_physician_id[1]!='']",
+                                    "xpath": ".[PV1/referring_physician_id!='']",
                                     "object": {
                                         "type": {
                                             "array": [
@@ -3529,7 +3529,7 @@
                                             "const": "https://pediatrix.com/fhir/NamingSystem/npi-id"
                                         },
                                         "value": {
-                                            "xpath": "PV1/referring_physician_id[1]",
+                                            "xpath": "PV1/referring_physician_id",
                                             "template": "transform_physician_identifier"
                                         },
                                         "type": {
@@ -4272,7 +4272,7 @@
                         "const": "npi"
                     },
                     {
-                        "xpath": "referring_physician_id[1]",
+                        "xpath": "referring_physician_id",
                         "template": "transform_physician_identifier"
                     },
                     {
@@ -4318,7 +4318,7 @@
                         "const": "refisatnd"
                     },
                     {
-                        "xpath": ".[PV1/referring_physician_id[1]=PV1/attending_physician_id[1]]"
+                        "xpath": ".[PV1/referring_physician_id=PV1/attending_physician_id[1]]"
                     }
                 ]
             }
@@ -4334,7 +4334,7 @@
                         "const": "admtisref"
                     },
                     {
-                        "xpath": ".[PV1/admitting_physician_id[1]=PV1/referring_physician_id[1]]"
+                        "xpath": ".[PV1/admitting_physician_id[1]=PV1/referring_physician_id]"
                     },
                     {
                         "const": "admtisatnd"
