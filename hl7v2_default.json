@@ -1777,24 +1777,24 @@
                                         "line": {
                                             "array": [
                                                 {
-                                                    "xpath": "PID/address_1[1]"
+                                                    "xpath": "PID/address_1"
                                                 },
                                                 {
-                                                    "xpath": "PID/address_2[1]"
+                                                    "xpath": "PID/address_2"
                                                 }
                                             ]
                                         },
                                         "city": {
-                                            "xpath": "PID/city[1]"
+                                            "xpath": "PID/city"
                                         },
                                         "state": {
-                                            "xpath": "PID/state[1]"
+                                            "xpath": "PID/state"
                                         },
                                         "postalCode": {
-                                            "xpath": "PID/zip[1]"
+                                            "xpath": "PID/zip"
                                         },
                                         "country": {
-                                            "xpath": "PID/country[1]"
+                                            "xpath": "PID/country"
                                         }
                                     }
                                 }
@@ -2472,24 +2472,24 @@
                                         "line": {
                                             "array": [
                                                 {
-                                                    "xpath": "GT1/address_1[1]"
+                                                    "xpath": "GT1/address_1"
                                                 },
                                                 {
-                                                    "xpath": "GT1/address_2[1]"
+                                                    "xpath": "GT1/address_2"
                                                 }
                                             ]
                                         },
                                         "city": {
-                                            "xpath": "GT1/city[1]"
+                                            "xpath": "GT1/city"
                                         },
                                         "state": {
-                                            "xpath": "GT1/state[1]"
+                                            "xpath": "GT1/state"
                                         },
                                         "postalCode": {
-                                            "xpath": "GT1/zip[1]"
+                                            "xpath": "GT1/zip"
                                         },
                                         "country": {
-                                            "xpath": "GT1/country[1]"
+                                            "xpath": "GT1/country"
                                         }
                                     }
                                 }
@@ -2711,24 +2711,24 @@
                                         "line": {
                                             "array": [
                                                 {
-                                                    "xpath": "IN1/insured_address_1[1]"
+                                                    "xpath": "IN1/insured_address_1"
                                                 },
                                                 {
-                                                    "xpath": "IN1/insured_address_2[1]"
+                                                    "xpath": "IN1/insured_address_2"
                                                 }
                                             ]
                                         },
                                         "city": {
-                                            "xpath": "IN1/insured_city[1]"
+                                            "xpath": "IN1/insured_city"
                                         },
                                         "state": {
-                                            "xpath": "IN1/insured_state[1]"
+                                            "xpath": "IN1/insured_state"
                                         },
                                         "postalCode": {
-                                            "xpath": "IN1/insured_zip[1]"
+                                            "xpath": "IN1/insured_zip"
                                         },
                                         "country": {
-                                            "xpath": "IN1/insured_country[1]"
+                                            "xpath": "IN1/insured_country"
                                         }
                                     }
                                 }
@@ -2835,24 +2835,24 @@
                                         "line": {
                                             "array": [
                                                 {
-                                                    "xpath": "IN1/address_1[1]"
+                                                    "xpath": "IN1/address_1"
                                                 },
                                                 {
-                                                    "xpath": "IN1/address_2[1]"
+                                                    "xpath": "IN1/address_2"
                                                 }
                                             ]
                                         },
                                         "city": {
-                                            "xpath": "IN1/city[1]"
+                                            "xpath": "IN1/city"
                                         },
                                         "state": {
-                                            "xpath": "IN1/state[1]"
+                                            "xpath": "IN1/state"
                                         },
                                         "postalCode": {
-                                            "xpath": "IN1/zip[1]"
+                                            "xpath": "IN1/zip"
                                         },
                                         "country": {
-                                            "xpath": "IN1/country[1]"
+                                            "xpath": "IN1/country"
                                         }
                                     }
                                 }
