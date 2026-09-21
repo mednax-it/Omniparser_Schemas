@@ -584,7 +584,7 @@
               "array": [
                 {
                   "object": {
-                    "use": {"xpath": "PID/address_type", "template": "transform_address_use"},
+                    "use": {"xpath": "PID/address_type[1]", "template": "transform_address_use"},
                     "type": {"const": "physical"},
                     "line": {
                         "array": [
@@ -1020,7 +1020,7 @@
                 "array": [
                   {
                     "object": {
-                      "use": {"xpath": "GT1/address_type", "template": "transform_address_use"},
+                      "use": {"xpath": "GT1/address_type[1]", "template": "transform_address_use"},
                       "type": {"const": "physical"},
                       "line": {
                           "array": [
@@ -1152,7 +1152,7 @@
                 "array": [
                   {
                     "object": {
-                      "use": {"xpath": "IN1/insured_address_type", "template": "transform_address_use"},
+                      "use": {"xpath": "IN1/insured_address_type[1]", "template": "transform_address_use"},
                       "type": {"const": "physical"},
                       "line": {
                           "array": [
@@ -1220,7 +1220,7 @@
               "array": [
                 {
                   "object": {
-                    "use": {"xpath": "IN1/address_type", "template": "transform_address_use"},
+                    "use": {"xpath": "IN1/address_type[1]", "template": "transform_address_use"},
                     "type": {"const": "physical"},
                     "line": {
                         "array": [
