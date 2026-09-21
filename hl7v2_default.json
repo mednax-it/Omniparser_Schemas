@@ -1241,7 +1241,7 @@
                             "template": "practitioner_referring_resource"
                         },
                         {
-                            "xpath": ".[PV1/admitting_physician_id[1]!='' and PV1/admitting_physician_id[1]!=PV1/attending_physician_id[1] and PV1/admitting_physician_id[1]!=PV1/referring_physician_id]",
+                            "xpath": ".[(PV1/admitting_physician_id[1]!='') and (PV1/admitting_physician_id[1]!=PV1/attending_physician_id[1]) and (PV1/admitting_physician_id[1]!=PV1/referring_physician_id)]",
                             "template": "practitioner_admitting_resource"
                         },
                         {
