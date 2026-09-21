@@ -1627,6 +1627,9 @@
                             "array": [
                                 {
                                     "object": {
+                                        "use": {
+                                            "const": "official"
+                                        },
                                         "family": {
                                             "xpath": "PID/last_name"
                                         },
