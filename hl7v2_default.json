@@ -3482,12 +3482,12 @@
                                     "xpath": "PV1",
                                     "object": {
                                         "family": {
-                                            "xpath": "referring_physician_last_name"
+                                            "xpath": "referring_physician_last_name[1]"
                                         },
                                         "given": {
                                             "array": [
                                                 {
-                                                    "xpath": "referring_physician_first_name"
+                                                    "xpath": "referring_physician_first_name[1]"
                                                 }
                                             ]
                                         }
