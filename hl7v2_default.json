@@ -1631,15 +1631,15 @@
                                             "const": "official"
                                         },
                                         "family": {
-                                            "xpath": "PID/last_name"
+                                            "xpath": "PID/last_name[1]"
                                         },
                                         "given": {
                                             "array": [
                                                 {
-                                                    "xpath": "PID/first_name"
+                                                    "xpath": "PID/first_name[1]"
                                                 },
                                                 {
-                                                    "xpath": "PID/middle_name"
+                                                    "xpath": "PID/middle_name[1]"
                                                 }
                                             ]
                                         }
@@ -2804,7 +2804,7 @@
                             ]
                         },
                         "name": {
-                            "xpath": "IN1/company_name"
+                            "xpath": "IN1/company_name[1]"
                         },
                         "telecom": {
                             "array": [
