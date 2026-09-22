@@ -1517,7 +1517,7 @@
                                             "const": "https://pediatrix.com/fhir/NamingSystem/mrn-id"
                                         },
                                         "value": {
-                                            "xpath": "PID/mrn"
+                                            "xpath": "PID/mrn[1]"
                                         },
                                         "assigner": {
                                             "object": {
@@ -3532,7 +3532,7 @@
                                             "const": "https://pediatrix.com/fhir/NamingSystem/npi-id"
                                         },
                                         "value": {
-                                            "xpath": "PV1/referring_physician_id",
+                                            "xpath": "PV1/referring_physician_id[1]",
                                             "template": "transform_physician_identifier"
                                         },
                                         "type": {
@@ -4275,7 +4275,7 @@
                         "const": "npi"
                     },
                     {
-                        "xpath": "referring_physician_id",
+                        "xpath": "referring_physician_id[1]",
                         "template": "transform_physician_identifier"
                     },
                     {
@@ -4337,7 +4337,7 @@
                         "const": "admtis"
                     },
                     {
-                        "xpath": "PV1/admitting_physician_id"
+                        "xpath": "PV1/admitting_physician_id[1]"
                     },
                     {
                         "const": "attnd"
@@ -4349,7 +4349,7 @@
                         "const": "refr"
                     },
                     {
-                        "xpath": "PV1/referring_physician_id"
+                        "xpath": "PV1/referring_physician_id[1]"
                     }
                 ]
             }
@@ -4439,7 +4439,7 @@
                         "xpath": "MSH/message_control_id"
                     },
                     {
-                        "xpath": "PID/mrn"
+                        "xpath": "PID/mrn[1]"
                     },
                     {
                         "xpath": "MSH/datetime_of_message"
@@ -4551,7 +4551,7 @@
                         "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|"
                     },
                     {
-                        "xpath": "PID/mrn"
+                        "xpath": "PID/mrn[1]"
                     },
                     {
                         "const": "&mrn-assigner=urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"
@@ -4716,7 +4716,7 @@
                 "name": "concat",
                 "args": [
                     {
-                        "xpath": "PID/mrn"
+                        "xpath": "PID/mrn[1]"
                     },
                     {
                         "const": "-{{FacilityId}}"

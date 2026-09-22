@@ -434,7 +434,7 @@
                 {"xpath": ".[PID/mrn!='']",
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/mrn-id"},
-                    "value": {"xpath": "PID/mrn"},
+                    "value": {"xpath": "PID/mrn[1]"},
                     "assigner": {
                       "object": {
                         "reference": {"const": "urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"}
@@ -2097,7 +2097,7 @@
             "name": "concat",
             "args": [
                 { "xpath": "MSH/message_control_id" },
-                { "xpath": "PID/mrn" },
+                { "xpath": "PID/mrn[1]" },
                 { "xpath": "MSH/datetime_of_message" }
             ]
         }
@@ -2148,7 +2148,7 @@
           "name": "concat",
           "args": [
               { "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
-              { "xpath": "PID/mrn" },
+              { "xpath": "PID/mrn[1]" },
               { "const": "&mrn-assigner=urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7" }
           ]
       }
@@ -2256,7 +2256,7 @@
       "custom_func": {
           "name": "concat",
           "args": [
-              { "xpath": "PID/mrn" },
+              { "xpath": "PID/mrn[1]" },
               { "const": "-{{FacilityId}}" }
           ]
       }
