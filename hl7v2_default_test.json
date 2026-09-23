@@ -55,6 +55,9 @@
                 {"name": "marital_status", "index": 16, "default": "Unknown"},
                 {"name": "hospital_patient_number", "index": 18, "component_index": 1, "default": ""},
                 {"name": "ssn", "index": 19, "default": ""},
+                {"name": "alias_1_last_name", "index": 9, "component_index": 1, "default": ""},
+                {"name": "alias_1_first_name", "index": 9, "component_index": 2, "default": ""},
+                {"name": "patient_alias_raw", "index": 9, "default": ""},
                 {"name": "multiple_birth", "index": 24, "default": ""},
                 {"name": "date_of_death", "index": 29, "component_index": 1, "default": ""},
                 {"name": "birth_order", "index": 25, "default": ""},
@@ -431,7 +434,7 @@
                 {"xpath": ".[PID/mrn!='']",
                   "object": {
                     "system": {"const": "https://pediatrix.com/fhir/NamingSystem/mrn-id"},
-                    "value": {"xpath": "PID/mrn"},
+                    "value": {"xpath": "PID/mrn[1]"},
                     "assigner": {
                       "object": {
                         "reference": {"const": "urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7"}
@@ -507,12 +510,36 @@
               "array": [
                 {
                   "object": {
-                    "family": {"xpath": "PID/last_name"},
+                    "use": {"const": "official"},
+                    "family": {"xpath": "PID/last_name[1]"},
                     "given": {
                         "array": [
-                            {"xpath": "PID/first_name"},
-                            {"xpath": "PID/middle_name"}
+                            {"xpath": "PID/first_name[1]"},
+                            {"xpath": "PID/middle_name[1]"}
                         ]
+                    }
+                  }
+                },
+                {"xpath": ".[PID/alias_1_last_name!='']",
+                  "object": {
+                    "use": {"const": "nickname"},
+                    "family": {"xpath": "PID/alias_1_last_name"},
+                    "given": {
+                      "array": [
+                        {"xpath": "PID/alias_1_first_name"}
+                      ]
+                    }
+                  }
+                },
+                {"xpath": ".[contains(PID/patient_alias_raw, '~')]",
+                  "object": {
+                    "use": {"const": "nickname"},
+                    "family": {"xpath": "PID/patient_alias_raw", "template": "transform_alias_2_last_name"},
+                    "given": {
+                      "array": [
+                        {"xpath": "PID/patient_alias_raw", "template": "transform_alias_2_first_name"},
+                        {"xpath": "PID/patient_alias_raw", "template": "transform_alias_2_middle_name"}
+                      ]
                     }
                   }
                 }
@@ -557,23 +584,23 @@
               "array": [
                 {
                   "object": {
-                    "use": {"xpath": "PID/address_type", "template": "transform_address_use"},
+                    "use": {"xpath": "PID/address_type[1]", "template": "transform_address_use"},
                     "type": {"const": "physical"},
                     "line": {
                         "array": [
-                            {"xpath": "PID/address_1"},
-                            {"xpath": "PID/address_2"}
+                            {"xpath": "PID/address_1[1]"},
+                            {"xpath": "PID/address_2[1]"}
                         ]
                     },
-                    "city": {"xpath": "PID/city"},
-                    "state": {"xpath": "PID/state"},
-                    "postalCode": {"xpath": "PID/zip"},
-                    "country": {"xpath": "PID/country"}
+                    "city": {"xpath": "PID/city[1]"},
+                    "state": {"xpath": "PID/state[1]"},
+                    "postalCode": {"xpath": "PID/zip[1]"},
+                    "country": {"xpath": "PID/country[1]"}
                   }
                 }
               ]
             },
-            "maritalStatus": {"xpath": ".[PID/marital_status!='']",
+            "maritalStatus": {"xpath": ".[lower-case(PID/marital_status) = 'married' or lower-case(PID/marital_status) = 'single' or lower-case(PID/marital_status) = 'divorced' or lower-case(PID/marital_status) = 'm' or lower-case(PID/marital_status) = 's' or lower-case(PID/marital_status) = 'd']",
               "object": {
                 "coding": {
                   "array": [
@@ -993,18 +1020,18 @@
                 "array": [
                   {
                     "object": {
-                      "use": {"xpath": "GT1/address_type", "template": "transform_address_use"},
+                      "use": {"xpath": "GT1/address_type[1]", "template": "transform_address_use"},
                       "type": {"const": "physical"},
                       "line": {
                           "array": [
-                              {"xpath": "GT1/address_1"},
-                              {"xpath": "GT1/address_2"}
+                              {"xpath": "GT1/address_1[1]"},
+                              {"xpath": "GT1/address_2[1]"}
                           ]
                       },
-                      "city": {"xpath": "GT1/city"},
-                      "state": {"xpath": "GT1/state"},
-                      "postalCode": {"xpath": "GT1/zip"},
-                      "country": {"xpath": "GT1/country"}
+                      "city": {"xpath": "GT1/city[1]"},
+                      "state": {"xpath": "GT1/state[1]"},
+                      "postalCode": {"xpath": "GT1/zip[1]"},
+                      "country": {"xpath": "GT1/country[1]"}
                     }
                   }
                 ]
@@ -1125,18 +1152,18 @@
                 "array": [
                   {
                     "object": {
-                      "use": {"xpath": "IN1/insured_address_type", "template": "transform_address_use"},
+                      "use": {"xpath": "IN1/insured_address_type[1]", "template": "transform_address_use"},
                       "type": {"const": "physical"},
                       "line": {
                           "array": [
-                              {"xpath": "IN1/insured_address_1"},
-                              {"xpath": "IN1/insured_address_2"}
+                              {"xpath": "IN1/insured_address_1[1]"},
+                              {"xpath": "IN1/insured_address_2[1]"}
                           ]
                       },
-                      "city": {"xpath": "IN1/insured_city"},
-                      "state": {"xpath": "IN1/insured_state"},
-                      "postalCode": {"xpath": "IN1/insured_zip"},
-                      "country": {"xpath": "IN1/insured_country"}
+                      "city": {"xpath": "IN1/insured_city[1]"},
+                      "state": {"xpath": "IN1/insured_state[1]"},
+                      "postalCode": {"xpath": "IN1/insured_zip[1]"},
+                      "country": {"xpath": "IN1/insured_country[1]"}
                     }
                   }
                 ]
@@ -1177,7 +1204,7 @@
                 }
               ]
             },
-            "name": {"xpath": "IN1/company_name"},
+            "name": {"xpath": "IN1/company_name[1]"},
             "telecom": {
               "array": [
                 {"xpath": ".[IN1/insurance_phone!='']",
@@ -1193,18 +1220,18 @@
               "array": [
                 {
                   "object": {
-                    "use": {"xpath": "IN1/address_type", "template": "transform_address_use"},
+                    "use": {"xpath": "IN1/address_type[1]", "template": "transform_address_use"},
                     "type": {"const": "physical"},
                     "line": {
                         "array": [
-                            {"xpath": "IN1/address_1"},
-                            {"xpath": "IN1/address_2"}
+                            {"xpath": "IN1/address_1[1]"},
+                            {"xpath": "IN1/address_2[1]"}
                         ]
                     },
-                    "city": {"xpath": "IN1/city"},
-                    "state": {"xpath": "IN1/state"},
-                    "postalCode": {"xpath": "IN1/zip"},
-                    "country": {"xpath": "IN1/country"}
+                    "city": {"xpath": "IN1/city[1]"},
+                    "state": {"xpath": "IN1/state[1]"},
+                    "postalCode": {"xpath": "IN1/zip[1]"},
+                    "country": {"xpath": "IN1/country[1]"}
                   }
                 }
               ]
@@ -1485,10 +1512,10 @@
                 "array": [
                   { "xpath": "PV1",
                     "object": {
-                      "family": {"xpath": "attending_physician_last_name"},
+                      "family": {"xpath": "attending_physician_last_name[1]"},
                       "given": {
                           "array": [
-                              {"xpath": "attending_physician_first_name"}
+                              {"xpath": "attending_physician_first_name[1]"}
                           ]
                       }
                     }
@@ -1561,10 +1588,10 @@
                 "array": [
                   { "xpath": "PV1",
                     "object": {
-                      "family": {"xpath": "referring_physician_last_name"},
+                      "family": {"xpath": "referring_physician_last_name[1]"},
                       "given": {
                           "array": [
-                              {"xpath": "referring_physician_first_name"}
+                              {"xpath": "referring_physician_first_name[1]"}
                           ]
                       }
                     }
@@ -1637,10 +1664,10 @@
                 "array": [
                   { "xpath": "PV1",
                     "object": {
-                      "family": {"xpath": "admitting_physician_last_name"},
+                      "family": {"xpath": "admitting_physician_last_name[1]"},
                       "given": {
                           "array": [
-                              {"xpath": "admitting_physician_first_name"}
+                              {"xpath": "admitting_physician_first_name[1]"}
                           ]
                       }
                     }
@@ -2070,7 +2097,7 @@
             "name": "concat",
             "args": [
                 { "xpath": "MSH/message_control_id" },
-                { "xpath": "PID/mrn" },
+                { "xpath": "PID/mrn[1]" },
                 { "xpath": "MSH/datetime_of_message" }
             ]
         }
@@ -2121,7 +2148,7 @@
           "name": "concat",
           "args": [
               { "const": "Patient?identifier=https://pediatrix.com/fhir/NamingSystem/mrn-id|" },
-              { "xpath": "PID/mrn" },
+              { "xpath": "PID/mrn[1]" },
               { "const": "&mrn-assigner=urn:uuid:61ebe121-aa02-0001-0001-983a382abcd7" }
           ]
       }
@@ -2229,7 +2256,7 @@
       "custom_func": {
           "name": "concat",
           "args": [
-              { "xpath": "PID/mrn" },
+              { "xpath": "PID/mrn[1]" },
               { "const": "-{{FacilityId}}" }
           ]
       }
@@ -2242,6 +2269,33 @@
               {"const": "transform_coverage_codeable"}, {"template": "transform_coverage_codeable"},
               {"const": "group_number"}, {"xpath": "IN1/group_number"}
           ]
+      }
+    },
+    "transform_alias_2_last_name": {
+      "custom_func": {
+        "name": "javascript",
+        "args": [
+          {"const": "val && val.indexOf('~') !== -1 ? val.split('~')[1].split('^')[0] : ''"},
+          {"const": "val"}, {"xpath": "."}
+        ]
+      }
+    },
+    "transform_alias_2_first_name": {
+      "custom_func": {
+        "name": "javascript",
+        "args": [
+          {"const": "val && val.indexOf('~') !== -1 ? val.split('~')[1].split('^')[1] || '' : ''"},
+          {"const": "val"}, {"xpath": "."}
+        ]
+      }
+    },
+    "transform_alias_2_middle_name": {
+      "custom_func": {
+        "name": "javascript",
+        "args": [
+          {"const": "val && val.indexOf('~') !== -1 ? val.split('~')[1].split('^')[2] || '' : ''"},
+          {"const": "val"}, {"xpath": "."}
+        ]
       }
     }
   }
