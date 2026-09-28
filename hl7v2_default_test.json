@@ -2090,7 +2090,7 @@
           "name": "javascript",
           "args": [
             {"const": "!guarantornumber || guarantornumber == '' ? mrnfacility + '-GT1-' + setid.toString() : mrnfacility + '-' + encodeURIComponent(guarantornumber).replace(/\\%[A-F0-9]{2}/g,'')"},
-            {"const": "guarantornumber"}, {"xpath": "guarantor_number"},
+            {"const": "guarantornumber"}, {"xpath": "guarantor_number[1]"},
             {"const": "setid"}, {"xpath": "set_id", "template": "transform_guarantor_set_id"},
             {"const": "mrnfacility"}, {"xpath": "../..", "template": "concat_mrn_facility"}
           ]
