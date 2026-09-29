@@ -1478,7 +1478,7 @@
                             }
                         },
                         "name": {
-                            "xpath": "PV1/point_of_care"
+                            "xpath": "PV1/point_of_care[1]"
                         }
                     }
                 },
@@ -1556,7 +1556,7 @@
                                             "const": "http://hl7.org/fhir/sid/us-ssn"
                                         },
                                         "value": {
-                                            "xpath": "PID/ssn",
+                                            "xpath": "PID/ssn[1]",
                                             "template": "transform_ssn"
                                         },
                                         "type": {
@@ -1589,7 +1589,7 @@
                                             "const": "https://pediatrix.com/fhir/NamingSystem/hospital-patient-id"
                                         },
                                         "value": {
-                                            "xpath": "PID/hospital_patient_number"
+                                            "xpath": "PID/hospital_patient_number[1]"
                                         },
                                         "assigner": {
                                             "object": {
@@ -1682,7 +1682,7 @@
                                                     "template": "transform_strip_hl7_escape"
                                                 },
                                                 {
-                                                    "xpath": "PID/alias_middle",
+                                                    "xpath": "PID/alias_middle[1]",
                                                     "template": "transform_strip_hl7_escape"
                                                 }
                                             ]
@@ -1755,15 +1755,15 @@
                             ]
                         },
                         "gender": {
-                            "xpath": "PID/gender",
+                            "xpath": "PID/gender[1]",
                             "template": "transform_gender_code"
                         },
                         "birthDate": {
-                            "xpath": "PID/dob",
+                            "xpath": "PID/dob[1]",
                             "template": "transform_datetime"
                         },
                         "deceasedDateTime": {
-                            "xpath": "PID/date_of_death",
+                            "xpath": "PID/date_of_death[1]",
                             "template": "transform_datetime"
                         },
                         "address": {
@@ -1809,7 +1809,7 @@
                                 "coding": {
                                     "array": [
                                         {
-                                            "xpath": "PID/marital_status",
+                                            "xpath": "PID/marital_status[1]",
                                             "object": {
                                                 "system": {
                                                     "const": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
@@ -1827,7 +1827,7 @@
                             }
                         },
                         "multipleBirthInteger": {
-                            "xpath": "PID/birth_order",
+                            "xpath": "PID/birth_order[1]",
                             "template": "transform_patient_birthorder"
                         }
                     }
@@ -1908,11 +1908,11 @@
                         "period": {
                             "object": {
                                 "start": {
-                                    "xpath": "PV1/admit_datetime",
+                                    "xpath": "PV1/admit_datetime[1]",
                                     "template": "transform_datetime"
                                 },
                                 "end": {
-                                    "xpath": "PV1/discharge_datetime",
+                                    "xpath": "PV1/discharge_datetime[1]",
                                     "template": "transform_datetime"
                                 }
                             }
@@ -2294,7 +2294,7 @@
                                 "const": "index"
                             },
                             {
-                                "xpath": "GT1/set_id",
+                                "xpath": "GT1/set_id[1]",
                                 "template": "transform_guarantor_set_id"
                             },
                             {
@@ -2331,7 +2331,7 @@
                                             "const": "http://hl7.org/fhir/sid/us-ssn"
                                         },
                                         "value": {
-                                            "xpath": "GT1/ssn",
+                                            "xpath": "GT1/ssn[1]",
                                             "template": "transform_ssn"
                                         },
                                         "type": {
@@ -2364,15 +2364,15 @@
                                 {
                                     "object": {
                                         "family": {
-                                            "xpath": "GT1/last_name"
+                                            "xpath": "GT1/last_name[1]"
                                         },
                                         "given": {
                                             "array": [
                                                 {
-                                                    "xpath": "GT1/first_name"
+                                                    "xpath": "GT1/first_name[1]"
                                                 },
                                                 {
-                                                    "xpath": "GT1/middle_name"
+                                                    "xpath": "GT1/middle_name[1]"
                                                 }
                                             ]
                                         }
@@ -2454,11 +2454,11 @@
                             ]
                         },
                         "gender": {
-                            "xpath": "GT1/gender",
+                            "xpath": "GT1/gender[1]",
                             "template": "transform_gender_code"
                         },
                         "birthDate": {
-                            "xpath": "GT1/dob",
+                            "xpath": "GT1/dob[1]",
                             "template": "transform_datetime"
                         },
                         "address": {
@@ -2532,7 +2532,7 @@
                                 "const": "index"
                             },
                             {
-                                "xpath": "IN1/set_id",
+                                "xpath": "IN1/set_id[1]",
                                 "template": "transform_insurance_set_id"
                             },
                             {
@@ -2603,15 +2603,15 @@
                                 {
                                     "object": {
                                         "family": {
-                                            "xpath": "IN1/insured_last_name"
+                                            "xpath": "IN1/insured_last_name[1]"
                                         },
                                         "given": {
                                             "array": [
                                                 {
-                                                    "xpath": "IN1/insured_first_name"
+                                                    "xpath": "IN1/insured_first_name[1]"
                                                 },
                                                 {
-                                                    "xpath": "IN1/insured_middle_name"
+                                                    "xpath": "IN1/insured_middle_name[1]"
                                                 }
                                             ]
                                         }
@@ -2693,11 +2693,11 @@
                             ]
                         },
                         "gender": {
-                            "xpath": "IN1/insured_gender",
+                            "xpath": "IN1/insured_gender[1]",
                             "template": "transform_gender_code"
                         },
                         "birthDate": {
-                            "xpath": "IN1/insured_dob",
+                            "xpath": "IN1/insured_dob[1]",
                             "template": "transform_datetime"
                         },
                         "address": {
@@ -2771,7 +2771,7 @@
                                 "const": "index"
                             },
                             {
-                                "xpath": "IN1/set_id",
+                                "xpath": "IN1/set_id[1]",
                                 "template": "transform_insurance_set_id"
                             },
                             {
@@ -2898,7 +2898,7 @@
                                 "const": "index"
                             },
                             {
-                                "xpath": "IN1/set_id",
+                                "xpath": "IN1/set_id[1]",
                                 "template": "transform_insurance_set_id"
                             },
                             {
@@ -2934,7 +2934,7 @@
                                             "const": "https://pediatrix.com/fhir/NamingSystem/insurance-policy-id"
                                         },
                                         "value": {
-                                            "xpath": "IN1/policy_number"
+                                            "xpath": "IN1/policy_number[1]"
                                         },
                                         "type": {
                                             "object": {
@@ -3033,7 +3033,7 @@
                                                             "const": "index"
                                                         },
                                                         {
-                                                            "xpath": "IN1/set_id",
+                                                            "xpath": "IN1/set_id[1]",
                                                             "template": "transform_insurance_set_id"
                                                         },
                                                         {
@@ -3073,11 +3073,11 @@
                                                     "const": "http://terminology.hl7.org/CodeSystem/subscriber-relationship"
                                                 },
                                                 "code": {
-                                                    "xpath": "IN1/insured_patient_relationship",
+                                                    "xpath": "IN1/insured_patient_relationship[1]",
                                                     "template": "transform_coverage_patient_relationship_code"
                                                 },
                                                 "display": {
-                                                    "xpath": "IN1/insured_patient_relationship",
+                                                    "xpath": "IN1/insured_patient_relationship[1]",
                                                     "template": "transform_coverage_patient_relationship_display"
                                                 }
                                             }
@@ -3089,7 +3089,7 @@
                         "period": {
                             "object": {
                                 "start": {
-                                    "xpath": "IN1/plan_effective_date",
+                                    "xpath": "IN1/plan_effective_date[1]",
                                     "template": "transform_date"
                                 },
                                 "end": {
@@ -3119,7 +3119,7 @@
                                                         "const": "index"
                                                     },
                                                     {
-                                                        "xpath": "IN1/set_id",
+                                                        "xpath": "IN1/set_id[1]",
                                                         "template": "transform_insurance_set_id"
                                                     },
                                                     {
@@ -3140,11 +3140,11 @@
                             "template": "coverage_class_conditional_display"
                         },
                         "order": {
-                            "xpath": "IN1/set_id",
+                            "xpath": "IN1/set_id[1]",
                             "template": "transform_insurance_set_id"
                         },
                         "network": {
-                            "xpath": "IN1/plan_type"
+                            "xpath": "IN1/plan_type[1]"
                         }
                     }
                 },
@@ -3180,7 +3180,7 @@
                                 "const": "index"
                             },
                             {
-                                "xpath": "IN1/set_id",
+                                "xpath": "IN1/set_id[1]",
                                 "template": "transform_insurance_set_id"
                             },
                             {
@@ -3306,7 +3306,7 @@
                                                                 "const": "index"
                                                             },
                                                             {
-                                                                "xpath": "IN1/set_id",
+                                                                "xpath": "IN1/set_id[1]",
                                                                 "template": "transform_insurance_set_id"
                                                             },
                                                             {
@@ -3331,7 +3331,7 @@
                                         "preAuthRef": {
                                             "array": [
                                                 {
-                                                    "xpath": "IN1/auth_number"
+                                                    "xpath": "IN1/auth_number[1]"
                                                 }
                                             ]
                                         }
@@ -3733,7 +3733,7 @@
                         "const": "val"
                     },
                     {
-                        "xpath": "insured_patient_relationship"
+                        "xpath": "insured_patient_relationship[1]"
                     }
                 ]
             }
@@ -3766,7 +3766,7 @@
                         "const": "val"
                     },
                     {
-                        "xpath": "insured_patient_relationship"
+                        "xpath": "insured_patient_relationship[1]"
                     }
                 ]
             }
@@ -3830,7 +3830,7 @@
                         "const": "val"
                     },
                     {
-                        "xpath": "insured_patient_relationship"
+                        "xpath": "insured_patient_relationship[1]"
                     },
                     {
                         "const": "subscriberid"
@@ -3998,14 +3998,14 @@
                         "const": "enddate"
                     },
                     {
-                        "xpath": "plan_expiration_date",
+                        "xpath": "plan_expiration_date[1]",
                         "template": "transform_date"
                     },
                     {
                         "const": "startdate"
                     },
                     {
-                        "xpath": "plan_effective_date",
+                        "xpath": "plan_effective_date[1]",
                         "template": "transform_date"
                     }
                 ]
@@ -4078,7 +4078,7 @@
                         "const": "admitdate"
                     },
                     {
-                        "xpath": "admit_datetime",
+                        "xpath": "admit_datetime[1]",
                         "template": "transform_datetime"
                     },
                     {
@@ -4096,19 +4096,19 @@
                 "name": "concat",
                 "args": [
                     {
-                        "xpath": "admit_type"
+                        "xpath": "admit_type[1]"
                     },
                     {
                         "const": "|"
                     },
                     {
-                        "xpath": "patient_type"
+                        "xpath": "patient_type[1]"
                     },
                     {
                         "const": "|"
                     },
                     {
-                        "xpath": "financial_class"
+                        "xpath": "financial_class[1]"
                     }
                 ]
             }
@@ -4124,13 +4124,13 @@
                         "const": "dept"
                     },
                     {
-                        "xpath": "point_of_care"
+                        "xpath": "point_of_care[1]"
                     },
                     {
                         "const": "setid"
                     },
                     {
-                        "xpath": "set_id"
+                        "xpath": "set_id[1]"
                     },
                     {
                         "const": "mrnfacility"
@@ -4153,13 +4153,13 @@
                         "const": "planid"
                     },
                     {
-                        "xpath": "plan_id"
+                        "xpath": "plan_id[1]"
                     },
                     {
                         "const": "setid"
                     },
                     {
-                        "xpath": "set_id",
+                        "xpath": "set_id[1]",
                         "template": "transform_insurance_set_id"
                     },
                     {
@@ -4184,13 +4184,13 @@
                         "const": "policy_number"
                     },
                     {
-                        "xpath": "policy_number"
+                        "xpath": "policy_number[1]"
                     },
                     {
                         "const": "setid"
                     },
                     {
-                        "xpath": "set_id",
+                        "xpath": "set_id[1]",
                         "template": "transform_insurance_set_id"
                     },
                     {
@@ -4486,7 +4486,7 @@
                         "const": "setid"
                     },
                     {
-                        "xpath": "set_id",
+                        "xpath": "set_id[1]",
                         "template": "transform_guarantor_set_id"
                     },
                     {
@@ -4510,13 +4510,13 @@
                         "const": "planid"
                     },
                     {
-                        "xpath": "plan_id"
+                        "xpath": "plan_id[1]"
                     },
                     {
                         "const": "setid"
                     },
                     {
-                        "xpath": "set_id",
+                        "xpath": "set_id[1]",
                         "template": "transform_insurance_set_id"
                     },
                     {
@@ -4741,7 +4741,7 @@
                         "const": "group_number"
                     },
                     {
-                        "xpath": "IN1/group_number"
+                        "xpath": "IN1/group_number[1]"
                     }
                 ]
             }
