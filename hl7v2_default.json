@@ -1237,11 +1237,11 @@
                             "template": "practitioner_attending_resource"
                         },
                         {
-                            "xpath": ".[PV1/referring_physician_id!='' and PV1/referring_physician_id!=PV1/attending_physician_id[1]]",
+                            "xpath": ".[PV1/referring_physician_id[1]!='' and PV1/referring_physician_id[1]!=PV1/attending_physician_id[1]]",
                             "template": "practitioner_referring_resource"
                         },
                         {
-                            "xpath": ".[PV1/admitting_physician_id!='' and not(PV1/admitting_physician_id=(PV1/attending_physician_id[1]|PV1/referring_physician_id))]",
+                            "xpath": ".[PV1/admitting_physician_id!='' and not(PV1/admitting_physician_id=(PV1/attending_physician_id[1]|PV1/referring_physician_id[1]))]",
                             "template": "practitioner_admitting_resource"
                         },
                         {
@@ -4321,7 +4321,7 @@
                         "const": "refisatnd"
                     },
                     {
-                        "xpath": ".[PV1/referring_physician_id=PV1/attending_physician_id[1]]"
+                        "xpath": ".[PV1/referring_physician_id[1]=PV1/attending_physician_id[1]]"
                     }
                 ]
             }
