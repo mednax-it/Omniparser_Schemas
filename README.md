@@ -119,7 +119,7 @@ Use XPath positional predicates `[1]` / `[2]` in the output schema to address ea
 }},
 {"xpath": ".[PID/alias_given[2]!='']", "object": {
     "family": {"xpath": "PID/alias_family[2]"},
-    "given":  {"array": [{"xpath": "PID/alias_given[2]"}, {"xpath": "PID/alias_middle"}]}
+    "given":  {"array": [{"xpath": "PID/alias_given[2]"}, {"xpath": "PID/alias_middle[1]"}]}
 }}
 ```
 
