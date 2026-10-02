@@ -216,6 +216,11 @@
                                 "default": ""
                             },
                             {
+                                "name": "patient_alias_raw",
+                                "index": 9,
+                                "default": ""
+                            },
+                            {
                                 "name": "multiple_birth",
                                 "index": 24,
                                 "default": ""
@@ -1362,7 +1367,14 @@
                                             "const": "http://abc.com2"
                                         },
                                         "value": {
-                                            "const": "sender"
+                                            "custom_func": {
+                                                "name": "concat",
+                                                "args": [
+                                                    {"xpath": "PID/patient_alias_raw[1]"},
+                                                    {"const": "|"},
+                                                    {"xpath": "PID/patient_alias_raw[2]"}
+                                                ]
+                                            }
                                         }
                                     }
                                 }
