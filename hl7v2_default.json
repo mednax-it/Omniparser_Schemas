@@ -218,6 +218,7 @@
                             {
                                 "name": "patient_alias_raw",
                                 "index": 9,
+                                "component_index": 0,
                                 "default": ""
                             },
                             {
@@ -1370,9 +1371,15 @@
                                             "custom_func": {
                                                 "name": "concat",
                                                 "args": [
-                                                    {"xpath": "PID/patient_alias_raw[1]"},
-                                                    {"const": "|"},
-                                                    {"xpath": "PID/patient_alias_raw[2]"}
+                                                    {
+                                                        "xpath": "PID/patient_alias_raw[1]"
+                                                    },
+                                                    {
+                                                        "const": "|"
+                                                    },
+                                                    {
+                                                        "xpath": "PID/patient_alias_raw[2]"
+                                                    }
                                                 ]
                                             }
                                         }
