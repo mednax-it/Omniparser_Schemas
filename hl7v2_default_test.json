@@ -1682,8 +1682,7 @@
                                                     "template": "transform_strip_hl7_escape"
                                                 },
                                                 {
-                                                    "xpath": "PID/alias_middle[1]",
-                                                    "template": "transform_strip_hl7_escape"
+                                                    "template": "transform_alias_2_middle_name"
                                                 }
                                             ]
                                         }
@@ -3815,6 +3814,34 @@
                     },
                     {
                         "xpath": "."
+                    }
+                ]
+            }
+        },
+        "transform_alias_2_middle_name": {
+            "custom_func": {
+                "name": "javascript",
+                "args": [
+                    {
+                        "const": "var mid = (allHaveMiddle !== null && allHaveMiddle !== undefined) ? mid2 : mid1; mid = mid || ''; mid.replace(/\\\\+$/, '')"
+                    },
+                    {
+                        "const": "allHaveMiddle"
+                    },
+                    {
+                        "xpath": ".[count(PID/alias_middle)=count(PID/alias_family)]"
+                    },
+                    {
+                        "const": "mid2"
+                    },
+                    {
+                        "xpath": "PID/alias_middle[2]"
+                    },
+                    {
+                        "const": "mid1"
+                    },
+                    {
+                        "xpath": "PID/alias_middle[1]"
                     }
                 ]
             }
