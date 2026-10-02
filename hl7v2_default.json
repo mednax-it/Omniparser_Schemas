@@ -1372,13 +1372,13 @@
                                                 "name": "concat",
                                                 "args": [
                                                     {
-                                                        "xpath": "PID/patient_alias_raw[1]"
+                                                        "xpath": "count(PID/alias_family)"
                                                     },
                                                     {
                                                         "const": "|"
                                                     },
                                                     {
-                                                        "xpath": "PID/patient_alias_raw[2]"
+                                                        "xpath": "count(PID/alias_middle)"
                                                     }
                                                 ]
                                             }
