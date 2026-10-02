@@ -216,12 +216,6 @@
                                 "default": ""
                             },
                             {
-                                "name": "patient_alias_raw",
-                                "index": 9,
-                                "component_index": 0,
-                                "default": ""
-                            },
-                            {
                                 "name": "multiple_birth",
                                 "index": 24,
                                 "default": ""
