@@ -1363,16 +1363,16 @@
                                         },
                                         "value": {
                                             "custom_func": {
-                                                "name": "concat",
+                                                "name": "javascript",
                                                 "args": [
                                                     {
-                                                        "xpath": "count(PID/alias_family)"
+                                                        "const": "matched !== null && matched !== undefined ? 'MATCHED:' + matched : 'NOMATCH'"
                                                     },
                                                     {
-                                                        "const": "|"
+                                                        "const": "matched"
                                                     },
                                                     {
-                                                        "xpath": "count(PID/alias_middle)"
+                                                        "xpath": ".[count(PID/alias_middle)=count(PID/alias_family)]"
                                                     }
                                                 ]
                                             }
