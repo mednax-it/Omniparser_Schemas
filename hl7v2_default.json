@@ -3819,6 +3819,7 @@
             }
         },
         "transform_alias_2_middle_name": {
+            "_comment": "KNOWN LIMITATION: the omniparser reader flattens alias_middle nodes independently of alias_family/alias_given's per-repetition counts, and this engine exposes no raw-text/repetition-grouped access (component_index must be >=1, no whole-field option) to disambiguate further. When count(alias_middle)=count(alias_family), every repetition has a middle and positional correspondence is unambiguous (alias_middle[2] is correct). When exactly one repetition has a middle (count mismatch), we cannot determine WHICH repetition supplied it - this falls back to alias_middle[1] and assigns it to alias 2 by deliberate convention, matching every real-world example captured so far (the fuller/later alias carries the middle name). If a source system ever sends the opposite order (first alias has the middle, second does not), this will misattribute it - a false negative in the rarer direction, not a crash.",
             "custom_func": {
                 "name": "javascript",
                 "args": [
