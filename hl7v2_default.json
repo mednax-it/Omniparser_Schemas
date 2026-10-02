@@ -1366,13 +1366,13 @@
                                                 "name": "javascript",
                                                 "args": [
                                                     {
-                                                        "const": "matched !== null && matched !== undefined ? 'MATCHED:' + matched : 'NOMATCH'"
+                                                        "const": "'MID2:[' + mid2 + ']'"
                                                     },
                                                     {
-                                                        "const": "matched"
+                                                        "const": "mid2"
                                                     },
                                                     {
-                                                        "xpath": ".[count(PID/alias_middle)=count(PID/alias_family)]"
+                                                        "xpath": "PID/alias_middle[2]"
                                                     }
                                                 ]
                                             }
