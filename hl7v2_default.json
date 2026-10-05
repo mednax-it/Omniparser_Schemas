@@ -1660,6 +1660,9 @@
                                                 {
                                                     "xpath": "PID/alias_given[1]",
                                                     "template": "transform_strip_hl7_escape"
+                                                },
+                                                {
+                                                    "template": "transform_alias_1_middle_name"
                                                 }
                                             ]
                                         }
@@ -3814,6 +3817,29 @@
                     },
                     {
                         "xpath": "."
+                    }
+                ]
+            }
+        },
+        "transform_alias_1_middle_name": {
+            "_comment": "Only includes alias 1's middle name when unambiguous: either this is the only PID-9 repetition (count(alias_family)=1, nothing else it could belong to), or both repetitions have a middle component (count(alias_middle)=count(alias_family), positional correspondence is valid). Otherwise (exactly one repetition has a middle, 2+ reps) omits it here - by convention that single middle belongs to alias 2 (see transform_alias_2_middle_name).",
+            "custom_func": {
+                "name": "javascript",
+                "args": [
+                    {
+                        "const": "var mid = (unambiguous !== null && unambiguous !== undefined) ? mid1 : ''; mid = mid || ''; mid.replace(/\\\\+$/, '')"
+                    },
+                    {
+                        "const": "unambiguous"
+                    },
+                    {
+                        "xpath": ".[count(PID/alias_family)=1 or count(PID/alias_middle)=count(PID/alias_family)]"
+                    },
+                    {
+                        "const": "mid1"
+                    },
+                    {
+                        "xpath": "PID/alias_middle[1]"
                     }
                 ]
             }
