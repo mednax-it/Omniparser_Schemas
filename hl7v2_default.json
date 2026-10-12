@@ -1241,7 +1241,7 @@
                             "template": "practitioner_referring_resource"
                         },
                         {
-                            "xpath": ".[PV1/admitting_physician_id!='' and not(PV1/admitting_physician_id=(PV1/attending_physician_id[1]|PV1/referring_physician_id))]",
+                            "xpath": ".[PV1/admitting_physician_id[1]!='' and not(PV1/admitting_physician_id=(PV1/attending_physician_id[1]|PV1/referring_physician_id))]",
                             "template": "practitioner_admitting_resource"
                         },
                         {
@@ -1984,7 +1984,7 @@
                                     }
                                 },
                                 {
-                                    "xpath": ".[PV1/referring_physician_id!='']",
+                                    "xpath": ".[PV1/referring_physician_id[1]!='']",
                                     "object": {
                                         "type": {
                                             "array": [
@@ -4385,25 +4385,19 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "admtis===attnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : admtis===refr ? 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
+                        "const": "admtis_eq_attnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : admtis_eq_refr ? 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
                     },
                     {
-                        "const": "admtis"
+                        "const": "admtis_eq_attnd"
                     },
                     {
-                        "xpath": "PV1/admitting_physician_id[1]"
+                        "xpath": ".[PV1/admitting_physician_id=PV1/attending_physician_id[1]]"
                     },
                     {
-                        "const": "attnd"
+                        "const": "admtis_eq_refr"
                     },
                     {
-                        "xpath": "PV1/attending_physician_id[1]"
-                    },
-                    {
-                        "const": "refr"
-                    },
-                    {
-                        "xpath": "PV1/referring_physician_id[1]"
+                        "xpath": ".[PV1/admitting_physician_id=PV1/referring_physician_id]"
                     }
                 ]
             }
