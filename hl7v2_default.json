@@ -4369,7 +4369,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "(refr1===attnd || refr2===attnd) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7'"
+                        "const": "(refr1===attnd || (refr2 && refr2===attnd)) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7'"
                     },
                     {
                         "const": "refr1"
@@ -4397,7 +4397,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "(adm1===attnd || adm2===attnd) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : (adm1===refr1 || adm1===refr2 || adm2===refr1 || adm2===refr2) ? ((refr1===attnd || refr2===attnd) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7') : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
+                        "const": "(adm1===attnd || (adm2 && adm2===attnd)) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : (adm1===refr1 || (refr2 && adm1===refr2) || (adm2 && adm2===refr1) || (adm2 && refr2 && adm2===refr2)) ? ((refr1===attnd || (refr2 && refr2===attnd)) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7') : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
                     },
                     {
                         "const": "adm1"
