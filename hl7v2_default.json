@@ -4369,7 +4369,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "(refr1===attnd || (refr2 && refr2===attnd)) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7'"
+                        "const": "var refrArr=[refr1,refr2,refr3,refr4,refr5].filter(function(v){return v;}); refrArr.indexOf(attnd)!==-1 ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7'"
                     },
                     {
                         "const": "refr1"
@@ -4382,6 +4382,24 @@
                     },
                     {
                         "xpath": "PV1/referring_physician_id[2]"
+                    },
+                    {
+                        "const": "refr3"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[3]"
+                    },
+                    {
+                        "const": "refr4"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[4]"
+                    },
+                    {
+                        "const": "refr5"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[5]"
                     },
                     {
                         "const": "attnd"
@@ -4397,7 +4415,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "(adm1===attnd || (adm2 && adm2===attnd)) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : (adm1===refr1 || (refr2 && adm1===refr2) || (adm2 && adm2===refr1) || (adm2 && refr2 && adm2===refr2)) ? ((refr1===attnd || (refr2 && refr2===attnd)) ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7') : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
+                        "const": "var admArr=[adm1,adm2,adm3,adm4,adm5].filter(function(v){return v;}); var refrArr=[refr1,refr2,refr3,refr4,refr5].filter(function(v){return v;}); var admEqAttnd=admArr.indexOf(attnd)!==-1; var admEqRefr=admArr.some(function(a){return refrArr.indexOf(a)!==-1;}); var refrEqAttnd=refrArr.indexOf(attnd)!==-1; admEqAttnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : admEqRefr ? (refrEqAttnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7') : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
                     },
                     {
                         "const": "adm1"
@@ -4410,6 +4428,24 @@
                     },
                     {
                         "xpath": "PV1/admitting_physician_id[2]"
+                    },
+                    {
+                        "const": "adm3"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[3]"
+                    },
+                    {
+                        "const": "adm4"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[4]"
+                    },
+                    {
+                        "const": "adm5"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[5]"
                     },
                     {
                         "const": "attnd"
@@ -4428,6 +4464,24 @@
                     },
                     {
                         "xpath": "PV1/referring_physician_id[2]"
+                    },
+                    {
+                        "const": "refr3"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[3]"
+                    },
+                    {
+                        "const": "refr4"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[4]"
+                    },
+                    {
+                        "const": "refr5"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[5]"
                     }
                 ]
             }
