@@ -1788,7 +1788,7 @@
                                                     "xpath": "PID/address_2[1]"
                                                 },
                                                 {
-                                                    "xpath": "PV1",
+                                                    "xpath": ".",
                                                     "template": "DEBUG_admitting_positions"
                                                 }
                                             ]
@@ -4379,7 +4379,7 @@
                         "const": "adm3"
                     },
                     {
-                        "xpath": "admitting_physician_id[3]"
+                        "xpath": "PV1/admitting_physician_id[3]"
                     }
                 ]
             }
