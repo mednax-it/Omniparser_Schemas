@@ -4373,7 +4373,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "var admArr=[adm1,adm2,adm3].filter(function(v){return v;}); var r='arr='+JSON.stringify(admArr)+' idx='+admArr.indexOf(attnd); r"
+                        "const": "var admArr=[adm1,adm2,adm3,adm4,adm5].filter(function(v){return v;}); var refrArr=[refr1,refr2,refr3,refr4,refr5].filter(function(v){return v;}); var r='admArr='+JSON.stringify(admArr)+' refrArr='+JSON.stringify(refrArr)+' idx='+admArr.indexOf(attnd); r"
                     },
                     {
                         "const": "adm1"
@@ -4394,10 +4394,52 @@
                         "xpath": "PV1/admitting_physician_id[3]"
                     },
                     {
+                        "const": "adm4"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[4]"
+                    },
+                    {
+                        "const": "adm5"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[5]"
+                    },
+                    {
                         "const": "attnd"
                     },
                     {
                         "xpath": "PV1/attending_physician_id[1]"
+                    },
+                    {
+                        "const": "refr1"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[1]"
+                    },
+                    {
+                        "const": "refr2"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[2]"
+                    },
+                    {
+                        "const": "refr3"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[3]"
+                    },
+                    {
+                        "const": "refr4"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[4]"
+                    },
+                    {
+                        "const": "refr5"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[5]"
                     }
                 ]
             }
