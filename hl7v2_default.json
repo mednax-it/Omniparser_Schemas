@@ -1786,6 +1786,10 @@
                                                 },
                                                 {
                                                     "xpath": "PID/address_2[1]"
+                                                },
+                                                {
+                                                    "xpath": "PV1",
+                                                    "template": "DEBUG_admitting_positions"
                                                 }
                                             ]
                                         },
@@ -4360,6 +4364,40 @@
                     },
                     {
                         "xpath": "."
+                    }
+                ]
+            }
+        },
+        "DEBUG_admitting_positions": {
+            "custom_func": {
+                "name": "javascript",
+                "args": [
+                    {
+                        "const": "'DEBUG adm1=['+adm1+'] adm2=['+adm2+'] adm3=['+adm3+'] attnd=['+attnd+']'"
+                    },
+                    {
+                        "const": "adm1"
+                    },
+                    {
+                        "xpath": "admitting_physician_id[1]"
+                    },
+                    {
+                        "const": "adm2"
+                    },
+                    {
+                        "xpath": "admitting_physician_id[2]"
+                    },
+                    {
+                        "const": "adm3"
+                    },
+                    {
+                        "xpath": "admitting_physician_id[3]"
+                    },
+                    {
+                        "const": "attnd"
+                    },
+                    {
+                        "xpath": "attending_physician_id[1]"
                     }
                 ]
             }
