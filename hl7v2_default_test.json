@@ -4373,13 +4373,31 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "'adm3='+String(adm3)"
+                        "const": "var admArr=[adm1,adm2,adm3].filter(function(v){return v;}); var r='arr='+JSON.stringify(admArr)+' idx='+admArr.indexOf(attnd); r"
+                    },
+                    {
+                        "const": "adm1"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[1]"
+                    },
+                    {
+                        "const": "adm2"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[2]"
                     },
                     {
                         "const": "adm3"
                     },
                     {
                         "xpath": "PV1/admitting_physician_id[3]"
+                    },
+                    {
+                        "const": "attnd"
+                    },
+                    {
+                        "xpath": "PV1/attending_physician_id[1]"
                     }
                 ]
             }
