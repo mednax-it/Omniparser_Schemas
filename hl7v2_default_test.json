@@ -4447,7 +4447,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "var refrArr=[refr1,refr2,refr3,refr4,refr5].filter(function(v){return v;}); refrArr.indexOf(attnd)!==-1 ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7'"
+                        "const": "var refrArr=[refr1,refr2,refr3,refr4,refr5,refr6,refr7,refr8,refr9,refr10].filter(function(v){return v;}); refrArr.indexOf(attnd)!==-1 ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7'"
                     },
                     {
                         "const": "refr1"
@@ -4480,6 +4480,36 @@
                         "xpath": "PV1/referring_physician_id[5]"
                     },
                     {
+                        "const": "refr6"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[6]"
+                    },
+                    {
+                        "const": "refr7"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[7]"
+                    },
+                    {
+                        "const": "refr8"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[8]"
+                    },
+                    {
+                        "const": "refr9"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[9]"
+                    },
+                    {
+                        "const": "refr10"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[10]"
+                    },
+                    {
                         "const": "attnd"
                     },
                     {
@@ -4493,7 +4523,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "var admArr=[adm1,adm2,adm3,adm4,adm5].filter(function(v){return v;}); var refrArr=[refr1,refr2,refr3,refr4,refr5].filter(function(v){return v;}); var admEqAttnd=admArr.indexOf(attnd)!==-1; var admEqRefr=admArr.some(function(a){return refrArr.indexOf(a)!==-1;}); var refrEqAttnd=refrArr.indexOf(attnd)!==-1; admEqAttnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : admEqRefr ? (refrEqAttnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7') : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
+                        "const": "var admArr=[adm1,adm2,adm3,adm4,adm5,adm6,adm7,adm8,adm9,adm10].filter(function(v){return v;}); var refrArr=[refr1,refr2,refr3,refr4,refr5,refr6,refr7,refr8,refr9,refr10].filter(function(v){return v;}); var admEqAttnd=admArr.indexOf(attnd)!==-1; var admEqRefr=admArr.some(function(a){return refrArr.indexOf(a)!==-1;}); var refrEqAttnd=refrArr.indexOf(attnd)!==-1; admEqAttnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : admEqRefr ? (refrEqAttnd ? 'urn:uuid:61ebe121-aa07-0001-0001-983a382abcd7' : 'urn:uuid:61ebe121-aa07-0002-0001-983a382abcd7') : 'urn:uuid:61ebe121-aa07-0003-0001-983a382abcd7'"
                     },
                     {
                         "const": "adm1"
@@ -4526,6 +4556,36 @@
                         "xpath": "PV1/admitting_physician_id[5]"
                     },
                     {
+                        "const": "adm6"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[6]"
+                    },
+                    {
+                        "const": "adm7"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[7]"
+                    },
+                    {
+                        "const": "adm8"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[8]"
+                    },
+                    {
+                        "const": "adm9"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[9]"
+                    },
+                    {
+                        "const": "adm10"
+                    },
+                    {
+                        "xpath": "PV1/admitting_physician_id[10]"
+                    },
+                    {
                         "const": "attnd"
                     },
                     {
@@ -4560,6 +4620,36 @@
                     },
                     {
                         "xpath": "PV1/referring_physician_id[5]"
+                    },
+                    {
+                        "const": "refr6"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[6]"
+                    },
+                    {
+                        "const": "refr7"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[7]"
+                    },
+                    {
+                        "const": "refr8"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[8]"
+                    },
+                    {
+                        "const": "refr9"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[9]"
+                    },
+                    {
+                        "const": "refr10"
+                    },
+                    {
+                        "xpath": "PV1/referring_physician_id[10]"
                     }
                 ]
             }
