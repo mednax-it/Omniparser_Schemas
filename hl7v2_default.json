@@ -1788,19 +1788,8 @@
                                                     "xpath": "PID/address_2[1]"
                                                 },
                                                 {
-                                                    "xpath": "concat('DEBUG_admall=', count(PV1/admitting_physician_id))"
-                                                },
-                                                {
-                                                    "xpath": "concat('DEBUG_admfilt=', count(PV1/admitting_physician_id[.!='']))"
-                                                },
-                                                {
-                                                    "xpath": "concat('DEBUG_refall=', count(PV1/referring_physician_id))"
-                                                },
-                                                {
-                                                    "xpath": "concat('DEBUG_reffilt=', count(PV1/referring_physician_id[.!='']))"
-                                                },
-                                                {
-                                                    "xpath": "concat('DEBUG_guard=', boolean(not(PV1/admitting_physician_id[.!='']=(PV1/attending_physician_id[1]|PV1/referring_physician_id[.!='']))))"
+                                                    "xpath": ".",
+                                                    "template": "DEBUG_admitting_referring_counts"
                                                 }
                                             ]
                                         },
@@ -4453,6 +4442,40 @@
                     },
                     {
                         "xpath": "."
+                    }
+                ]
+            }
+        },
+        "DEBUG_admitting_referring_counts": {
+            "custom_func": {
+                "name": "javascript",
+                "args": [
+                    {
+                        "const": "'ADMall='+admall+' ADMfilt='+admfilt+' REFall='+refall+' REFfilt='+reffilt"
+                    },
+                    {
+                        "const": "admall"
+                    },
+                    {
+                        "xpath": "count(PV1/admitting_physician_id)"
+                    },
+                    {
+                        "const": "admfilt"
+                    },
+                    {
+                        "xpath": "count(PV1/admitting_physician_id[.!=''])"
+                    },
+                    {
+                        "const": "refall"
+                    },
+                    {
+                        "xpath": "count(PV1/referring_physician_id)"
+                    },
+                    {
+                        "const": "reffilt"
+                    },
+                    {
+                        "xpath": "count(PV1/referring_physician_id[.!=''])"
                     }
                 ]
             }
