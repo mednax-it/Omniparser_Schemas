@@ -4451,7 +4451,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "'ADMall='+admall+' ADMfilt='+admfilt+' REFall='+refall+' REFfilt='+reffilt"
+                        "const": "'ADMall='+admall+' REFall='+refall"
                     },
                     {
                         "const": "admall"
@@ -4460,22 +4460,10 @@
                         "xpath": "count(PV1/admitting_physician_id)"
                     },
                     {
-                        "const": "admfilt"
-                    },
-                    {
-                        "xpath": "count(PV1/admitting_physician_id[.!=''])"
-                    },
-                    {
                         "const": "refall"
                     },
                     {
                         "xpath": "count(PV1/referring_physician_id)"
-                    },
-                    {
-                        "const": "reffilt"
-                    },
-                    {
-                        "xpath": "count(PV1/referring_physician_id[.!=''])"
                     }
                 ]
             }
