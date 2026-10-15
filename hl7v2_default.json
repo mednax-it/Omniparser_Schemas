@@ -2170,7 +2170,33 @@
                                         "coverage": {
                                             "object": {
                                                 "reference": {
-                                                    "const": "urn:uuid:61ebe121-aa06-0001-0001-983a382abcd7"
+                                                    "custom_func": {
+                                                        "name": "javascript",
+                                                        "args": [
+                                                            {
+                                                                "const": "prefix + index.toString() + suffix"
+                                                            },
+                                                            {
+                                                                "const": "prefix"
+                                                            },
+                                                            {
+                                                                "const": "urn:uuid:61ebe121-aa06-0001-000"
+                                                            },
+                                                            {
+                                                                "const": "index"
+                                                            },
+                                                            {
+                                                                "xpath": "IN1/set_id[1]",
+                                                                "template": "transform_insurance_set_id"
+                                                            },
+                                                            {
+                                                                "const": "suffix"
+                                                            },
+                                                            {
+                                                                "const": "-983a382abcd7"
+                                                            }
+                                                        ]
+                                                    }
                                                 }
                                             }
                                         },
@@ -2186,7 +2212,33 @@
                                         "coverage": {
                                             "object": {
                                                 "reference": {
-                                                    "const": "urn:uuid:61ebe121-aa06-0001-0002-983a382abcd7"
+                                                    "custom_func": {
+                                                        "name": "javascript",
+                                                        "args": [
+                                                            {
+                                                                "const": "prefix + index.toString() + suffix"
+                                                            },
+                                                            {
+                                                                "const": "prefix"
+                                                            },
+                                                            {
+                                                                "const": "urn:uuid:61ebe121-aa06-0001-000"
+                                                            },
+                                                            {
+                                                                "const": "index"
+                                                            },
+                                                            {
+                                                                "xpath": "IN1/set_id[1]",
+                                                                "template": "transform_insurance_set_id"
+                                                            },
+                                                            {
+                                                                "const": "suffix"
+                                                            },
+                                                            {
+                                                                "const": "-983a382abcd7"
+                                                            }
+                                                        ]
+                                                    }
                                                 }
                                             }
                                         },
@@ -2202,7 +2254,33 @@
                                         "coverage": {
                                             "object": {
                                                 "reference": {
-                                                    "const": "urn:uuid:61ebe121-aa06-0001-0003-983a382abcd7"
+                                                    "custom_func": {
+                                                        "name": "javascript",
+                                                        "args": [
+                                                            {
+                                                                "const": "prefix + index.toString() + suffix"
+                                                            },
+                                                            {
+                                                                "const": "prefix"
+                                                            },
+                                                            {
+                                                                "const": "urn:uuid:61ebe121-aa06-0001-000"
+                                                            },
+                                                            {
+                                                                "const": "index"
+                                                            },
+                                                            {
+                                                                "xpath": "IN1/set_id[1]",
+                                                                "template": "transform_insurance_set_id"
+                                                            },
+                                                            {
+                                                                "const": "suffix"
+                                                            },
+                                                            {
+                                                                "const": "-983a382abcd7"
+                                                            }
+                                                        ]
+                                                    }
                                                 }
                                             }
                                         },
