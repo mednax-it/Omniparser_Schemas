@@ -4148,7 +4148,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "setid ? parseInt(setid) : tertiary ? 3 : secondary ? 2 : 1"
+                        "const": "(setid && parseInt(setid)===parseInt(setid)) ? parseInt(setid) : tertiary ? 3 : secondary ? 2 : 1"
                     },
                     {
                         "const": "secondary"
@@ -4176,7 +4176,7 @@
                 "name": "javascript",
                 "args": [
                     {
-                        "const": "setid ? parseInt(setid) : tertiary ? 3 : secondary ? 2 : 1"
+                        "const": "(setid && parseInt(setid)===parseInt(setid)) ? parseInt(setid) : tertiary ? 3 : secondary ? 2 : 1"
                     },
                     {
                         "const": "secondary"
