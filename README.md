@@ -238,20 +238,6 @@ If plan number does not exist, identifier will default to concatenation of `mrn_
 If plan number does not exist, identifier will default to concatenation of `mrn_facility`, the Insurance segment code (IN1) and the Insurance segment Set ID (e.g. 1, 2)
 
     {mrn}-{facility_id}-IN1-{insurance set id}
-**Coverage Identifier**
-
-*Coverage* resource will be used to retain the insurance coverage information. The identifier will be concatenation of `mrn_facility`, the Insurance segment code (IN1) and the insurance priority — the Insurance segment Set ID (IN1.1), or the segment's position (1 = primary, 2 = secondary, 3 = tertiary) when the Set ID is missing or non-numeric
-
-    {mrn}-{facility_id}-IN1-{insurance priority}
-
-The Policy Number (IN1.36) is intentionally **not** part of this identifier: the same policy number commonly appears on multiple distinct insurance records for a patient, which would collapse distinct Coverage resources into one. The policy number is still emitted on the Coverage resource as a secondary `insurance-policy-id` identifier (type MB, Member Number).
-
-**Claim Identifier**
-
-*Claim* resource will be used to retain the claim information. One Claim is created per insurance, sharing the same identifier format as the Coverage identifier
-
-    {mrn}-{facility_id}-IN1-{insurance priority}
-
 **Attending Physician Identifier**
 
 *Pratictioner* resource will be used to retain the Attending Physician information. the identifier will be concatenation of `mrn_facility` and the attending physician id (PV1.7.1)
